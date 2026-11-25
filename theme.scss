@@ -29,7 +29,38 @@ $paper: #ffffff;
 $ink-muted: #6b6f63;
 $gold-soft: #f3e6c4;
 
+// Bandeira do Rio Grande do Sul
+$rs-verde: #1d7a43;
+$rs-vermelho: #c0392b;
+$rs-amarelo: #e8b923;
+
 /*-- scss:rules --*/
+
+$faixa-rs: linear-gradient(90deg, $rs-verde 0 33.34%, $rs-vermelho 33.34% 66.67%, $rs-amarelo 66.67%);
+$faixa-rs-diag: linear-gradient(to bottom right, $rs-verde 0 37%, $rs-vermelho 37% 63%, $rs-amarelo 63%);
+
+#quarto-header::after {
+  content: "";
+  display: block;
+  height: 5px;
+  background: $faixa-rs;
+}
+
+.nav-footer { border-top: none; }
+
+// Quarto reserves a 60px row under the content; the pampa should meet the footer.
+#quarto-content.page-rows-contents {
+  grid-template-rows: [content-top] minmax(max-content, 1fr) [content-bottom] 0 [page-bottom];
+}
+
+.pampa {
+  display: block;
+  width: 100%;
+  height: max(110px, 16vw);
+  object-fit: cover;
+  object-position: 50% 100%;
+  margin-bottom: -1px;
+}
 
 html { scroll-behavior: smooth; }
 
@@ -54,6 +85,18 @@ section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reenc
 
 .nav-footer { font-size: 0.9rem; }
 .nav-footer em { color: rgba($footer-fg, 0.7); }
+
+.eyebrow::before,
+.section-eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 13px;
+  margin-right: 0.55rem;
+  vertical-align: -1px;
+  border-radius: 2px;
+  background: $faixa-rs-diag;
+}
 
 .eyebrow,
 .section-eyebrow {
@@ -88,9 +131,29 @@ section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reenc
 /* ---------- Hero ---------- */
 
 .hero {
+  position: relative;
+  overflow: hidden;
   background: linear-gradient(180deg, rgba($primary, 0.1), rgba($primary, 0) 70%);
   padding: 4rem 1rem 3rem;
   text-align: center;
+}
+.hero > * { position: relative; z-index: 1; }
+
+// Faixa diagonal da bandeira gaúcha no canto do topo
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 30px;
+  right: -150px;
+  width: 560px;
+  height: 60px;
+  transform: rotate(38deg);
+  background: linear-gradient(180deg, $rs-verde 0 33.34%, $rs-vermelho 33.34% 66.67%, $rs-amarelo 66.67%);
+  opacity: 0.9;
+}
+.hero-compact::before { top: 10px; }
+@media (max-width: 767.98px) {
+  .hero::before { width: 300px; height: 30px; right: -110px; top: 18px; }
 }
 
 .hero h1 {
@@ -309,14 +372,14 @@ section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reenc
 
 .zone-card {
   break-inside: avoid;
-  background: $paper;
-  border-top: 4px solid $secondary;
+  background: $faixa-rs top / 100% 4px no-repeat, $paper;
   border-radius: $border-radius;
+  overflow: hidden;
   box-shadow: 0 10px 24px -18px rgba(0, 0, 0, 0.35);
-  padding: 1rem 1.1rem 0.6rem;
+  padding: calc(1rem + 4px) 1.1rem 0.6rem;
   margin-bottom: 1.25rem;
 }
-.zone-card.especial { background: $gold-soft; border-top-color: $primary; }
+.zone-card.especial { background: $faixa-rs top / 100% 4px no-repeat, $gold-soft; }
 
 .zone-card header {
   display: flex;
@@ -496,6 +559,7 @@ section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reenc
   overflow: hidden;
 }
 
+.video-card { display: block; text-decoration: none; }
 .video-card img { object-fit: cover; transition: transform 0.3s ease, filter 0.3s ease; }
 .video-card:hover img { transform: scale(1.03); filter: brightness(0.85); }
 .video-card .play {
@@ -511,7 +575,50 @@ section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reenc
   color: #fff;
   font-size: 2.6rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
+.video-card:hover .play { transform: scale(1.08); background: $rs-vermelho; }
+.video-card .video-meta {
+  inset: auto 0 0 0;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 3rem 1.5rem 1.2rem;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  color: #fff;
+  text-align: left;
+}
+.video-card .video-meta strong {
+  display: block;
+  font-family: $headings-font-family;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+.video-card .video-meta small { color: rgba(255, 255, 255, 0.8); }
+.video-card .video-meta .yt {
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  background: #fff;
+  color: $footer-bg;
+}
+.video-card::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 5px;
+  top: auto;
+  background: $faixa-rs;
+}
+
+#woodwards { padding-bottom: 1.5rem; }
+.hero-compact + .band { padding-top: 1.5rem; }
+.band:has(+ .column-screen .pampa) { padding-bottom: 1.5rem; }
 
 .woodwards-names {
   font-family: $headings-font-family;

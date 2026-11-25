@@ -50,3 +50,9 @@ htl.html`<div>${[...new Set(newsletters.map(n => n.ano))].map(y => htl.html`
 
 :::
 ::::
+
+::: {.column-screen}
+```{=html}
+<img class="pampa" src="images/pampa.svg" alt="Silhueta do pampa gaúcho: coxilhas, um umbu e um gaúcho tomando chimarrão">
+```
+:::

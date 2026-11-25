@@ -67,13 +67,14 @@ snaps = quadro.snapshots
 pessoas = new Map(quadro.missionarios.map(p => [p.id, p]))
 MES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
 fmtYM = k => { if (!k) return "—"; const [y, m] = k.split("-"); return `${MES[+m - 1]}/${y}`; }
-norm = s => String(s ?? "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/-/g, " ").replace(/\s+/g, " ").trim()
+nomeCompleto = l => l.replace(/^E\s+/, "Élder ").replace(/^S\s+/, "Síster ")
+norm = s => String(s ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/-/g, " ").replace(/\s+/g, " ").trim()
 aparicoes = {
   const m = new Map();
   for (const s of snaps) for (const z of s.zonas) for (const a of z.areas) for (const p of a.dupla) {
     const k = p.id ?? "?" + p.n;
     if (!m.has(k)) m.set(k, []);
-    m.get(k).push({ key: s.key, zona: z.nome, area: a.rotulo ?? z.nome, companheiros: a.dupla.filter(x => x !== p).map(x => x.n) });
+    m.get(k).push({ key: s.key, zona: z.nome, area: a.rotulo ?? z.nome, companheiros: a.dupla.filter(x => x !== p).map(x => nomeCompleto(x.n)) });
   }
   return m;
 }
@@ -152,7 +153,7 @@ function linhaArea(a, z, cont) {
   const slot = htl.html`<div class="nome-detalhe" hidden></div>`;
   let aberto = null;
   const chips = a.dupla.map(p => {
-    const b = htl.html`<button class=${p.id ? "chip" : "chip sem-registro"}>${p.n}</button>`;
+    const b = htl.html`<button class=${p.id ? "chip" : "chip sem-registro"}>${nomeCompleto(p.n)}</button>`;
     b.onclick = () => {
       if (aberto) aberto.classList.remove("open");
       if (aberto === b) { aberto = null; slot.hidden = true; return; }
@@ -247,7 +248,7 @@ function cartaoPessoa({ p, label, ap }) {
     ? `${p.nacionalidade ?? ""} · Chegada ${fmtYM(p.chegada)} · Saída ${fmtYM(p.saida)} · em ${ap.length} quadro(s)`
     : `Sem registro de chegada/saída · em ${ap.length} quadro(s)`;
   return htl.html`<div class="pessoa-card">
-    <h4>${p ? `${p.titulo} ${p.plaqueta}` : label}</h4>
+    <h4>${p ? `${p.titulo} ${p.plaqueta}` : nomeCompleto(label)}</h4>
     <div class="meta">${meta}</div>
     ${ap.length
       ? htl.html`<div class="table-scroll"><table class="historico-table">
@@ -289,10 +290,12 @@ function cartaoPessoa({ p, label, ap }) {
 
 ```{=html}
 <a class="ratio ratio-16x9 video-frame video-card" target="_blank" rel="noopener" href="https://youtu.be/31IHb7dBMEo" aria-label="Assistir ao reencontro de abril de 2016 no YouTube">
-  <img src="https://img.youtube.com/vi/31IHb7dBMEo/hqdefault.jpg" alt="">
-  <span class="play"><i class="bi bi-play-fill"></i></span>
+  <img src="https://img.youtube.com/vi/31IHb7dBMEo/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/31IHb7dBMEo/hqdefault.jpg'" alt="">
+  <span class="video-meta">
+    <span><strong>Reencontro dos missionários</strong><small>Abril de 2016</small></span>
+    <span class="yt"><i class="bi bi-youtube"></i> Assistir no YouTube</span>
+  </span>
 </a>
-<p><a target="_blank" rel="noopener" href="https://youtu.be/31IHb7dBMEo">Assistir no YouTube <i class="bi bi-box-arrow-up-right"></i></a></p>
 ```
 :::
 ::::
@@ -303,4 +306,10 @@ function cartaoPessoa({ p, label, ap }) {
 [Arlan & Sally Woodward]{.woodwards-names .d-block}
 
 [Presidente e Síster da Missão Brasil Porto Alegre Norte, 1997–2000]{.section-intro .d-block}
+:::
+
+::: {.column-screen}
+```{=html}
+<img class="pampa" src="images/pampa.svg" alt="Silhueta do pampa gaúcho: coxilhas, um umbu e um gaúcho tomando chimarrão">
+```
 :::
