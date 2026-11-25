@@ -1,29 +1,52 @@
 project:
   type: website
   output-dir: docs
+  pre-render: node scripts/build-data.mjs
   render:
     - index.qmd
     - jornal.qmd
   resources:
     - "o-chamado-newsletters/**"
+    - ".nojekyll"
 
 website:
-  title: "O Chamado da Missão Brasil Porto Alegre Norte"
+  title: "O Chamado"
   site-url: "https://bhereth.github.io/o-chamado/"
   page-navigation: false
+  navbar:
+    background: primary
+    left:
+      - href: index.qmd#missao
+        text: A Missão
+      - href: index.qmd#areas
+        text: As Áreas
+      - href: index.qmd#missionarios
+        text: Os Missionários
+      - href: index.qmd#reencontros
+        text: Os Reencontros
+      - href: index.qmd#woodwards
+        text: Os Woodwards
+      - href: jornal.qmd
+        text: O Jornal
+  page-footer:
+    background: dark
+    center: |
+      O Chamado da Missão Brasil Porto Alegre Norte · 1997–2000<br>
+      *The Call of the Brazil Porto Alegre North Mission*
 
 format:
   html:
-    theme: none
-    css: styles.css
+    theme: [litera, theme.scss]
+    lang: pt-BR
     toc: false
     page-layout: full
     anchor-sections: false
+    smooth-scroll: true
     include-in-header:
       - text: |
-          <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap">
 
 execute:
   echo: false

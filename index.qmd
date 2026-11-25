@@ -1,211 +1,306 @@
 ---
 title: ""
+pagetitle: "O Chamado · Missão Brasil Porto Alegre Norte"
 ---
 
+::: {.hero .column-screen}
+[Missão Brasil Porto Alegre Norte · 1997–2000]{.eyebrow}
+
+# O Chamado
+
+[Presidente Arlan e Síster Sally Woodward]{.lead}
+
 ```{=html}
-<!-- Navbar -->
-<div class="w3-top">
-  <div class="w3-bar w3-red w3-card">
-    <a class="w3-bar-item w3-button w3-padding-large w3-hide-large w3-right" href="javascript:void(0)" onclick="toggleNav()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="index.html" class="w3-bar-item w3-button w3-padding-large">HOME</a>
-    <a href="index.html#missao" class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-small">A MISSÃO</a>
-    <a href="index.html#areas" class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-small">AS ÁREAS</a>
-    <a href="index.html#missionarios" class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-small">OS MISSIONÁRIOS</a>
-    <a href="index.html#reencontros" class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-small">OS REENCONTROS</a>
-    <a href="index.html#woodwards" class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-small">OS WOODWARDS</a>
-    <a href="jornal.html" class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-small">O JORNAL</a>
+<div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4500">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Escritório"></button>
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Marau"></button>
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Santa Rosa"></button>
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3" aria-label="Tramandaí"></button>
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="4" aria-label="Cruz Alta"></button>
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="5" aria-label="Santo Ângelo"></button>
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="6" aria-label="Capão da Canoa"></button>
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="7" aria-label="Vacaria"></button>
   </div>
-</div>
-
-<div id="navDemo" class="w3-bar-block w3-red w3-hide w3-hide-large w3-top" style="margin-top:46px">
-  <a href="index.html#missao" class="w3-bar-item w3-button w3-padding-large" onclick="toggleNav()">A MISSÃO</a>
-  <a href="index.html#areas" class="w3-bar-item w3-button w3-padding-large" onclick="toggleNav()">AS ÁREAS</a>
-  <a href="index.html#missionarios" class="w3-bar-item w3-button w3-padding-large" onclick="toggleNav()">OS MISSIONÁRIOS</a>
-  <a href="index.html#reencontros" class="w3-bar-item w3-button w3-padding-large" onclick="toggleNav()">OS REENCONTROS</a>
-  <a href="index.html#woodwards" class="w3-bar-item w3-button w3-padding-large" onclick="toggleNav()">OS WOODWARDS</a>
-  <a href="jornal.html" class="w3-bar-item w3-button w3-padding-large" onclick="toggleNav()">O JORNAL</a>
-</div>
-
-<div class="w3-yellow">
-<div class="w3-content" style="max-width:1500px;margin-top:46px">
-  <div class="w3-container w3-content w3-center w3-padding-12" style="max-width:1500px">
-    <h2 class="w3-wide w3-text-red">O CHAMADO DA MISSÃO BRASIL PORTO ALEGRE NORTE</h2>
-    <p class="w3-opacity w3-text-red">Presidente Arlan e Síster Sally Woodward (1997-2000)</p>
+  <div class="carousel-inner">
+    <div class="carousel-item active"><img src="images/escritorio.png" class="d-block w-100" alt="Escritório da missão"></div>
+    <div class="carousel-item"><img src="images/marau.png" class="d-block w-100" alt="Marau"></div>
+    <div class="carousel-item"><img src="images/santarosa.png" class="d-block w-100" alt="Santa Rosa"></div>
+    <div class="carousel-item"><img src="images/tramandai.png" class="d-block w-100" alt="Tramandaí"></div>
+    <div class="carousel-item"><img src="images/cruzalta.png" class="d-block w-100" alt="Cruz Alta"></div>
+    <div class="carousel-item"><img src="images/santoangelo.png" class="d-block w-100" alt="Santo Ângelo"></div>
+    <div class="carousel-item"><img src="images/capaodacanoa.png" class="d-block w-100" alt="Capão da Canoa"></div>
+    <div class="carousel-item"><img src="images/vacaria.png" class="d-block w-100" alt="Vacaria"></div>
   </div>
-
-  <!-- Automatic Slideshow Images -->
-  <div class="w3-container w3-content w3-center" style="max-width:800px">
-    <div class="mySlides w3-display-container w3-center" style="max-width:800px">
-      <img src="images/escritorio.png" style="width:100%" class="w3-center">
-    </div>
-    <div class="mySlides w3-display-container w3-center" style="max-width:800px">
-      <img src="images/marau.png" style="width:100%" class="w3-center">
-    </div>
-    <div class="mySlides w3-display-container w3-center" style="max-width:800px">
-      <img src="images/santarosa.png" style="width:100%">
-    </div>
-    <div class="mySlides w3-display-container w3-center" style="max-width:800px">
-      <img src="images/tramandai.png" style="width:100%">
-    </div>
-    <div class="mySlides w3-display-container w3-center" style="max-width:800px">
-      <img src="images/cruzalta.png" style="width:100%">
-    </div>
-    <div class="mySlides w3-display-container w3-center" style="max-width:800px">
-      <img src="images/santoangelo.png" style="width:100%">
-    </div>
-    <div class="mySlides w3-display-container w3-center" style="max-width:800px">
-      <img src="images/capaodacanoa.png" style="width:100%">
-    </div>
-    <div class="mySlides w3-display-container w3-center" style="max-width:800px">
-      <img src="images/vacaria.png" style="width:100%">
-    </div>
-  </div>
-</div>
-</div>
-
-<!-- The Mission Section -->
-<div class="w3-container w3-content w3-center w3-padding-64 w3-yellow" style="max-width:800px" id="missao">
-  <h2 class="w3-wide w3-text-blue">A MISSÃO</h2>
-  <p class="w3-opacity"><i>Eleva o coração e regozija-te, pois é chegada a hora de tua missão...  —Doutrina &amp; Convênios 31:3</i></p>
-  <br>
-</div>
-
-<!-- The Areas Section -->
-<div class="w3-container w3-content w3-center w3-padding-64 w3-green" style="max-width:800px" id="areas">
-  <h2 class="w3-wide w3-text-white">AS ÁREAS</h2>
-  <div class="w3-row w3-padding-32">
-    <div class="w3-half">
-      <h3>Zona</h3>
-      <div class="area-box">Canoas</div>
-      <div class="area-box">Gravataí</div>
-      <div class="area-box">Novo Hamburgo</div>
-      <div class="area-box">Passo Fundo</div>
-      <div class="area-box">Porto Alegre</div>
-      <p>...</p>
-    </div>
-    <div class="w3-half">
-      <h3>Áreas</h3>
-      <p>Ala 1</p>
-      <p>Higienópolis</p>
-      <p>...</p>
-      <p>...</p>
-    </div>
-  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Anterior</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Próxima</span>
+  </button>
 </div>
 ```
+:::
 
-<!-- The Missionaries Section -->
-::::: {.w3-yellow id="missionarios"}
+::: {.band .column-screen #missao}
+[A Missão]{.section-eyebrow}
 
 ```{=html}
-<div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px">
-  <h2 class="w3-wide w3-center w3-text-blue">OS MISSIONÁRIOS</h2>
-  <p class="w3-opacity w3-center"><i>Seleciona o ano e o mês para ver as chegadas e as saídas durante a época dos Woodward de todos os 515 missionários que serviram com eles.</i></p>
-</div>
+<blockquote class="scripture">
+  Eleva o coração e regozija-te, pois é chegada a hora de tua missão.
+  <footer>Doutrina e Convênios 31:3</footer>
+</blockquote>
+```
+:::
+
+:::: {.band .column-screen .section-muted #areas}
+::: {.wrap}
+[As Áreas]{.section-eyebrow}
+
+## O quadro de transferências
+
+[Escolha um mês para ver todas as zonas, áreas e duplas da missão naquele momento. Toque num nome para ver quando o missionário chegou e saiu.]{.section-intro}
+
+```{ojs}
+quadro = FileAttachment("data/quadro.json").json()
+snaps = quadro.snapshots
+pessoas = new Map(quadro.missionarios.map(p => [p.id, p]))
+MES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
+fmtYM = k => { if (!k) return "—"; const [y, m] = k.split("-"); return `${MES[+m - 1]}/${y}`; }
+norm = s => String(s ?? "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/-/g, " ").replace(/\s+/g, " ").trim()
+aparicoes = {
+  const m = new Map();
+  for (const s of snaps) for (const z of s.zonas) for (const a of z.areas) for (const p of a.dupla) {
+    const k = p.id ?? "?" + p.n;
+    if (!m.has(k)) m.set(k, []);
+    m.get(k).push({ key: s.key, zona: z.nome, area: a.rotulo ?? z.nome, companheiros: a.dupla.filter(x => x !== p).map(x => x.n) });
+  }
+  return m;
+}
+function estado(v) { const el = htl.html`<span hidden></span>`; el.value = v; return el; }
+function definir(el, v) { el.value = v; el.dispatchEvent(new Event("input", { bubbles: true })); }
+viewof quadroKey = estado("1997-10")
+snapIdx = snaps.findIndex(s => s.key === quadroKey)
+snapAtual = snaps[snapIdx]
 ```
 
 ```{ojs}
-//| panel: center
-missionaries = FileAttachment("data/missionarios.json").json()
+{
+  const first = snaps[0], last = snaps[snaps.length - 1];
+  const max = Math.max(...snaps.map(s => s.stats.zonas));
+  const W = 640, H = 56, gap = 3, bw = W / snaps.length;
+  const tile = (num, lbl, base) => htl.html`<div class="stat-tile"><div class="num">${num}</div><div class="lbl">${lbl}</div></div>`;
+  return htl.html`<div>
+    <p class="growth-headline"><strong>${first.stats.zonas}</strong> zonas em ${fmtYM(first.key)} → <strong>${last.stats.zonas}</strong> zonas em ${fmtYM(last.key)}</p>
+    <div class="stat-tiles">
+      ${tile(snapAtual.stats.zonas, "Zonas")}
+      ${tile(snapAtual.stats.areas, "Áreas")}
+      ${tile(snapAtual.stats.missionarios, "Missionários")}
+    </div>
+    ${htl.svg`<svg class="growth-bars" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="Zonas por mês">
+      ${snaps.map((s, i) => {
+        const h = Math.max(4, (s.stats.zonas / max) * H);
+        return htl.svg`<rect class=${s.key === quadroKey ? "active" : ""} x=${i * bw + gap / 2} y=${H - h} width=${bw - gap} height=${h} rx="2"
+          onclick=${() => definir(viewof quadroKey, s.key)}><title>${fmtYM(s.key)}: ${s.stats.zonas} zonas</title></rect>`;
+      })}
+    </svg>`}
+  </div>`;
+}
+```
 
-monthNames = ({1:"jan",2:"fev",3:"mar",4:"abr",5:"mai",6:"jun",7:"jul",8:"ago",9:"set",10:"out",11:"nov",12:"dez"})
+```{ojs}
+{
+  const anos = [...new Set(snaps.map(s => s.ano))];
+  const doAno = snaps.filter(s => s.ano === snapAtual.ano);
+  const go = k => definir(viewof quadroKey, k);
+  const pill = (label, active, onclick) => htl.html`<button class=${active ? "pill active" : "pill"} onclick=${onclick}>${label}</button>`;
+  return htl.html`<div class="filter-panel">
+    <div class="pill-group">${anos.map(a => pill(a, a === snapAtual.ano, () => go(snaps.find(s => s.ano === a).key)))}</div>
+    <div class="pill-group">${doAno.map(s => pill(MES[s.mes - 1], s.key === quadroKey, () => go(s.key)))}</div>
+  </div>
+  <div class="snap-nav">
+    <button class="pill" aria-label="Mês anterior" disabled=${snapIdx === 0} onclick=${() => go(snaps[snapIdx - 1].key)}>‹</button>
+    <span class="snap-label">${snapAtual.mesNome} de ${snapAtual.ano}</span>
+    <button class="pill" aria-label="Próximo mês" disabled=${snapIdx === snaps.length - 1} onclick=${() => go(snaps[snapIdx + 1].key)}>›</button>
+  </div>`;
+}
+```
 
-yearOptions = [1997, 1998, 1999, 2000]
-
-monthOptions = {
-  if (selectedYear === 1997) return [7,8,9,10,11,12];
-  if (selectedYear === 2000) return [1,2,3,4,5,6];
-  return [1,2,3,4,5,6,7,8,9,10,11,12];
+```{ojs}
+function verHistorico(q) {
+  return htl.html`<a href="#busca" onclick=${e => {
+    e.preventDefault();
+    const inp = document.getElementById("busca");
+    inp.value = q;
+    inp.dispatchEvent(new Event("input", { bubbles: true }));
+    inp.scrollIntoView({ behavior: "smooth", block: "center" });
+  }}>Ver histórico completo ↓</a>`;
 }
 
-viewof selectedYear = Inputs.radio(yearOptions, {value: 1997, label: "Ano", format: d => d})
+function detalheNome(p) {
+  const ap = aparicoes.get(p.id ?? "?" + p.n) ?? [];
+  if (!p.id) return htl.html`<div>Sem registro de chegada/saída · em ${ap.length} quadro(s)<br>${verHistorico(p.n)}</div>`;
+  const x = pessoas.get(p.id);
+  const provavel = p.c === "inferido" || p.c === "tolerancia";
+  return htl.html`<div><strong>${x.titulo} ${x.plaqueta}</strong>${x.nacionalidade ? ` · ${x.nacionalidade}` : ""}<br>
+    Chegada ${fmtYM(x.chegada)} · Saída ${fmtYM(x.saida)} · em ${ap.length} quadros
+    ${provavel ? htl.html`<br><span class="provavel">identificação provável</span>` : ""}
+    <br>${verHistorico(x.plaqueta)}</div>`;
+}
+
+function linhaArea(a, z, cont) {
+  const slot = htl.html`<div class="nome-detalhe" hidden></div>`;
+  let aberto = null;
+  const chips = a.dupla.map(p => {
+    const b = htl.html`<button class=${p.id ? "chip" : "chip sem-registro"}>${p.n}</button>`;
+    b.onclick = () => {
+      if (aberto) aberto.classList.remove("open");
+      if (aberto === b) { aberto = null; slot.hidden = true; return; }
+      aberto = b;
+      b.classList.add("open");
+      slot.replaceChildren(detalheNome(p));
+      slot.hidden = false;
+    };
+    return b;
+  });
+  return htl.html`<div class=${cont ? "area-row cont" : "area-row"}>
+    ${a.nome ? htl.html`<div class="area-name">${a.nome}${a.total > 1 ? htl.html`<span class="dupla-tag">#${a.n}</span>` : ""}</div>` : ""}
+    <div class="nomes">${chips}</div>
+    ${slot}
+  </div>`;
+}
 ```
 
 ```{ojs}
-viewof selectedMonth = Inputs.radio(monthOptions, {value: monthOptions.includes(7) ? 7 : monthOptions[0], label: "Mês", format: d => monthNames[d]})
-```
-
-```{ojs}
-chegadas = missionaries.filter(m => m.ChegadaAno === selectedYear && m.ChegadaMês === selectedMonth)
-saidas = missionaries.filter(m => m.SaídaAno === selectedYear && m.SaídaMês === selectedMonth)
-```
-
-:::: {.w3-row .w3-padding-32}
-
-::: {.w3-third}
-```{ojs}
-md`### Chegadas`
-```
-```{ojs}
-chegadas.length
-  ? html`${chegadas.map(m => html`<p>${m.Título} ${m.Plaqueta}</p>`)}`
-  : html`<p><i>Nenhuma</i></p>`
+{
+  const zonas = [...snapAtual.zonas].sort((a, b) => a.especial - b.especial);
+  return htl.html`<div class="board-grid">${zonas.map(z => {
+    const comps = z.areas.length;
+    return htl.html`<article class=${z.especial ? "zone-card especial" : "zone-card"}>
+      <header><h3>${z.nome}</h3><span class="count">${comps} ${comps === 1 ? "dupla" : "duplas"}</span></header>
+      ${z.areas.map((a, i) => linhaArea(a, z, i > 0 && a.n > 1 && z.areas[i - 1].nome === a.nome))}
+    </article>`;
+  })}</div>`;
+}
 ```
 :::
-
-::: {.w3-third}
-```{ojs}
-md`### Saídas`
-```
-```{ojs}
-saidas.length
-  ? html`${saidas.map(m => html`<p>${m.Título} ${m.Plaqueta}</p>`)}`
-  : html`<p><i>Nenhuma</i></p>`
-```
-:::
-
 ::::
 
-:::::
+:::: {.band .column-screen #missionarios}
+::: {.wrap}
+[Os Missionários]{.section-eyebrow}
+
+## Chegadas e saídas
+
+[515 missionários serviram com os Woodward. Escolha o ano e o mês para ver quem chegou e quem partiu.]{.section-intro}
+
+```{ojs}
+missionaries = FileAttachment("data/missionarios.json").json()
+viewof anoSel = estado(1997)
+viewof mesSel = estado(7)
+mesesDe = a => a === 1997 ? [7, 8, 9, 10, 11, 12] : a === 2000 ? [1, 2, 3, 4, 5, 6] : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+```
+
+```{ojs}
+{
+  const pill = (label, active, onclick) => htl.html`<button class=${active ? "pill active" : "pill"} onclick=${onclick}>${label}</button>`;
+  return htl.html`<div class="filter-panel">
+    <div class="pill-group"><span class="filter-label">Ano</span>${[1997, 1998, 1999, 2000].map(a => pill(a, a === anoSel, () => {
+      if (!mesesDe(a).includes(mesSel)) definir(viewof mesSel, mesesDe(a)[0]);
+      definir(viewof anoSel, a);
+    }))}</div>
+    <div class="pill-group"><span class="filter-label">Mês</span>${mesesDe(anoSel).map(m => pill(MES[m - 1], m === mesSel, () => definir(viewof mesSel, m)))}</div>
+  </div>`;
+}
+```
+
+```{ojs}
+{
+  const ch = missionaries.filter(m => m.ChegadaAno === anoSel && m["ChegadaMês"] === mesSel);
+  const sa = missionaries.filter(m => m["SaídaAno"] === anoSel && m["SaídaMês"] === mesSel);
+  const byName = (a, b) => a.Plaqueta.localeCompare(b.Plaqueta, "pt");
+  const panel = (arr, cls, icon, title, vazio) => htl.html`<div class=${"missionary-panel " + cls}>
+    <h4><i class=${"bi " + icon}></i> ${title}<span class="count-badge">${arr.length}</span></h4>
+    ${arr.length
+      ? htl.html`<ul class="missionary-list">${[...arr].sort(byName).map(m => htl.html`<li><span>${m["Título"]} ${m.Plaqueta}</span><span class="tag">${m.Nacionalidade}</span></li>`)}</ul>`
+      : htl.html`<p class="missionary-empty">${vazio}</p>`}
+  </div>`;
+  return htl.html`<div class="missionary-board">
+    ${panel(ch, "panel-chegadas", "bi-airplane-fill", "Chegadas", "Nenhuma chegada neste mês.")}
+    ${panel(sa, "panel-saidas", "bi-house-heart-fill", "Saídas", "Nenhuma saída neste mês.")}
+  </div>`;
+}
+```
+
+::: {.search-block}
+### Procure um missionário
+
+[Digite um sobrenome para ver todos os quadros, áreas e companheiros daquele missionário.]{.section-intro}
+
+```{ojs}
+viewof busca = htl.html`<input type="search" id="busca" class="form-control busca" placeholder="Sobrenome (ex.: Widerberg)" autocomplete="off">`
+```
+
+```{ojs}
+function cartaoPessoa({ p, label, ap }) {
+  const meta = p
+    ? `${p.nacionalidade ?? ""} · Chegada ${fmtYM(p.chegada)} · Saída ${fmtYM(p.saida)} · em ${ap.length} quadro(s)`
+    : `Sem registro de chegada/saída · em ${ap.length} quadro(s)`;
+  return htl.html`<div class="pessoa-card">
+    <h4>${p ? `${p.titulo} ${p.plaqueta}` : label}</h4>
+    <div class="meta">${meta}</div>
+    ${ap.length
+      ? htl.html`<div class="table-scroll"><table class="historico-table">
+          <thead><tr><th>Quadro</th><th>Zona</th><th>Área</th><th>Companheiros</th></tr></thead>
+          <tbody>${ap.map(a => htl.html`<tr><td>${fmtYM(a.key)}</td><td>${a.zona}</td><td>${a.area}</td><td>${a.companheiros.join(", ")}</td></tr>`)}</tbody>
+        </table></div>`
+      : htl.html`<p class="busca-hint">Não aparece nos quadros de transferências.</p>`}
+  </div>`;
+}
+```
+
+```{ojs}
+{
+  const q = norm(busca);
+  if (q.length < 2) return htl.html`<p class="busca-hint">Digite pelo menos duas letras.</p>`;
+  const pessoasEnc = quadro.missionarios
+    .filter(p => norm(p.plaqueta).includes(q) || norm(`${p.titulo} ${p.plaqueta}`).includes(q) || norm(`${p.titulo[0]} ${p.plaqueta}`).includes(q))
+    .map(p => ({ p, ap: aparicoes.get(p.id) ?? [] }));
+  const semRegistro = [...aparicoes.keys()]
+    .filter(k => k.startsWith("?") && norm(k.slice(1)).includes(q))
+    .map(k => ({ label: k.slice(1), ap: aparicoes.get(k) }));
+  const todos = [...pessoasEnc, ...semRegistro];
+  if (!todos.length) return htl.html`<p class="busca-hint">Ninguém encontrado para “${busca}”.</p>`;
+  return htl.html`<div>
+    ${todos.length > 15 ? htl.html`<p class="busca-hint">${todos.length} resultados; mostrando 15. Refine a busca.</p>` : ""}
+    ${todos.slice(0, 15).map(cartaoPessoa)}
+  </div>`;
+}
+```
+:::
+:::
+::::
+
+:::: {.band .column-screen .section-dark #reencontros}
+::: {.wrap-narrow}
+[Os Reencontros]{.section-eyebrow}
+
+## Abril de 2016
 
 ```{=html}
-<!-- The Reunions Section -->
-<div class="w3-container w3-content w3-padding-64 w3-green" style="max-width:800px" id="reencontros">
-  <h2 class="w3-wide w3-center w3-text-white">OS REENCONTROS</h2>
-  <iframe align="middle" width="100%" height="450px" src="https://www.youtube.com/embed/31IHb7dBMEo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  <p class="w3-center">abril de 2016</p>
-  <p class="w3-center"><a target="_blank" href="https://youtu.be/31IHb7dBMEo">Assistir no YouTube</a></p>
-</div>
-
-<!-- The Woodwards Section -->
-<div class="w3-yellow" id="woodwards">
-  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px">
-    <h2 class="w3-wide w3-center w3-text-blue">OS WOODWARDS</h2>
-    <p class="w3-opacity w3-center"><i>Arlan e Sally Woodward</i></p><br>
-  </div>
-</div>
-
-<!-- Footer -->
-<footer class="w3-container w3-padding-12 w3-center w3-red w3-xlarge">
-  <div class="w3-container w3-content w3-padding-12" style="max-width:1500px">
-    <h2 class="w3-wide w3-text-white">THE CALL OF THE BRAZIL PORTO ALEGRE NORTH MISSION</h2>
-  </div>
-</footer>
-
-<script>
-// Automatic Slideshow - change image every 4 seconds
-var myIndex = 0;
-function carousel() {
-  var x = document.getElementsByClassName("mySlides");
-  if (!x.length) return;
-  for (var i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  myIndex++;
-  if (myIndex > x.length) { myIndex = 1 }
-  x[myIndex - 1].style.display = "block";
-  setTimeout(carousel, 4000);
-}
-carousel();
-
-// Used to toggle the menu on small screens when clicking on the menu button
-function toggleNav() {
-  var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else {
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-</script>
+<a class="ratio ratio-16x9 video-frame video-card" target="_blank" rel="noopener" href="https://youtu.be/31IHb7dBMEo" aria-label="Assistir ao reencontro de abril de 2016 no YouTube">
+  <img src="https://img.youtube.com/vi/31IHb7dBMEo/hqdefault.jpg" alt="">
+  <span class="play"><i class="bi bi-play-fill"></i></span>
+</a>
+<p><a target="_blank" rel="noopener" href="https://youtu.be/31IHb7dBMEo">Assistir no YouTube <i class="bi bi-box-arrow-up-right"></i></a></p>
 ```
+:::
+::::
+
+::: {.band .column-screen #woodwards}
+[Os Woodwards]{.section-eyebrow}
+
+[Arlan & Sally Woodward]{.woodwards-names .d-block}
+
+[Presidente e Síster da Missão Brasil Porto Alegre Norte, 1997–2000]{.section-intro .d-block}
+:::

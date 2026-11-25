@@ -1,0 +1,28 @@
+{
+  "zonas": {
+    "Caxias": "Caxias do Sul",
+    "Caxia do Sul": "Caxias do Sul",
+    "Canoas Esteio": "Canoas-Esteio",
+    "Porto Algre": "Porto Alegre",
+    "Elders Viajantes": "Élderes Viajantes",
+    "Elderes Viajantes": "Élderes Viajantes"
+  },
+  "zonasEspeciais": ["Assistentes", "Élderes Viajantes", "Staff"],
+  "apelidos": {
+    "E Riberio": "E Ribeiro",
+    "E Periera": "E Pereira",
+    "S Periera": "S Pereira",
+    "E Cameiro": "E Carneiro",
+    "S Cameiro": "S Carneiro",
+    "E Piaulino": "E Piauilino",
+    "E Polachini": "E Polacchini",
+    "E Andreason": "E Andreasen",
+    "E Adreason": "E Andreasen",
+    "E Borgoyne": "E Burgoyne",
+    "E Featherston": "E Featherstone",
+    "E Oberhanslen": "E Oberhansley",
+    "E Kelly": "E Kelley",
+    "S Varella": "S Varela"
+  },
+  "vinculos": []
+}

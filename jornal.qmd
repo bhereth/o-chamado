@@ -1,40 +1,18 @@
 ---
 title: ""
+pagetitle: "O Jornal · O Chamado"
 ---
 
-```{=html}
-<!-- Navbar -->
-<div class="w3-top">
-  <div class="w3-bar w3-red w3-card">
-    <a class="w3-bar-item w3-button w3-padding-large w3-hide-large w3-right" href="javascript:void(0)" onclick="toggleNav()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="index.html" class="w3-bar-item w3-button w3-padding-large">HOME</a>
-    <a href="index.html#missao" class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-small">A MISSÃO</a>
-    <a href="index.html#areas" class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-small">AS ÁREAS</a>
-    <a href="index.html#missionarios" class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-small">OS MISSIONÁRIOS</a>
-    <a href="index.html#reencontros" class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-small">OS REENCONTROS</a>
-    <a href="index.html#woodwards" class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-small">OS WOODWARDS</a>
-    <a href="jornal.html" class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-small">O JORNAL</a>
-  </div>
-</div>
+::: {.hero .column-screen .hero-compact}
+[Boletim da missão]{.eyebrow}
 
-<div id="navDemo" class="w3-bar-block w3-red w3-hide w3-hide-large w3-top" style="margin-top:46px">
-  <a href="index.html#missao" class="w3-bar-item w3-button w3-padding-large" onclick="toggleNav()">A MISSÃO</a>
-  <a href="index.html#areas" class="w3-bar-item w3-button w3-padding-large" onclick="toggleNav()">AS ÁREAS</a>
-  <a href="index.html#missionarios" class="w3-bar-item w3-button w3-padding-large" onclick="toggleNav()">OS MISSIONÁRIOS</a>
-  <a href="index.html#reencontros" class="w3-bar-item w3-button w3-padding-large" onclick="toggleNav()">OS REENCONTROS</a>
-  <a href="index.html#woodwards" class="w3-bar-item w3-button w3-padding-large" onclick="toggleNav()">OS WOODWARDS</a>
-  <a href="jornal.html" class="w3-bar-item w3-button w3-padding-large" onclick="toggleNav()">O JORNAL</a>
-</div>
+# O Jornal
 
-<div class="w3-yellow" style="margin-top:46px">
-<div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px">
-  <h2 class="w3-wide w3-text-blue">O JORNAL</h2>
-  <p class="w3-opacity"><i>Edições do boletim "O Chamado" publicadas durante a missão dos Woodward.</i></p>
-</div>
-</div>
+[Edições do boletim *O Chamado* publicadas durante a missão dos Woodward.]{.lead}
+:::
 
-<div class="w3-container w3-content w3-padding-64 w3-green" style="max-width:800px">
-```
+:::: {.band .column-screen}
+::: {.wrap-narrow}
 
 ```{ojs}
 newsletters = [
@@ -59,36 +37,16 @@ newsletters = [
   {ano: 2000, mes: "Junho", arquivo: "O Chamado - 2000-06.pdf"}
 ]
 
-years = Array.from(new Set(newsletters.map(n => n.ano))).sort()
-
-html`${years.map(y => html`
-  <h3 style="color:white">${y}</h3>
-  <ul style="list-style:none; padding-left:0">
-    ${newsletters.filter(n => n.ano === y).map(n => html`
-      <li style="padding:3px 0"><i class="fa fa-file-pdf-o"></i> <a target="_blank" href="${"o-chamado-newsletters/" + encodeURIComponent(n.arquivo)}">${n.mes} ${n.ano}</a></li>
-    `)}
-  </ul>
-`)}`
+htl.html`<div>${[...new Set(newsletters.map(n => n.ano))].map(y => htl.html`
+  <h3 class="jornal-year">${y}</h3>
+  <div class="jornal-grid">
+    ${newsletters.filter(n => n.ano === y).map(n => htl.html`
+      <a class="jornal-card" target="_blank" rel="noopener" href=${"o-chamado-newsletters/" + encodeURIComponent(n.arquivo)}>
+        <i class="bi bi-file-earmark-pdf"></i>
+        <span><strong>${n.mes}</strong><small>${n.ano}</small></span>
+      </a>`)}
+  </div>`)}</div>`
 ```
 
-```{=html}
-</div>
-
-<!-- Footer -->
-<footer class="w3-container w3-padding-12 w3-center w3-red w3-xlarge">
-  <div class="w3-container w3-content w3-padding-12" style="max-width:1500px">
-    <h2 class="w3-wide w3-text-white">THE CALL OF THE BRAZIL PORTO ALEGRE NORTH MISSION</h2>
-  </div>
-</footer>
-
-<script>
-function toggleNav() {
-  var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else {
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-</script>
-```
+:::
+::::

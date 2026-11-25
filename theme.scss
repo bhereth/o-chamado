@@ -1,0 +1,559 @@
+/*-- scss:defaults --*/
+
+$primary:    #1b5e46;
+$secondary:  #b8862a;
+$success:    #1b5e46;
+$body-bg:    #faf7f1;
+$body-color: #22261f;
+
+$font-family-sans-serif: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+$font-family-base: $font-family-sans-serif;
+$font-size-base: 1rem;
+$headings-font-family: "Fraunces", Georgia, serif;
+$headings-font-weight: 600;
+$headings-color: #15291f;
+$link-color: $primary;
+
+$navbar-bg: $primary;
+$navbar-fg: #f6efdf;
+$navbar-hl: #f1d08a;
+
+$footer-bg: #15291f;
+$footer-fg: #d9d3c2;
+
+$border-radius: 0.65rem;
+$border-radius-lg: 0.9rem;
+
+$cream: #faf7f1;
+$paper: #ffffff;
+$ink-muted: #6b6f63;
+$gold-soft: #f3e6c4;
+
+/*-- scss:rules --*/
+
+html { scroll-behavior: smooth; }
+
+body { background-color: $body-bg; }
+body p { font-family: $font-family-sans-serif; }
+
+#quarto-content,
+main.content {
+  padding: 0;
+  margin: 0;
+  max-width: none;
+}
+
+main.content > p:empty { display: none; }
+
+section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reencontros"], [id="woodwards"] {
+  scroll-margin-top: 72px;
+}
+
+.navbar-title { font-family: $headings-font-family; letter-spacing: 0.02em; }
+.navbar .nav-link { font-size: 0.92rem; letter-spacing: 0.02em; }
+
+.nav-footer { font-size: 0.9rem; }
+.nav-footer em { color: rgba($footer-fg, 0.7); }
+
+.eyebrow,
+.section-eyebrow {
+  display: inline-block;
+  font-family: $font-family-sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $secondary;
+  margin-bottom: 0.6rem;
+}
+
+.band h2,
+.band .search-block h3 {
+  border-bottom: none;
+  padding-bottom: 0;
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  margin: 0 0 0.75rem;
+}
+
+.section-intro {
+  display: block;
+  font-family: $font-family-sans-serif;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: $ink-muted;
+  max-width: 620px;
+  margin: 0 auto 2.5rem;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  background: linear-gradient(180deg, rgba($primary, 0.1), rgba($primary, 0) 70%);
+  padding: 4rem 1rem 3rem;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 7vw, 4.5rem);
+  font-weight: 700;
+  margin: 0 auto 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.hero .lead {
+  font-family: $headings-font-family;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: lighten($body-color, 18%);
+  margin-bottom: 0;
+}
+
+.hero-compact { padding-bottom: 1.5rem; }
+
+#heroCarousel {
+  max-width: 980px;
+  margin: 2.5rem auto 0;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  box-shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.45);
+}
+
+#heroCarousel .carousel-item img {
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+#heroCarousel .carousel-caption {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 3rem 1.5rem 1.6rem;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0));
+  font-family: $headings-font-family;
+  font-style: italic;
+  font-size: 1.3rem;
+  text-align: left;
+}
+
+#heroCarousel .carousel-indicators { margin-bottom: 0.8rem; justify-content: flex-end; margin-right: 1.5rem; }
+
+#heroCarousel .carousel-indicators [data-bs-target] {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 0;
+}
+
+/* ---------- Sections ---------- */
+
+.band { padding: 5rem 1rem; text-align: center; }
+.section-muted { background-color: rgba($primary, 0.05); }
+
+.section-dark {
+  background-color: $footer-bg;
+  color: $footer-fg;
+}
+.section-dark h2 { color: #fff; }
+.section-dark .section-eyebrow { color: #e2bd6e; }
+.section-dark a { color: #f1d08a; }
+
+.wrap { max-width: 1140px; margin: 0 auto; }
+.wrap-narrow { max-width: 760px; margin: 0 auto; }
+
+.scripture {
+  font-family: $headings-font-family;
+  font-style: italic;
+  font-size: clamp(1.3rem, 2.6vw, 1.75rem);
+  line-height: 1.5;
+  color: $headings-color;
+  border: none;
+  padding: 0;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.scripture::before {
+  content: "“";
+  display: block;
+  font-size: 4rem;
+  line-height: 1;
+  color: $secondary;
+  opacity: 0.6;
+}
+
+.scripture footer {
+  margin-top: 1.25rem;
+  font-family: $font-family-sans-serif;
+  font-style: normal;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $secondary;
+}
+
+/* ---------- Pills ---------- */
+
+.pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.pill {
+  border: 1px solid rgba($primary, 0.3);
+  background: $paper;
+  color: $primary;
+  border-radius: 999px;
+  padding: 0.32rem 0.9rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+.pill:hover { background-color: rgba($primary, 0.1); }
+.pill.active { background-color: $primary; border-color: $primary; color: #fff; }
+.pill:active { transform: scale(0.96); }
+.pill:disabled { opacity: 0.35; cursor: default; }
+
+.filter-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.filter-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $ink-muted;
+  margin-right: 0.5rem;
+}
+
+/* ---------- Stats + growth ---------- */
+
+.growth-headline {
+  font-family: $headings-font-family;
+  font-size: 1.2rem;
+  color: $headings-color;
+  margin-bottom: 1.5rem;
+}
+.growth-headline strong { color: $primary; font-size: 1.6rem; }
+
+.stat-tiles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  max-width: 640px;
+  margin: 0 auto 1.5rem;
+}
+
+.stat-tile {
+  background: $paper;
+  border-radius: $border-radius-lg;
+  padding: 1rem 0.75rem;
+  box-shadow: 0 10px 24px -18px rgba(0, 0, 0, 0.35);
+}
+.stat-tile .num {
+  font-family: $headings-font-family;
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: $primary;
+  line-height: 1.1;
+}
+.stat-tile .lbl {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $ink-muted;
+}
+
+.growth-bars {
+  display: block;
+  width: 100%;
+  max-width: 640px;
+  height: 56px;
+  margin: 0 auto 2rem;
+}
+.growth-bars rect { fill: $primary; opacity: 0.22; cursor: pointer; transition: opacity 0.15s; }
+.growth-bars rect:hover { opacity: 0.5; }
+.growth-bars rect.active { opacity: 1; }
+
+.snap-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0.5rem 0 2rem;
+}
+.snap-nav .snap-label {
+  font-family: $headings-font-family;
+  font-size: 1.6rem;
+  min-width: 11ch;
+  display: inline-block;
+}
+.snap-nav .snap-label::first-letter { text-transform: uppercase; }
+.snap-nav .pill { font-size: 1.1rem; padding: 0.2rem 0.8rem; }
+
+/* ---------- Transfer board ---------- */
+
+.board-grid {
+  columns: 290px;
+  column-gap: 1.25rem;
+  text-align: left;
+}
+
+.zone-card {
+  break-inside: avoid;
+  background: $paper;
+  border-top: 4px solid $secondary;
+  border-radius: $border-radius;
+  box-shadow: 0 10px 24px -18px rgba(0, 0, 0, 0.35);
+  padding: 1rem 1.1rem 0.6rem;
+  margin-bottom: 1.25rem;
+}
+.zone-card.especial { background: $gold-soft; border-top-color: $primary; }
+
+.zone-card header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.zone-card h3 { font-size: 1.15rem; margin: 0; }
+.zone-card .count {
+  margin-left: auto;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: $ink-muted;
+  white-space: nowrap;
+}
+
+.area-row {
+  padding: 0.5rem 0;
+  border-top: 1px solid rgba($primary, 0.12);
+}
+.area-row.cont { border-top: 1px dashed rgba($primary, 0.12); padding-top: 0.35rem; }
+.area-name {
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $ink-muted;
+  margin-bottom: 0.3rem;
+}
+.dupla-tag {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0 0.4rem;
+  border-radius: 999px;
+  background: $gold-soft;
+  color: darken($secondary, 15%);
+  font-size: 0.7rem;
+  letter-spacing: 0;
+}
+.nomes { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+
+.chip {
+  cursor: pointer;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba($primary, 0.25);
+  font-size: 0.88rem;
+  color: $body-color;
+  background: $cream;
+  transition: background-color 0.15s, color 0.15s;
+}
+.chip:hover { background: rgba($primary, 0.1); }
+.chip.open { background: $primary; border-color: $primary; color: #fff; }
+.chip.sem-registro { border-style: dashed; color: $ink-muted; }
+
+.nome-detalhe {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  background: rgba($primary, 0.06);
+  border-radius: $border-radius;
+  padding: 0.5rem 0.7rem;
+  margin: 0.15rem 0 0.25rem;
+}
+.nome-detalhe .provavel { color: $ink-muted; font-style: italic; }
+.nome-detalhe a { font-weight: 600; text-decoration: none; }
+
+/* ---------- Arrivals / departures ---------- */
+
+.missionary-board {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: left;
+}
+@media (max-width: 575.98px) {
+  .missionary-board { grid-template-columns: 1fr; }
+  .stat-tiles { gap: 0.5rem; }
+  .stat-tile .num { font-size: 1.6rem; }
+  .stat-tile .lbl { font-size: 0.62rem; letter-spacing: 0.08em; }
+}
+
+.missionary-panel {
+  background: $paper;
+  border-radius: $border-radius-lg;
+  padding: 1.1rem 1.25rem;
+  box-shadow: 0 10px 24px -18px rgba(0, 0, 0, 0.35);
+}
+.missionary-panel h4 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+.missionary-panel h4 i { color: $primary; }
+.missionary-panel.panel-saidas h4 i { color: $secondary; }
+.count-badge {
+  margin-left: auto;
+  font-family: $font-family-sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #fff;
+  background: $primary;
+  border-radius: 999px;
+  padding: 0.1rem 0.6rem;
+}
+.panel-saidas .count-badge { background: $secondary; }
+
+.missionary-list { list-style: none; padding: 0; margin: 0; }
+.missionary-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid rgba($primary, 0.08);
+  font-size: 0.93rem;
+}
+.missionary-list .tag { font-size: 0.75rem; color: $ink-muted; }
+.missionary-empty { color: $ink-muted; font-style: italic; font-size: 0.9rem; }
+
+/* ---------- Search ---------- */
+
+.search-block { margin-top: 4rem; }
+.busca {
+  max-width: 480px;
+  margin: 0 auto 1.5rem;
+  border-radius: 999px;
+  padding: 0.7rem 1.25rem;
+  font-size: 1.05rem;
+  border: 1px solid rgba($primary, 0.3);
+  background: $paper;
+}
+.busca:focus { border-color: $primary; box-shadow: 0 0 0 0.2rem rgba($primary, 0.15); }
+
+.busca-hint { color: $ink-muted; font-size: 0.9rem; }
+
+.pessoa-card {
+  background: $paper;
+  border-radius: $border-radius-lg;
+  box-shadow: 0 10px 24px -18px rgba(0, 0, 0, 0.35);
+  padding: 1.1rem 1.25rem;
+  margin: 0 auto 1rem;
+  max-width: 820px;
+  text-align: left;
+}
+.pessoa-card h4 { font-size: 1.2rem; margin-bottom: 0.2rem; }
+.pessoa-card .meta { color: $ink-muted; font-size: 0.85rem; margin-bottom: 0.75rem; }
+
+.historico-table {
+  width: 100%;
+  font-size: 0.85rem;
+  border-collapse: collapse;
+}
+.historico-table th {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $ink-muted;
+  font-weight: 600;
+  text-align: left;
+  padding: 0.3rem 0.4rem;
+  border-bottom: 1px solid rgba($primary, 0.2);
+}
+.historico-table td { padding: 0.3rem 0.4rem; border-bottom: 1px solid rgba($primary, 0.07); vertical-align: top; }
+.historico-table tr:nth-child(even) td { background: rgba($primary, 0.03); }
+.table-scroll { overflow-x: auto; }
+
+/* ---------- Reencontros / Woodwards ---------- */
+
+.video-frame {
+  max-width: 820px;
+  margin: 0 auto 1rem;
+  box-shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.6);
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+}
+
+.video-card img { object-fit: cover; transition: transform 0.3s ease, filter 0.3s ease; }
+.video-card:hover img { transform: scale(1.03); filter: brightness(0.85); }
+.video-card .play {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inset: 0;
+  width: 84px;
+  height: 84px;
+  margin: auto;
+  border-radius: 50%;
+  background: rgba($primary, 0.9);
+  color: #fff;
+  font-size: 2.6rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.woodwards-names {
+  font-family: $headings-font-family;
+  color: $headings-color;
+  font-size: clamp(2.2rem, 6vw, 3.5rem);
+  font-weight: 700;
+  margin: 0.25rem 0 0.5rem;
+}
+
+/* ---------- Jornal ---------- */
+
+.jornal-year {
+  font-family: $headings-font-family;
+  color: $primary;
+  text-align: left;
+  margin: 2.5rem 0 1rem;
+}
+.jornal-grid {
+  margin-bottom: 2.75rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.9rem;
+}
+
+.jornal-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1rem;
+  border-radius: $border-radius;
+  background: $paper;
+  border: 1px solid rgba($primary, 0.12);
+  color: $body-color;
+  text-decoration: none;
+  text-align: left;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.jornal-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 26px -18px rgba(0, 0, 0, 0.45);
+  color: $primary;
+}
+.jornal-card i { font-size: 1.5rem; color: $secondary; }
+.jornal-card strong { display: block; font-weight: 600; }
+.jornal-card small { color: $ink-muted; }
