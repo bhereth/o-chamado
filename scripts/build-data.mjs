@@ -212,6 +212,7 @@ for (const o of occs) {
   const t1 = (tol) => same.filter((x) => x.ini === o.ini && inRange(x, o.d, tol));
   const t2 = (tol) => same.filter((x) => (!x.ini || !o.ini || x.ini === o.ini) && inRange(x, o.d, tol));
   const tiers = [[t1(0), 0], [t2(0), 0], [t1(1), 1], [t2(1), 1]];
+  o.pool = t2(1).map((x) => x.id);
   const hit = tiers.find(([c]) => c.length > 0);
   if (!hit) continue;
   const [cands, tol] = hit;
@@ -259,6 +260,38 @@ while (changed) {
     if (covering.length === 1) { assign(o, covering[0]); changed = true; }
   }
 }
+
+// A missionary can only be in one área per snapshot. When two occurrences claim the same
+// person, keep the one that continues that person's zone in adjacent snapshots (then the
+// stronger match); the other gets the only remaining same-name candidate, or none.
+const conflitos = [];
+const forca = { vinculo: 4, exato: 3, "sem-iniciais": 2, tolerancia: 1, inferido: 1 };
+snapshots.forEach((s, si) => {
+  const porPessoa = new Map();
+  for (const o of occsBySnap[si]) {
+    if (!o.nm.id) continue;
+    if (!porPessoa.has(o.nm.id)) porPessoa.set(o.nm.id, []);
+    porPessoa.get(o.nm.id).push(o);
+  }
+  for (const [id, grupo] of porPessoa) {
+    if (grupo.length < 2) continue;
+    const vizinhos = [si - 1, si + 1].flatMap((j) => (occsBySnap[j] ?? []).filter((x) => x.nm.id === id));
+    const nota = (o) =>
+      vizinhos.filter((v) => v.zona === o.zona).length * 10 +
+      vizinhos.filter((v) => v.area === o.area).length * 10 +
+      (forca[o.nm.c] ?? 0);
+    const [fica, ...saem] = [...grupo].sort((a, b) => nota(b) - nota(a));
+    for (const o of saem) {
+      if (o.nm.c === "vinculo") continue;
+      const usados = new Set(occsBySnap[si].filter((x) => x !== o && x.nm.id).map((x) => x.nm.id));
+      const alt = (o.pool ?? []).filter((pid) => pid !== id && !usados.has(pid));
+      const antes = o.nm.id;
+      if (alt.length === 1) { o.nm.id = alt[0]; o.nm.c = "inferido"; }
+      else { o.nm.id = null; o.nm.c = null; o.cands = alt.length > 1 ? alt : []; }
+      conflitos.push({ key: s.key, id: antes, fica, sai: o, novo: o.nm.id });
+    }
+  }
+});
 
 // Same person twice in one snapshot.
 const dobrados = [];
@@ -381,6 +414,13 @@ md.push("");
 md.push("## F. Repetições no mesmo quadro", "");
 for (const r of rotulosDobrados) md.push(`- ${r.key} rótulo **${r.label}** em ${r.a.area} e ${r.b.area}`);
 for (const r of dobrados) md.push(`- ${r.key} pessoa ${fmtP(r.id)} em ${r.a.area} e ${r.b.area}`);
+md.push("");
+
+md.push("## F2. Mesma pessoa em duas áreas no mesmo quadro (resolvido automaticamente)", "");
+md.push("Uma pessoa só pode estar numa área por mês. Ficou com a área que continua a zona dos meses vizinhos.", "");
+for (const c of conflitos)
+  md.push(`- ${c.key} ${fmtP(c.id)}: fica em ${c.fica.area}; ${c.sai.nm.n} em ${c.sai.area} → ` +
+    (c.novo ? fmtP(c.novo) : "sem registro"));
 md.push("");
 
 md.push("## G. Zonas fora do mapa de correções / avisos", "");

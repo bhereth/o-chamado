@@ -303,9 +303,16 @@ function cartaoPessoa({ p, label, ap }) {
 ::: {.band .column-screen #woodwards}
 [Os Woodwards]{.section-eyebrow}
 
+```{=html}
+<div class="woodwards-foto">
+  <img src="images/woodwards.jpg" alt="Sally e Arlan Woodward">
+  <span class="credito">Foto: <a href="https://www.thechurchnews.com/2007/11/17/23232387/missionary-training-center-presidents-4/" target="_blank" rel="noopener">Church News, 2007</a></span>
+</div>
+```
+
 [Arlan & Sally Woodward]{.woodwards-names .d-block}
 
-[Presidente e Síster da Missão Brasil Porto Alegre Norte, 1997–2000]{.section-intro .d-block}
+[Presidente e Síster da Missão Brasil Porto Alegre Norte, 1997–2000. Em 2007 voltaram ao Brasil para presidir o Centro de Treinamento Missionário.]{.section-intro .d-block}
 :::
 
 ::: {.column-screen}
