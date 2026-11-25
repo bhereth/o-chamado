@@ -1,0 +1,2301 @@
+{
+ "semLugar": 0,
+ "cidades": [
+  {
+   "cidade": "São Paulo",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -23.533,
+   "lon": -46.639,
+   "n": 28
+  },
+  {
+   "cidade": "Salt Lake City",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 40.777,
+   "lon": -111.931,
+   "n": 22
+  },
+  {
+   "cidade": "Sandy",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 40.572,
+   "lon": -111.85,
+   "n": 12
+  },
+  {
+   "cidade": "Fortaleza",
+   "estado": "CE",
+   "pais": "BR",
+   "lat": -3.717,
+   "lon": -38.542,
+   "n": 10
+  },
+  {
+   "cidade": "Belém",
+   "estado": "PA",
+   "pais": "BR",
+   "lat": -1.455,
+   "lon": -48.49,
+   "n": 8
+  },
+  {
+   "cidade": "Curitiba",
+   "estado": "PR",
+   "pais": "BR",
+   "lat": -25.419,
+   "lon": -49.265,
+   "n": 8
+  },
+  {
+   "cidade": "Rio de Janeiro",
+   "estado": "RJ",
+   "pais": "BR",
+   "lat": -22.913,
+   "lon": -43.2,
+   "n": 8
+  },
+  {
+   "cidade": "João Pessoa",
+   "estado": "PB",
+   "pais": "BR",
+   "lat": -7.115,
+   "lon": -34.864,
+   "n": 7
+  },
+  {
+   "cidade": "Provo",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 40.245,
+   "lon": -111.645,
+   "n": 7
+  },
+  {
+   "cidade": "Orem",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 40.298,
+   "lon": -111.699,
+   "n": 6
+  },
+  {
+   "cidade": "Salvador",
+   "estado": "BA",
+   "pais": "BR",
+   "lat": -12.972,
+   "lon": -38.501,
+   "n": 6
+  },
+  {
+   "cidade": "South Jordan",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 40.557,
+   "lon": -111.979,
+   "n": 6
+  },
+  {
+   "cidade": "Bountiful",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 40.872,
+   "lon": -111.861,
+   "n": 5
+  },
+  {
+   "cidade": "Ananindeua",
+   "estado": "PA",
+   "pais": "BR",
+   "lat": -1.364,
+   "lon": -48.374,
+   "n": 4
+  },
+  {
+   "cidade": "Campinas",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -22.905,
+   "lon": -47.066,
+   "n": 4
+  },
+  {
+   "cidade": "Centerville",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 40.926,
+   "lon": -111.883,
+   "n": 4
+  },
+  {
+   "cidade": "Logan",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 41.74,
+   "lon": -111.842,
+   "n": 4
+  },
+  {
+   "cidade": "Manaus",
+   "estado": "AM",
+   "pais": "BR",
+   "lat": -3.119,
+   "lon": -60.021,
+   "n": 4
+  },
+  {
+   "cidade": "Natal",
+   "estado": "RN",
+   "pais": "BR",
+   "lat": -5.794,
+   "lon": -35.199,
+   "n": 4
+  },
+  {
+   "cidade": "Recife",
+   "estado": "PE",
+   "pais": "BR",
+   "lat": -8.047,
+   "lon": -34.877,
+   "n": 4
+  },
+  {
+   "cidade": "Sorocaba",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -23.497,
+   "lon": -47.445,
+   "n": 4
+  },
+  {
+   "cidade": "Aurora",
+   "estado": "CO",
+   "pais": "US",
+   "lat": 39.704,
+   "lon": -104.72,
+   "n": 3
+  },
+  {
+   "cidade": "Belo Horizonte",
+   "estado": "MG",
+   "pais": "BR",
+   "lat": -19.91,
+   "lon": -43.927,
+   "n": 3
+  },
+  {
+   "cidade": "Boise",
+   "estado": "ID",
+   "pais": "US",
+   "lat": 43.6,
+   "lon": -116.232,
+   "n": 3
+  },
+  {
+   "cidade": "Henderson",
+   "estado": "NV",
+   "pais": "US",
+   "lat": 36.009,
+   "lon": -115.027,
+   "n": 3
+  },
+  {
+   "cidade": "Jundiaí",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -23.185,
+   "lon": -46.897,
+   "n": 3
+  },
+  {
+   "cidade": "Kearns",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 40.66,
+   "lon": -111.996,
+   "n": 3
+  },
+  {
+   "cidade": "Las Vegas",
+   "estado": "NV",
+   "pais": "US",
+   "lat": 36.233,
+   "lon": -115.264,
+   "n": 3
+  },
+  {
+   "cidade": "Marília",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -22.217,
+   "lon": -49.95,
+   "n": 3
+  },
+  {
+   "cidade": "Nampa",
+   "estado": "ID",
+   "pais": "US",
+   "lat": 43.586,
+   "lon": -116.566,
+   "n": 3
+  },
+  {
+   "cidade": "Ogden",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 41.228,
+   "lon": -111.968,
+   "n": 3
+  },
+  {
+   "cidade": "Piracicaba",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -22.734,
+   "lon": -47.648,
+   "n": 3
+  },
+  {
+   "cidade": "Pleasant Grove",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 40.371,
+   "lon": -111.741,
+   "n": 3
+  },
+  {
+   "cidade": "Rexburg",
+   "estado": "ID",
+   "pais": "US",
+   "lat": 43.823,
+   "lon": -111.791,
+   "n": 3
+  },
+  {
+   "cidade": "Rigby",
+   "estado": "ID",
+   "pais": "US",
+   "lat": 43.674,
+   "lon": -111.914,
+   "n": 3
+  },
+  {
+   "cidade": "São Carlos",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -22.017,
+   "lon": -47.886,
+   "n": 3
+  },
+  {
+   "cidade": "São Vicente",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -23.957,
+   "lon": -46.388,
+   "n": 3
+  },
+  {
+   "cidade": "St. George",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 37.077,
+   "lon": -113.577,
+   "n": 3
+  },
+  {
+   "cidade": "Taguatinga",
+   "estado": "DF",
+   "pais": "BR",
+   "lat": -15.833,
+   "lon": -48.056,
+   "n": 3
+  },
+  {
+   "cidade": "Taylorsville",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 40.657,
+   "lon": -111.949,
+   "n": 3
+  },
+  {
+   "cidade": "Vernal",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 40.452,
+   "lon": -109.538,
+   "n": 3
+  },
+  {
+   "cidade": "Abreu e Lima",
+   "estado": "PE",
+   "pais": "BR",
+   "lat": -7.901,
+   "lon": -34.898,
+   "n": 2
+  },
+  {
+   "cidade": "Alpine",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 40.463,
+   "lon": -111.772,
+   "n": 2
+  },
+  {
+   "cidade": "Austin",
+   "estado": "TX",
+   "pais": "US",
+   "lat": 30.299,
+   "lon": -97.754,
+   "n": 2
+  },
+  {
+   "cidade": "Bakersfield",
+   "estado": "CA",
+   "pais": "US",
+   "lat": 35.353,
+   "lon": -119.038,
+   "n": 2
+  },
+  {
+   "cidade": "Campina Grande",
+   "estado": "PB",
+   "pais": "BR",
+   "lat": -7.222,
+   "lon": -35.873,
+   "n": 2
+  },
+  {
+   "cidade": "Draper",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 40.497,
+   "lon": -111.865,
+   "n": 2
+  },
+  {
+   "cidade": "Duque de Caxias",
+   "estado": "RJ",
+   "pais": "BR",
+   "lat": -22.786,
+   "lon": -43.305,
+   "n": 2
+  },
+  {
+   "cidade": "Embu das Artes",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -23.644,
+   "lon": -46.858,
+   "n": 2
+  },
+  {
+   "cidade": "Flagstaff",
+   "estado": "AZ",
+   "pais": "US",
+   "lat": 35.185,
+   "lon": -111.621,
+   "n": 2
+  },
+  {
+   "cidade": "Fort Collins",
+   "estado": "CO",
+   "pais": "US",
+   "lat": 40.548,
+   "lon": -105.065,
+   "n": 2
+  },
+  {
+   "cidade": "Idaho Falls",
+   "estado": "ID",
+   "pais": "US",
+   "lat": 43.489,
+   "lon": -112.036,
+   "n": 2
+  },
+  {
+   "cidade": "Imperatriz",
+   "estado": "MA",
+   "pais": "BR",
+   "lat": -5.518,
+   "lon": -47.478,
+   "n": 2
+  },
+  {
+   "cidade": "Juazeiro",
+   "estado": "BA",
+   "pais": "BR",
+   "lat": -9.416,
+   "lon": -40.503,
+   "n": 2
+  },
+  {
+   "cidade": "Juiz de Fora",
+   "estado": "MG",
+   "pais": "BR",
+   "lat": -21.759,
+   "lon": -43.34,
+   "n": 2
+  },
+  {
+   "cidade": "Layton",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 41.077,
+   "lon": -111.961,
+   "n": 2
+  },
+  {
+   "cidade": "Limoeiro",
+   "estado": "PE",
+   "pais": "BR",
+   "lat": -7.873,
+   "lon": -35.44,
+   "n": 2
+  },
+  {
+   "cidade": "Littleton",
+   "estado": "CO",
+   "pais": "US",
+   "lat": 39.59,
+   "lon": -105.02,
+   "n": 2
+  },
+  {
+   "cidade": "Londrina",
+   "estado": "PR",
+   "pais": "BR",
+   "lat": -23.304,
+   "lon": -51.169,
+   "n": 2
+  },
+  {
+   "cidade": "Lyman",
+   "estado": "WY",
+   "pais": "US",
+   "lat": 41.328,
+   "lon": -110.297,
+   "n": 2
+  },
+  {
+   "cidade": "Maceió",
+   "estado": "AL",
+   "pais": "BR",
+   "lat": -9.666,
+   "lon": -35.735,
+   "n": 2
+  },
+  {
+   "cidade": "Mauá",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -23.668,
+   "lon": -46.461,
+   "n": 2
+  },
+  {
+   "cidade": "Meridian",
+   "estado": "ID",
+   "pais": "US",
+   "lat": 43.611,
+   "lon": -116.401,
+   "n": 2
+  },
+  {
+   "cidade": "Mesa",
+   "estado": "AZ",
+   "pais": "US",
+   "lat": 33.401,
+   "lon": -111.716,
+   "n": 2
+  },
+  {
+   "cidade": "North Salt Lake",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 40.847,
+   "lon": -111.919,
+   "n": 2
+  },
+  {
+   "cidade": "Nova Iguaçu",
+   "estado": "RJ",
+   "pais": "BR",
+   "lat": -22.756,
+   "lon": -43.46,
+   "n": 2
+  },
+  {
+   "cidade": "Paranaguá",
+   "estado": "PR",
+   "pais": "BR",
+   "lat": -25.516,
+   "lon": -48.523,
+   "n": 2
+  },
+  {
+   "cidade": "Petrolina",
+   "estado": "PE",
+   "pais": "BR",
+   "lat": -9.389,
+   "lon": -40.503,
+   "n": 2
+  },
+  {
+   "cidade": "Pinhais",
+   "estado": "PR",
+   "pais": "BR",
+   "lat": -25.443,
+   "lon": -49.193,
+   "n": 2
+  },
+  {
+   "cidade": "Pleasant View",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 41.325,
+   "lon": -112.001,
+   "n": 2
+  },
+  {
+   "cidade": "Poá",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -23.533,
+   "lon": -46.347,
+   "n": 2
+  },
+  {
+   "cidade": "Pocatello",
+   "estado": "ID",
+   "pais": "US",
+   "lat": 42.873,
+   "lon": -112.464,
+   "n": 2
+  },
+  {
+   "cidade": "Queimados",
+   "estado": "RJ",
+   "pais": "BR",
+   "lat": -22.71,
+   "lon": -43.552,
+   "n": 2
+  },
+  {
+   "cidade": "Ribeirão Preto",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -21.17,
+   "lon": -47.81,
+   "n": 2
+  },
+  {
+   "cidade": "Santarém",
+   "estado": "PA",
+   "pais": "BR",
+   "lat": -2.438,
+   "lon": -54.7,
+   "n": 2
+  },
+  {
+   "cidade": "São José dos Campos",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -23.19,
+   "lon": -45.884,
+   "n": 2
+  },
+  {
+   "cidade": "Shingle Springs",
+   "estado": "CA",
+   "pais": "US",
+   "lat": 38.666,
+   "lon": -120.936,
+   "n": 2
+  },
+  {
+   "cidade": "Spanish Fork",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 40.11,
+   "lon": -111.641,
+   "n": 2
+  },
+  {
+   "cidade": "Springville",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 40.164,
+   "lon": -111.62,
+   "n": 2
+  },
+  {
+   "cidade": "Sumaré",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -22.82,
+   "lon": -47.273,
+   "n": 2
+  },
+  {
+   "cidade": "Taboão da Serra",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -23.602,
+   "lon": -46.753,
+   "n": 2
+  },
+  {
+   "cidade": "Tucson",
+   "estado": "AZ",
+   "pais": "US",
+   "lat": 32.153,
+   "lon": -110.871,
+   "n": 2
+  },
+  {
+   "cidade": "Vila Velha",
+   "estado": "ES",
+   "pais": "BR",
+   "lat": -20.342,
+   "lon": -40.288,
+   "n": 2
+  },
+  {
+   "cidade": "West Jordan",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 40.603,
+   "lon": -112.001,
+   "n": 2
+  },
+  {
+   "cidade": "Albuquerque",
+   "estado": "NM",
+   "pais": "US",
+   "lat": 35.105,
+   "lon": -106.647,
+   "n": 1
+  },
+  {
+   "cidade": "Allen",
+   "estado": "TX",
+   "pais": "US",
+   "lat": 33.11,
+   "lon": -96.673,
+   "n": 1
+  },
+  {
+   "cidade": "Aloha",
+   "estado": "OR",
+   "pais": "US",
+   "lat": 45.492,
+   "lon": -122.873,
+   "n": 1
+  },
+  {
+   "cidade": "American Fork",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 40.378,
+   "lon": -111.795,
+   "n": 1
+  },
+  {
+   "cidade": "Ammon",
+   "estado": "ID",
+   "pais": "US",
+   "lat": 43.472,
+   "lon": -111.96,
+   "n": 1
+  },
+  {
+   "cidade": "Anápolis",
+   "estado": "GO",
+   "pais": "BR",
+   "lat": -16.328,
+   "lon": -48.953,
+   "n": 1
+  },
+  {
+   "cidade": "Aracaju",
+   "estado": "SE",
+   "pais": "BR",
+   "lat": -10.909,
+   "lon": -37.068,
+   "n": 1
+  },
+  {
+   "cidade": "Araçatuba",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -21.208,
+   "lon": -50.44,
+   "n": 1
+  },
+  {
+   "cidade": "Arapiraca",
+   "estado": "AL",
+   "pais": "BR",
+   "lat": -9.755,
+   "lon": -36.661,
+   "n": 1
+  },
+  {
+   "cidade": "Arujá",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -23.396,
+   "lon": -46.32,
+   "n": 1
+  },
+  {
+   "cidade": "Avaré",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -23.107,
+   "lon": -48.925,
+   "n": 1
+  },
+  {
+   "cidade": "Barra Mansa",
+   "estado": "RJ",
+   "pais": "BR",
+   "lat": -22.548,
+   "lon": -44.175,
+   "n": 1
+  },
+  {
+   "cidade": "Bauru",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -22.325,
+   "lon": -49.087,
+   "n": 1
+  },
+  {
+   "cidade": "Bel Air",
+   "estado": "MD",
+   "pais": "US",
+   "lat": 39.535,
+   "lon": -76.346,
+   "n": 1
+  },
+  {
+   "cidade": "Betim",
+   "estado": "MG",
+   "pais": "BR",
+   "lat": -19.967,
+   "lon": -44.201,
+   "n": 1
+  },
+  {
+   "cidade": "Blackfoot",
+   "estado": "ID",
+   "pais": "US",
+   "lat": 43.195,
+   "lon": -112.347,
+   "n": 1
+  },
+  {
+   "cidade": "Bluffdale",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 40.475,
+   "lon": -111.94,
+   "n": 1
+  },
+  {
+   "cidade": "Boa Vista",
+   "estado": "RR",
+   "pais": "BR",
+   "lat": 2.824,
+   "lon": -60.675,
+   "n": 1
+  },
+  {
+   "cidade": "Bom Conselho",
+   "estado": "PE",
+   "pais": "BR",
+   "lat": -9.169,
+   "lon": -36.686,
+   "n": 1
+  },
+  {
+   "cidade": "Boulder City",
+   "estado": "NV",
+   "pais": "US",
+   "lat": 35.844,
+   "lon": -114.912,
+   "n": 1
+  },
+  {
+   "cidade": "Brazlândia",
+   "estado": "DF",
+   "pais": "BR",
+   "lat": -15.675,
+   "lon": -48.207,
+   "n": 1
+  },
+  {
+   "cidade": "Brigham City",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 41.506,
+   "lon": -112.051,
+   "n": 1
+  },
+  {
+   "cidade": "Buffalo",
+   "estado": "MN",
+   "pais": "US",
+   "lat": 45.18,
+   "lon": -93.864,
+   "n": 1
+  },
+  {
+   "cidade": "Buhl",
+   "estado": "ID",
+   "pais": "US",
+   "lat": 42.598,
+   "lon": -114.76,
+   "n": 1
+  },
+  {
+   "cidade": "Burley",
+   "estado": "ID",
+   "pais": "US",
+   "lat": 42.537,
+   "lon": -113.791,
+   "n": 1
+  },
+  {
+   "cidade": "Cáceres",
+   "estado": "MT",
+   "pais": "BR",
+   "lat": -16.076,
+   "lon": -57.682,
+   "n": 1
+  },
+  {
+   "cidade": "Caicó",
+   "estado": "RN",
+   "pais": "BR",
+   "lat": -6.454,
+   "lon": -37.107,
+   "n": 1
+  },
+  {
+   "cidade": "Camas",
+   "estado": "WA",
+   "pais": "US",
+   "lat": 45.602,
+   "lon": -122.43,
+   "n": 1
+  },
+  {
+   "cidade": "Campo Belo",
+   "estado": "MG",
+   "pais": "BR",
+   "lat": -20.893,
+   "lon": -45.27,
+   "n": 1
+  },
+  {
+   "cidade": "Campo Grande",
+   "estado": "MS",
+   "pais": "BR",
+   "lat": -20.449,
+   "lon": -54.63,
+   "n": 1
+  },
+  {
+   "cidade": "Campos dos Goytacazes",
+   "estado": "RJ",
+   "pais": "BR",
+   "lat": -21.762,
+   "lon": -41.318,
+   "n": 1
+  },
+  {
+   "cidade": "Canby",
+   "estado": "OR",
+   "pais": "US",
+   "lat": 45.265,
+   "lon": -122.688,
+   "n": 1
+  },
+  {
+   "cidade": "Candeias",
+   "estado": "BA",
+   "pais": "BR",
+   "lat": -12.672,
+   "lon": -38.547,
+   "n": 1
+  },
+  {
+   "cidade": "Capanema",
+   "estado": "PA",
+   "pais": "BR",
+   "lat": -1.205,
+   "lon": -47.178,
+   "n": 1
+  },
+  {
+   "cidade": "Cape Girardeau",
+   "estado": "MO",
+   "pais": "US",
+   "lat": 37.309,
+   "lon": -89.558,
+   "n": 1
+  },
+  {
+   "cidade": "Carapicuíba",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -23.523,
+   "lon": -46.841,
+   "n": 1
+  },
+  {
+   "cidade": "Castro Valley",
+   "estado": "CA",
+   "pais": "US",
+   "lat": 37.708,
+   "lon": -122.063,
+   "n": 1
+  },
+  {
+   "cidade": "Cave Creek",
+   "estado": "AZ",
+   "pais": "US",
+   "lat": 33.836,
+   "lon": -111.982,
+   "n": 1
+  },
+  {
+   "cidade": "Cedar City",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 37.684,
+   "lon": -113.095,
+   "n": 1
+  },
+  {
+   "cidade": "Ceilândia",
+   "estado": "DF",
+   "pais": "BR",
+   "lat": -15.817,
+   "lon": -48.108,
+   "n": 1
+  },
+  {
+   "cidade": "Colombo",
+   "estado": "PR",
+   "pais": "BR",
+   "lat": -25.293,
+   "lon": -49.226,
+   "n": 1
+  },
+  {
+   "cidade": "Colorado Springs",
+   "estado": "CO",
+   "pais": "US",
+   "lat": 38.867,
+   "lon": -104.761,
+   "n": 1
+  },
+  {
+   "cidade": "Conceição do Jacuípe",
+   "estado": "BA",
+   "pais": "BR",
+   "lat": -12.327,
+   "lon": -38.768,
+   "n": 1
+  },
+  {
+   "cidade": "Contagem",
+   "estado": "MG",
+   "pais": "BR",
+   "lat": -19.932,
+   "lon": -44.054,
+   "n": 1
+  },
+  {
+   "cidade": "Currais Novos",
+   "estado": "RN",
+   "pais": "BR",
+   "lat": -6.255,
+   "lon": -36.515,
+   "n": 1
+  },
+  {
+   "cidade": "Curvelo",
+   "estado": "MG",
+   "pais": "BR",
+   "lat": -18.753,
+   "lon": -44.43,
+   "n": 1
+  },
+  {
+   "cidade": "Dias d'Ávila",
+   "estado": "BA",
+   "pais": "BR",
+   "lat": -12.619,
+   "lon": -38.293,
+   "n": 1
+  },
+  {
+   "cidade": "Divinópolis",
+   "estado": "MG",
+   "pais": "BR",
+   "lat": -20.145,
+   "lon": -44.891,
+   "n": 1
+  },
+  {
+   "cidade": "Duncanville",
+   "estado": "TX",
+   "pais": "US",
+   "lat": 32.646,
+   "lon": -96.914,
+   "n": 1
+  },
+  {
+   "cidade": "Eagar",
+   "estado": "AZ",
+   "pais": "US",
+   "lat": 34.107,
+   "lon": -109.301,
+   "n": 1
+  },
+  {
+   "cidade": "Eden",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 41.306,
+   "lon": -111.804,
+   "n": 1
+  },
+  {
+   "cidade": "Everett",
+   "estado": "WA",
+   "pais": "US",
+   "lat": 47.965,
+   "lon": -122.19,
+   "n": 1
+  },
+  {
+   "cidade": "Farr West",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 41.302,
+   "lon": -112.032,
+   "n": 1
+  },
+  {
+   "cidade": "Fazenda Rio Grande",
+   "estado": "PR",
+   "pais": "BR",
+   "lat": -25.662,
+   "lon": -49.307,
+   "n": 1
+  },
+  {
+   "cidade": "Feira de Santana",
+   "estado": "BA",
+   "pais": "BR",
+   "lat": -12.266,
+   "lon": -38.966,
+   "n": 1
+  },
+  {
+   "cidade": "Ferron",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 39.092,
+   "lon": -111.134,
+   "n": 1
+  },
+  {
+   "cidade": "Floriano",
+   "estado": "PI",
+   "pais": "BR",
+   "lat": -6.772,
+   "lon": -43.024,
+   "n": 1
+  },
+  {
+   "cidade": "Fremont",
+   "estado": "CA",
+   "pais": "US",
+   "lat": 37.494,
+   "lon": -121.941,
+   "n": 1
+  },
+  {
+   "cidade": "Fresno",
+   "estado": "CA",
+   "pais": "US",
+   "lat": 36.783,
+   "lon": -119.793,
+   "n": 1
+  },
+  {
+   "cidade": "Fruit Heights",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 41.029,
+   "lon": -111.905,
+   "n": 1
+  },
+  {
+   "cidade": "Garanhuns",
+   "estado": "PE",
+   "pais": "BR",
+   "lat": -8.882,
+   "lon": -36.497,
+   "n": 1
+  },
+  {
+   "cidade": "Garland",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 41.736,
+   "lon": -112.163,
+   "n": 1
+  },
+  {
+   "cidade": "Gatesville",
+   "estado": "TX",
+   "pais": "US",
+   "lat": 31.439,
+   "lon": -97.746,
+   "n": 1
+  },
+  {
+   "cidade": "Gilbert",
+   "estado": "AZ",
+   "pais": "US",
+   "lat": 33.31,
+   "lon": -111.743,
+   "n": 1
+  },
+  {
+   "cidade": "Glendale",
+   "estado": "AZ",
+   "pais": "US",
+   "lat": 33.533,
+   "lon": -112.19,
+   "n": 1
+  },
+  {
+   "cidade": "Goiana",
+   "estado": "PE",
+   "pais": "BR",
+   "lat": -7.561,
+   "lon": -34.996,
+   "n": 1
+  },
+  {
+   "cidade": "Goiânia",
+   "estado": "GO",
+   "pais": "BR",
+   "lat": -16.686,
+   "lon": -49.264,
+   "n": 1
+  },
+  {
+   "cidade": "Gooding",
+   "estado": "ID",
+   "pais": "US",
+   "lat": 42.937,
+   "lon": -114.713,
+   "n": 1
+  },
+  {
+   "cidade": "Grand Junction",
+   "estado": "CO",
+   "pais": "US",
+   "lat": 39.089,
+   "lon": -108.567,
+   "n": 1
+  },
+  {
+   "cidade": "Great Falls",
+   "estado": "MT",
+   "pais": "US",
+   "lat": 47.503,
+   "lon": -111.3,
+   "n": 1
+  },
+  {
+   "cidade": "Greeley",
+   "estado": "CO",
+   "pais": "US",
+   "lat": 40.414,
+   "lon": -104.771,
+   "n": 1
+  },
+  {
+   "cidade": "Griffin",
+   "estado": "GA",
+   "pais": "US",
+   "lat": 33.243,
+   "lon": -84.272,
+   "n": 1
+  },
+  {
+   "cidade": "Guaratinguetá",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -22.808,
+   "lon": -45.194,
+   "n": 1
+  },
+  {
+   "cidade": "Guarujá",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -23.989,
+   "lon": -46.258,
+   "n": 1
+  },
+  {
+   "cidade": "Guarulhos",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -23.454,
+   "lon": -46.533,
+   "n": 1
+  },
+  {
+   "cidade": "Gunnison",
+   "estado": "CO",
+   "pais": "US",
+   "lat": 38.548,
+   "lon": -106.925,
+   "n": 1
+  },
+  {
+   "cidade": "Gurupi",
+   "estado": "TO",
+   "pais": "BR",
+   "lat": -11.728,
+   "lon": -49.068,
+   "n": 1
+  },
+  {
+   "cidade": "Harrisville",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 41.285,
+   "lon": -111.986,
+   "n": 1
+  },
+  {
+   "cidade": "Heber",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 40.542,
+   "lon": -111.387,
+   "n": 1
+  },
+  {
+   "cidade": "Hesperia",
+   "estado": "CA",
+   "pais": "US",
+   "lat": 34.397,
+   "lon": -117.315,
+   "n": 1
+  },
+  {
+   "cidade": "Highland",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 40.428,
+   "lon": -111.796,
+   "n": 1
+  },
+  {
+   "cidade": "Hooper",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 41.163,
+   "lon": -112.342,
+   "n": 1
+  },
+  {
+   "cidade": "Houston",
+   "estado": "TX",
+   "pais": "US",
+   "lat": 29.786,
+   "lon": -95.389,
+   "n": 1
+  },
+  {
+   "cidade": "Hyrum",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 41.633,
+   "lon": -111.846,
+   "n": 1
+  },
+  {
+   "cidade": "Ilhéus",
+   "estado": "BA",
+   "pais": "BR",
+   "lat": -14.793,
+   "lon": -39.046,
+   "n": 1
+  },
+  {
+   "cidade": "Indian Head",
+   "estado": "MD",
+   "pais": "US",
+   "lat": 38.599,
+   "lon": -77.156,
+   "n": 1
+  },
+  {
+   "cidade": "Iona",
+   "estado": "ID",
+   "pais": "US",
+   "lat": 43.528,
+   "lon": -111.931,
+   "n": 1
+  },
+  {
+   "cidade": "Irvine",
+   "estado": "CA",
+   "pais": "US",
+   "lat": 33.678,
+   "lon": -117.771,
+   "n": 1
+  },
+  {
+   "cidade": "Itabuna",
+   "estado": "BA",
+   "pais": "BR",
+   "lat": -14.788,
+   "lon": -39.278,
+   "n": 1
+  },
+  {
+   "cidade": "Itapeva",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -23.979,
+   "lon": -48.876,
+   "n": 1
+  },
+  {
+   "cidade": "Itatiba",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -23.003,
+   "lon": -46.846,
+   "n": 1
+  },
+  {
+   "cidade": "Itu",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -23.254,
+   "lon": -47.293,
+   "n": 1
+  },
+  {
+   "cidade": "Jaboatão dos Guararapes",
+   "estado": "PE",
+   "pais": "BR",
+   "lat": -8.113,
+   "lon": -35.015,
+   "n": 1
+  },
+  {
+   "cidade": "Jacobina",
+   "estado": "BA",
+   "pais": "BR",
+   "lat": -11.181,
+   "lon": -40.512,
+   "n": 1
+  },
+  {
+   "cidade": "Jandira",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -23.527,
+   "lon": -46.902,
+   "n": 1
+  },
+  {
+   "cidade": "Kaneohe",
+   "estado": "HI",
+   "pais": "US",
+   "lat": 21.409,
+   "lon": -157.79,
+   "n": 1
+  },
+  {
+   "cidade": "Kaysville",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 41.029,
+   "lon": -111.945,
+   "n": 1
+  },
+  {
+   "cidade": "Lake Forest",
+   "estado": "CA",
+   "pais": "US",
+   "lat": 33.655,
+   "lon": -117.676,
+   "n": 1
+  },
+  {
+   "cidade": "Lake Oswego",
+   "estado": "OR",
+   "pais": "US",
+   "lat": 45.414,
+   "lon": -122.7,
+   "n": 1
+  },
+  {
+   "cidade": "Lake Stevens",
+   "estado": "WA",
+   "pais": "US",
+   "lat": 48.003,
+   "lon": -122.097,
+   "n": 1
+  },
+  {
+   "cidade": "Lehi",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 40.417,
+   "lon": -111.871,
+   "n": 1
+  },
+  {
+   "cidade": "Lewiston",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 41.968,
+   "lon": -111.886,
+   "n": 1
+  },
+  {
+   "cidade": "Limeira",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -22.566,
+   "lon": -47.397,
+   "n": 1
+  },
+  {
+   "cidade": "Lindon",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 40.342,
+   "lon": -111.717,
+   "n": 1
+  },
+  {
+   "cidade": "Livermore",
+   "estado": "CA",
+   "pais": "US",
+   "lat": 37.687,
+   "lon": -121.76,
+   "n": 1
+  },
+  {
+   "cidade": "Macaé",
+   "estado": "RJ",
+   "pais": "BR",
+   "lat": -22.377,
+   "lon": -41.785,
+   "n": 1
+  },
+  {
+   "cidade": "Magna",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 40.709,
+   "lon": -112.101,
+   "n": 1
+  },
+  {
+   "cidade": "Mantua",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 41.498,
+   "lon": -111.936,
+   "n": 1
+  },
+  {
+   "cidade": "Mapleton",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 40.119,
+   "lon": -111.574,
+   "n": 1
+  },
+  {
+   "cidade": "Midvale",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 40.615,
+   "lon": -111.893,
+   "n": 1
+  },
+  {
+   "cidade": "Miracema do Tocantins",
+   "estado": "TO",
+   "pais": "BR",
+   "lat": -9.566,
+   "lon": -48.393,
+   "n": 1
+  },
+  {
+   "cidade": "Monticello",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 37.869,
+   "lon": -109.336,
+   "n": 1
+  },
+  {
+   "cidade": "Mount Vernon",
+   "estado": "WA",
+   "pais": "US",
+   "lat": 48.417,
+   "lon": -122.312,
+   "n": 1
+  },
+  {
+   "cidade": "Mt. Green",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 41.148,
+   "lon": -111.788,
+   "n": 1
+  },
+  {
+   "cidade": "Murray",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 40.651,
+   "lon": -111.887,
+   "n": 1
+  },
+  {
+   "cidade": "Nephi",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 39.705,
+   "lon": -111.833,
+   "n": 1
+  },
+  {
+   "cidade": "North Logan",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 41.776,
+   "lon": -111.807,
+   "n": 1
+  },
+  {
+   "cidade": "Nova Odessa",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -22.783,
+   "lon": -47.294,
+   "n": 1
+  },
+  {
+   "cidade": "Olinda",
+   "estado": "PE",
+   "pais": "BR",
+   "lat": -8.01,
+   "lon": -34.855,
+   "n": 1
+  },
+  {
+   "cidade": "Olympia",
+   "estado": "WA",
+   "pais": "US",
+   "lat": 47.041,
+   "lon": -122.895,
+   "n": 1
+  },
+  {
+   "cidade": "Othello",
+   "estado": "WA",
+   "pais": "US",
+   "lat": 46.822,
+   "lon": -119.166,
+   "n": 1
+  },
+  {
+   "cidade": "Palmdale",
+   "estado": "CA",
+   "pais": "US",
+   "lat": 34.591,
+   "lon": -118.105,
+   "n": 1
+  },
+  {
+   "cidade": "Parker",
+   "estado": "CO",
+   "pais": "US",
+   "lat": 39.506,
+   "lon": -104.776,
+   "n": 1
+  },
+  {
+   "cidade": "Parnaíba",
+   "estado": "PI",
+   "pais": "BR",
+   "lat": -2.906,
+   "lon": -41.775,
+   "n": 1
+  },
+  {
+   "cidade": "Parnamirim",
+   "estado": "RN",
+   "pais": "BR",
+   "lat": -5.911,
+   "lon": -35.271,
+   "n": 1
+  },
+  {
+   "cidade": "Paulista",
+   "estado": "PE",
+   "pais": "BR",
+   "lat": -7.934,
+   "lon": -34.868,
+   "n": 1
+  },
+  {
+   "cidade": "Payson",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 40.036,
+   "lon": -111.739,
+   "n": 1
+  },
+  {
+   "cidade": "Pedro Leopoldo",
+   "estado": "MG",
+   "pais": "BR",
+   "lat": -19.631,
+   "lon": -44.038,
+   "n": 1
+  },
+  {
+   "cidade": "Petrópolis",
+   "estado": "RJ",
+   "pais": "BR",
+   "lat": -22.52,
+   "lon": -43.193,
+   "n": 1
+  },
+  {
+   "cidade": "Pingree",
+   "estado": "ID",
+   "pais": "US",
+   "lat": 43.106,
+   "lon": -112.59,
+   "n": 1
+  },
+  {
+   "cidade": "Pleasanton",
+   "estado": "CA",
+   "pais": "US",
+   "lat": 37.667,
+   "lon": -121.881,
+   "n": 1
+  },
+  {
+   "cidade": "Poções",
+   "estado": "BA",
+   "pais": "BR",
+   "lat": -14.523,
+   "lon": -40.363,
+   "n": 1
+  },
+  {
+   "cidade": "Pomerene",
+   "estado": "AZ",
+   "pais": "US",
+   "lat": 31.998,
+   "lon": -110.287,
+   "n": 1
+  },
+  {
+   "cidade": "Porterville",
+   "estado": "CA",
+   "pais": "US",
+   "lat": 36.064,
+   "lon": -119.034,
+   "n": 1
+  },
+  {
+   "cidade": "Porto Velho",
+   "estado": "RO",
+   "pais": "BR",
+   "lat": -8.761,
+   "lon": -63.9,
+   "n": 1
+  },
+  {
+   "cidade": "Potomac",
+   "estado": "MD",
+   "pais": "US",
+   "lat": 39.013,
+   "lon": -77.194,
+   "n": 1
+  },
+  {
+   "cidade": "Poulsbo",
+   "estado": "WA",
+   "pais": "US",
+   "lat": 47.741,
+   "lon": -122.642,
+   "n": 1
+  },
+  {
+   "cidade": "Preston",
+   "estado": "ID",
+   "pais": "US",
+   "lat": 42.099,
+   "lon": -111.881,
+   "n": 1
+  },
+  {
+   "cidade": "Queen Creek",
+   "estado": "AZ",
+   "pais": "US",
+   "lat": 33.239,
+   "lon": -111.613,
+   "n": 1
+  },
+  {
+   "cidade": "Quincy",
+   "estado": "WA",
+   "pais": "US",
+   "lat": 47.235,
+   "lon": -119.853,
+   "n": 1
+  },
+  {
+   "cidade": "Rancho Palos Verdes",
+   "estado": "CA",
+   "pais": "US",
+   "lat": 33.739,
+   "lon": -118.37,
+   "n": 1
+  },
+  {
+   "cidade": "Rangely",
+   "estado": "CO",
+   "pais": "US",
+   "lat": 40.087,
+   "lon": -108.783,
+   "n": 1
+  },
+  {
+   "cidade": "Reno",
+   "estado": "NV",
+   "pais": "US",
+   "lat": 39.549,
+   "lon": -119.85,
+   "n": 1
+  },
+  {
+   "cidade": "Resende",
+   "estado": "RJ",
+   "pais": "BR",
+   "lat": -22.471,
+   "lon": -44.451,
+   "n": 1
+  },
+  {
+   "cidade": "Ribeira do Pombal",
+   "estado": "BA",
+   "pais": "BR",
+   "lat": -10.837,
+   "lon": -38.538,
+   "n": 1
+  },
+  {
+   "cidade": "Richfield",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 38.761,
+   "lon": -112.093,
+   "n": 1
+  },
+  {
+   "cidade": "Rio Branco",
+   "estado": "AC",
+   "pais": "BR",
+   "lat": -9.975,
+   "lon": -67.824,
+   "n": 1
+  },
+  {
+   "cidade": "Rio Claro",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -22.398,
+   "lon": -47.555,
+   "n": 1
+  },
+  {
+   "cidade": "River Heights",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 41.722,
+   "lon": -111.819,
+   "n": 1
+  },
+  {
+   "cidade": "Riverdale",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 41.173,
+   "lon": -112.002,
+   "n": 1
+  },
+  {
+   "cidade": "Riverton",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 40.518,
+   "lon": -111.964,
+   "n": 1
+  },
+  {
+   "cidade": "Roseville",
+   "estado": "CA",
+   "pais": "US",
+   "lat": 38.77,
+   "lon": -121.32,
+   "n": 1
+  },
+  {
+   "cidade": "Roy",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 41.171,
+   "lon": -112.048,
+   "n": 1
+  },
+  {
+   "cidade": "Salto",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -23.2,
+   "lon": -47.293,
+   "n": 1
+  },
+  {
+   "cidade": "San Antonio",
+   "estado": "TX",
+   "pais": "US",
+   "lat": 29.463,
+   "lon": -98.525,
+   "n": 1
+  },
+  {
+   "cidade": "San Clemente",
+   "estado": "CA",
+   "pais": "US",
+   "lat": 33.449,
+   "lon": -117.613,
+   "n": 1
+  },
+  {
+   "cidade": "Santa Clara",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 37.131,
+   "lon": -113.657,
+   "n": 1
+  },
+  {
+   "cidade": "Santa Rita",
+   "estado": "PB",
+   "pais": "BR",
+   "lat": -7.117,
+   "lon": -34.975,
+   "n": 1
+  },
+  {
+   "cidade": "Santo Amaro",
+   "estado": "BA",
+   "pais": "BR",
+   "lat": -12.547,
+   "lon": -38.714,
+   "n": 1
+  },
+  {
+   "cidade": "Santo Antônio de Jesus",
+   "estado": "BA",
+   "pais": "BR",
+   "lat": -12.961,
+   "lon": -39.258,
+   "n": 1
+  },
+  {
+   "cidade": "São Bernardo do Campo",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -23.691,
+   "lon": -46.565,
+   "n": 1
+  },
+  {
+   "cidade": "São José do Rio Preto",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -20.811,
+   "lon": -49.376,
+   "n": 1
+  },
+  {
+   "cidade": "São Luís",
+   "estado": "MA",
+   "pais": "BR",
+   "lat": -2.539,
+   "lon": -44.282,
+   "n": 1
+  },
+  {
+   "cidade": "São Manuel",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -22.732,
+   "lon": -48.572,
+   "n": 1
+  },
+  {
+   "cidade": "Savannah",
+   "estado": "GA",
+   "pais": "US",
+   "lat": 32.018,
+   "lon": -81.196,
+   "n": 1
+  },
+  {
+   "cidade": "Schaumburg",
+   "estado": "IL",
+   "pais": "US",
+   "lat": 42.029,
+   "lon": -88.084,
+   "n": 1
+  },
+  {
+   "cidade": "Scottsdale",
+   "estado": "AZ",
+   "pais": "US",
+   "lat": 33.684,
+   "lon": -111.861,
+   "n": 1
+  },
+  {
+   "cidade": "Senhor do Bonfim",
+   "estado": "BA",
+   "pais": "BR",
+   "lat": -10.459,
+   "lon": -40.187,
+   "n": 1
+  },
+  {
+   "cidade": "Seropédica",
+   "estado": "RJ",
+   "pais": "BR",
+   "lat": -22.753,
+   "lon": -43.715,
+   "n": 1
+  },
+  {
+   "cidade": "Serra",
+   "estado": "ES",
+   "pais": "BR",
+   "lat": -20.121,
+   "lon": -40.307,
+   "n": 1
+  },
+  {
+   "cidade": "Show Low",
+   "estado": "AZ",
+   "pais": "US",
+   "lat": 34.265,
+   "lon": -110.038,
+   "n": 1
+  },
+  {
+   "cidade": "Simões Filho",
+   "estado": "BA",
+   "pais": "BR",
+   "lat": -12.787,
+   "lon": -38.403,
+   "n": 1
+  },
+  {
+   "cidade": "South Weber",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 41.134,
+   "lon": -111.939,
+   "n": 1
+  },
+  {
+   "cidade": "Spokane",
+   "estado": "WA",
+   "pais": "US",
+   "lat": 47.667,
+   "lon": -117.433,
+   "n": 1
+  },
+  {
+   "cidade": "Syracuse",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 41.086,
+   "lon": -112.069,
+   "n": 1
+  },
+  {
+   "cidade": "Taubaté",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -23.01,
+   "lon": -45.559,
+   "n": 1
+  },
+  {
+   "cidade": "Teófilo Otoni",
+   "estado": "MG",
+   "pais": "BR",
+   "lat": -17.86,
+   "lon": -41.509,
+   "n": 1
+  },
+  {
+   "cidade": "Teresina",
+   "estado": "PI",
+   "pais": "BR",
+   "lat": -5.092,
+   "lon": -42.803,
+   "n": 1
+  },
+  {
+   "cidade": "Timbaúba",
+   "estado": "PE",
+   "pais": "BR",
+   "lat": -7.505,
+   "lon": -35.312,
+   "n": 1
+  },
+  {
+   "cidade": "Trabuco Canyon",
+   "estado": "CA",
+   "pais": "US",
+   "lat": 33.678,
+   "lon": -117.594,
+   "n": 1
+  },
+  {
+   "cidade": "Tremonton",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 41.718,
+   "lon": -112.188,
+   "n": 1
+  },
+  {
+   "cidade": "Trophy Club",
+   "estado": "TX",
+   "pais": "US",
+   "lat": 32.993,
+   "lon": -97.173,
+   "n": 1
+  },
+  {
+   "cidade": "Uberaba",
+   "estado": "MG",
+   "pais": "BR",
+   "lat": -19.747,
+   "lon": -47.938,
+   "n": 1
+  },
+  {
+   "cidade": "Uberlândia",
+   "estado": "MG",
+   "pais": "BR",
+   "lat": -18.914,
+   "lon": -48.275,
+   "n": 1
+  },
+  {
+   "cidade": "Vacaville",
+   "estado": "CA",
+   "pais": "US",
+   "lat": 38.359,
+   "lon": -121.969,
+   "n": 1
+  },
+  {
+   "cidade": "Valinhos",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -22.97,
+   "lon": -46.997,
+   "n": 1
+  },
+  {
+   "cidade": "Vancouver",
+   "estado": "WA",
+   "pais": "US",
+   "lat": 45.637,
+   "lon": -122.597,
+   "n": 1
+  },
+  {
+   "cidade": "Ventura",
+   "estado": "CA",
+   "pais": "US",
+   "lat": 34.268,
+   "lon": -119.254,
+   "n": 1
+  },
+  {
+   "cidade": "Veradale",
+   "estado": "WA",
+   "pais": "US",
+   "lat": 47.649,
+   "lon": -117.207,
+   "n": 1
+  },
+  {
+   "cidade": "Vilhena",
+   "estado": "RO",
+   "pais": "BR",
+   "lat": -12.75,
+   "lon": -60.149,
+   "n": 1
+  },
+  {
+   "cidade": "Vitória da Conquista",
+   "estado": "BA",
+   "pais": "BR",
+   "lat": -14.861,
+   "lon": -40.844,
+   "n": 1
+  },
+  {
+   "cidade": "Vitória de Santo Antão",
+   "estado": "PE",
+   "pais": "BR",
+   "lat": -8.128,
+   "lon": -35.298,
+   "n": 1
+  },
+  {
+   "cidade": "Votorantim",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -23.545,
+   "lon": -47.439,
+   "n": 1
+  },
+  {
+   "cidade": "Votuporanga",
+   "estado": "SP",
+   "pais": "BR",
+   "lat": -20.424,
+   "lon": -49.978,
+   "n": 1
+  },
+  {
+   "cidade": "Walnut Grove",
+   "estado": "MO",
+   "pais": "US",
+   "lat": 37.411,
+   "lon": -93.548,
+   "n": 1
+  },
+  {
+   "cidade": "Washington",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 37.127,
+   "lon": -113.488,
+   "n": 1
+  },
+  {
+   "cidade": "Wellsville",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 41.623,
+   "lon": -111.942,
+   "n": 1
+  },
+  {
+   "cidade": "West Valley",
+   "estado": "UT",
+   "pais": "US",
+   "lat": 40.688,
+   "lon": -112.012,
+   "n": 1
+  },
+  {
+   "cidade": "Winnemucca",
+   "estado": "NV",
+   "pais": "US",
+   "lat": 40.964,
+   "lon": -117.725,
+   "n": 1
+  },
+  {
+   "cidade": "Winsted",
+   "estado": "CT",
+   "pais": "US",
+   "lat": 41.926,
+   "lon": -73.068,
+   "n": 1
+  },
+  {
+   "cidade": "Woodburn",
+   "estado": "OR",
+   "pais": "US",
+   "lat": 45.147,
+   "lon": -122.86,
+   "n": 1
+  },
+  {
+   "cidade": "Woodinville",
+   "estado": "WA",
+   "pais": "US",
+   "lat": 47.758,
+   "lon": -122.147,
+   "n": 1
+  },
+  {
+   "cidade": "Yuma",
+   "estado": "AZ",
+   "pais": "US",
+   "lat": 32.516,
+   "lon": -114.522,
+   "n": 1
+  }
+ ]
+}

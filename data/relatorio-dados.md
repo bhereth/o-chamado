@@ -4,10 +4,10 @@ Gerado por `node scripts/build-data.mjs`. Corrija a planilha ou `data/correcoes.
 
 - Quadros (meses): 27
 - Nomes no total: 4773
-- exato: 4286
+- exato: 4287
 - inferido: 214
 - sem-iniciais: 58
-- sem-registro: 166
+- sem-registro: 165
 - tolerancia: 49
 
 ## A. Nomes ambíguos (mais de uma pessoa possível)
@@ -87,7 +87,6 @@ Para resolver, adicione um item em `vinculos` no `data/correcoes.json`.
 - **S Gibson** 1× (1998-11; ex.: 1998-11 Porto Alegre / Parque dos Maias) — parecidos: Síster Gibson (1997-07 → 1998-09)
 - **E Dartora** 1× (1999-05; ex.: 1999-05 Porto Alegre / Humaitá) — parecidos: Élder Dartora (1997-04 → 1999-03)
 - **E Morais** 1× (1999-10; ex.: 1999-10 Passo Fundo / Marau B) — parecidos: Élder Moraes (1998-05 → 2000-04); Élder Morris (1999-12 → 2001-10); Élder Norris (1995-10 → 1997-08)
-- **E Perfian** 1× (1999-12; ex.: 1999-12 Caxias do Sul / Botafogo) — provavelmente falta em missionarios.json
 - **E Retjen** 1× (1999-12; ex.: 1999-12 Gravataí / Vista Alegre) — parecidos: Élder Redden (1998-11 → 2000-09); Élder Tietjen (1999-10 → 2001-08)
 - **E Roos** 1× (1999-12; ex.: 1999-12 Vergueiro / Medianeira B) — parecidos: Élder Cook (1999-11 → 2001-09); Élder Cook (2000-04 → 2002-02); Élder Loosi (? → ?); Élder Reis (1997-12 → 1999-12); Élder Ross (1999-11 → 2001-09)
 - **E Hall** 1× (2000-01; ex.: 2000-01 Taquara / Sapiranga) — parecidos: Élder Call (1996-01 → 1997-11); Élder Gull (1999-09 → 2001-07); Élder Hall (1997-10 → 1999-08); Élder Heil (1999-11 → 2001-09); Élder Hill (1999-01 → 2000-11)

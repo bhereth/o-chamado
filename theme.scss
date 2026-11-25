@@ -342,6 +342,20 @@ section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reenc
   margin: 0 auto 1.5rem;
 }
 
+.mapa-cidades {
+  height: 460px;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  box-shadow: 0 10px 24px -18px rgba(0, 0, 0, 0.35);
+  margin-bottom: 2.5rem;
+}
+@media (max-width: 575.98px) { .mapa-cidades { height: 360px; } }
+.mapa-cidades-botoes { justify-content: center; margin-bottom: 0.75rem; }
+
+.stat-tiles.numeros { max-width: 760px; text-align: center; }
+.numeros-nota { text-align: center; font-size: 0.85rem; color: $ink-muted; max-width: 640px; margin: -0.5rem auto 2rem; }
+@media (max-width: 575.98px) { .stat-tiles.numeros { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
 .stat-tile {
   background: $paper;
   border-radius: $border-radius-lg;
@@ -473,6 +487,152 @@ section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reenc
   padding: 0.5rem 0.7rem;
   margin: 0.15rem 0 0.25rem;
 }
+.area-link {
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+.area-link i { margin-left: 0.3rem; font-size: 0.85em; opacity: 0.6; }
+// Clickable text (area names, companions). Quarto adds Bootstrap's "btn btn-quarto" to OJS
+// buttons, so the .btn variant undoes its pill background and padding.
+.link-caixa, .link-caixa.btn {
+  cursor: pointer;
+  text-align: left;
+  white-space: normal;
+  display: inline;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  line-height: inherit;
+  vertical-align: baseline;
+  color: inherit;
+  // Padding with an equal negative margin: the hover box wraps the whole name without moving it.
+  padding: 0.12rem 0.4rem;
+  margin: -0.12rem -0.4rem;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  box-shadow: none;
+  text-decoration: none;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+  &, &:active, &:focus { background: none; }
+  &:hover, &:focus-visible {
+    color: $primary;
+    background: rgba($primary, 0.08);
+    border-color: rgba($primary, 0.35);
+  }
+}
+.companheiros .link-caixa { display: block; width: fit-content; margin: 0 -0.4rem; } // one companion per line, aligned
+.historico-table .ditto { color: $ink-muted; }
+.ditto-marca { color: $ink-muted; padding-left: 0.9rem; font-size: 0.9em; }
+
+// Result cards wrap in centered rows under the search box (a grid would leave them flush left).
+.area-resultados {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  text-align: left;
+}
+.area-resultados > .area-resultado { flex: 0 1 220px; }
+.area-resultado, .area-resultado.btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+  text-align: left;
+  white-space: normal;
+  padding: 0.6rem 0.8rem;
+  background: $paper;
+  color: $body-color;
+  border: 1px solid rgba($primary, 0.18);
+  border-radius: $border-radius;
+  box-shadow: 0 6px 16px -14px rgba(0, 0, 0, 0.4);
+  font: inherit;
+  transition: border-color 0.15s, background-color 0.15s;
+  &:hover, &:focus-visible, &:active { background: rgba($primary, 0.06); border-color: rgba($primary, 0.5); color: $body-color; }
+  .nome { font-weight: 600; color: $primary; }
+  .nome i { margin-left: 0.35rem; font-size: 0.8em; opacity: 0.6; }
+  .meta { font-size: 0.78rem; color: $ink-muted; line-height: 1.35; }
+}
+.link-caixa:hover .ditto-marca { color: $primary; }
+.link-caixa.open .ditto-marca { color: #fff; }
+.area-name .area-link.btn {
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  line-height: inherit;
+  vertical-align: baseline;
+  color: inherit;
+  // Padding with an equal negative margin: the hover box wraps the whole name without moving it.
+  padding: 0.12rem 0.4rem;
+  margin: -0.12rem -0.4rem;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  box-shadow: none;
+  text-decoration: none;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+  &, &:active, &:focus { background: none; }
+  &:hover, &:focus-visible {
+    color: $primary;
+    background: rgba($primary, 0.08);
+    border-color: rgba($primary, 0.35);
+  }
+}
+.area-name .dupla-tag { margin-left: 0.55rem; }
+.legenda-quadro .area-name { display: inline-block; margin: 0 0.3rem 0 0; }
+
+.dialogo-area {
+  border: none;
+  border-radius: $border-radius-lg;
+  padding: 0;
+  width: min(640px, calc(100vw - 2rem));
+  text-align: left; // the dialog sits inside a centered section and would inherit it
+  overscroll-behavior: contain; // don't hand the scroll to the page at the ends of the list
+  max-height: min(82vh, 780px);
+  background: $paper;
+  color: $body-color;
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.5);
+}
+// Freeze the page behind the open dialog (also covers dialogs too short to scroll).
+html:has(dialog.dialogo-area[open]) { overflow: hidden; }
+.dialogo-area::backdrop { background: rgba(21, 41, 31, 0.55); }
+.dialogo-area .dlg-topo {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 1.25rem 0.7rem;
+  background: $paper;
+  border-bottom: 1px solid rgba($primary, 0.12);
+}
+.dialogo-area h3 { margin: 0; font-size: 1.45rem; }
+.dialogo-area .meta { color: $ink-muted; font-size: 0.85rem; margin-top: 0.15rem; }
+.dialogo-area .dlg-corpo { padding: 0.6rem 1.25rem 1.1rem; }
+.dlg-fechar { border: none; background: none; font-size: 1.2rem; line-height: 1; color: $ink-muted; cursor: pointer; padding: 0.25rem; }
+.dlg-fechar:hover { color: $primary; }
+.historico-area td.periodo { white-space: nowrap; color: $ink-muted; font-variant-numeric: tabular-nums; }
+.historico-area tr.atual td { background: $gold-soft !important; }
+.historico-area tr:nth-child(even) td { background: none; }
+.historico-area tr.detalhe td { border-bottom: none; padding-top: 0; }
+.historico-area .link-caixa { white-space: nowrap; }
+.historico-area .link-caixa.sem-registro { color: $ink-muted; font-style: italic; }
+.historico-area .link-caixa.repete { color: $ink-muted; }
+.historico-area .link-caixa.open, .historico-area .link-caixa.open:hover {
+  background: $primary;
+  border-color: $primary;
+  color: #fff;
+}
+.dlg-nota { font-size: 0.78rem; color: $ink-muted; margin: 0.75rem 0 0; }
+
 .nome-detalhe .provavel { color: $ink-muted; font-style: italic; }
 .nome-detalhe a { font-weight: 600; text-decoration: none; }
 
