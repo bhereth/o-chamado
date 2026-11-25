@@ -1,0 +1,29 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - index.qmd
+    - jornal.qmd
+  resources:
+    - "o-chamado-newsletters/**"
+
+website:
+  title: "O Chamado da Missão Brasil Porto Alegre Norte"
+  site-url: "https://bhereth.github.io/o-chamado/"
+  page-navigation: false
+
+format:
+  html:
+    theme: none
+    css: styles.css
+    toc: false
+    page-layout: full
+    anchor-sections: false
+    include-in-header:
+      - text: |
+          <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+execute:
+  echo: false

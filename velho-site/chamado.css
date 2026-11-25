@@ -1,0 +1,269 @@
+  
+Theme Name chamado
+Theme URI httpwww.chamado.net
+Description O Missão Brasil Porto Alegre Norte
+Version 1.1
+
+
+
+
+ CSS Document 
+
+body {
+	background-color #42663b;
+	background-imageurl(imagesbacktile.jpg);
+	background-repeatrepeat-y;
+	margin0px;
+	padding0px;
+	text-aligncenter;
+}
+body, h1, h2, td, th {
+	font-familyVerdana, Arial, Helvetica, sans-serif;
+}
+ hr {
+	border 0;
+	width 100%;
+	color #896F53;
+	background-color #896F53;
+	height 1px;  
+	margin-top15px;
+	margin-bottom15px;
+}
+
+body, td, th {
+	font-size12px;
+}
+
+ Main Page Column 
+
+#centered {
+	text-aligncenter;
+}
+#page {
+	width975px;
+	margin-left25px;
+	text-alignleft;
+}
+#header {
+	height72px;
+	background-color#0958A3;
+}
+#headertext {
+	padding-top0px;
+	padding-bottom0px;
+	padding-left0px;	
+}
+#subheadertext {
+	padding-top0px;
+	padding-bottom5px;
+	padding-left11px;	
+}
+#menu {
+	height25px;
+	background-color#0033CC;
+}
+
+#menutext {
+	padding-top5px;
+	padding-bottom8px;
+	padding-left20px;	
+}
+#title {
+	height44px;
+	background-imageurl(imagesorangetile.jpg);
+	background-repeaty;
+}
+#titletext {
+	padding-top10px;
+	padding-bottom10px;
+	padding-left20px;	
+}
+#main {
+	background-color#7bc4e5;
+	padding0px;
+	font-size12px;
+	text-alignleft;
+}
+#footer {
+	padding-top10px;
+	height30px;
+	background-color#0033CC;
+        border2px solid #7bc4e5;
+}
+#logo {
+	positionrelative;
+	left0px;
+	top0px;
+}
+
+ Default Links 
+a {font-weightbold;color#0958a3;}
+ahover {color#FFB400;}
+
+
+#menu ul {
+	list-style none;
+	padding 0;
+	margin 0;
+}
+#menutext li {
+	float left;
+	margin 0;
+	margin-right2em;
+	font-size11px;
+	letter-spacing1px;
+	font-weightnormal;
+}
+#menutext a {
+	font-weightnormal;
+	text-decorationnone;
+	color#fff;
+}
+#menutext ahover {
+	color#000;
+}
+
+#headertext h1, #titletext h2 {font-familyVerdana, Arial, Helvetica, sans-serif; margin0px; padding0px; displayinline;color#9cfffe;font-weightnormal;}
+#headertext h1 {font-size32px; letter-spacing3px;font-weightbold;}
+#headertext h2 {
+	font-size24px;
+	background-imageurl(imagestitlebullet.gif);
+	background-repeatno-repeat;
+	padding-left25px;
+	text-transformnone;
+	letter-spacing1px;
+}
+
+#subheadertext h1, #titletext h2 {font-familyVerdana, Arial, Helvetica, sans-serif; margin0px; padding0px; displayinline;color#9cfffe;font-weightnormal;}
+#subheadertext h1 {font-size24px; letter-spacing3px;font-weightbold;}
+#subheadertext h2 {
+	font-size24px;
+	background-imageurl(imagestitlebullet.gif);
+	background-repeatno-repeat;
+	padding-left25px;
+	text-transformnone;
+	letter-spacing1px;
+}
+
+#footertext h1, #titletext h2 {font-familyVerdana, Arial, Helvetica, sans-serif; margin0px; padding0px; displayinline;color#9cfffe;font-weightnormal;text-align center}
+#footertext h1 {font-size10px; text-align center;}
+#footertext h2 {
+	font-size24px;
+	background-imageurl(imagestitlebullet.gif);
+	background-repeatno-repeat;
+	padding-left25px;
+	text-transformnone;
+	letter-spacing1px;
+}
+
+#titletext h1, #titletext h2 {font-familySerifa, Rockwell, Lucida, serif; margin0px; padding0px; displayinline;color#fff;font-weightnormal;}
+#titletext h1 {font-size18px;text-transformuppercase; letter-spacing3px;font-weightbold;}
+#titletext h2 {
+	font-size18px;
+	background-imageurl(imagestitlebullet.gif);
+	background-repeatno-repeat;
+	padding-left25px;
+	text-transformnone;
+	letter-spacing1px;
+}
+#titletext a {color#fff;text-decorationnone;}
+#titletext ahover {color#FFB400;}
+
+
+ Main Area Layouts 
+#mainsidebar { width100%; bordernone; margin0px; padding0px; font-size10px;}
+#mainsidebar td.main {padding20px;}
+#mainsidebar th.sidebar {width240px; background-color#6bb44e;font-weightnormal;}
+#mainsidebar td table td {padding0px;padding-top2px;padding-bottom2px;}
+#mainsidebar h3 {padding0px; margin0px; padding-left4px; padding-right4px; margin-bottom2px; margin-top6px;}
+
+#mainsidebar th.sidebar h3 {padding-left3px;padding-right3px; margin-top10px;margin-bottom6px;}
+#mainsidebar th.sidebar a {color#fff;}
+#mainsidebar th.sidebar ahover {color#000;}
+
+ Special Layouts 
+table.eventlist {width100%;}
+table.eventlist td {padding0px;padding-top2px;padding-bottom2px; font-size10px; padding-right10px; border-top1px solid #C4B6A8; }
+table.eventlist th {font-size10px; background-colornone; border-top1px solid #C4B6A8;}
+table.eventlist th a {font-size12px;}
+
+table.sidelist {width100%;}
+table.sidelist td, table.sidelist th {font-size10px; font-weightnormal; color#000; padding5px; padding-top2px; padding-bottom2px;}
+table.sidelist td a, table.sidelist th a {font-size10px; font-weightnormal; color#FFF;}
+
+ul.list {margin0; padding0; list-stylenone; bordernone;}
+ul.list li {padding4px; font-weightnormal; font-size10px; font-weightnormal;}
+ul.list li.alt {background-color#64c864;}
+ul.list a {font-weightnormal; font-size10px; color#fff; text-decorationnone;}
+ul.list ahover {color#000;}
+
+div.boxit {background-color#7BC4E5; padding10px; border1px solid #A08669;}
+div.newspost {margin-bottom10px;padding-bottom10px;}
+div.newspost small {
+	font-weightnormal;
+	font-size11px;
+	text-transformuppercase;
+	letter-spacing2px;
+	color#0958A3;
+	padding0px;
+	margin-top0px;
+	margin-bottom5px;	
+}
+
+h1, div.newspost h2 {
+	font-familyVerdana, Arial, Helvetica, sans-serif; 
+	font-size18px; 
+	font-weightbold; 
+	padding0px;
+	margin-top5px;
+	margin-bottom2px;
+}
+div.newspost h2 a {
+	colorinherit;
+	text-decorationnone;
+}
+
+div.newspost {
+line-height20px;
+}
+h3 {
+	margin-bottom5px;
+}
+.smallentry {
+	font-size10px;
+	line-height15px;
+}
+ Form 
+table.form {width100%;}
+table.form th {text-alignleft;}
+table.form th, table.form td.field, table.form td.instructions {
+	border-bottom1px solid #947B60; 
+	padding3px;
+	font-size10px;
+}
+table.form td.instructions {color#746042;}
+table.form input.standard, table.form textarea.standard {
+	font-size10px;
+	font-familyVerdana, Arial, Helvetica, sans-serif;
+}
+
+table.form tr.section td {
+	font-size14px;
+	text-transformuppercase; 
+	letter-spacing3px;
+	font-weightbold;
+	padding3px;
+	padding-top30px;
+	color#fff;
+}
+table.form table.subtable td {
+	font-size10px;
+}
+
+span.project-summary {font-size10px;}
+
+
+
+
+
+

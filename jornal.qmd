@@ -1,0 +1,94 @@
+---
+title: ""
+---
+
+```{=html}
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-red w3-card">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-large w3-right" href="javascript:void(0)" onclick="toggleNav()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="index.html" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+    <a href="index.html#missao" class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-small">A MISSÃO</a>
+    <a href="index.html#areas" class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-small">AS ÁREAS</a>
+    <a href="index.html#missionarios" class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-small">OS MISSIONÁRIOS</a>
+    <a href="index.html#reencontros" class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-small">OS REENCONTROS</a>
+    <a href="index.html#woodwards" class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-small">OS WOODWARDS</a>
+    <a href="jornal.html" class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-small">O JORNAL</a>
+  </div>
+</div>
+
+<div id="navDemo" class="w3-bar-block w3-red w3-hide w3-hide-large w3-top" style="margin-top:46px">
+  <a href="index.html#missao" class="w3-bar-item w3-button w3-padding-large" onclick="toggleNav()">A MISSÃO</a>
+  <a href="index.html#areas" class="w3-bar-item w3-button w3-padding-large" onclick="toggleNav()">AS ÁREAS</a>
+  <a href="index.html#missionarios" class="w3-bar-item w3-button w3-padding-large" onclick="toggleNav()">OS MISSIONÁRIOS</a>
+  <a href="index.html#reencontros" class="w3-bar-item w3-button w3-padding-large" onclick="toggleNav()">OS REENCONTROS</a>
+  <a href="index.html#woodwards" class="w3-bar-item w3-button w3-padding-large" onclick="toggleNav()">OS WOODWARDS</a>
+  <a href="jornal.html" class="w3-bar-item w3-button w3-padding-large" onclick="toggleNav()">O JORNAL</a>
+</div>
+
+<div class="w3-yellow" style="margin-top:46px">
+<div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px">
+  <h2 class="w3-wide w3-text-blue">O JORNAL</h2>
+  <p class="w3-opacity"><i>Edições do boletim "O Chamado" publicadas durante a missão dos Woodward.</i></p>
+</div>
+</div>
+
+<div class="w3-container w3-content w3-padding-64 w3-green" style="max-width:800px">
+```
+
+```{ojs}
+newsletters = [
+  {ano: 1997, mes: "Outubro", arquivo: "O Chamado - 1997-10.pdf"},
+  {ano: 1997, mes: "Dezembro", arquivo: "O Chamado - 1997-12.pdf"},
+  {ano: 1998, mes: "Janeiro", arquivo: "O Chamado - 1998-01.pdf"},
+  {ano: 1998, mes: "Fevereiro", arquivo: "O Chamado - 1998-02.pdf"},
+  {ano: 1999, mes: "Janeiro", arquivo: "O Chamado - 1999-01.pdf"},
+  {ano: 1999, mes: "Março", arquivo: "O Chamado - 1999-03.pdf"},
+  {ano: 1999, mes: "Abril", arquivo: "O Chamado - 1999-04.pdf"},
+  {ano: 1999, mes: "Maio", arquivo: "O Chamado - 1999-05.pdf"},
+  {ano: 1999, mes: "Junho", arquivo: "O Chamado - 1999-06.pdf"},
+  {ano: 1999, mes: "Julho", arquivo: "O Chamado - 1999-07.pdf"},
+  {ano: 1999, mes: "Outubro", arquivo: "O Chamado - 1999-10.pdf"},
+  {ano: 1999, mes: "Novembro", arquivo: "O Chamado - 1999-11.pdf"},
+  {ano: 1999, mes: "Dezembro", arquivo: "O Chamado - 1999-12.pdf"},
+  {ano: 2000, mes: "Janeiro", arquivo: "O Chamado - 2000-01.pdf"},
+  {ano: 2000, mes: "Fevereiro", arquivo: "O Chamado - 2000-02.pdf"},
+  {ano: 2000, mes: "Março", arquivo: "O Chamado - 2000-03.pdf"},
+  {ano: 2000, mes: "Abril", arquivo: "O Chamado - 2000-04.pdf"},
+  {ano: 2000, mes: "Maio", arquivo: "O Chamado - 2000-05.pdf"},
+  {ano: 2000, mes: "Junho", arquivo: "O Chamado - 2000-06.pdf"}
+]
+
+years = Array.from(new Set(newsletters.map(n => n.ano))).sort()
+
+html`${years.map(y => html`
+  <h3 style="color:white">${y}</h3>
+  <ul style="list-style:none; padding-left:0">
+    ${newsletters.filter(n => n.ano === y).map(n => html`
+      <li style="padding:3px 0"><i class="fa fa-file-pdf-o"></i> <a target="_blank" href="${"o-chamado-newsletters/" + encodeURIComponent(n.arquivo)}">${n.mes} ${n.ano}</a></li>
+    `)}
+  </ul>
+`)}`
+```
+
+```{=html}
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-12 w3-center w3-red w3-xlarge">
+  <div class="w3-container w3-content w3-padding-12" style="max-width:1500px">
+    <h2 class="w3-wide w3-text-white">THE CALL OF THE BRAZIL PORTO ALEGRE NORTH MISSION</h2>
+  </div>
+</footer>
+
+<script>
+function toggleNav() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+```
