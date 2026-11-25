@@ -58,13 +58,13 @@ Para resolver, adicione um item em `vinculos` no `data/correcoes.json`.
 
 - **E de Araújo** 18× (1997-10 … 1999-07; ex.: 1997-10 Passo Fundo / Passo Fundo) — provavelmente falta em missionarios.json
 - **E Poulsen** 14× (1999-03 … 2000-06; ex.: 1999-03 Osório / Osório) — parecidos: Élder Paulsen (1999-02 → 2000-12)
-- **E Lima** 9× (1997-10 … 2000-06; ex.: 1997-10 Gravataí / Cachoerinha) — parecidos: Élder Lima (1997-08 → 1999-07)
+- **E Lima** 9× (1997-10 … 2000-06; ex.: 1997-10 Vergueiro / Marau) — parecidos: Élder Lima (1997-08 → 1999-07)
 - **S Sena** 8× (1997-10 … 1999-04; ex.: 1997-10 Osório / Tramandaí) — provavelmente falta em missionarios.json
 - **S da Cunha** 8× (1998-04 … 1999-03; ex.: 1998-04 São Leopoldo / Duque B) — provavelmente falta em missionarios.json
 - **S Garcia** 7× (1999-12 … 2000-06; ex.: 1999-12 Osório / Tramandaí) — parecidos: Síster Faria (1999-08 → 2001-01); Síster Garcia (1998-05 → 1999-10)
 - **S Alves** 6× (1997-10 … 1998-03; ex.: 1997-10 Osório / Capão da Canoa) — parecidos: Síster Alves (1999-11 → ?); Síster T Alves (1998-05 → 1999-10)
-- **E Aviz** 5× (1997-12 … 1998-04; ex.: 1997-12 Caxias do Sul / Moreira Cezar) — parecidos: Élder Aviz (1997-11 → 1997-10)
-- **S Pereira** 5× (1997-12 … 1998-08; ex.: 1997-12 Santo Ângelo / São Luis Casal) — parecidos: Síster Ferreira (1996-03 → 1997-08); Síster Ferreira (1999-12 → 2001-04); Síster Pereira (1996-08 → 1998-01); Síster Pereira (1999-03 → 2000-08)
+- **E Aviz** 5× (1997-12 … 1998-04; ex.: 1997-12 Caxias do Sul / Moreira César) — parecidos: Élder Aviz (1997-11 → 1997-10)
+- **S Pereira** 5× (1997-12 … 1998-08; ex.: 1997-12 Santo Ângelo / São Luiz Casal) — parecidos: Síster Ferreira (1996-03 → 1997-08); Síster Ferreira (1999-12 → 2001-04); Síster Pereira (1996-08 → 1998-01); Síster Pereira (1999-03 → 2000-08)
 - **E Cristiano** 5× (2000-02 … 2000-06; ex.: 2000-02 São Leopoldo / Feitoria) — provavelmente falta em missionarios.json
 - **S Vieira** 4× (1997-10 … 1998-01; ex.: 1997-10 Ijuí / Cruz Alta Casal) — parecidos: Síster Veiga (1997-02 → 1998-07)
 - **E Vieira** 4× (1997-10 … 1998-01; ex.: 1997-10 Moinhos de Vento / Niterói) — parecidos: Élder Vieira (1996-04 → 1998-03)
@@ -175,16 +175,19 @@ Sugestão: acrescentar a inicial na Plaqueta (ou na planilha) para casar exatame
 - 1998-10 **Rio Branco**: Caxias do Sul, Moinhos de Vento
 - 1999-01 **Rio Branco**: Caxias do Sul, Moinhos de Vento
 - 2000-03 **Rio Branco A**: Bento Gonçalves, Moinhos de Vento
+- 2000-04 **Rio Branco A**: Caxias do Sul, Moinhos de Vento
+- 2000-05 **Rio Branco A**: Caxias do Sul, Moinhos de Vento
+- 2000-06 **Rio Branco A**: Caxias do Sul, Moinhos de Vento
 
 ## F. Repetições no mesmo quadro
 
-- 1997-10 rótulo **E Lima** em Cachoerinha e Marau
+- 1997-10 rótulo **E Lima** em Cachoeirinha e Marau
 - 1997-10 rótulo **E Vieira** em Cruz Alta Casal e Niterói
 - 1997-11 rótulo **E Allen** em Farroupilha e Sapiranga
 - 1997-11 rótulo **E Lima** em Cachoeirinha e Marau
 - 1997-11 rótulo **E Vieira** em Cruz Alta Casal e Niterói
 - 1997-11 rótulo **E Wilson** em Taquara e Élderes Viajantes
-- 1997-12 rótulo **S Pereira** em Rio Branco e São Luis Casal
+- 1997-12 rótulo **S Pereira** em Rio Branco e São Luiz Casal
 - 1997-12 rótulo **E Vieira** em Cruz Alta Casal e Niterói
 - 1998-01 rótulo **E Vieira** em Cruz Alta Casal e Kephas
 - 1998-02 rótulo **E J de Oliveira** em Alvorada A e Sapiranga
@@ -205,11 +208,11 @@ Sugestão: acrescentar a inicial na Plaqueta (ou na planilha) para casar exatame
 Uma pessoa só pode estar numa área por mês. Ficou com a área que continua a zona dos meses vizinhos.
 
 - 1997-10 `e-vieira-1996-04` (Élder Vieira, 1996-04 → 1998-03): fica em Cruz Alta Casal; E Vieira em Niterói → sem registro
-- 1997-10 `e-lima-1997-08` (Élder Lima, 1997-08 → 1999-07): fica em Marau; E Lima em Cachoerinha → sem registro
+- 1997-10 `e-lima-1997-08` (Élder Lima, 1997-08 → 1999-07): fica em Cachoeirinha; E Lima em Marau → sem registro
 - 1997-11 `e-allen-1997-03` (Élder Allen, 1997-03 → 1999-01): fica em Sapiranga; E Allen em Farroupilha → sem registro
 - 1997-11 `e-vieira-1996-04` (Élder Vieira, 1996-04 → 1998-03): fica em Cruz Alta Casal; E Vieira em Niterói → sem registro
-- 1997-11 `e-lima-1997-08` (Élder Lima, 1997-08 → 1999-07): fica em Marau; E Lima em Cachoeirinha → sem registro
-- 1997-12 `s-pereira-1996-08` (Síster Pereira, 1996-08 → 1998-01): fica em Rio Branco; S Pereira em São Luis Casal → sem registro
+- 1997-11 `e-lima-1997-08` (Élder Lima, 1997-08 → 1999-07): fica em Cachoeirinha; E Lima em Marau → sem registro
+- 1997-12 `s-pereira-1996-08` (Síster Pereira, 1996-08 → 1998-01): fica em Rio Branco; S Pereira em São Luiz Casal → sem registro
 - 1997-12 `e-vieira-1996-04` (Élder Vieira, 1996-04 → 1998-03): fica em Cruz Alta Casal; E Vieira em Niterói → sem registro
 - 1998-01 `e-vieira-1996-04` (Élder Vieira, 1996-04 → 1998-03): fica em Cruz Alta Casal; E Vieira em Kephas → sem registro
 - 1998-02 `e-j-de-oliveira-1997-04` (Élder J de Oliveira, 1997-04 → 1999-03): fica em Sapiranga; E J de Oliveira em Alvorada A → sem registro
@@ -231,7 +234,7 @@ Uma pessoa só pode estar numa área por mês. Ficou com a área que continua a 
 - 1998-10 `s-dos-santos-1998-09` (Síster dos Santos, 1998-09 → 2000-03): fica em Erechim; S dos Santos em Farroupilha → `s-dos-santos-1997-04` (Síster dos Santos, 1997-04 → 1998-09)
 - 1998-10 `s-garrido-1998-02` (Síster Garrido, 1998-02 → 1999-08): fica em Erechim B; S Garrido em Guaíba Centro → sem registro
 - 1998-11 `s-santana-1998-05` (Síster Santana, 1998-05 → 1999-09): fica em Farroupilha; S Santana em Lindóia → sem registro
-- 2000-03 `e-young-1999-07` (Élder Young, 1999-07 → 2001-05): fica em Guaraní; E Young em Assistente → `e-young-1998-04` (Élder Young, 1998-04 → 2000-02)
+- 2000-03 `e-young-1999-07` (Élder Young, 1999-07 → 2001-05): fica em Guarani; E Young em Assistente → `e-young-1998-04` (Élder Young, 1998-04 → 2000-02)
 
 ## G. Zonas fora do mapa de correções / avisos
 

@@ -33,6 +33,8 @@ const MES_NOME = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "j
   "agosto", "setembro", "outubro", "novembro", "dezembro"];
 
 const zonaMap = new Map(Object.entries(corr.zonas).map(([k, v]) => [norm(k), v]));
+// Área spelling fixes (typos and missing accents between months), matched exactly.
+const areaMap = new Map(Object.entries(corr.areas ?? {}));
 const especiais = new Set(corr.zonasEspeciais.map(norm));
 const apelidos = new Map(Object.entries(corr.apelidos).map(([k, v]) => [norm(k), v]));
 const cleanLabel = (l) => {
@@ -90,7 +92,7 @@ for (let i = 1; i < lines.length; i++) {
   const labels = ms.slice(0, 3).filter(Boolean).map(cleanLabel);
   const especial = especiais.has(norm(zona));
   if (!area && !especial) warnings.push(`Linha ${i + 1}: área em branco na zona ${zona}.`);
-  rows.push({ key: ymKey(ano, mes), ano, mes, zona, especial, area: area || null, labels, linha: i + 1 });
+  rows.push({ key: ymKey(ano, mes), ano, mes, zona, especial, area: area ? areaMap.get(area) ?? area : null, labels, linha: i + 1 });
 }
 
 // ---------- Build snapshots ----------
