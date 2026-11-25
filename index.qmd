@@ -86,7 +86,6 @@ pagetitle: "O Chamado · Missão Brasil Porto Alegre Norte"
       <p>O gaúcho é hospitaleiro e orgulhoso das suas tradições: o chimarrão passado de mão em mão, o churrasco de domingo, os CTGs e o 20 de Setembro, que lembra a Revolução Farroupilha. A população mistura descendentes de portugueses e açorianos, alemães, italianos, poloneses, africanos e indígenas. No interior ainda se ouve o talian ou o alemão em casa, e todo missionário logo aprendia a dizer “bah, tchê!”.</p></div>
   </div>
 
-  <p class="missao-historia"><strong>Julho de 1998:</strong> a missão foi dividida para formar a <strong>Missão Brasil Santa Maria</strong>. As zonas de Ijuí e Santo Ângelo passaram para a nova missão.</p>
 </div>
 
 <div class="missao-texto lang-en" lang="en">
@@ -114,7 +113,6 @@ pagetitle: "O Chamado · Missão Brasil Porto Alegre Norte"
       <p>Gaúchos are warm, hospitable and proud of their traditions: chimarrão passed from hand to hand, Sunday churrasco, the CTGs (<em>Centros de Tradições Gaúchas</em>), clubs where people keep the folk dances, music and dress alive, and the 20th of September, which remembers the Farroupilha Revolution. The population blends Portuguese and Azorean, German, Italian, Polish, African and Indigenous roots. In the interior you can still hear Talian or German spoken at home, and every missionary soon learned to say “bah, tchê!”.</p></div>
   </div>
 
-  <p class="missao-historia"><strong>July 1998:</strong> the mission was divided to create the <strong>Brazil Santa Maria Mission</strong>. The Ijuí and Santo Ângelo zones went to the new mission.</p>
 </div>
 
 ```
