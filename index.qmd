@@ -637,7 +637,7 @@ jornalUrl = j => "o-chamado-newsletters/" + encodeURIComponent(j.arquivo)
 
 ```{=html}
 <a class="email-btn" href="mailto:info@ochamado.org?subject=O%20Chamado%20-%20coment%C3%A1rio"><i class="bi bi-envelope"></i> info@ochamado.org</a>
-<p class="organizador"><span class="lang-pt">Site organizado pelo <strong>Élder Bill Hereth</strong>, que serviu com os Woodward.</span><span class="lang-en">Site organized by <strong>Elder Bill Hereth</strong>, who served with the Woodwards.</span></p>
+<p class="organizador"><span class="lang-pt">Site organizado pelo <strong>Élder Billy Hereth</strong>, que serviu com os Woodward.</span><span class="lang-en">Site organized by <strong>Elder Billy Hereth</strong>, who served with the Woodwards.</span></p>
 ```
 :::
 
