@@ -512,7 +512,7 @@ function cartaoPessoa({ p, label, ap }) {
 ```{=html}
 <div class="secao-topo"><span class="section-eyebrow"><span class="lang-pt">O Jornal</span><span class="lang-en">The Newsletter</span></span></div>
 ```
-::: {.wrap-narrow}
+::: {.wrap}
 
 ## [O boletim da missão]{.lang-pt}[The mission newsletter]{.lang-en}
 
