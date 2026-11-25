@@ -3,3 +3,9 @@
 *_files/
 
 **/*.quarto_ipynb
+
+scripts/mapas/node_modules/
+scripts/mapas/data/municipios-regiao.geojson
+scripts/mapas/data/regioes.geojson
+scripts/mapas/data/estado.geojson
+scripts/mapas/package-lock.json

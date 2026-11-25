@@ -1136,3 +1136,37 @@ html[data-lang="en"] .lang-pt { display: none !important; }
   font-size: 0.8rem;
   color: rgba($footer-fg, 0.75);
 }
+
+/* ---------- Globo e mapa ilustrado da missão ---------- */
+
+$cores-regiao: (
+  metro: #e57a5e, vales: #f2c879, serra: #7fb89a,
+  planalto: #c3d88c, litoral: #86c7e3, noroeste: #c9a7d4,
+);
+@each $nome, $cor in $cores-regiao {
+  .regiao-#{$nome} { background: linear-gradient($cor, $cor) top / 100% 6px no-repeat, $paper; }
+}
+.regiao-icone { margin-right: 0.3rem; font-size: 1.15rem; }
+
+.intro-com-globo {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  max-width: 880px;
+  margin: 0 auto 2rem;
+  text-align: left;
+}
+.intro-com-globo .globo { flex: 0 0 170px; aspect-ratio: 1; }
+.intro-com-globo .missao-intro { margin: 0; max-width: none; }
+@media (max-width: 640px) {
+  .intro-com-globo { flex-direction: column; text-align: center; gap: 0.75rem; }
+  .intro-com-globo .globo { flex-basis: auto; width: 150px; }
+}
+
+.mapa-rs {
+  max-width: 760px;
+  aspect-ratio: 720 / 640;
+  margin: 0 auto 2.5rem;
+  filter: drop-shadow(0 16px 26px rgba(0, 0, 0, 0.16));
+}
+.globo svg, .mapa-rs svg, .globo img, .mapa-rs img { display: block; width: 100%; height: auto; }

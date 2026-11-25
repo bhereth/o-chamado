@@ -62,20 +62,25 @@ pagetitle: "O Chamado · Missão Brasil Porto Alegre Norte"
 </blockquote>
 
 <div class="missao-texto lang-pt" lang="pt">
-  <p class="missao-intro">A Missão Brasil Porto Alegre Norte cobria a metade norte do <strong>Rio Grande do Sul</strong>, o estado mais ao sul do Brasil: da zona norte de Porto Alegre e sua região metropolitana até a Serra Gaúcha, o Planalto e o Litoral Norte, e, até julho de 1998, o Noroeste e as Missões, perto da fronteira com a Argentina. <a href="#mapa">Ver o mapa das zonas ↓</a></p>
+  <div class="intro-com-globo">
+    <div class="globo" data-svg="images/globo-pt.svg"></div>
+    <p class="missao-intro">A Missão Brasil Porto Alegre Norte cobria a metade norte do <strong>Rio Grande do Sul</strong>, o estado mais ao sul do Brasil: da zona norte de Porto Alegre e sua região metropolitana até a Serra Gaúcha, o Planalto e o Litoral Norte, e, até julho de 1998, o Noroeste e as Missões, perto da fronteira com a Argentina. <a href="#mapa">Ver o mapa das zonas ↓</a></p>
+  </div>
+
+  <div class="mapa-rs" data-svg="images/mapa-rs-pt.svg"></div>
 
   <div class="regioes">
-    <div class="regiao"><h3><i class="bi bi-buildings"></i> Porto Alegre e região metropolitana</h3>
+    <div class="regiao regiao-metro"><h3><span class="regiao-icone" aria-hidden="true">🏙️</span> Porto Alegre e região metropolitana</h3>
       <p>A capital gaúcha e as cidades ao seu redor: Canoas, Esteio, Gravataí, Cachoeirinha, Alvorada e Guaíba. Bairros movimentados, ônibus lotados e muitas zonas da missão.</p></div>
-    <div class="regiao"><h3><i class="bi bi-house-door"></i> Vale dos Sinos</h3>
-      <p>Novo Hamburgo, São Leopoldo, Sapiranga e Taquara. São Leopoldo foi o berço da imigração alemã no Brasil, em 1824, e o vale é conhecido pela indústria de calçados.</p></div>
-    <div class="regiao"><h3><i class="bi bi-cup-hot"></i> Serra Gaúcha</h3>
+    <div class="regiao regiao-vales"><h3><span class="regiao-icone" aria-hidden="true">👞</span> Vales do Sinos, Caí e Taquari</h3>
+      <p>Novo Hamburgo, São Leopoldo, Sapiranga, Taquara, Montenegro e Lajeado. São Leopoldo foi o berço da imigração alemã no Brasil, em 1824, e o Vale dos Sinos é conhecido pela indústria de calçados.</p></div>
+    <div class="regiao regiao-serra"><h3><span class="regiao-icone" aria-hidden="true">🍇</span> Serra Gaúcha</h3>
       <p>Caxias do Sul, Bento Gonçalves, Farroupilha, Gramado e Canela. Terra da imigração italiana a partir de 1875, dos parreirais e do vinho, com invernos frios e, às vezes, neve.</p></div>
-    <div class="regiao"><h3><i class="bi bi-flower1"></i> Planalto e Campos de Cima da Serra</h3>
+    <div class="regiao regiao-planalto"><h3><span class="regiao-icone" aria-hidden="true">🌾</span> Planalto e Campos de Cima da Serra</h3>
       <p>Passo Fundo, Erechim, Carazinho, Marau e Vacaria. Lavouras de soja, trigo e milho, os pomares de maçã de Vacaria e algumas das madrugadas mais frias do estado.</p></div>
-    <div class="regiao"><h3><i class="bi bi-water"></i> Litoral Norte</h3>
+    <div class="regiao regiao-litoral"><h3><span class="regiao-icone" aria-hidden="true">🌊</span> Litoral Norte</h3>
       <p>Osório, Tramandaí e Capão da Canoa. Praias, lagoas e vento constante: cheias de veranistas no verão e quase vazias no inverno.</p></div>
-    <div class="regiao"><h3><i class="bi bi-bank"></i> Noroeste e Missões <small>até julho de 1998</small></h3>
+    <div class="regiao regiao-noroeste"><h3><span class="regiao-icone" aria-hidden="true">⛪</span> Noroeste e Missões <small>até julho de 1998</small></h3>
       <p>Santo Ângelo, Ijuí, Cruz Alta e Santa Rosa, perto das ruínas jesuítico-guaranis de São Miguel das Missões, Patrimônio Mundial da UNESCO.</p></div>
   </div>
 
@@ -89,20 +94,25 @@ pagetitle: "O Chamado · Missão Brasil Porto Alegre Norte"
 </div>
 
 <div class="missao-texto lang-en" lang="en">
-  <p class="missao-intro">The Brazil Porto Alegre North Mission covered the northern half of <strong>Rio Grande do Sul</strong>, Brazil's southernmost state: from the north side of Porto Alegre and its metro area up through the Serra Gaúcha highlands, the Planalto and the northern coast, and, until July 1998, the Northwest and the Missões region near the Argentine border. <a href="#mapa">See the map of the zones ↓</a></p>
+  <div class="intro-com-globo">
+    <div class="globo" data-svg="images/globo-en.svg"></div>
+    <p class="missao-intro">The Brazil Porto Alegre North Mission covered the northern half of <strong>Rio Grande do Sul</strong>, Brazil's southernmost state: from the north side of Porto Alegre and its metro area up through the Serra Gaúcha highlands, the Planalto and the northern coast, and, until July 1998, the Northwest and the Missões region near the Argentine border. <a href="#mapa">See the map of the zones ↓</a></p>
+  </div>
+
+  <div class="mapa-rs" data-svg="images/mapa-rs-en.svg"></div>
 
   <div class="regioes">
-    <div class="regiao"><h3><i class="bi bi-buildings"></i> Porto Alegre and its metro area</h3>
+    <div class="regiao regiao-metro"><h3><span class="regiao-icone" aria-hidden="true">🏙️</span> Porto Alegre and its metro area</h3>
       <p>The state capital and the cities around it: Canoas, Esteio, Gravataí, Cachoeirinha, Alvorada and Guaíba. Busy neighborhoods, packed buses and many of the mission's zones.</p></div>
-    <div class="regiao"><h3><i class="bi bi-house-door"></i> Vale dos Sinos</h3>
-      <p>Novo Hamburgo, São Leopoldo, Sapiranga and Taquara. São Leopoldo was the cradle of German immigration to Brazil in 1824, and the valley is known for its shoe industry.</p></div>
-    <div class="regiao"><h3><i class="bi bi-cup-hot"></i> Serra Gaúcha</h3>
+    <div class="regiao regiao-vales"><h3><span class="regiao-icone" aria-hidden="true">👞</span> Sinos, Caí and Taquari valleys</h3>
+      <p>Novo Hamburgo, São Leopoldo, Sapiranga, Taquara, Montenegro and Lajeado. São Leopoldo was the cradle of German immigration to Brazil in 1824, and the Sinos valley is known for its shoe industry.</p></div>
+    <div class="regiao regiao-serra"><h3><span class="regiao-icone" aria-hidden="true">🍇</span> Serra Gaúcha</h3>
       <p>Caxias do Sul, Bento Gonçalves, Farroupilha, Gramado and Canela. Settled by Italian immigrants from 1875 on: vineyards, wine, cold winters and the occasional snowfall.</p></div>
-    <div class="regiao"><h3><i class="bi bi-flower1"></i> Planalto and Campos de Cima da Serra</h3>
+    <div class="regiao regiao-planalto"><h3><span class="regiao-icone" aria-hidden="true">🌾</span> Planalto and Campos de Cima da Serra</h3>
       <p>Passo Fundo, Erechim, Carazinho, Marau and Vacaria. Soy, wheat and corn fields, Vacaria's apple orchards and some of the coldest mornings in the state.</p></div>
-    <div class="regiao"><h3><i class="bi bi-water"></i> Northern coast</h3>
+    <div class="regiao regiao-litoral"><h3><span class="regiao-icone" aria-hidden="true">🌊</span> Northern coast</h3>
       <p>Osório, Tramandaí and Capão da Canoa. Beaches, lagoons and constant wind: crowded with vacationers in summer, nearly empty in winter.</p></div>
-    <div class="regiao"><h3><i class="bi bi-bank"></i> Northwest and Missões <small>until July 1998</small></h3>
+    <div class="regiao regiao-noroeste"><h3><span class="regiao-icone" aria-hidden="true">⛪</span> Northwest and Missões <small>until July 1998</small></h3>
       <p>Santo Ângelo, Ijuí, Cruz Alta and Santa Rosa, near the Jesuit-Guarani ruins of São Miguel das Missões, a UNESCO World Heritage Site.</p></div>
   </div>
 
@@ -114,6 +124,16 @@ pagetitle: "O Chamado · Missão Brasil Porto Alegre Norte"
   </div>
 
 </div>
+
+<script>
+// Inline the map/globe SVGs (an <img> would not use the page fonts).
+document.querySelectorAll("#missao [data-svg]").forEach(function (el) {
+  fetch(el.getAttribute("data-svg"))
+    .then(function (r) { return r.text(); })
+    .then(function (t) { el.innerHTML = t; })
+    .catch(function () { el.innerHTML = "<img src=\"" + el.getAttribute("data-svg") + "\" alt=\"\">"; });
+});
+</script>
 
 ```
 :::
