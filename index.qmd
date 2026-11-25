@@ -1046,7 +1046,7 @@ viewof mapaJornada = {
   // right (two lines with the companion), and the play control sits in the top-right corner.
   el.margens = () => {
     const estreito = el.clientWidth < 600;
-    return { paddingTopLeft: [30, estreito ? 100 : 85], paddingBottomRight: [estreito ? 140 : 200, 40], maxZoom: 11 };
+    return { paddingTopLeft: [30, estreito ? 100 : 85], paddingBottomRight: [estreito ? 150 : 216, 40], maxZoom: 11 };
   };
   // The element is detached while this cell runs; fit the view once it has a real size.
   new ResizeObserver(() => {
@@ -1274,7 +1274,7 @@ viewof mapaJornada = {
       v.marcador.setLatLng(pos);
       // Near the right edge (mostly on phones), put the name tag on the left of the point instead.
       const px = m.latLngToContainerPoint(pos).x, w = v.pill.offsetWidth, larg = el.clientWidth;
-      const esquerda = px + w > larg - 8 && px - w > larg - px - w;
+      const esquerda = px + w + 16 > larg - 8 && px - w - 16 > larg - px - w - 16;
       if (esquerda !== v.esquerda) { v.pill.classList.toggle("esquerda", esquerda); v.esquerda = esquerda; }
       v.marcador.setOpacity(op);
       const icone = v.marcador.getElement();
