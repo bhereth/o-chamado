@@ -1130,3 +1130,9 @@ html[data-lang="en"] .lang-pt { display: none !important; }
 .nav-mes-btn:hover:not(:disabled) { background: $primary; color: #fff; }
 .nav-mes-btn:disabled { opacity: 0.35; cursor: default; }
 .filter-panel { margin-bottom: 1.5rem; }
+
+.credito-video {
+  margin: 0.9rem auto 0;
+  font-size: 0.8rem;
+  color: rgba($footer-fg, 0.75);
+}

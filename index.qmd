@@ -573,6 +573,7 @@ htl.html`<div>${[...new Set(jornais.map(j => j.ano))].map(y => htl.html`
     <span class="yt"><i class="bi bi-youtube"></i> <span class="lang-pt">Assistir no YouTube</span><span class="lang-en">Watch on YouTube</span></span>
   </span>
 </a>
+<p class="credito-video"><i class="bi bi-camera-video"></i> <span class="lang-pt">Vídeo: cortesia do Élder George</span><span class="lang-en">Video courtesy of Elder George</span></p>
 ```
 :::
 ::::
