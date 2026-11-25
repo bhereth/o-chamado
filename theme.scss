@@ -1592,3 +1592,14 @@ $cores-regiao: (
 .jornada-pill.esquerda { transform: translate(calc(-100% + 6px), calc(-50% + var(--dy, 0px))); flex-direction: row-reverse; padding: 1px 2px 1px 8px; }
 .jornada-pill.esquerda .jornada-pill-texto { align-items: flex-end; text-align: right; }
 .jornada-comp { white-space: normal; max-width: 11rem; }
+.jornada-pill.sem-info { opacity: 0.6; }
+.jornada-sem-info { color: $ink-muted; font-style: italic; }
+
+/* Months with no data (no transfer board): shown, but greyed out */
+.pill.sem-dados, .pill.sem-dados:disabled, .pill.btn.sem-dados:disabled {
+  background: $paper; color: rgba($ink-muted, 0.75); border: 1px dashed rgba($ink-muted, 0.45);
+  opacity: 0.7; cursor: not-allowed;
+}
+.nota-sem-dados { font-size: 0.8rem; color: $ink-muted; margin: -0.25rem 0 0; text-align: center; }
+.growth-bars rect.sem-dados { fill: rgba($ink-muted, 0.25); cursor: default; }
+.historico-table tr.sem-dados td { color: rgba($ink-muted, 0.85); font-style: italic; background: rgba($ink-muted, 0.06); }

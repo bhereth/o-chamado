@@ -203,6 +203,9 @@ aparicoes = {
 function estado(v) { const el = htl.html`<span hidden></span>`; el.value = v; return el; }
 function definir(el, v) { el.value = v; el.dispatchEvent(new Event("input", { bubbles: true })); }
 viewof quadroKey = estado("1997-10")
+// Every month of the Woodwards' mission (July 1997 – June 2000); months without a transfer board are shown greyed out.
+MESES_MISSAO = { const l = []; for (let n = 1997 * 12 + 6; n <= 2000 * 12 + 5; n++) l.push(`${Math.floor(n / 12)}-${String(n % 12 + 1).padStart(2, "0")}`); return l; }
+temQuadro = new Set(snaps.map(s => s.key))
 DIVISAO = "1998-07"
 snapIdx = snaps.findIndex(s => s.key === quadroKey)
 snapAtual = snaps[snapIdx]
@@ -212,7 +215,8 @@ snapAtual = snaps[snapIdx]
 {
   const first = snaps[0], last = snaps[snaps.length - 1];
   const max = Math.max(...snaps.map(s => s.stats.zonas));
-  const W = 640, H = 56, gap = 3, bw = W / snaps.length;
+  const W = 640, H = 56, gap = 3, bw = W / MESES_MISSAO.length;
+  const porChave = new Map(snaps.map(s => [s.key, s]));
   const tile = (num, lbl, base) => htl.html`<div class="stat-tile"><div class="num">${num}</div><div class="lbl">${lbl}</div></div>`;
   return htl.html`<div>
     <p class="growth-headline"><strong>${first.stats.zonas}</strong> ${T("zonas em", "zones in")} ${fmtYM(first.key)} → <strong>${last.stats.zonas}</strong> ${T("zonas em", "zones in")} ${fmtYM(last.key)}</p>
@@ -222,13 +226,15 @@ snapAtual = snaps[snapIdx]
       ${tile(snapAtual.stats.missionarios, T("Missionários", "Missionaries"))}
     </div>
     ${htl.svg`<svg class="growth-bars" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label=${T("Zonas por mês", "Zones per month")}>
-      ${snaps.map((s, i) => {
+      ${MESES_MISSAO.map((k, i) => {
+        const s = porChave.get(k);
+        if (!s) return htl.svg`<rect class="sem-dados" x=${i * bw + gap / 2} y=${H - 4} width=${bw - gap} height="4" rx="2"><title>${fmtYM(k)}: ${T("sem quadro de transferências", "no transfer board")}</title></rect>`;
         const h = Math.max(4, (s.stats.zonas / max) * H);
         return htl.svg`<rect class=${s.key === quadroKey ? "active" : ""} x=${i * bw + gap / 2} y=${H - h} width=${bw - gap} height=${h} rx="2"
           onclick=${() => definir(viewof quadroKey, s.key)}><title>${fmtYM(s.key)}: ${s.stats.zonas} ${T("zonas", "zones")}</title></rect>`;
       })}
       ${(() => {
-        const i = snaps.findIndex(s => s.key === DIVISAO);
+        const i = MESES_MISSAO.indexOf(DIVISAO);
         return i < 0 ? "" : htl.svg`<line class="marco-divisao" x1=${i * bw} x2=${i * bw} y1="0" y2=${H}><title>${T("Julho de 1998: divisão da missão", "July 1998: the mission is divided")}</title></line>`;
       })()}
     </svg>`}
@@ -239,13 +245,19 @@ snapAtual = snaps[snapIdx]
 
 ```{ojs}
 {
-  const anos = [...new Set(snaps.map(s => s.ano))];
-  const doAno = snaps.filter(s => s.ano === snapAtual.ano);
+  const anos = [...new Set(MESES_MISSAO.map(k => +k.slice(0, 4)))];
+  const doAno = MESES_MISSAO.filter(k => +k.slice(0, 4) === snapAtual.ano);
   const go = k => definir(viewof quadroKey, k);
   const pill = (label, active, onclick) => htl.html`<button class=${active ? "pill active" : "pill"} onclick=${onclick}>${label}</button>`;
+  const semQuadro = k => htl.html`<button class="pill sem-dados" disabled title=${T("Sem quadro de transferências para este mês", "No transfer board for this month")}>${MES[+k.slice(5) - 1]}</button>`;
+  const algumVazio = doAno.some(k => !temQuadro.has(k));
   return htl.html`<div class="filter-panel">
-    <div class="pill-group">${anos.map(a => pill(a, a === snapAtual.ano, () => go(snaps.find(s => s.ano === a).key)))}</div>
-    <div class="pill-group">${doAno.map(s => pill(MES[s.mes - 1], s.key === quadroKey, () => go(s.key)))}</div>
+    <div class="pill-group">${anos.map(a => {
+      const primeiro = snaps.find(s => s.ano === a);
+      return primeiro ? pill(a, a === snapAtual.ano, () => go(primeiro.key)) : htl.html`<button class="pill sem-dados" disabled>${a}</button>`;
+    })}</div>
+    <div class="pill-group">${doAno.map(k => temQuadro.has(k) ? pill(MES[+k.slice(5) - 1], k === quadroKey, () => go(k)) : semQuadro(k))}</div>
+    ${algumVazio ? htl.html`<p class="nota-sem-dados">${T("Meses em cinza: não temos o quadro de transferências desse mês.", "Greyed-out months: we don't have that month's transfer board.")}</p>` : ""}
   </div>
   ${quadroKey === DIVISAO
     ? htl.html`<p class="aviso-divisao"><i class="bi bi-signpost-split"></i><span>${idioma === "en"
@@ -328,10 +340,21 @@ dialogos = {
 
   // A missionary's boards: zone, area and companions, with ditto marks for repeats.
   function tabelaPessoa(ap) {
+    // Every month from the first to the last board they're on; consecutive empty months share one grey row.
+    const porMes = new Map(ap.map(a => [a.key, a]));
+    const linhas = [];
+    for (let k = ap[0].key; k <= ap.at(-1).key; k = mesDepois(k)) {
+      const a = porMes.get(k);
+      if (a) { linhas.push({ a }); continue; }
+      const tipo = temQuadro.has(k) ? "ausente" : "semQuadro", ult = linhas.at(-1);
+      if (ult && ult.tipo === tipo) ult.fim = k; else linhas.push({ tipo, ini: k, fim: k });
+    }
     return htl.html`<div class="table-scroll"><table class="historico-table">
       <thead><tr><th>${T("Quadro", "Board")}</th><th>${T("Zona", "Zone")}</th><th>${T("Área", "Area")}</th><th>${T("Companheiros", "Companions")}</th></tr></thead>
-      <tbody>${ap.map((a, i) => {
-        const ant = ap[i - 1];
+      <tbody>${linhas.map((l, i) => {
+        if (!l.a) return htl.html`<tr class="sem-dados"><td class="periodo">${l.ini === l.fim ? fmtYM(l.ini) : `${fmtYM(l.ini)} – ${fmtYM(l.fim)}`}</td>
+          <td colspan="3">${l.tipo === "semQuadro" ? T("Sem quadro de transferências", "No transfer board") : T("Não aparece no quadro", "Not on the board")}</td></tr>`;
+        const a = l.a, ant = linhas[i - 1]?.a;
         const repZona = ant && ant.zona === a.zona;
         const repArea = ant && ant.area === a.area;
         const compAnt = new Set(ant ? ant.companheiros.map(chavePessoa) : []);
@@ -854,12 +877,21 @@ mesesDe = a => a === 1997 ? [7, 8, 9, 10, 11, 12] : a === 2000 ? [1, 2, 3, 4, 5,
 ```{ojs}
 {
   const pill = (label, active, onclick) => htl.html`<button class=${active ? "pill active" : "pill"} onclick=${onclick}>${label}</button>`;
+  // Previous / next month across years (July 1997 – July 2000).
+  const todos = [1997, 1998, 1999, 2000].flatMap(a => mesesDe(a).map(m => [a, m]));
+  const i = todos.findIndex(([a, m]) => a === anoSel && m === mesSel);
+  const ir = j => { const [a, m] = todos[j]; definir(viewof mesSel, m); definir(viewof anoSel, a); };
   return htl.html`<div class="filter-panel">
     <div class="pill-group"><span class="filter-label">${T("Ano", "Year")}</span>${[1997, 1998, 1999, 2000].map(a => pill(a, a === anoSel, () => {
       if (!mesesDe(a).includes(mesSel)) definir(viewof mesSel, mesesDe(a)[0]);
       definir(viewof anoSel, a);
     }))}</div>
     <div class="pill-group"><span class="filter-label">${T("Mês", "Month")}</span>${mesesDe(anoSel).map(m => pill(MES[m - 1], m === mesSel, () => definir(viewof mesSel, m)))}</div>
+    <div class="nav-mes nav-mes-chegadas">
+      <button class="nav-mes-btn" aria-label=${T("Mês anterior", "Previous month")} disabled=${i <= 0} onclick=${() => ir(i - 1)}><i class="bi bi-chevron-left"></i></button>
+      <span class="snap-label">${fmtMesAno({ ano: anoSel, mes: mesSel })}</span>
+      <button class="nav-mes-btn" aria-label=${T("Próximo mês", "Next month")} disabled=${i >= todos.length - 1} onclick=${() => ir(i + 1)}><i class="bi bi-chevron-right"></i></button>
+    </div>
   </div>`;
 }
 ```
@@ -1065,7 +1097,14 @@ viewof mapaJornada = {
   enquadrar([ESCRITORIO, ...viagens.flatMap(v => v.ev.map(e => e.pos))]);
 
   // Steps: every month in which someone in the group moves.
-  const passos = [...new Set(viagens.flatMap(v => v.ev.map(e => e.key)))].sort();
+  const passosEv = [...new Set(viagens.flatMap(v => v.ev.map(e => e.key)))].sort();
+  // Months with no transfer board (and the gap between arrival and the first board) are steps too,
+  // shown as "no information for this month" while the name waits where it was last seen.
+  const mesesEv = new Set(passosEv.map(k => k.slice(0, 7)));
+  const passos = [...passosEv];
+  for (let k = passosEv[0].slice(0, 7); k < passosEv.at(-1).slice(0, 7); k = mesDepois(k)) if (!mesesEv.has(k)) passos.push(`${k}|1`);
+  passos.sort();
+  const semInfo = passos.map(k => !mesesEv.has(k.slice(0, 7)));
   const n = passos.length;
   const chavePos = p => `${p[0]},${p[1]}`;
 
@@ -1191,10 +1230,11 @@ viewof mapaJornada = {
       ? T("já estava na missão quando os Woodward chegaram (julho de 1997)", "already on the mission when the Woodwards arrived (July 1997)")
       : T(`chegou em ${fmtYM(x.chegada)}, antes dos primeiros quadros`, `arrived ${fmtYM(x.chegada)}, before the first boards`);
   let paradaMostrada = null;
-  const mostrarParada = (j, mes) => {
+  const mostrarParada = (j, mes, vazio) => {
     const chave = j + "|" + mes;
     if (!itinerario || chave === paradaMostrada) return;
     paradaMostrada = chave;
+    if (vazio) { itinerario.replaceChildren(htl.html`<span class="periodo">${fmtYM(mes)}</span>`, htl.html`<span class="jornada-sem-info">${T("Sem informação para este mês", "No information for this month")}</span>`); return; }
     itinerario.replaceChildren(...(j < 0 ? [] : [htl.html`<span class="periodo">${fmtYM(mes)}</span>`, htl.html`<span>${descreverParada(viagens[0].ev[j])}${viagens[0].ev[j].tipo === "area" ? htl.html`<span class="jornada-meses"> · ${(() => { const n = mesesNaArea(viagens[0], j, mes); return T(`${n}º mês na área`, `month ${n} in this area`); })()}</span>` : ""}${primeiraConhecida(viagens[0], j) ? htl.html`<span class="jornada-inicio-nota"> — ${T("primeira área conhecida", "first known area")}; ${motivoParcial(viagens[0].x)}</span>` : ""}</span>`]));
   };
 
@@ -1205,7 +1245,10 @@ viewof mapaJornada = {
     for (const v of viagens) {
       let txt = "";
       const j = v.est[atual].j, e = j >= 0 ? v.ev[j] : null;
-      if (e?.tipo === "continua") {
+      v.pill.classList.toggle("sem-info", semInfo[atual]);
+      if (semInfo[atual]) {
+        txt = "";
+      } else if (e?.tipo === "continua") {
         txt = e.ate ? T(`até ${fmtYM(e.ate)}`, `until ${fmtYM(e.ate)}`) : T("continuou", "stayed on");
       } else if (e?.tipo === "area") {
         txt = String(mesesNaArea(v, j, k));
@@ -1213,7 +1256,7 @@ viewof mapaJornada = {
       v.conta.textContent = txt;
       v.conta.hidden = !txt;
       // Companions in this área, on a second line of the moving name.
-      const comp = e?.tipo === "area" && e.companheiros.length ? T(`com ${e.companheiros.join(" e ")}`, `with ${e.companheiros.join(" and ")}`) : "";
+      const comp = !semInfo[atual] && e?.tipo === "area" && e.companheiros.length ? T(`com ${e.companheiros.join(" e ")}`, `with ${e.companheiros.join(" and ")}`) : "";
       v.comp.textContent = comp;
       v.comp.hidden = !comp;
     }
@@ -1258,7 +1301,7 @@ viewof mapaJornada = {
     rotuloMarco.textContent = mesAtual === "2000-07" ? T("os Woodward partem", "the Woodwards leave") : mesAtual === "1997-07" ? T("os Woodward chegam", "the Woodwards arrive") : "";
     rotuloMarco.hidden = !rotuloMarco.textContent;
     slider.value = atual;
-    mostrarParada(viagens[0].est[atual].j, passos[atual].slice(0, 7));
+    mostrarParada(viagens[0].est[atual].j, passos[atual].slice(0, 7), semInfo[atual]);
   }
 
   // Clock: each step holds, then moves to the next.
