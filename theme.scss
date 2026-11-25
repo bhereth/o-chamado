@@ -1082,3 +1082,10 @@ html[data-lang="en"] .lang-pt { display: none !important; }
 .hero div.lead { margin-bottom: 0; }
 .hero .eyebrow p { display: inline; }
 .hero .lead p { font-family: inherit; font-style: inherit; font-size: inherit; color: inherit; }
+
+.organizador {
+  margin: 1.5rem auto 0;
+  font-size: 0.88rem;
+  color: $ink-muted;
+}
+.organizador strong { color: $headings-color; }

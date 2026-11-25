@@ -602,6 +602,7 @@ htl.html`<div>${[...new Set(jornais.map(j => j.ano))].map(y => htl.html`
 
 ```{=html}
 <a class="email-btn" href="mailto:info@ochamado.net?subject=O%20Chamado%20-%20coment%C3%A1rio"><i class="bi bi-envelope"></i> info@ochamado.net</a>
+<p class="organizador"><span class="lang-pt">Site organizado pelo <strong>Élder Bill Hereth</strong>, que serviu com os Woodward.</span><span class="lang-en">Site organized by <strong>Elder Bill Hereth</strong>, who served with the Woodwards.</span></p>
 ```
 :::
 
