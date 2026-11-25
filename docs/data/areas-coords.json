@@ -1,0 +1,1004 @@
+{
+ "areas": [
+  {
+   "area": "Ala do Vale",
+   "zona": "Gravataí",
+   "lat": -29.944,
+   "lon": -50.992,
+   "fonte": "aproximado",
+   "nota": "ala/escritório; onde ficava a zona"
+  },
+  {
+   "area": "Ala",
+   "zona": "Moinhos de Vento",
+   "lat": -30.012,
+   "lon": -51.19,
+   "fonte": "aproximado",
+   "nota": "ala/escritório; onde ficava a zona"
+  },
+  {
+   "area": "Alto Uruguai",
+   "zona": "Erechim",
+   "lat": -27.634,
+   "lon": -52.274,
+   "fonte": "aproximado",
+   "nota": "palpite: região do Alto Uruguai, Erechim"
+  },
+  {
+   "area": "Alto Uruguai",
+   "zona": "Vergueiro",
+   "lat": -27.634,
+   "lon": -52.274,
+   "fonte": "aproximado",
+   "nota": "palpite: região do Alto Uruguai, Erechim"
+  },
+  {
+   "area": "Alvorada",
+   "zona": "Gravataí",
+   "lat": -29.9981,
+   "lon": -51.0773,
+   "fonte": "osm",
+   "nota": "Alvorada, Rio Grande do Sul, Região Sul"
+  },
+  {
+   "area": "Bela Vista",
+   "zona": "Caxias do Sul",
+   "lat": -29.1764,
+   "lon": -51.1513,
+   "fonte": "osm",
+   "nota": "Bela Vista, Primeiro Distrito, Caxias do Sul"
+  },
+  {
+   "area": "Bento Gonçalves",
+   "zona": "Bento Gonçalves",
+   "lat": -29.1662,
+   "lon": -51.5165,
+   "fonte": "ibge",
+   "nota": "cidade de Bento Gonçalves"
+  },
+  {
+   "area": "Bento Gonçalves",
+   "zona": "Caxias do Sul",
+   "lat": -29.1657,
+   "lon": -51.5201,
+   "fonte": "osm",
+   "nota": "Bento Gonçalves, Rio Grande do Sul, Região Sul"
+  },
+  {
+   "area": "Bom Sucesso",
+   "zona": "Gravataí",
+   "lat": -29.9236,
+   "lon": -51.0365,
+   "fonte": "osm",
+   "nota": "Bonsucesso, Gravataí, Rio Grande do Sul"
+  },
+  {
+   "area": "Boqueirão",
+   "zona": "Passo Fundo",
+   "lat": -28.2658,
+   "lon": -52.4267,
+   "fonte": "osm",
+   "nota": "Boqueirão, Passo Fundo, Rio Grande do Sul"
+  },
+  {
+   "area": "Bosque",
+   "zona": "Passo Fundo",
+   "lat": -28.289,
+   "lon": -52.399,
+   "fonte": "aproximado",
+   "nota": "palpite: Condomínio Bosque Village, Lucas Araújo, Passo Fundo"
+  },
+  {
+   "area": "Bosque",
+   "zona": "Vergueiro",
+   "lat": -28.289,
+   "lon": -52.399,
+   "fonte": "aproximado",
+   "nota": "palpite: Condomínio Bosque Village, Lucas Araújo, Passo Fundo"
+  },
+  {
+   "area": "Botafogo",
+   "zona": "Bento Gonçalves",
+   "lat": -29.1787,
+   "lon": -51.5117,
+   "fonte": "osm",
+   "nota": "Botafogo, Bento Gonçalves, Rio Grande do Sul"
+  },
+  {
+   "area": "Botafogo",
+   "zona": "Caxias do Sul",
+   "lat": -29.1787,
+   "lon": -51.5117,
+   "fonte": "osm",
+   "nota": "Botafogo, Bento Gonçalves, Rio Grande do Sul"
+  },
+  {
+   "area": "Cachoeirinha",
+   "zona": "Gravataí",
+   "lat": -29.9493,
+   "lon": -51.0899,
+   "fonte": "osm",
+   "nota": "Cachoeirinha, Rio Grande do Sul, Região Sul"
+  },
+  {
+   "area": "Campo Bom",
+   "zona": "Novo Hamburgo",
+   "lat": -29.6781,
+   "lon": -51.058,
+   "fonte": "osm",
+   "nota": "Campo Bom, Rio Grande do Sul, Região Sul"
+  },
+  {
+   "area": "Canela",
+   "zona": "Caxias do Sul",
+   "lat": -29.356,
+   "lon": -50.8119,
+   "fonte": "ibge",
+   "nota": "cidade de Canela"
+  },
+  {
+   "area": "Canoas",
+   "zona": "Canoas",
+   "lat": -29.9128,
+   "lon": -51.1857,
+   "fonte": "ibge",
+   "nota": "cidade de Canoas"
+  },
+  {
+   "area": "Canudos",
+   "zona": "Novo Hamburgo",
+   "lat": -29.6896,
+   "lon": -51.0924,
+   "fonte": "osm",
+   "nota": "Canudos, Novo Hamburgo, Rio Grande do Sul"
+  },
+  {
+   "area": "Capão da Canoa",
+   "zona": "Capão da Canoa",
+   "lat": -29.7642,
+   "lon": -50.0282,
+   "fonte": "ibge",
+   "nota": "cidade de Capão da Canoa"
+  },
+  {
+   "area": "Capão da Canoa",
+   "zona": "Osório",
+   "lat": -29.7508,
+   "lon": -50.0211,
+   "fonte": "osm",
+   "nota": "Capão da Canoa, Rio Grande do Sul, Região Sul"
+  },
+  {
+   "area": "Carazinho",
+   "zona": "Vergueiro",
+   "lat": -28.2982,
+   "lon": -52.7942,
+   "fonte": "osm",
+   "nota": "Carazinho, Rio Grande do Sul, Região Sul"
+  },
+  {
+   "area": "Caxias do Sul",
+   "zona": "Caxias do Sul",
+   "lat": -29.1629,
+   "lon": -51.1792,
+   "fonte": "ibge",
+   "nota": "cidade de Caxias do Sul"
+  },
+  {
+   "area": "Caxias",
+   "zona": "Caxias do Sul",
+   "lat": -29.1629,
+   "lon": -51.1792,
+   "fonte": "ibge",
+   "nota": "cidade de Caxias do Sul"
+  },
+  {
+   "area": "Centro",
+   "zona": "Canoas",
+   "lat": -29.9162,
+   "lon": -51.1845,
+   "fonte": "osm",
+   "nota": "Centro, Canoas, Rio Grande do Sul"
+  },
+  {
+   "area": "Cruz Alta Oeste",
+   "zona": "Ijuí",
+   "lat": -28.645,
+   "lon": -53.6048,
+   "fonte": "aproximado",
+   "nota": "não encontrado; centro de Cruz Alta"
+  },
+  {
+   "area": "Cruz Alta",
+   "zona": "Ijuí",
+   "lat": -28.645,
+   "lon": -53.6048,
+   "fonte": "ibge",
+   "nota": "cidade de Cruz Alta"
+  },
+  {
+   "area": "Cruzeiro",
+   "zona": "Santo Ângelo",
+   "lat": -28.284,
+   "lon": -54.2706,
+   "fonte": "aproximado",
+   "nota": "palpite: Rua Cruzeiro do Sul, Santo Ângelo, Rio Grande do Sul"
+  },
+  {
+   "area": "Duque",
+   "zona": "São Leopoldo",
+   "lat": -29.7969,
+   "lon": -51.13,
+   "fonte": "osm",
+   "nota": "Duque de Caxias, São Leopoldo, Rio Grande do Sul"
+  },
+  {
+   "area": "Eldorado do Sul",
+   "zona": "Guaíba",
+   "lat": -29.9976,
+   "lon": -51.3064,
+   "fonte": "osm",
+   "nota": "Eldorado do Sul, Rio Grande do Sul, Região Sul"
+  },
+  {
+   "area": "Eldorado do Sul",
+   "zona": "Moinhos de Vento",
+   "lat": -29.9976,
+   "lon": -51.3064,
+   "fonte": "osm",
+   "nota": "Eldorado do Sul, Rio Grande do Sul, Região Sul"
+  },
+  {
+   "area": "Eldorado",
+   "zona": "Moinhos de Vento",
+   "lat": -29.9976,
+   "lon": -51.3064,
+   "fonte": "osm",
+   "nota": "Eldorado do Sul, Rio Grande do Sul, Região Sul"
+  },
+  {
+   "area": "Elizabete",
+   "zona": "Porto Alegre",
+   "lat": -30.1,
+   "lon": -51.0727,
+   "fonte": "manual",
+   "nota": "Jardim Elizabete (Viamão), confirmado"
+  },
+  {
+   "area": "Erechim",
+   "zona": "Erechim",
+   "lat": -27.6364,
+   "lon": -52.2697,
+   "fonte": "ibge",
+   "nota": "cidade de Erechim"
+  },
+  {
+   "area": "Erechim",
+   "zona": "Vergueiro",
+   "lat": -27.6364,
+   "lon": -52.2697,
+   "fonte": "ibge",
+   "nota": "cidade de Erechim"
+  },
+  {
+   "area": "Esteio",
+   "zona": "Canoas",
+   "lat": -29.8512,
+   "lon": -51.1779,
+   "fonte": "osm",
+   "nota": "Esteio, Rio Grande do Sul, Região Sul"
+  },
+  {
+   "area": "Esteio",
+   "zona": "Canoas-Esteio",
+   "lat": -29.8512,
+   "lon": -51.1779,
+   "fonte": "osm",
+   "nota": "Esteio, Rio Grande do Sul, Região Sul"
+  },
+  {
+   "area": "Estância Velha",
+   "zona": "Canoas",
+   "lat": -29.9169,
+   "lon": -51.1435,
+   "fonte": "osm",
+   "nota": "Estância Velha, Canoas, Rio Grande do Sul"
+  },
+  {
+   "area": "Estância Velha",
+   "zona": "Canoas-Esteio",
+   "lat": -29.9169,
+   "lon": -51.1435,
+   "fonte": "osm",
+   "nota": "Estância Velha, Canoas, Rio Grande do Sul"
+  },
+  {
+   "area": "Farroupilha",
+   "zona": "Bento Gonçalves",
+   "lat": -29.2265,
+   "lon": -51.3468,
+   "fonte": "osm",
+   "nota": "Farroupilha, Rio Grande do Sul, Região Sul"
+  },
+  {
+   "area": "Farroupilha",
+   "zona": "Caxias do Sul",
+   "lat": -29.2265,
+   "lon": -51.3468,
+   "fonte": "osm",
+   "nota": "Farroupilha, Rio Grande do Sul, Região Sul"
+  },
+  {
+   "area": "Feitoria",
+   "zona": "São Leopoldo",
+   "lat": -29.7532,
+   "lon": -51.097,
+   "fonte": "osm",
+   "nota": "Feitoria, São Leopoldo, Rio Grande do Sul"
+  },
+  {
+   "area": "Gramado",
+   "zona": "Caxias do Sul",
+   "lat": -29.3793,
+   "lon": -50.8737,
+   "fonte": "osm",
+   "nota": "Gramado, Rio Grande do Sul, Região Sul"
+  },
+  {
+   "area": "Gravataí",
+   "zona": "Gravataí",
+   "lat": -29.9413,
+   "lon": -50.9869,
+   "fonte": "ibge",
+   "nota": "cidade de Gravataí"
+  },
+  {
+   "area": "Guajuviras",
+   "zona": "Canoas",
+   "lat": -29.8955,
+   "lon": -51.1388,
+   "fonte": "osm",
+   "nota": "Guajuviras, Canoas, Rio Grande do Sul"
+  },
+  {
+   "area": "Guarani",
+   "zona": "Novo Hamburgo",
+   "lat": -29.6725,
+   "lon": -51.1264,
+   "fonte": "osm",
+   "nota": "Guarani, Novo Hamburgo, Rio Grande do Sul"
+  },
+  {
+   "area": "Guaíba Centro",
+   "zona": "Guaíba",
+   "lat": -30.1098,
+   "lon": -51.3157,
+   "fonte": "osm",
+   "nota": "Centro, Guaíba, Rio Grande do Sul"
+  },
+  {
+   "area": "Guaíba Centro",
+   "zona": "Moinhos de Vento",
+   "lat": -30.1098,
+   "lon": -51.3157,
+   "fonte": "osm",
+   "nota": "Centro, Guaíba, Rio Grande do Sul"
+  },
+  {
+   "area": "Guaíba Colina",
+   "zona": "Guaíba",
+   "lat": -30.1209,
+   "lon": -51.3378,
+   "fonte": "osm",
+   "nota": "Colina, Guaíba, Rio Grande do Sul"
+  },
+  {
+   "area": "Guaíba Colina",
+   "zona": "Moinhos de Vento",
+   "lat": -30.1209,
+   "lon": -51.3378,
+   "fonte": "osm",
+   "nota": "Colina, Guaíba, Rio Grande do Sul"
+  },
+  {
+   "area": "Guaíba Jardim",
+   "zona": "Moinhos de Vento",
+   "lat": -30.1157,
+   "lon": -51.364,
+   "fonte": "osm",
+   "nota": "Jardim dos Lagos, Guaíba, Rio Grande do Sul"
+  },
+  {
+   "area": "Guaíba",
+   "zona": "Moinhos de Vento",
+   "lat": -30.1136,
+   "lon": -51.3253,
+   "fonte": "manual",
+   "nota": "cidade de Guaíba"
+  },
+  {
+   "area": "Harmonia",
+   "zona": "Canoas",
+   "lat": -29.914,
+   "lon": -51.2028,
+   "fonte": "osm",
+   "nota": "Harmonia, Canoas, Rio Grande do Sul"
+  },
+  {
+   "area": "Higienópolis",
+   "zona": "Moinhos de Vento",
+   "lat": -30.0138,
+   "lon": -51.1823,
+   "fonte": "osm",
+   "nota": "Higienópolis, Porto Alegre, Rio Grande do Sul"
+  },
+  {
+   "area": "Humaitá",
+   "zona": "Porto Alegre",
+   "lat": -29.9794,
+   "lon": -51.1869,
+   "fonte": "osm",
+   "nota": "Humaitá, Porto Alegre, Rio Grande do Sul"
+  },
+  {
+   "area": "Ijuí Jardim",
+   "zona": "Ijuí",
+   "lat": -28.3834,
+   "lon": -53.8921,
+   "fonte": "osm",
+   "nota": "Jardim, Ijuí, Rio Grande do Sul"
+  },
+  {
+   "area": "Ijuí",
+   "zona": "Ijuí",
+   "lat": -28.388,
+   "lon": -53.92,
+   "fonte": "ibge",
+   "nota": "cidade de Ijuí"
+  },
+  {
+   "area": "Jardim Alcântara",
+   "zona": "Novo Hamburgo",
+   "lat": -29.678,
+   "lon": -51.131,
+   "fonte": "aproximado",
+   "nota": "não encontrado; onde ficava a zona"
+  },
+  {
+   "area": "Jardim Alcântara",
+   "zona": "Taquara",
+   "lat": -29.65,
+   "lon": -50.781,
+   "fonte": "aproximado",
+   "nota": "não encontrado; onde ficava a zona"
+  },
+  {
+   "area": "Jardim Guaíba",
+   "zona": "Guaíba",
+   "lat": -30.1194,
+   "lon": -51.3696,
+   "fonte": "aproximado",
+   "nota": "palpite: UERGS - Universidade Estadual do Rio Grande do Sul, 230, Rua Santa Maria"
+  },
+  {
+   "area": "Jardim Guaíba",
+   "zona": "Moinhos de Vento",
+   "lat": -30.1194,
+   "lon": -51.3696,
+   "fonte": "aproximado",
+   "nota": "palpite: mesmo lugar de Jardim Guaíba (zona Guaíba)"
+  },
+  {
+   "area": "Kephas",
+   "zona": "Novo Hamburgo",
+   "lat": -29.678,
+   "lon": -51.131,
+   "fonte": "aproximado",
+   "nota": "ala/escritório; onde ficava a zona"
+  },
+  {
+   "area": "Lagoa Vermelha",
+   "zona": "Vacaria",
+   "lat": -28.2093,
+   "lon": -51.5248,
+   "fonte": "ibge",
+   "nota": "cidade de Lagoa Vermelha"
+  },
+  {
+   "area": "Lajeado",
+   "zona": "Montenegro",
+   "lat": -29.4591,
+   "lon": -51.9644,
+   "fonte": "ibge",
+   "nota": "cidade de Lajeado"
+  },
+  {
+   "area": "Leopoldina",
+   "zona": "Porto Alegre",
+   "lat": -30.0186,
+   "lon": -51.1136,
+   "fonte": "osm",
+   "nota": "Jardim Leopoldina, Porto Alegre, Rio Grande do Sul"
+  },
+  {
+   "area": "Liberdade",
+   "zona": "Novo Hamburgo",
+   "lat": -29.7185,
+   "lon": -51.1408,
+   "fonte": "osm",
+   "nota": "Liberdade, Novo Hamburgo, Rio Grande do Sul"
+  },
+  {
+   "area": "Liberdade",
+   "zona": "Taquara",
+   "lat": -29.7185,
+   "lon": -51.1408,
+   "fonte": "osm",
+   "nota": "Liberdade, Novo Hamburgo, Rio Grande do Sul"
+  },
+  {
+   "area": "Lindóia",
+   "zona": "Porto Alegre",
+   "lat": -30.0036,
+   "lon": -51.1504,
+   "fonte": "osm",
+   "nota": "Jardim Lindóia, Porto Alegre, Rio Grande do Sul"
+  },
+  {
+   "area": "Marau",
+   "zona": "Passo Fundo",
+   "lat": -28.4493,
+   "lon": -52.2002,
+   "fonte": "osm",
+   "nota": "Marau, Rio Grande do Sul, Região Sul"
+  },
+  {
+   "area": "Marau",
+   "zona": "Vergueiro",
+   "lat": -28.4493,
+   "lon": -52.2002,
+   "fonte": "osm",
+   "nota": "Marau, Rio Grande do Sul, Região Sul"
+  },
+  {
+   "area": "Mathias Velho",
+   "zona": "Canoas",
+   "lat": -29.8989,
+   "lon": -51.2096,
+   "fonte": "osm",
+   "nota": "Mathias Velho, Canoas, Rio Grande do Sul"
+  },
+  {
+   "area": "Mathias Velho",
+   "zona": "Canoas-Esteio",
+   "lat": -29.8989,
+   "lon": -51.2096,
+   "fonte": "osm",
+   "nota": "Mathias Velho, Canoas, Rio Grande do Sul"
+  },
+  {
+   "area": "Medianeira",
+   "zona": "Vergueiro",
+   "lat": -28.23,
+   "lon": -52.44,
+   "fonte": "aproximado",
+   "nota": "não encontrado; onde ficava a zona"
+  },
+  {
+   "area": "Montenegro",
+   "zona": "Montenegro",
+   "lat": -29.6824,
+   "lon": -51.4679,
+   "fonte": "ibge",
+   "nota": "cidade de Montenegro"
+  },
+  {
+   "area": "Morada do Sol",
+   "zona": "Passo Fundo",
+   "lat": -28.262,
+   "lon": -52.408,
+   "fonte": "aproximado",
+   "nota": "não encontrado; onde ficava a zona"
+  },
+  {
+   "area": "Morada do Sul",
+   "zona": "Passo Fundo",
+   "lat": -28.262,
+   "lon": -52.408,
+   "fonte": "aproximado",
+   "nota": "não encontrado; onde ficava a zona"
+  },
+  {
+   "area": "Moreira César",
+   "zona": "Caxias do Sul",
+   "lat": -29.16,
+   "lon": -51.1858,
+   "fonte": "aproximado",
+   "nota": "palpite: Rua Moreira César, Pio X, Primeiro Distrito"
+  },
+  {
+   "area": "Niterói",
+   "zona": "Moinhos de Vento",
+   "lat": -29.9512,
+   "lon": -51.1649,
+   "fonte": "osm",
+   "nota": "Niterói, Canoas, Rio Grande do Sul"
+  },
+  {
+   "area": "Novo Hamburgo Ala",
+   "zona": "Novo Hamburgo",
+   "lat": -29.678,
+   "lon": -51.131,
+   "fonte": "aproximado",
+   "nota": "ala/escritório; onde ficava a zona"
+  },
+  {
+   "area": "Novo Hamburgo",
+   "zona": "Novo Hamburgo",
+   "lat": -29.6875,
+   "lon": -51.1328,
+   "fonte": "ibge",
+   "nota": "cidade de Novo Hamburgo"
+  },
+  {
+   "area": "Osório",
+   "zona": "Osório",
+   "lat": -29.8881,
+   "lon": -50.2667,
+   "fonte": "ibge",
+   "nota": "cidade de Osório"
+  },
+  {
+   "area": "Palmeira",
+   "zona": "Ijuí",
+   "lat": -27.9007,
+   "lon": -53.3134,
+   "fonte": "aproximado",
+   "nota": "provavelmente Palmeira das Missões (confirmar)"
+  },
+  {
+   "area": "Parobé",
+   "zona": "Taquara",
+   "lat": -29.6243,
+   "lon": -50.8312,
+   "fonte": "osm",
+   "nota": "Parobé, Rio Grande do Sul, Região Sul"
+  },
+  {
+   "area": "Parque dos Anjos",
+   "zona": "Gravataí",
+   "lat": -29.9503,
+   "lon": -50.9741,
+   "fonte": "osm",
+   "nota": "Parque dos Anjos, Gravataí, Rio Grande do Sul"
+  },
+  {
+   "area": "Parque dos Maias",
+   "zona": "Porto Alegre",
+   "lat": -30.0078,
+   "lon": -51.0948,
+   "fonte": "aproximado",
+   "nota": "palpite: Parque dos Maias, Rubem Berta, Porto Alegre"
+  },
+  {
+   "area": "Passo Fundo",
+   "zona": "Passo Fundo",
+   "lat": -28.2576,
+   "lon": -52.4091,
+   "fonte": "ibge",
+   "nota": "cidade de Passo Fundo"
+  },
+  {
+   "area": "Petrópolis",
+   "zona": "Porto Alegre",
+   "lat": -30.0394,
+   "lon": -51.183,
+   "fonte": "osm",
+   "nota": "Petrópolis, Porto Alegre, Rio Grande do Sul"
+  },
+  {
+   "area": "Planaltina",
+   "zona": "Passo Fundo",
+   "lat": -28.2775,
+   "lon": -52.3859,
+   "fonte": "osm",
+   "nota": "Planaltina, Passo Fundo, Rio Grande do Sul"
+  },
+  {
+   "area": "Planaltina",
+   "zona": "Vergueiro",
+   "lat": -28.2775,
+   "lon": -52.3859,
+   "fonte": "osm",
+   "nota": "Planaltina, Passo Fundo, Rio Grande do Sul"
+  },
+  {
+   "area": "Porto Alegre",
+   "zona": "Moinhos de Vento",
+   "lat": -30.0318,
+   "lon": -51.2065,
+   "fonte": "ibge",
+   "nota": "cidade de Porto Alegre"
+  },
+  {
+   "area": "Porto Alegre",
+   "zona": "Porto Alegre",
+   "lat": -30.0318,
+   "lon": -51.2065,
+   "fonte": "ibge",
+   "nota": "cidade de Porto Alegre"
+  },
+  {
+   "area": "Presidente Vargas",
+   "zona": "Santo Ângelo",
+   "lat": -28.3065,
+   "lon": -54.2661,
+   "fonte": "aproximado",
+   "nota": "palpite: ESC Tecnica Est Presidente Getulio Vargas, 1116, Avenida Getúlio Vargas"
+  },
+  {
+   "area": "Primavera",
+   "zona": "Novo Hamburgo",
+   "lat": -29.6922,
+   "lon": -51.1513,
+   "fonte": "osm",
+   "nota": "Primavera, Novo Hamburgo, Rio Grande do Sul"
+  },
+  {
+   "area": "Primavera",
+   "zona": "Taquara",
+   "lat": -29.6922,
+   "lon": -51.1513,
+   "fonte": "osm",
+   "nota": "Primavera, Novo Hamburgo, Rio Grande do Sul"
+  },
+  {
+   "area": "Protásio Alves",
+   "zona": "Porto Alegre",
+   "lat": -30.056,
+   "lon": -51.152,
+   "fonte": "aproximado",
+   "nota": "Av. Protásio Alves, Porto Alegre (posição aproximada)"
+  },
+  {
+   "area": "Rio Branco",
+   "zona": "Bento Gonçalves",
+   "lat": -29.1775,
+   "lon": -51.194,
+   "fonte": "osm",
+   "nota": "Rio Branco, Primeiro Distrito, Caxias do Sul"
+  },
+  {
+   "area": "Rio Branco",
+   "zona": "Caxias do Sul",
+   "lat": -29.1775,
+   "lon": -51.194,
+   "fonte": "osm",
+   "nota": "Rio Branco, Primeiro Distrito, Caxias do Sul"
+  },
+  {
+   "area": "Rio Branco",
+   "zona": "Moinhos de Vento",
+   "lat": -30.0348,
+   "lon": -51.2007,
+   "fonte": "osm",
+   "nota": "Rio Branco, Porto Alegre, Rio Grande do Sul"
+  },
+  {
+   "area": "Rio Sinos",
+   "zona": "São Leopoldo",
+   "lat": -29.7526,
+   "lon": -51.148,
+   "fonte": "osm",
+   "nota": "Rio dos Sinos, São Leopoldo, Rio Grande do Sul"
+  },
+  {
+   "area": "Rio dos Sinos",
+   "zona": "São Leopoldo",
+   "lat": -29.7526,
+   "lon": -51.148,
+   "fonte": "osm",
+   "nota": "Rio dos Sinos, São Leopoldo, Rio Grande do Sul"
+  },
+  {
+   "area": "Rossetti",
+   "zona": "Caxias do Sul",
+   "lat": -29.1563,
+   "lon": -51.1931,
+   "fonte": "aproximado",
+   "nota": "palpite: Avenida Rossetti, Pio X, Primeiro Distrito"
+  },
+  {
+   "area": "Rubem Berta",
+   "zona": "Porto Alegre",
+   "lat": -30.0136,
+   "lon": -51.0964,
+   "fonte": "osm",
+   "nota": "Rubem Berta, Porto Alegre, Rio Grande do Sul"
+  },
+  {
+   "area": "Santa Rosa",
+   "zona": "Santo Ângelo",
+   "lat": -27.8702,
+   "lon": -54.4796,
+   "fonte": "ibge",
+   "nota": "cidade de Santa Rosa"
+  },
+  {
+   "area": "Santo Antônio",
+   "zona": "Santo Ângelo",
+   "lat": -28.3101,
+   "lon": -54.2467,
+   "fonte": "aproximado",
+   "nota": "palpite: Rua Santo Antônio, Santo Ângelo, Rio Grande do Sul"
+  },
+  {
+   "area": "Santo Ângelo",
+   "zona": "Santo Ângelo",
+   "lat": -28.3001,
+   "lon": -54.2668,
+   "fonte": "ibge",
+   "nota": "cidade de Santo Ângelo"
+  },
+  {
+   "area": "Sapiranga",
+   "zona": "Novo Hamburgo",
+   "lat": -29.6392,
+   "lon": -51.0069,
+   "fonte": "osm",
+   "nota": "Sapiranga, Rio Grande do Sul, Região Sul"
+  },
+  {
+   "area": "Sapiranga",
+   "zona": "Taquara",
+   "lat": -29.6392,
+   "lon": -51.0069,
+   "fonte": "osm",
+   "nota": "Sapiranga, Rio Grande do Sul, Região Sul"
+  },
+  {
+   "area": "Sapucaia do Sul",
+   "zona": "São Leopoldo",
+   "lat": -29.8197,
+   "lon": -51.1609,
+   "fonte": "osm",
+   "nota": "Sapucaia do Sul, Rio Grande do Sul, Região Sul"
+  },
+  {
+   "area": "Sapucaia",
+   "zona": "São Leopoldo",
+   "lat": -29.8197,
+   "lon": -51.1609,
+   "fonte": "osm",
+   "nota": "Sapucaia do Sul, Rio Grande do Sul, Região Sul"
+  },
+  {
+   "area": "Staff Ala",
+   "zona": "Moinhos de Vento",
+   "lat": -30.012,
+   "lon": -51.19,
+   "fonte": "aproximado",
+   "nota": "ala/escritório; onde ficava a zona"
+  },
+  {
+   "area": "Staff",
+   "zona": "Moinhos de Vento",
+   "lat": -30.012,
+   "lon": -51.19,
+   "fonte": "aproximado",
+   "nota": "ala/escritório; onde ficava a zona"
+  },
+  {
+   "area": "São Leopoldo",
+   "zona": "São Leopoldo",
+   "lat": -29.7545,
+   "lon": -51.1498,
+   "fonte": "ibge",
+   "nota": "cidade de São Leopoldo"
+  },
+  {
+   "area": "São Luiz Gonzaga",
+   "zona": "Santo Ângelo",
+   "lat": -28.412,
+   "lon": -54.9559,
+   "fonte": "ibge",
+   "nota": "cidade de São Luiz Gonzaga"
+  },
+  {
+   "area": "São Luiz",
+   "zona": "Canoas",
+   "lat": -29.8874,
+   "lon": -51.1875,
+   "fonte": "osm",
+   "nota": "São Luís, Canoas, Rio Grande do Sul"
+  },
+  {
+   "area": "São Luiz",
+   "zona": "Canoas-Esteio",
+   "lat": -29.8874,
+   "lon": -51.1875,
+   "fonte": "osm",
+   "nota": "São Luís, Canoas, Rio Grande do Sul"
+  },
+  {
+   "area": "São Luiz",
+   "zona": "Santo Ângelo",
+   "lat": -28.412,
+   "lon": -54.9559,
+   "fonte": "aproximado",
+   "nota": "provavelmente São Luiz Gonzaga (confirmar)"
+  },
+  {
+   "area": "Taquara",
+   "zona": "Novo Hamburgo",
+   "lat": -29.6452,
+   "lon": -50.7832,
+   "fonte": "osm",
+   "nota": "Taquara, Rio Grande do Sul, Região Sul"
+  },
+  {
+   "area": "Taquara",
+   "zona": "Taquara",
+   "lat": -29.6505,
+   "lon": -50.7753,
+   "fonte": "ibge",
+   "nota": "cidade de Taquara"
+  },
+  {
+   "area": "Timbaúva",
+   "zona": "Montenegro",
+   "lat": -29.7021,
+   "lon": -51.4804,
+   "fonte": "osm",
+   "nota": "Timbaúva, Montenegro, Rio Grande do Sul"
+  },
+  {
+   "area": "Torres",
+   "zona": "Capão da Canoa",
+   "lat": -29.3334,
+   "lon": -49.7333,
+   "fonte": "ibge",
+   "nota": "cidade de Torres"
+  },
+  {
+   "area": "Torres",
+   "zona": "Osório",
+   "lat": -29.3334,
+   "lon": -49.7333,
+   "fonte": "ibge",
+   "nota": "cidade de Torres"
+  },
+  {
+   "area": "Tramandaí",
+   "zona": "Osório",
+   "lat": -29.9855,
+   "lon": -50.1316,
+   "fonte": "osm",
+   "nota": "Tramandaí, Rio Grande do Sul, Região Sul"
+  },
+  {
+   "area": "Vacaria",
+   "zona": "Vacaria",
+   "lat": -28.5079,
+   "lon": -50.9418,
+   "fonte": "ibge",
+   "nota": "cidade de Vacaria"
+  },
+  {
+   "area": "Vergueiro",
+   "zona": "Vergueiro",
+   "lat": -28.256,
+   "lon": -52.418,
+   "fonte": "aproximado",
+   "nota": "bairro Vergueiro, Passo Fundo (posição aproximada)"
+  },
+  {
+   "area": "Vista Alegre",
+   "zona": "Gravataí",
+   "lat": -29.921,
+   "lon": -51.0414,
+   "fonte": "aproximado",
+   "nota": "palpite: Rua Vista Alegre, Planaltina, Gravataí"
+  }
+ ]
+}

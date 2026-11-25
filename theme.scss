@@ -1103,6 +1103,55 @@ html[data-lang="en"] .lang-pt { display: none !important; }
   vertical-align: middle;
   margin-right: 0.3rem;
 }
+.mapa-legenda .ponto-area {
+  background: conic-gradient(#1f6fb4 0 25%, #d62728 0 50%, #2ca02c 0 75%, #e9a23b 0);
+  border: 1.5px solid #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+.filtro-zonas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem;
+  max-width: 1100px;
+  margin: 0 auto 0.8rem;
+}
+.filtro-zona, .filtro-tudo,
+.filtro-zona.btn, .filtro-tudo.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  border-radius: 999px;
+  border: 1px solid rgba($primary, 0.25);
+  background: $paper;
+  color: $body-color;
+  box-shadow: none;
+  transition: opacity 0.15s, background-color 0.15s;
+  &:hover { background: rgba($primary, 0.08); color: $body-color; }
+}
+.filtro-tudo, .filtro-tudo.btn { font-weight: 600; color: $primary; }
+.filtro-rotulo {
+  align-self: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $ink-muted;
+  margin-right: 0.25rem;
+}
+.aviso-filtro { text-align: center; font-size: 0.85rem; color: $ink-muted; margin: 0 0 1rem; }
+.aviso-filtro .filtro-tudo { margin-left: 0.4rem; }
+.filtro-zona .cor { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+.filtro-zona.off { color: $ink-muted; background: rgba($ink-muted, 0.08); border-color: rgba($ink-muted, 0.2); opacity: 0.7; }
+.filtro-zona.off .cor { background: transparent !important; box-shadow: inset 0 0 0 1.5px $ink-muted; }
+.mapa-legenda .ponto-zona { background: #fff; border: 2px solid $primary; margin-left: 0.8rem; }
+.mapa-missao .leaflet-tooltip.rotulo-zona { cursor: pointer; }
+.mapa-missao .leaflet-tooltip.dica-area { font-size: 0.78rem; line-height: 1.35; }
+.dica-area .mapa-dica-zona { color: $ink-muted; font-size: 0.72rem; margin-left: 0.25rem; }
 
 @keyframes destaque-zona {
   0% { box-shadow: 0 0 0 0 rgba($rs-amarelo, 0.9); }

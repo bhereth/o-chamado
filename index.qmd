@@ -426,6 +426,26 @@ function linhaArea(a, z, cont) {
 ```
 
 ```{ojs}
+// Zone toggles for the areas map: one button per zone of the month, plus all / none.
+{
+  const zonas = snapAtual.zonas.filter(z => !z.especial).map(z => z.nome);
+  const ocultas = new Set(zonasOcultas);
+  const alternar = nome => {
+    const s = new Set(zonasOcultas);
+    s.has(nome) ? s.delete(nome) : s.add(nome);
+    definir(viewof zonasOcultas, [...s]);
+  };
+  return htl.html`<div class="filtro-zonas">
+    <span class="filtro-rotulo">${T("Zonas", "Zones")}</span>
+    <button class="filtro-tudo" onclick=${() => definir(viewof zonasOcultas, [])}>${T("Todas", "All")}</button>
+    <button class="filtro-tudo" onclick=${() => definir(viewof zonasOcultas, TODAS_ZONAS)}>${T("Nenhuma", "None")}</button>
+    ${zonas.map(n => htl.html`<button class=${ocultas.has(n) ? "filtro-zona off" : "filtro-zona"} aria-pressed=${!ocultas.has(n)} onclick=${() => alternar(n)}>
+      <span class="cor" style=${`background:${corZona(n)}`}></span>${n}</button>`)}
+  </div>`;
+}
+```
+
+```{ojs}
 ZONA_POS = ({
   "Porto Alegre": [-30.035, -51.225], "Moinhos de Vento": [-30.012, -51.190], "Guaíba": [-30.114, -51.325],
   "Canoas": [-29.917, -51.183], "Canoas-Esteio": [-29.852, -51.179], "Gravataí": [-29.944, -50.992],
@@ -435,6 +455,35 @@ ZONA_POS = ({
   "Erechim": [-27.634, -52.274], "Osório": [-29.887, -50.270], "Capão da Canoa": [-29.745, -50.010],
   "Ijuí": [-28.388, -53.914], "Santo Ângelo": [-28.299, -54.263]
 })
+
+// A fixed color per zone (same in every month). Neighboring zones get clearly different hues.
+ZONA_COR = ({
+  "Porto Alegre": "#1f6fb4", "Moinhos de Vento": "#8e44ad", "Guaíba": "#17a2b8", "Canoas": "#d62728",
+  "Canoas-Esteio": "#e377c2", "Gravataí": "#ff7f0e", "São Leopoldo": "#2ca02c", "Novo Hamburgo": "#8c564b",
+  "Taquara": "#a9a619", "Montenegro": "#006d77", "Caxias do Sul": "#b5179e", "Bento Gonçalves": "#e9a23b",
+  "Vacaria": "#264653", "Passo Fundo": "#3a86ff", "Vergueiro": "#6a3fd0", "Erechim": "#2a9d8f",
+  "Osório": "#ef476f", "Capão da Canoa": "#06a77d", "Ijuí": "#e76f51", "Santo Ângelo": "#9c6644",
+  "Assistentes": "#1b5e46", "Staff": "#5c6370", "Élderes Viajantes": "#b8862a"
+})
+// Assistants, Staff and Traveling Elders worked from the mission office, Av. Princesa Isabel 342, Porto Alegre.
+ESCRITORIO = [-30.0505, -51.2115]
+TODAS_ZONAS = [...new Set(snaps.flatMap(s => s.zonas.filter(z => !z.especial).map(z => z.nome)))]
+// The office groups (Assistants, Staff, Traveling Elders) show only while every zone is on;
+// once specific zones are picked, only those zones show.
+mostrarEspeciais = snapAtual.zonas.filter(z => !z.especial).every(z => !zonasOcultas.includes(z.nome))
+corZona = z => ZONA_COR[z] ?? "#555"
+
+// Zones hidden on the areas map (kept when the month changes).
+viewof zonasOcultas = estado([])
+
+// Where each área was (data/areas-coords.json, built by scripts/geocode-areas.mjs and hand-checked).
+// Áreas are grouped without their A/B letters, numbers and LD/LZ/Casal tags.
+areasCoords = FileAttachment("data/areas-coords.json").json()
+baseArea = nome => nome.replace(/(\s+(LD|LZ|Casal|[A-D]|\d+))+$/i, "").trim()
+areaCoord = {
+  const m = new Map(areasCoords.areas.map(e => [`${e.area}|${e.zona}`, e]));
+  return (nome, zona) => m.get(`${baseArea(nome)}|${zona}`);
+}
 
 ZONA_METRO = ["Porto Alegre", "Moinhos de Vento", "Guaíba", "Canoas", "Canoas-Esteio", "Gravataí", "São Leopoldo", "Novo Hamburgo"]
 
@@ -476,17 +525,15 @@ viewof mapa = {
   const el = viewof mapa, camada = el.camada;
   camada.clearLayers();
   el.grandePoa.setIcon(L.divIcon({ className: "rotulo-grande-poa", html: `${T("Grande Porto Alegre", "Greater Porto Alegre")} <i class='bi bi-zoom-in'></i>`, iconSize: null }));
+  // Zones: a small ring with the zone's name; tapping it scrolls to the zone's card.
+  const ocultas = new Set(zonasOcultas);
   for (const z of snapAtual.zonas) {
     const pos = ZONA_POS[z.nome];
-    if (!pos) continue;
-    const n = z.areas.length;
-    const marcador = L.circleMarker(pos, {
-      radius: 12, color: "#fff", weight: 2,
-      fillColor: "#1b5e46", fillOpacity: 0.85
-    });
+    if (!pos || ocultas.has(z.nome)) continue;
+    const marcador = L.circleMarker(pos, { radius: 5, color: corZona(z.nome), weight: 2.5, fillColor: "#fff", fillOpacity: 1 });
     const metro = ZONA_METRO.includes(z.nome);
-    marcador.bindTooltip(`${z.nome} <span>${n}</span>`, {
-      permanent: true, direction: z.nome === "Vergueiro" ? "left" : "right", offset: [z.nome === "Vergueiro" ? -8 : 8, 0],
+    marcador.bindTooltip(`${z.nome} <span>${z.areas.length}</span>`, {
+      permanent: true, interactive: true, direction: z.nome === "Vergueiro" ? "left" : "right", offset: [z.nome === "Vergueiro" ? -6 : 6, 0],
       className: metro ? "rotulo-zona rotulo-metro" : "rotulo-zona"
     });
     marcador.on("click", () => {
@@ -497,15 +544,86 @@ viewof mapa = {
     });
     camada.addLayer(marcador);
   }
-  return htl.html`<p class="mapa-legenda"><span class="ponto"></span> ${T(
-    `Zonas em ${fmtMesAno(snapAtual)}. Toque numa zona para ver suas áreas.`,
-    `Zones in ${fmtMesAno(snapAtual)}. Tap a zone to see its areas.`)}</p>`;
+  // Office groups (Assistants, Staff, Traveling Elders): one dot each around the mission office.
+  const grupos = mostrarEspeciais ? snapAtual.zonas.filter(z => z.especial) : [];
+  if (grupos.length) {
+    const escritorio = L.circleMarker(ESCRITORIO, { radius: 4, color: "#1b5e46", weight: 2, fillColor: "#fff", fillOpacity: 1 });
+    escritorio.bindTooltip(T("Escritório da missão", "Mission office"), { permanent: true, direction: "left", offset: [-8, 0], className: "rotulo-zona rotulo-metro" });
+    camada.addLayer(escritorio);
+    grupos.forEach((z, i) => {
+      const ang = Math.PI / 2 + (2 * Math.PI * i) / grupos.length, d = 0.004;
+      const ponto = L.circleMarker([ESCRITORIO[0] + d * Math.sin(ang), ESCRITORIO[1] + d * Math.cos(ang) * 1.15], {
+        radius: 6, color: "#fff", weight: 1.5, fillColor: corZona(z.nome), fillOpacity: 0.92
+      });
+      const nomes = z.areas.map(a => a.dupla.map(p => nomeCompleto(p.n)).join(" · ")).join("<br>");
+      ponto.bindTooltip(`<strong>${z.nome}</strong> <span class="mapa-dica-zona">${T("Escritório da missão", "Mission office")}</span><br>${nomes}`,
+        { direction: "top", offset: [0, -6], className: "dica-area" });
+      ponto.on("click", () => {
+        const card = [...document.querySelectorAll(".zone-card")].find(c => c.dataset.zona === z.nome);
+        if (!card) return;
+        card.scrollIntoView({ behavior: "smooth", block: "center" });
+        card.classList.remove("destaque"); void card.offsetWidth; card.classList.add("destaque");
+      });
+      camada.addLayer(ponto);
+    });
+  }
+  // Areas: one dot per área (its #1/#2 companionships together). Áreas that share a point,
+  // such as wards placed at their city's center, are fanned out slightly so each can be tapped.
+  const porArea = new Map();
+  for (const z of snapAtual.zonas) {
+    if (z.especial || ocultas.has(z.nome)) continue;
+    for (const a of z.areas) {
+      if (!a.nome) continue;
+      const c = areaCoord(a.nome, z.nome);
+      if (!c) continue;
+      const k = `${baseArea(a.nome)}|${z.nome}`;
+      if (!porArea.has(k)) porArea.set(k, { a, z, c, duplas: [] });
+      porArea.get(k).duplas.push(a);
+    }
+  }
+  const porPonto = new Map();
+  for (const v of porArea.values()) {
+    const k = `${v.c.lat},${v.c.lon}`;
+    if (!porPonto.has(k)) porPonto.set(k, []);
+    porPonto.get(k).push(v);
+  }
+  for (const grupo of porPonto.values()) {
+    grupo.forEach((v, i) => {
+      const ang = (2 * Math.PI * i) / grupo.length, d = grupo.length > 1 ? 0.006 : 0;
+      const ponto = L.circleMarker([v.c.lat + d * Math.sin(ang), v.c.lon + d * Math.cos(ang) * 1.15], {
+        radius: 6, color: "#fff", weight: 1.5, fillColor: corZona(v.z.nome), fillOpacity: 0.92
+      });
+      const nomes = v.duplas.map(a => a.dupla.map(p => nomeCompleto(p.n)).join(" · ")).join("<br>");
+      ponto.bindTooltip(`<strong>${baseArea(v.a.nome)}</strong> <span class="mapa-dica-zona">${v.z.nome}</span><br>${nomes}${v.c.fonte === "aproximado" ? `<br><em>${T("posição aproximada", "approximate location")}</em>` : ""}`,
+        { direction: "top", offset: [0, -6], className: "dica-area" });
+      ponto.on("click", () => abrirArea(v.a, v.z));
+      camada.addLayer(ponto);
+    });
+  }
+  // Zoom to what is selected: when the zone filter changes (or the month changes while filtered),
+  // fit the visible points; going back to all zones returns to the whole mission.
+  const chaveFiltro = [...zonasOcultas].sort().join("|");
+  const mudou = el.ultimoFiltro !== undefined && (el.ultimoFiltro !== chaveFiltro || (chaveFiltro && el.ultimoMes !== snapAtual.key));
+  if (mudou) {
+    const pts = camada.getLayers().map(l => l.getLatLng());
+    if (!chaveFiltro) el.leaflet.flyToBounds(L.latLngBounds(Object.values(ZONA_POS)).pad(0.08), { duration: 0.8 });
+    else if (pts.length) el.leaflet.flyToBounds(L.latLngBounds(pts).pad(0.3), { maxZoom: 11, duration: 0.8 });
+  }
+  el.ultimoFiltro = chaveFiltro;
+  el.ultimoMes = snapAtual.key;
+  return htl.html`<p class="mapa-legenda"><span class="ponto ponto-area"></span> ${T(
+    `Áreas em ${fmtMesAno(snapAtual)}; toque numa área para ver todas as duplas que passaram por ela.`,
+    `Areas in ${fmtMesAno(snapAtual)}; tap an area to see every companionship that served there.`)}
+    <span class="ponto ponto-zona"></span> ${T("Zonas; toque no nome para ver o cartão da zona.", "Zones; tap a name to see the zone's card.")}</p>`;
 }
 ```
 
 ```{ojs}
 {
-  const zonas = [...snapAtual.zonas].sort((a, b) => a.especial - b.especial);
+  // Zones turned off in the map filter are hidden here too; the office groups follow mostrarEspeciais.
+  const ocultas = new Set(zonasOcultas);
+  const zonas = [...snapAtual.zonas].filter(z => z.especial ? mostrarEspeciais : !ocultas.has(z.nome)).sort((a, b) => a.especial - b.especial);
+  const nOcultas = snapAtual.zonas.filter(z => !z.especial && ocultas.has(z.nome)).length;
   const cartao = z => {
     const comps = z.areas.length;
     return htl.html`<article class=${z.especial ? "zone-card especial" : "zone-card"} data-zona=${z.nome}>
@@ -522,7 +640,9 @@ viewof mapa = {
     c.zonas.push(z);
     c.altura += z.areas.length + 2;
   }
-  return htl.html`<div class="board-grid">${colunas.map(c => htl.html`<div class="board-col">${c.zonas.map(cartao)}</div>`)}</div>`;
+  const aviso = nOcultas ? htl.html`<p class="aviso-filtro">${T(`${nOcultas} ${nOcultas === 1 ? "zona escondida" : "zonas escondidas"} pelo filtro do mapa.`, `${nOcultas} ${nOcultas === 1 ? "zone" : "zones"} hidden by the map filter.`)}
+    <button class="filtro-tudo" onclick=${() => definir(viewof zonasOcultas, [])}>${T("Mostrar todas", "Show all")}</button></p>` : "";
+  return htl.html`<div>${aviso}<div class="board-grid">${colunas.map(c => htl.html`<div class="board-col">${c.zonas.map(cartao)}</div>`)}</div></div>`;
 }
 ```
 
