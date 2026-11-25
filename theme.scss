@@ -824,8 +824,8 @@ section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reenc
 
 /* ---------- Missão: geografia + alternância PT/EN ---------- */
 
-#missao:not([data-lang="en"]) .lang-en,
-#missao[data-lang="en"] .lang-pt { display: none !important; }
+html:not([data-lang="en"]) .lang-en,
+html[data-lang="en"] .lang-pt { display: none !important; }
 
 .lang-toggle {
   display: inline-flex;
@@ -1053,3 +1053,32 @@ section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reenc
 .templo-chamada i { color: $secondary; margin-right: 0.3rem; }
 .templo-fonte { font-size: 0.75rem; color: $ink-muted; }
 .templo-fonte a { color: inherit; }
+
+/* ---------- Seletor de idioma no menu ---------- */
+
+.nav-idioma {
+  display: inline-flex;
+  margin-right: 0.5rem;
+  padding: 2px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+}
+.nav-idioma button,
+.nav-idioma button.btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.18rem 0.6rem;
+  background: transparent;
+  color: $navbar-fg;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+.nav-idioma button.active { background: $navbar-fg; color: $primary; }
+
+/* The hero eyebrow, lead and section intros are now divs wrapping a paragraph. */
+.hero .eyebrow p, .hero .lead p, .section-intro p { margin: 0; }
+.hero div.lead { margin-bottom: 0; }
+.hero .eyebrow p { display: inline; }
+.hero .lead p { font-family: inherit; font-style: inherit; font-size: inherit; color: inherit; }

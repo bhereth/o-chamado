@@ -4,11 +4,15 @@ pagetitle: "O Chamado · Missão Brasil Porto Alegre Norte"
 ---
 
 ::: {.hero .column-screen}
-[Missão Brasil Porto Alegre Norte · 1997–2000]{.eyebrow}
+::: {.eyebrow}
+[Missão Brasil Porto Alegre Norte · 1997–2000]{.lang-pt}[Brazil Porto Alegre North Mission · 1997–2000]{.lang-en}
+:::
 
 # O Chamado
 
-[Presidente Arlan e Síster Sally Woodward]{.lead}
+::: {.lead}
+[Presidente Arlan e Síster Sally Woodward]{.lang-pt}[President Arlan and Sister Sally Woodward]{.lang-en}
+:::
 
 ```{=html}
 <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4500">
@@ -41,7 +45,7 @@ pagetitle: "O Chamado · Missão Brasil Porto Alegre Norte"
     </button>
   </div>
 </div>
-<p class="credito-fotos"><i class="bi bi-camera"></i> Fotos: cortesia do Élder George</p>
+<p class="credito-fotos"><i class="bi bi-camera"></i> <span class="lang-pt">Fotos: cortesia do Élder George</span><span class="lang-en">Photos courtesy of Elder George</span></p>
 ```
 :::
 
@@ -49,10 +53,6 @@ pagetitle: "O Chamado · Missão Brasil Porto Alegre Norte"
 ```{=html}
 <div class="secao-topo">
   <span class="section-eyebrow"><span class="lang-pt">A Missão</span><span class="lang-en">The Mission</span></span>
-  <div class="lang-toggle" role="group" aria-label="Idioma / Language">
-    <button type="button" data-lang="pt" class="active" aria-pressed="true">Português</button>
-    <button type="button" data-lang="en" aria-pressed="false">English</button>
-  </div>
 </div>
 
 <blockquote class="scripture">
@@ -117,46 +117,44 @@ pagetitle: "O Chamado · Missão Brasil Porto Alegre Norte"
   <p class="missao-historia"><strong>July 1998:</strong> the mission was divided to create the <strong>Brazil Santa Maria Mission</strong>. The Ijuí and Santo Ângelo zones went to the new mission.</p>
 </div>
 
-<script>
-(function () {
-  var sec = document.getElementById("missao");
-  if (!sec) return;
-  function set(lang) {
-    sec.setAttribute("data-lang", lang);
-    sec.querySelectorAll(".lang-toggle button").forEach(function (b) {
-      var on = b.getAttribute("data-lang") === lang;
-      b.classList.toggle("active", on);
-      b.setAttribute("aria-pressed", on ? "true" : "false");
-    });
-    try { localStorage.setItem("ochamado-lang", lang); } catch (e) {}
-  }
-  sec.querySelectorAll(".lang-toggle button").forEach(function (b) {
-    b.addEventListener("click", function () { set(b.getAttribute("data-lang")); });
-  });
-  var saved = null;
-  try { saved = localStorage.getItem("ochamado-lang"); } catch (e) {}
-  set(saved === "en" ? "en" : "pt");
-})();
-</script>
 ```
 :::
 
 :::: {.band .column-screen .section-muted #areas}
 ```{=html}
-<div class="secao-topo"><span class="section-eyebrow">As Áreas</span></div>
+<div class="secao-topo"><span class="section-eyebrow"><span class="lang-pt">As Áreas</span><span class="lang-en">The Areas</span></span></div>
 ```
 ::: {.wrap}
 
-## O quadro de transferências
+## [O quadro de transferências]{.lang-pt}[The transfer board]{.lang-en}
 
-[Escolha um mês para ver todas as zonas, áreas e duplas da missão naquele momento. Toque num nome para ver quando o missionário chegou e saiu. Viu algum erro? Escreva para [info@ochamado.net](mailto:info@ochamado.net).]{.section-intro}
+::: {.section-intro}
+[Escolha um mês para ver todas as zonas, áreas e duplas da missão naquele momento. Toque num nome para ver quando o missionário chegou e saiu. Viu algum erro? Escreva para [info@ochamado.net](mailto:info@ochamado.net).]{.lang-pt}[Pick a month to see every zone, area and companionship in the mission at that time. Tap a name to see when that missionary arrived and left. Spot a mistake? Email [info@ochamado.net](mailto:info@ochamado.net).]{.lang-en}
+:::
 
 ```{ojs}
 quadro = FileAttachment("data/quadro.json").json()
 snaps = quadro.snapshots
 pessoas = new Map(quadro.missionarios.map(p => [p.id, p]))
-MES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
-fmtYM = k => { if (!k) return "—"; const [y, m] = k.split("-"); return `${MES[+m - 1]}/${y}`; }
+viewof idioma = {
+  const el = htl.html`<span hidden></span>`;
+  el.value = document.documentElement.dataset.lang === "en" ? "en" : "pt";
+  window.addEventListener("ochamado:idioma", () => {
+    el.value = document.documentElement.dataset.lang === "en" ? "en" : "pt";
+    el.dispatchEvent(new Event("input"));
+  });
+  return el;
+}
+T = (pt, en) => idioma === "en" ? en : pt
+MES = idioma === "en"
+  ? ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+  : ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
+MES_NOME = idioma === "en"
+  ? ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+  : ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
+fmtYM = k => { if (!k) return "—"; const [y, m] = k.split("-"); return idioma === "en" ? `${MES[+m - 1]} ${y}` : `${MES[+m - 1]}/${y}`; }
+fmtMesAno = s => idioma === "en" ? `${MES_NOME[s.mes - 1]} ${s.ano}` : `${MES_NOME[s.mes - 1].toLowerCase()} de ${s.ano}`
+nacionalidade = n => idioma === "en" ? ({ "brasileiro": "Brazilian", "norte americano": "North American" }[n] ?? n) : n
 nomeCompleto = l => l.replace(/^E\s+/, "Élder ").replace(/^S\s+/, "Síster ")
 norm = s => String(s ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/-/g, " ").replace(/\s+/g, " ").trim()
 aparicoes = {
@@ -183,24 +181,24 @@ snapAtual = snaps[snapIdx]
   const W = 640, H = 56, gap = 3, bw = W / snaps.length;
   const tile = (num, lbl, base) => htl.html`<div class="stat-tile"><div class="num">${num}</div><div class="lbl">${lbl}</div></div>`;
   return htl.html`<div>
-    <p class="growth-headline"><strong>${first.stats.zonas}</strong> zonas em ${fmtYM(first.key)} → <strong>${last.stats.zonas}</strong> zonas em ${fmtYM(last.key)}</p>
+    <p class="growth-headline"><strong>${first.stats.zonas}</strong> ${T("zonas em", "zones in")} ${fmtYM(first.key)} → <strong>${last.stats.zonas}</strong> ${T("zonas em", "zones in")} ${fmtYM(last.key)}</p>
     <div class="stat-tiles">
-      ${tile(snapAtual.stats.zonas, "Zonas")}
-      ${tile(snapAtual.stats.areas, "Áreas")}
-      ${tile(snapAtual.stats.missionarios, "Missionários")}
+      ${tile(snapAtual.stats.zonas, T("Zonas", "Zones"))}
+      ${tile(snapAtual.stats.areas, T("Áreas", "Areas"))}
+      ${tile(snapAtual.stats.missionarios, T("Missionários", "Missionaries"))}
     </div>
-    ${htl.svg`<svg class="growth-bars" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="Zonas por mês">
+    ${htl.svg`<svg class="growth-bars" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label=${T("Zonas por mês", "Zones per month")}>
       ${snaps.map((s, i) => {
         const h = Math.max(4, (s.stats.zonas / max) * H);
         return htl.svg`<rect class=${s.key === quadroKey ? "active" : ""} x=${i * bw + gap / 2} y=${H - h} width=${bw - gap} height=${h} rx="2"
-          onclick=${() => definir(viewof quadroKey, s.key)}><title>${fmtYM(s.key)}: ${s.stats.zonas} zonas</title></rect>`;
+          onclick=${() => definir(viewof quadroKey, s.key)}><title>${fmtYM(s.key)}: ${s.stats.zonas} ${T("zonas", "zones")}</title></rect>`;
       })}
       ${(() => {
         const i = snaps.findIndex(s => s.key === DIVISAO);
-        return i < 0 ? "" : htl.svg`<line class="marco-divisao" x1=${i * bw} x2=${i * bw} y1="0" y2=${H}><title>Julho de 1998: divisão da missão</title></line>`;
+        return i < 0 ? "" : htl.svg`<line class="marco-divisao" x1=${i * bw} x2=${i * bw} y1="0" y2=${H}><title>${T("Julho de 1998: divisão da missão", "July 1998: the mission is divided")}</title></line>`;
       })()}
     </svg>`}
-    <p class="growth-nota"><span class="marco"></span> Julho de 1998: a missão foi dividida para formar a Missão Brasil Santa Maria.</p>
+    <p class="growth-nota"><span class="marco"></span> ${T("Julho de 1998: a missão foi dividida para formar a Missão Brasil Santa Maria.", "July 1998: the mission was divided to create the Brazil Santa Maria Mission.")}</p>
   </div>`;
 }
 ```
@@ -216,16 +214,18 @@ snapAtual = snaps[snapIdx]
     <div class="pill-group">${doAno.map(s => pill(MES[s.mes - 1], s.key === quadroKey, () => go(s.key)))}</div>
   </div>
   <div class="snap-nav">
-    <button class="pill" aria-label="Mês anterior" disabled=${snapIdx === 0} onclick=${() => go(snaps[snapIdx - 1].key)}>‹</button>
-    <span class="snap-label">${snapAtual.mesNome} de ${snapAtual.ano}</span>
-    <button class="pill" aria-label="Próximo mês" disabled=${snapIdx === snaps.length - 1} onclick=${() => go(snaps[snapIdx + 1].key)}>›</button>
+    <button class="pill" aria-label=${T("Mês anterior", "Previous month")} disabled=${snapIdx === 0} onclick=${() => go(snaps[snapIdx - 1].key)}>‹</button>
+    <span class="snap-label">${fmtMesAno(snapAtual)}</span>
+    <button class="pill" aria-label=${T("Próximo mês", "Next month")} disabled=${snapIdx === snaps.length - 1} onclick=${() => go(snaps[snapIdx + 1].key)}>›</button>
   </div>
   ${quadroKey === DIVISAO
-    ? htl.html`<p class="aviso-divisao"><i class="bi bi-signpost-split"></i><span>Neste mês a missão foi dividida para formar a <strong>Missão Brasil Santa Maria</strong>. As zonas de Ijuí e Santo Ângelo passaram para a nova missão.</span></p>`
+    ? htl.html`<p class="aviso-divisao"><i class="bi bi-signpost-split"></i><span>${idioma === "en"
+      ? htl.html`This month the mission was divided to create the <strong>Brazil Santa Maria Mission</strong>. The Ijuí and Santo Ângelo zones went to the new mission.`
+      : htl.html`Neste mês a missão foi dividida para formar a <strong>Missão Brasil Santa Maria</strong>. As zonas de Ijuí e Santo Ângelo passaram para a nova missão.`}</span></p>`
     : ""}
   ${jornalPorMes.has(quadroKey)
     ? htl.html`<a class="jornal-do-mes" target="_blank" rel="noopener" href=${jornalUrl(jornalPorMes.get(quadroKey))}>
-        <i class="bi bi-file-earmark-pdf"></i><span>Ler <em>O Chamado</em> de ${snapAtual.mesNome} de ${snapAtual.ano}</span></a>`
+        <i class="bi bi-file-earmark-pdf"></i><span>${T("Ler", "Read")} <em>O Chamado</em> ${T("de", "for")} ${fmtMesAno(snapAtual)}</span></a>`
     : ""}`;
 }
 ```
@@ -238,17 +238,17 @@ function verHistorico(q) {
     inp.value = q;
     inp.dispatchEvent(new Event("input", { bubbles: true }));
     inp.scrollIntoView({ behavior: "smooth", block: "center" });
-  }}>Ver histórico completo ↓</a>`;
+  }}>${T("Ver histórico completo ↓", "See full history ↓")}</a>`;
 }
 
 function detalheNome(p) {
   const ap = aparicoes.get(p.id ?? "?" + p.n) ?? [];
-  if (!p.id) return htl.html`<div>Sem registro de chegada/saída · em ${ap.length} quadro(s)<br>${verHistorico(p.n)}</div>`;
+  if (!p.id) return htl.html`<div>${T("Sem registro de chegada/saída", "No arrival/departure record")} · ${T("em", "on")} ${ap.length} ${T("quadro(s)", "board(s)")}<br>${verHistorico(p.n)}</div>`;
   const x = pessoas.get(p.id);
   const provavel = p.c === "inferido" || p.c === "tolerancia";
-  return htl.html`<div><strong>${x.titulo} ${x.plaqueta}</strong>${x.nacionalidade ? ` · ${x.nacionalidade}` : ""}<br>
-    Chegada ${fmtYM(x.chegada)} · Saída ${fmtYM(x.saida)} · em ${ap.length} quadros
-    ${provavel ? htl.html`<br><span class="provavel">identificação provável</span>` : ""}
+  return htl.html`<div><strong>${x.titulo} ${x.plaqueta}</strong>${x.nacionalidade ? ` · ${nacionalidade(x.nacionalidade)}` : ""}<br>
+    ${T("Chegada", "Arrived")} ${fmtYM(x.chegada)} · ${T("Saída", "Left")} ${fmtYM(x.saida)} · ${T("em", "on")} ${ap.length} ${T("quadros", "boards")}
+    ${provavel ? htl.html`<br><span class="provavel">${T("identificação provável", "probable match")}</span>` : ""}
     <br>${verHistorico(x.plaqueta)}</div>`;
 }
 
@@ -291,7 +291,7 @@ ZONA_METRO = ["Porto Alegre", "Moinhos de Vento", "Guaíba", "Canoas", "Canoas-E
 rsContorno = FileAttachment("data/rs.geojson").json()
 
 viewof mapa = {
-  const el = htl.html`<div id="mapa" class="mapa-missao" role="region" aria-label="Mapa das zonas da missão"></div>`;
+  const el = htl.html`<div id="mapa" class="mapa-missao" role="region" aria-label="Mapa das zonas da missão / Map of the mission's zones"></div>`;
   const m = L.map(el, { scrollWheelZoom: false, zoomSnap: 0.25 }).setView([-29.0, -52.0], 7);
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
@@ -301,9 +301,9 @@ viewof mapa = {
   el.leaflet = m;
   el.camada = L.layerGroup().addTo(m);
   const metro = L.latLngBounds(ZONA_METRO.map(z => ZONA_POS[z])).pad(0.25);
-  L.marker([-30.12, -51.40], {
+  el.grandePoa = L.marker([-30.12, -51.40], {
     icon: L.divIcon({ className: "rotulo-grande-poa", html: "Grande Porto Alegre <i class='bi bi-zoom-in'></i>", iconSize: null }),
-    keyboard: true, title: "Aproximar a Grande Porto Alegre"
+    keyboard: true
   }).on("click", () => m.flyToBounds(metro, { duration: 0.8 })).addTo(m);
   const zoomClasse = () => el.classList.toggle("zoom-perto", m.getZoom() >= 9);
   m.on("zoomend", zoomClasse);
@@ -325,6 +325,7 @@ viewof mapa = {
 {
   const el = viewof mapa, camada = el.camada;
   camada.clearLayers();
+  el.grandePoa.setIcon(L.divIcon({ className: "rotulo-grande-poa", html: `${T("Grande Porto Alegre", "Greater Porto Alegre")} <i class='bi bi-zoom-in'></i>`, iconSize: null }));
   const semLugar = [];
   for (const z of snapAtual.zonas) {
     const pos = ZONA_POS[z.nome];
@@ -347,7 +348,9 @@ viewof mapa = {
     });
     camada.addLayer(marcador);
   }
-  return htl.html`<p class="mapa-legenda"><span class="ponto"></span> Zonas em ${snapAtual.mesNome} de ${snapAtual.ano}; o tamanho do círculo mostra o número de duplas. Toque numa zona para ver suas áreas.${semLugar.length ? ` Sem lugar no mapa: ${semLugar.join(", ")}.` : ""}</p>`;
+  return htl.html`<p class="mapa-legenda"><span class="ponto"></span> ${T(
+    `Zonas em ${fmtMesAno(snapAtual)}; o tamanho do círculo mostra o número de duplas. Toque numa zona para ver suas áreas.${semLugar.length ? ` Sem lugar no mapa: ${semLugar.join(", ")}.` : ""}`,
+    `Zones in ${fmtMesAno(snapAtual)}; circle size shows the number of companionships. Tap a zone to see its areas.${semLugar.length ? ` Not on the map: ${semLugar.join(", ")}.` : ""}`)}</p>`;
 }
 ```
 
@@ -357,7 +360,7 @@ viewof mapa = {
   return htl.html`<div class="board-grid">${zonas.map(z => {
     const comps = z.areas.length;
     return htl.html`<article class=${z.especial ? "zone-card especial" : "zone-card"} data-zona=${z.nome}>
-      <header><h3>${z.nome}</h3><span class="count">${comps} ${comps === 1 ? "dupla" : "duplas"}</span></header>
+      <header><h3>${z.nome}</h3><span class="count">${comps} ${comps === 1 ? T("dupla", "companionship") : T("duplas", "companionships")}</span></header>
       ${z.areas.map((a, i) => linhaArea(a, z, i > 0 && a.n > 1 && z.areas[i - 1].nome === a.nome))}
     </article>`;
   })}</div>`;
@@ -368,13 +371,15 @@ viewof mapa = {
 
 :::: {.band .column-screen #missionarios}
 ```{=html}
-<div class="secao-topo"><span class="section-eyebrow">Os Missionários</span></div>
+<div class="secao-topo"><span class="section-eyebrow"><span class="lang-pt">Os Missionários</span><span class="lang-en">The Missionaries</span></span></div>
 ```
 ::: {.wrap}
 
-## Chegadas e saídas
+## [Chegadas e saídas]{.lang-pt}[Arrivals and departures]{.lang-en}
 
-[515 missionários serviram com os Woodward. Escolha o ano e o mês para ver quem chegou e quem partiu.]{.section-intro}
+::: {.section-intro}
+[515 missionários serviram com os Woodward. Escolha o ano e o mês para ver quem chegou e quem partiu.]{.lang-pt}[515 missionaries served with the Woodwards. Pick a year and month to see who arrived and who went home.]{.lang-en}
+:::
 
 ```{ojs}
 missionaries = FileAttachment("data/missionarios.json").json()
@@ -387,11 +392,11 @@ mesesDe = a => a === 1997 ? [7, 8, 9, 10, 11, 12] : a === 2000 ? [1, 2, 3, 4, 5,
 {
   const pill = (label, active, onclick) => htl.html`<button class=${active ? "pill active" : "pill"} onclick=${onclick}>${label}</button>`;
   return htl.html`<div class="filter-panel">
-    <div class="pill-group"><span class="filter-label">Ano</span>${[1997, 1998, 1999, 2000].map(a => pill(a, a === anoSel, () => {
+    <div class="pill-group"><span class="filter-label">${T("Ano", "Year")}</span>${[1997, 1998, 1999, 2000].map(a => pill(a, a === anoSel, () => {
       if (!mesesDe(a).includes(mesSel)) definir(viewof mesSel, mesesDe(a)[0]);
       definir(viewof anoSel, a);
     }))}</div>
-    <div class="pill-group"><span class="filter-label">Mês</span>${mesesDe(anoSel).map(m => pill(MES[m - 1], m === mesSel, () => definir(viewof mesSel, m)))}</div>
+    <div class="pill-group"><span class="filter-label">${T("Mês", "Month")}</span>${mesesDe(anoSel).map(m => pill(MES[m - 1], m === mesSel, () => definir(viewof mesSel, m)))}</div>
   </div>`;
 }
 ```
@@ -404,39 +409,41 @@ mesesDe = a => a === 1997 ? [7, 8, 9, 10, 11, 12] : a === 2000 ? [1, 2, 3, 4, 5,
   const panel = (arr, cls, icon, title, vazio) => htl.html`<div class=${"missionary-panel " + cls}>
     <h4><i class=${"bi " + icon}></i> ${title}<span class="count-badge">${arr.length}</span></h4>
     ${arr.length
-      ? htl.html`<ul class="missionary-list">${[...arr].sort(byName).map(m => htl.html`<li><span>${m["Título"]} ${m.Plaqueta}</span><span class="tag">${m.Nacionalidade}</span></li>`)}</ul>`
+      ? htl.html`<ul class="missionary-list">${[...arr].sort(byName).map(m => htl.html`<li><span>${m["Título"]} ${m.Plaqueta}</span><span class="tag">${nacionalidade(m.Nacionalidade)}</span></li>`)}</ul>`
       : htl.html`<p class="missionary-empty">${vazio}</p>`}
   </div>`;
   return htl.html`<div class="missionary-board">
-    ${panel(ch, "panel-chegadas", "bi-airplane-fill", "Chegadas", "Nenhuma chegada neste mês.")}
-    ${panel(sa, "panel-saidas", "bi-house-heart-fill", "Saídas", "Nenhuma saída neste mês.")}
+    ${panel(ch, "panel-chegadas", "bi-airplane-fill", T("Chegadas", "Arrivals"), T("Nenhuma chegada neste mês.", "No arrivals this month."))}
+    ${panel(sa, "panel-saidas", "bi-house-heart-fill", T("Saídas", "Departures"), T("Nenhuma saída neste mês.", "No departures this month."))}
   </div>`;
 }
 ```
 
 ::: {.search-block}
-### Procure um missionário
+### [Procure um missionário]{.lang-pt}[Find a missionary]{.lang-en}
 
-[Digite um sobrenome para ver todos os quadros, áreas e companheiros daquele missionário.]{.section-intro}
+::: {.section-intro}
+[Digite um sobrenome para ver todos os quadros, áreas e companheiros daquele missionário.]{.lang-pt}[Type a last name to see every board, area and companion for that missionary.]{.lang-en}
+:::
 
 ```{ojs}
-viewof busca = htl.html`<input type="search" id="busca" class="form-control busca" placeholder="Sobrenome (ex.: Widerberg)" autocomplete="off">`
+viewof busca = htl.html`<input type="search" id="busca" class="form-control busca" placeholder="Sobrenome (ex.: Widerberg)" data-placeholder-pt="Sobrenome (ex.: Widerberg)" data-placeholder-en="Last name (e.g. Widerberg)" autocomplete="off">`
 ```
 
 ```{ojs}
 function cartaoPessoa({ p, label, ap }) {
   const meta = p
-    ? `${p.nacionalidade ?? ""} · Chegada ${fmtYM(p.chegada)} · Saída ${fmtYM(p.saida)} · em ${ap.length} quadro(s)`
-    : `Sem registro de chegada/saída · em ${ap.length} quadro(s)`;
+    ? `${nacionalidade(p.nacionalidade ?? "")} · ${T("Chegada", "Arrived")} ${fmtYM(p.chegada)} · ${T("Saída", "Left")} ${fmtYM(p.saida)} · ${T("em", "on")} ${ap.length} ${T("quadro(s)", "board(s)")}`
+    : `${T("Sem registro de chegada/saída", "No arrival/departure record")} · ${T("em", "on")} ${ap.length} ${T("quadro(s)", "board(s)")}`;
   return htl.html`<div class="pessoa-card">
     <h4>${p ? `${p.titulo} ${p.plaqueta}` : nomeCompleto(label)}</h4>
     <div class="meta">${meta}</div>
     ${ap.length
       ? htl.html`<div class="table-scroll"><table class="historico-table">
-          <thead><tr><th>Quadro</th><th>Zona</th><th>Área</th><th>Companheiros</th></tr></thead>
+          <thead><tr><th>${T("Quadro", "Board")}</th><th>${T("Zona", "Zone")}</th><th>${T("Área", "Area")}</th><th>${T("Companheiros", "Companions")}</th></tr></thead>
           <tbody>${ap.map(a => htl.html`<tr><td>${fmtYM(a.key)}</td><td>${a.zona}</td><td>${a.area}</td><td>${a.companheiros.join(", ")}</td></tr>`)}</tbody>
         </table></div>`
-      : htl.html`<p class="busca-hint">Não aparece nos quadros de transferências.</p>`}
+      : htl.html`<p class="busca-hint">${T("Não aparece nos quadros de transferências.", "Not on any transfer board.")}</p>`}
   </div>`;
 }
 ```
@@ -444,7 +451,7 @@ function cartaoPessoa({ p, label, ap }) {
 ```{ojs}
 {
   const q = norm(busca);
-  if (q.length < 2) return htl.html`<p class="busca-hint">Digite pelo menos duas letras.</p>`;
+  if (q.length < 2) return htl.html`<p class="busca-hint">${T("Digite pelo menos duas letras.", "Type at least two letters.")}</p>`;
   const pessoasEnc = quadro.missionarios
     .filter(p => norm(p.plaqueta).includes(q) || norm(`${p.titulo} ${p.plaqueta}`).includes(q) || norm(`${p.titulo[0]} ${p.plaqueta}`).includes(q))
     .map(p => ({ p, ap: aparicoes.get(p.id) ?? [] }));
@@ -452,9 +459,9 @@ function cartaoPessoa({ p, label, ap }) {
     .filter(k => k.startsWith("?") && norm(k.slice(1)).includes(q))
     .map(k => ({ label: k.slice(1), ap: aparicoes.get(k) }));
   const todos = [...pessoasEnc, ...semRegistro];
-  if (!todos.length) return htl.html`<p class="busca-hint">Ninguém encontrado para “${busca}”.</p>`;
+  if (!todos.length) return htl.html`<p class="busca-hint">${T("Ninguém encontrado para", "No one found for")} “${busca}”.</p>`;
   return htl.html`<div>
-    ${todos.length > 15 ? htl.html`<p class="busca-hint">${todos.length} resultados; mostrando 15. Refine a busca.</p>` : ""}
+    ${todos.length > 15 ? htl.html`<p class="busca-hint">${todos.length} ${T("resultados; mostrando 15. Refine a busca.", "results; showing 15. Try a longer name.")}</p>` : ""}
     ${todos.slice(0, 15).map(cartaoPessoa)}
   </div>`;
 }
@@ -465,28 +472,29 @@ function cartaoPessoa({ p, label, ap }) {
 
 :::: {.band .column-screen .section-muted #templo}
 ```{=html}
-<div class="secao-topo"><span class="section-eyebrow">O Templo</span></div>
+<div class="secao-topo"><span class="section-eyebrow"><span class="lang-pt">O Templo</span><span class="lang-en">The Temple</span></span></div>
 ```
 ::: {.wrap}
 
-## A pedra fundamental do Templo de Porto Alegre
+## [A pedra fundamental do Templo de Porto Alegre]{.lang-pt}[The Porto Alegre Temple groundbreaking]{.lang-en}
 
 ```{=html}
 <div class="templo">
   <div class="templo-foto">
     <img src="images/templo.jpg" alt="Templo de Porto Alegre Brasil">
-    <span class="credito">Foto: <a href="https://commons.wikimedia.org/wiki/File:Templo_de_Porto_Alegre_(16_November_2008).jpg" target="_blank" rel="noopener">Ricardo630</a>, Wikimedia Commons, <a href="https://creativecommons.org/licenses/by/3.0/deed.pt_BR" target="_blank" rel="noopener">CC BY 3.0</a></span>
+    <span class="credito"><span class="lang-pt">Foto</span><span class="lang-en">Photo</span>: <a href="https://commons.wikimedia.org/wiki/File:Templo_de_Porto_Alegre_(16_November_2008).jpg" target="_blank" rel="noopener">Ricardo630</a>, Wikimedia Commons, <a href="https://creativecommons.org/licenses/by/3.0/deed.pt_BR" target="_blank" rel="noopener">CC BY 3.0</a></span>
   </div>
   <div class="templo-texto">
-    <p class="templo-destaque">No dia <strong>2 de maio de 1998</strong>, durante a missão dos Woodward, mais de 3.500 pessoas se reuniram numa encosta com vista para Porto Alegre para a cerimônia da pedra fundamental do primeiro templo do Rio Grande do Sul.</p>
+    <p class="templo-destaque lang-pt">No dia <strong>2 de maio de 1998</strong>, durante a missão dos Woodward, mais de 3.500 pessoas se reuniram numa encosta com vista para Porto Alegre para a cerimônia da pedra fundamental do primeiro templo do Rio Grande do Sul.</p>
+    <p class="templo-destaque lang-en">On <strong>May 2, 1998</strong>, during the Woodwards' mission, more than 3,500 people gathered on a hillside overlooking Porto Alegre to break ground for the first temple in Rio Grande do Sul.</p>
     <ol class="linha-tempo">
-      <li><span class="data">1997</span><span>O Presidente Gordon B. Hinckley anuncia um templo em Porto Alegre.</span></li>
-      <li class="marco-woodward"><span class="data">2 mai 1998</span><span>O <strong>Presidente James E. Faust</strong>, da Primeira Presidência, preside a pedra fundamental, com o Élder Joseph B. Wirthlin, do Quórum dos Doze, e o Élder W. Craig Zwick, presidente da Área Brasil.</span></li>
-      <li><span class="data">dez 2000</span><span>Visitação pública, com cerca de 25 mil visitantes.</span></li>
-      <li><span class="data">17 dez 2000</span><span>O Presidente Hinckley dedica o templo, o 102º da Igreja e o terceiro do Brasil, no bairro Vila Jardim, com vista para a cidade e o Guaíba.</span></li>
+      <li><span class="data">1997</span><span><span class="lang-pt">O Presidente Gordon B. Hinckley anuncia um templo em Porto Alegre.</span><span class="lang-en">President Gordon B. Hinckley announces a temple in Porto Alegre.</span></span></li>
+      <li class="marco-woodward"><span class="data"><span class="lang-pt">2 mai 1998</span><span class="lang-en">May 2, 1998</span></span><span><span class="lang-pt">O <strong>Presidente James E. Faust</strong>, da Primeira Presidência, preside a pedra fundamental, com o Élder Joseph B. Wirthlin, do Quórum dos Doze, e o Élder W. Craig Zwick, presidente da Área Brasil.</span><span class="lang-en"><strong>President James E. Faust</strong> of the First Presidency presides at the groundbreaking, with Elder Joseph B. Wirthlin of the Quorum of the Twelve and Elder W. Craig Zwick, president of the Brazil Area.</span></span></li>
+      <li><span class="data"><span class="lang-pt">dez 2000</span><span class="lang-en">Dec 2000</span></span><span><span class="lang-pt">Visitação pública, com cerca de 25 mil visitantes.</span><span class="lang-en">Public open house, with about 25,000 visitors.</span></span></li>
+      <li><span class="data"><span class="lang-pt">17 dez 2000</span><span class="lang-en">Dec 17, 2000</span></span><span><span class="lang-pt">O Presidente Hinckley dedica o templo, o 102º da Igreja e o terceiro do Brasil, no bairro Vila Jardim, com vista para a cidade e o Guaíba.</span><span class="lang-en">President Hinckley dedicates the temple, the Church's 102nd and Brazil's third, in the Vila Jardim neighborhood overlooking the city and the Guaíba.</span></span></li>
     </ol>
-    <p class="templo-chamada"><i class="bi bi-camera"></i> Você estava na pedra fundamental? Mande suas fotos e lembranças para <a href="mailto:info@ochamado.net?subject=Pedra%20fundamental%20do%20Templo%20de%20Porto%20Alegre">info@ochamado.net</a>.</p>
-    <p class="templo-fonte">Fonte: <a href="https://www.thechurchnews.com/1998/5/9/23250717/be-loyal-worthy-to-enter-temple-members-urged/" target="_blank" rel="noopener">Church News, 9 de maio de 1998</a>.</p>
+    <p class="templo-chamada"><i class="bi bi-camera"></i> <span class="lang-pt">Você estava na pedra fundamental? Mande suas fotos e lembranças para</span><span class="lang-en">Were you at the groundbreaking? Send your photos and memories to</span> <a href="mailto:info@ochamado.net?subject=Pedra%20fundamental%20do%20Templo%20de%20Porto%20Alegre">info@ochamado.net</a>.</p>
+    <p class="templo-fonte"><span class="lang-pt">Fonte</span><span class="lang-en">Source</span>: <a href="https://www.thechurchnews.com/1998/5/9/23250717/be-loyal-worthy-to-enter-temple-members-urged/" target="_blank" rel="noopener">Church News, <span class="lang-pt">9 de maio de 1998</span><span class="lang-en">May 9, 1998</span></a>.</p>
   </div>
 </div>
 ```
@@ -495,13 +503,15 @@ function cartaoPessoa({ p, label, ap }) {
 
 :::: {.band .column-screen #jornal}
 ```{=html}
-<div class="secao-topo"><span class="section-eyebrow">O Jornal</span></div>
+<div class="secao-topo"><span class="section-eyebrow"><span class="lang-pt">O Jornal</span><span class="lang-en">The Newsletter</span></span></div>
 ```
 ::: {.wrap-narrow}
 
-## O boletim da missão
+## [O boletim da missão]{.lang-pt}[The mission newsletter]{.lang-en}
 
-[Edições do *O Chamado* publicadas durante a missão dos Woodward.]{.section-intro}
+::: {.section-intro}
+[Edições do *O Chamado* publicadas durante a missão dos Woodward.]{.lang-pt}[Issues of *O Chamado* published during the Woodwards' mission. The newsletters are in Portuguese.]{.lang-en}
+:::
 
 ```{ojs}
 jornais = [
@@ -514,7 +524,6 @@ jornais = [
 })
 jornalPorMes = new Map(jornais.map(j => [j.key, j]))
 jornalUrl = j => "o-chamado-newsletters/" + encodeURIComponent(j.arquivo)
-MES_NOME = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
 ```
 
 ```{ojs}
@@ -533,8 +542,8 @@ htl.html`<div>${[...new Set(jornais.map(j => j.ano))].map(y => htl.html`
 <div class="contato-card">
   <i class="bi bi-envelope-paper"></i>
   <div>
-    <strong>Tem uma edição que falta aqui?</strong>
-    <p>Se você guardou algum número do <em>O Chamado</em> que não está nesta lista, escreva para <a href="mailto:info@ochamado.net">info@ochamado.net</a>.</p>
+    <strong><span class="lang-pt">Tem uma edição que falta aqui?</span><span class="lang-en">Have an issue that's missing here?</span></strong>
+    <p><span class="lang-pt">Se você guardou algum número do <em>O Chamado</em> que não está nesta lista, escreva para</span><span class="lang-en">If you kept an issue of <em>O Chamado</em> that isn't on this list, email</span> <a href="mailto:info@ochamado.net">info@ochamado.net</a>.</p>
   </div>
 </div>
 ```
@@ -543,18 +552,18 @@ htl.html`<div>${[...new Set(jornais.map(j => j.ano))].map(y => htl.html`
 
 :::: {.band .column-screen .section-dark #reencontros}
 ```{=html}
-<div class="secao-topo"><span class="section-eyebrow">Os Reencontros</span></div>
+<div class="secao-topo"><span class="section-eyebrow"><span class="lang-pt">Os Reencontros</span><span class="lang-en">The Reunions</span></span></div>
 ```
 ::: {.wrap-narrow}
 
-## Abril de 2016
+## [Abril de 2016]{.lang-pt}[April 2016]{.lang-en}
 
 ```{=html}
 <a class="ratio ratio-16x9 video-frame video-card" target="_blank" rel="noopener" href="https://youtu.be/31IHb7dBMEo" aria-label="Assistir ao reencontro de abril de 2016 no YouTube">
   <img src="https://img.youtube.com/vi/31IHb7dBMEo/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/31IHb7dBMEo/hqdefault.jpg'" alt="">
   <span class="video-meta">
-    <span><strong>Reencontro dos missionários</strong><small>Abril de 2016</small></span>
-    <span class="yt"><i class="bi bi-youtube"></i> Assistir no YouTube</span>
+    <span><strong><span class="lang-pt">Reencontro dos missionários</span><span class="lang-en">Missionary reunion</span></strong><small><span class="lang-pt">Abril de 2016</span><span class="lang-en">April 2016</span></small></span>
+    <span class="yt"><i class="bi bi-youtube"></i> <span class="lang-pt">Assistir no YouTube</span><span class="lang-en">Watch on YouTube</span></span>
   </span>
 </a>
 ```
@@ -563,29 +572,33 @@ htl.html`<div>${[...new Set(jornais.map(j => j.ano))].map(y => htl.html`
 
 ::: {.band .column-screen #woodwards}
 ```{=html}
-<div class="secao-topo"><span class="section-eyebrow">Os Woodwards</span></div>
+<div class="secao-topo"><span class="section-eyebrow"><span class="lang-pt">Os Woodwards</span><span class="lang-en">The Woodwards</span></span></div>
 ```
 
 ```{=html}
 <div class="woodwards-foto">
   <img src="images/woodwards.jpg" alt="Sally e Arlan Woodward">
-  <span class="credito">Foto: <a href="https://www.thechurchnews.com/2007/11/17/23232387/missionary-training-center-presidents-4/" target="_blank" rel="noopener">Church News, 2007</a></span>
+  <span class="credito"><span class="lang-pt">Foto</span><span class="lang-en">Photo</span>: <a href="https://www.thechurchnews.com/2007/11/17/23232387/missionary-training-center-presidents-4/" target="_blank" rel="noopener">Church News, 2007</a></span>
 </div>
 ```
 
 [Arlan & Sally Woodward]{.woodwards-names .d-block}
 
-[Presidente e Síster da Missão Brasil Porto Alegre Norte, 1997–2000. Em 2007 voltaram ao Brasil para presidir o Centro de Treinamento Missionário.]{.section-intro .d-block}
+::: {.section-intro}
+[Presidente e Síster da Missão Brasil Porto Alegre Norte, 1997–2000. Em 2007 voltaram ao Brasil para presidir o Centro de Treinamento Missionário.]{.lang-pt}[President and Sister of the Brazil Porto Alegre North Mission, 1997–2000. In 2007 they returned to Brazil to preside over the Missionary Training Center.]{.lang-en}
+:::
 :::
 
 ::: {.band .column-screen .section-muted #contato}
 ```{=html}
-<div class="secao-topo"><span class="section-eyebrow">Contato</span></div>
+<div class="secao-topo"><span class="section-eyebrow"><span class="lang-pt">Contato</span><span class="lang-en">Contact</span></span></div>
 ```
 
-## Comentários e sugestões
+## [Comentários e sugestões]{.lang-pt}[Comments and suggestions]{.lang-en}
 
-[Tem fotos, histórias, correções no quadro de transferências ou ideias para o site? Adoraríamos ouvir de você.]{.section-intro}
+::: {.section-intro}
+[Tem fotos, histórias, correções no quadro de transferências ou ideias para o site? Adoraríamos ouvir de você.]{.lang-pt}[Have photos, stories, corrections to the transfer board or ideas for the site? We'd love to hear from you.]{.lang-en}
+:::
 
 ```{=html}
 <a class="email-btn" href="mailto:info@ochamado.net?subject=O%20Chamado%20-%20coment%C3%A1rio"><i class="bi bi-envelope"></i> info@ochamado.net</a>

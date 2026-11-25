@@ -48,6 +48,19 @@ format:
     smooth-scroll: true
     include-in-header:
       - text: |
+          <script>
+          // Pick the language before the page paints: a saved choice wins, otherwise the browser's language.
+          (function () {
+            var l = null;
+            try { l = localStorage.getItem("ochamado-lang"); } catch (e) {}
+            if (l !== "pt" && l !== "en") {
+              var n = (navigator.languages && navigator.languages[0]) || navigator.language || "pt";
+              l = /^en/i.test(n) ? "en" : "pt";
+            }
+            document.documentElement.setAttribute("data-lang", l);
+            document.documentElement.lang = l === "en" ? "en" : "pt-BR";
+          })();
+          </script>
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
           <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
           <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -65,6 +78,51 @@ format:
             navH();
             addEventListener("resize", navH);
             addEventListener("load", navH);
+          })();
+
+          (function () {
+            var root = document.documentElement;
+            var NAV = {
+              missao: ["Missão", "Mission"], areas: ["Áreas", "Areas"], missionarios: ["Missionários", "Missionaries"],
+              templo: ["Templo", "Temple"], jornal: ["Jornal", "Newsletter"], reencontros: ["Reencontros", "Reunions"],
+              woodwards: ["Woodwards", "Woodwards"], contato: ["Contato", "Contact"]
+            };
+            var tools = document.querySelector(".quarto-navbar-tools") || document.querySelector(".navbar-container");
+            var box = document.createElement("div");
+            box.className = "nav-idioma";
+            box.setAttribute("role", "group");
+            box.setAttribute("aria-label", "Idioma / Language");
+            box.innerHTML = '<button type="button" data-lang="pt" lang="pt">PT</button><button type="button" data-lang="en" lang="en">EN</button>';
+            if (tools) tools.prepend(box);
+
+            function apply(lang) {
+              root.setAttribute("data-lang", lang);
+              root.lang = lang === "en" ? "en" : "pt-BR";
+              box.querySelectorAll("button").forEach(function (b) {
+                var on = b.getAttribute("data-lang") === lang;
+                b.classList.toggle("active", on);
+                b.setAttribute("aria-pressed", on ? "true" : "false");
+              });
+              document.querySelectorAll(".navbar .nav-link").forEach(function (a) {
+                var key = (a.getAttribute("href") || "").split("#")[1];
+                var label = a.querySelector(".menu-text");
+                if (NAV[key] && label) label.textContent = NAV[key][lang === "en" ? 1 : 0];
+              });
+              document.querySelectorAll("[data-placeholder-" + lang + "]").forEach(function (el) {
+                el.placeholder = el.getAttribute("data-placeholder-" + lang);
+              });
+              window.dispatchEvent(new Event("ochamado:idioma"));
+            }
+            box.addEventListener("click", function (e) {
+              var b = e.target.closest("button");
+              if (!b) return;
+              var lang = b.getAttribute("data-lang");
+              try { localStorage.setItem("ochamado-lang", lang); } catch (err) {}
+              apply(lang);
+            });
+            apply(root.getAttribute("data-lang") === "en" ? "en" : "pt");
+            // The search box is created later by Observable; fill its placeholder once it exists.
+            addEventListener("load", function () { setTimeout(function () { apply(root.getAttribute("data-lang")); }, 1500); });
           })();
           </script>
 
