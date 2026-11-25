@@ -127,6 +127,14 @@ format:
             apply(root.getAttribute("data-lang") === "en" ? "en" : "pt");
             // The search box is created later by Observable; fill its placeholder once it exists.
             addEventListener("load", function () { setTimeout(function () { apply(root.getAttribute("data-lang")); }, 1500); });
+
+            // On small screens, close the hamburger menu once a section is picked.
+            document.addEventListener("click", function (e) {
+              var link = e.target.closest(".navbar-collapse .nav-link");
+              var menu = document.querySelector(".navbar-collapse.show");
+              if (!link || !menu || !window.bootstrap) return;
+              bootstrap.Collapse.getOrCreateInstance(menu, { toggle: false }).hide();
+            });
           })();
           </script>
 

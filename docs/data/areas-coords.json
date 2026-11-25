@@ -9,14 +9,6 @@
    "nota": "ala/escritório; onde ficava a zona"
   },
   {
-   "area": "Ala",
-   "zona": "Moinhos de Vento",
-   "lat": -30.012,
-   "lon": -51.19,
-   "fonte": "aproximado",
-   "nota": "ala/escritório; onde ficava a zona"
-  },
-  {
    "area": "Alto Uruguai",
    "zona": "Erechim",
    "lat": -27.634,
@@ -219,10 +211,10 @@
   {
    "area": "Cruzeiro",
    "zona": "Santo Ângelo",
-   "lat": -28.284,
-   "lon": -54.2706,
-   "fonte": "aproximado",
-   "nota": "palpite: Rua Cruzeiro do Sul, Santo Ângelo, Rio Grande do Sul"
+   "lat": -27.8633,
+   "lon": -54.4314,
+   "fonte": "manual",
+   "nota": "bairro Cruzeiro, lado leste de Santa Rosa (confirmado)"
   },
   {
    "area": "Duque",
@@ -871,22 +863,6 @@
    "lon": -51.1609,
    "fonte": "osm",
    "nota": "Sapucaia do Sul, Rio Grande do Sul, Região Sul"
-  },
-  {
-   "area": "Staff Ala",
-   "zona": "Moinhos de Vento",
-   "lat": -30.012,
-   "lon": -51.19,
-   "fonte": "aproximado",
-   "nota": "ala/escritório; onde ficava a zona"
-  },
-  {
-   "area": "Staff",
-   "zona": "Moinhos de Vento",
-   "lat": -30.012,
-   "lon": -51.19,
-   "fonte": "aproximado",
-   "nota": "ala/escritório; onde ficava a zona"
   },
   {
    "area": "São Leopoldo",

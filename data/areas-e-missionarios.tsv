@@ -81,7 +81,7 @@ Ano	Mes	Zona	Área	Missionário 1	Missionário 2	Missionário 3		unsure
 			São Luiz Gonzaga	E Westerman	E Burnett																				
 			Santo Antônio	E Cleber	E Mantovani																				
 		Moinhos de Vento	Higienópolis	E Lustosa	E Cruz																				
-			Staff Ala 1	E Grow	E Barcellos	E Clement																			
+			Porto Alegre 1	E Grow	E Barcellos	E Clement																			
 			Niterói	E Vieira	E Borges																				
 			Rio Branco A	S Vicente	S Carling																				
 			Guaíba Centro	E Bessa	E Meireles																				
@@ -171,7 +171,7 @@ Ano	Mes	Zona	Área	Missionário 1	Missionário 2	Missionário 3		unsure
 			São Luiz Gonzaga	E Westerman	E Burnett																				
 			Santo Antônio	E Cleber	E Mantovani																				
 		Moinhos de Vento	Higienópolis	E Lustosa	E Cruz																				
-			Ala 1	E Grow	E Barcellos	E Clement																			
+			Porto Alegre 1	E Grow	E Barcellos	E Clement																			
 			Niterói	E Vieira	E Borges																				
 			Rio Branco A	S Vicente	S Carling																				
 			Guaíba Centro	E Bessa	E Meireles																				
@@ -265,7 +265,7 @@ Ano	Mes	Zona	Área	Missionário 1	Missionário 2	Missionário 3		unsure
 			São Luiz Casal	E Pereira	S Pereira																				
 			Santo Antônio	E Cleber	E Joanides																				
 		Moinhos de Vento	Higienópolis	E Lustosa	E Cruz																				
-			Staff Ala 1	E Grow	E Barcellos	E Patterson																			
+			Porto Alegre 1	E Grow	E Barcellos	E Patterson																			
 			Niterói	E Vieira	E Maciel																				
 			Rio Branco A	S Vicente	S Varela																				
 			Guaíba Centro	E Bessa	E Meireles																				
@@ -356,7 +356,7 @@ Ano	Mes	Zona	Área	Missionário 1	Missionário 2	Missionário 3		unsure
 			Santo Antônio	E Cleber	E Joanides																				
 			São Luiz Casal	E Pereira	S Pereira																				
 		Moinhos de Vento	Higienópolis	E Melo	E Cruz																				
-			Staff Ala 1	E Grow	E Barcellos	E Hastings																			
+			Porto Alegre 1	E Grow	E Barcellos	E Hastings																			
 			Niterói	E Bezerra	E Maciel																				
 			Rio Branco A	S Vicente	S Varela																				
 			Guaíba Colina	E Baird	E Riches																				
@@ -448,7 +448,7 @@ Ano	Mes	Zona	Área	Missionário 1	Missionário 2	Missionário 3		unsure
 			Santo Antônio	E Cleber	E Olson																				
 			São Luiz Casal	E Pereira	S Pereira																				
 		Moinhos de Vento	Higienópolis	E Melo	E Mantovani																				
-			Staff Ala 1	E Barcellos	E Hastings	E V Fernandes																			
+			Porto Alegre 1	E Barcellos	E Hastings	E V Fernandes																			
 			Niterói	E Bezerra	E Maciel																				
 			Rio Branco A	S Dantas	S Varela																				
 			Guaíba Colina	E Baird	E Murray																				
@@ -544,7 +544,7 @@ Ano	Mes	Zona	Área	Missionário 1	Missionário 2	Missionário 3		unsure
 			Santo Antônio	E Cleber	E Olson																				
 			São Luiz Casal	E Pereira	S Pereira																				
 		Moinhos de Vento	Higienópolis	E Melo	E Aviz																				
-			Staff Ala 1	E Hastings	E V Fernandes	E E Souza																			
+			Porto Alegre 1	E Hastings	E V Fernandes	E E Souza																			
 			Niterói	E Bezerra	E Pimentel																				
 			Rio Branco A	S Dantas	S Stein																				
 			Guaíba Colina	E Baird	E Houston																				
@@ -642,7 +642,7 @@ Ano	Mes	Zona	Área	Missionário 1	Missionário 2	Missionário 3		unsure
 			Santo Antônio	E Olson	E Meireles																				
 			São Luiz Gonzaga	E Norton	E Seal																				
 		Moinhos de Vento	Guaíba Colina	E Kimber	E Houston																				
-			Staff Ala 1	E Hastings	E V Fernandes																				
+			Porto Alegre 1	E Hastings	E V Fernandes																				
 			Niterói	E Bezerra	E Pimentel																				
 			Rio Branco A	S Dantas	S Stein																				
 			Guaíba Centro	E Maciel	E Moreira																				
@@ -723,7 +723,7 @@ Ano	Mes	Zona	Área	Missionário 1	Missionário 2	Missionário 3		unsure
 			Leopoldina B	E Ribeiro	E dos Santos																				
 			Leopoldina	E Borges	E Joanides																				
 		Moinhos de Vento	Guaíba Colina	E Kimber	E Murray																				
-			Staff Ala 1	E V Fernandes	E Hereth																				
+			Porto Alegre 1	E V Fernandes	E Hereth																				
 			Niterói	E Bezerra	E Pettingill																				
 			Rio Branco A	E Psuik	E Hunter																				
 			Guaíba Centro	E Maciel	E Moreira																				
@@ -808,7 +808,7 @@ Ano	Mes	Zona	Área	Missionário 1	Missionário 2	Missionário 3		unsure
 			Niterói	E Pettingill	E Turley																				
 			Rio Branco A	E Psuik	E Hunter																				
 			Higienópolis	E de Matos	E Gouvea																				
-			Staff Ala 1	E V Fernandes	E Hereth	E Dornelas																			
+			Porto Alegre 1	E V Fernandes	E Hereth	E Dornelas																			
 		Assistentes		E Barcellos	E Hathaway																				
 																									
 1998	setembro	Canoas	Harmonia	E V Fernandes	E Pace																				
@@ -886,7 +886,7 @@ Ano	Mes	Zona	Área	Missionário 1	Missionário 2	Missionário 3		unsure
 			Niterói	E Pettingill	E Turley																				
 			Rio Branco A	E Psuik	E Hunter																				
 			Higienópolis	E de Matos	E George																				
-			Staff Ala 1	E Hereth	E Dornelas	E Caldwell																			
+			Porto Alegre 1	E Hereth	E Dornelas	E Caldwell																			
 																									
 1998	outubro	Canoas	Harmonia	E V Fernandes	E dos Santos																				
 			Centro	E Atkin	E Humphreys																				
@@ -966,7 +966,7 @@ Ano	Mes	Zona	Área	Missionário 1	Missionário 2	Missionário 3		unsure
 			Eldorado do Sul	E Santos	E Bargueiras																				
 			Niterói	E Pettingill	E Turley																				
 			Rio Branco	E Psuik	E Hunter																				
-			Staff Ala 1	E Hereth	E Dornelas	E Starley																			
+			Porto Alegre 1	E Hereth	E Dornelas	E Starley																			
 		Assistentes		E Barcellos	E Hathaway																				
 																									
 1998	novembro	Canoas	Harmonia	E Burnett	E dos Santos																				
@@ -1048,7 +1048,7 @@ Ano	Mes	Zona	Área	Missionário 1	Missionário 2	Missionário 3		unsure
 			Rio Branco A	E Riches	E Caldwell																				
 			Higienópolis	E Starley	E Hunter																				
 			Eldorado do Sul	E Santos	E Bargueiras																				
-			Staff	E Hereth	E C Sorensen	E Dornelas																			
+			Porto Alegre 1	E Hereth	E C Sorensen	E Dornelas																			
 		Assistentes		E Barcellos	E Hathaway																				
 																									
 1999	janeiro	Bento Gonçalves	Bento Gonçalves	E A Rodrigues	E Wellington																				
@@ -1608,7 +1608,7 @@ Ano	Mes	Zona	Área	Missionário 1	Missionário 2	Missionário 3		unsure
 			Eldorado do Sul	E Ribeiro	E Buhler																				
 			Niterói	E Hammond	E B Porter																				
 			Rio Branco	E Nascimento	E Wesley																				
-			Ala 1	E Jackson	E Sergio																				
+			Porto Alegre 1	E Jackson	E Sergio																				
 		Montenegro	Lajeado	E Hunter	E Dillenbeck																				
 			Lajeado B	E Murray	E Buck																				
 			Montenegro	E Caldwell	E Colita																				
@@ -1699,7 +1699,7 @@ Ano	Mes	Zona	Área	Missionário 1	Missionário 2	Missionário 3		unsure
 			Guaíba Jardim B	E Johansen	E Marroni																				
 			Higienópolis	S Christófano	S Wendel																				
 			Eldorado do Sul	E Ribeiro	E Buhler																				
-			Ala 1	E K Jackson	E Sergio																				
+			Porto Alegre 1	E K Jackson	E Sergio																				
 		Montenegro	Lajeado	E Hunter	E Peel																				
 			Lajeado B	E Murray	E Buck																				
 			Timbaúva	E Horschel	E Wellisch																				
@@ -1789,7 +1789,7 @@ Ano	Mes	Zona	Área	Missionário 1	Missionário 2	Missionário 3		unsure
 			Guaíba Centro	E Hartley	E Palmer																				
 			Eldorado do Sul	E Ribeiro	E Lima																				
 			Eldorado do Sul B	E B Allen	E Buhler																				
-			Ala 1	E K Jackson	E Redden	E Sergio																			
+			Porto Alegre 1	E K Jackson	E Redden	E Sergio																			
 		Montenegro	Lajeado	E Hunter	E Peel																				
 			Lajeado B	E Murray	E Buck																				
 			Timbaúva	E Horschel	E Ogden																				
@@ -1882,7 +1882,7 @@ Ano	Mes	Zona	Área	Missionário 1	Missionário 2	Missionário 3		unsure
 			Guaíba Centro	E da Silva	E Palmer																				
 			Eldorado do Sul	E Ribeiro	E Lima																				
 			Eldorado do Sul B	E B Allen	E F Santos																				
-			Ala 1	E K Jackson	E Sergio	E Sampaio																			
+			Porto Alegre 1	E K Jackson	E Sergio	E Sampaio																			
 		Montenegro	Lajeado	E Redden	E Peel																				
 			Lajeado B	E Johansen	E Buck																				
 			Timbaúva	S de Oliveira	S Pope																				
@@ -2159,7 +2159,7 @@ Ano	Mes	Zona	Área	Missionário 1	Missionário 2	Missionário 3		unsure
 			Niterói B	E Avelino	E Dourado																				
 			Rio Branco A	E Araújo	E Palmer																				
 			Rio Branco B	E Santos	E Pereira																				
-			Ala 1	E Poulsen	E Rogers																				
+			Porto Alegre 1	E Poulsen	E Rogers																				
 			Higienópolis	S Ramos	S Bowen																				
 		Montenegro	Montenegro	E Alexandre	E Galvão																				
 			Lajeado B	E Johansen	E Speredon																				
@@ -2254,7 +2254,7 @@ Ano	Mes	Zona	Área	Missionário 1	Missionário 2	Missionário 3		unsure
 			Niterói B	E Avelino	E Dourado																				
 			Rio Branco A	E Araújo	E Palmer																				
 			Rio Branco B	E Santos	E Pereira																				
-			Ala 1	E Poulsen	E Caverni																				
+			Porto Alegre 1	E Poulsen	E Caverni																				
 			Higienópolis	S Ramos	S Pope																				
 		Montenegro	Montenegro	E Alexandre	E Mortenson																				
 			Timbaúva B	S Faria	S Mozer																				

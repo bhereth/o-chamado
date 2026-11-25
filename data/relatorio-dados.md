@@ -175,7 +175,9 @@ Sugestão: acrescentar a inicial na Plaqueta (ou na planilha) para casar exatame
 - 1999-01 **Rio Branco**: Caxias do Sul, Moinhos de Vento
 - 2000-03 **Rio Branco A**: Bento Gonçalves, Moinhos de Vento
 - 2000-04 **Rio Branco A**: Caxias do Sul, Moinhos de Vento
+- 2000-04 **Porto Alegre 1**: Moinhos de Vento, Staff
 - 2000-05 **Rio Branco A**: Caxias do Sul, Moinhos de Vento
+- 2000-05 **Porto Alegre 1**: Moinhos de Vento, Staff
 - 2000-06 **Rio Branco A**: Caxias do Sul, Moinhos de Vento
 
 ## F. Repetições no mesmo quadro
