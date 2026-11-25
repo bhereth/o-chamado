@@ -417,7 +417,7 @@ viewof mapa = {
 ## [Chegadas e saídas]{.lang-pt}[Arrivals and departures]{.lang-en}
 
 ::: {.section-intro}
-[515 missionários serviram com os Woodward. Escolha o ano e o mês para ver quem chegou e quem partiu. A chegada é o mês em que o missionário chegou à missão, não a entrada no CTM.]{.lang-pt}[515 missionaries served with the Woodwards. Pick a year and month to see who arrived and who went home. Arrival is the month the missionary arrived in the mission field, not when they entered the MTC.]{.lang-en}
+[Ao todo, 515 missionários serviram com os Woodward. Escolha o ano e o mês para ver quem chegou e quem partiu. A chegada é o mês em que o missionário chegou à missão, não a entrada no CTM.]{.lang-pt}[In all, 515 missionaries served with the Woodwards. Pick a year and month to see who arrived and who went home. Arrival is the month the missionary arrived in the mission field, not when they entered the MTC.]{.lang-en}
 :::
 
 ```{ojs}
@@ -613,7 +613,7 @@ jornalUrl = j => "o-chamado-newsletters/" + encodeURIComponent(j.arquivo)
 
 ::: {.band .column-screen #woodwards}
 ```{=html}
-<div class="secao-topo"><span class="section-eyebrow"><span class="lang-pt">Os Woodwards</span><span class="lang-en">The Woodwards</span></span></div>
+<div class="secao-topo"><span class="section-eyebrow"><span class="lang-pt">Os Woodward</span><span class="lang-en">The Woodwards</span></span></div>
 ```
 
 ```{=html}

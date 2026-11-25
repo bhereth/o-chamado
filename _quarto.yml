@@ -33,7 +33,7 @@ website:
       - href: index.qmd#reencontros
         text: Reencontros
       - href: index.qmd#woodwards
-        text: Woodwards
+        text: Os Woodward
       - href: index.qmd#contato
         text: Contato
   page-footer:
@@ -89,7 +89,7 @@ format:
             var NAV = {
               missao: ["Missão", "Mission"], areas: ["Áreas", "Areas"], missionarios: ["Missionários", "Missionaries"],
               templo: ["Templo", "Temple"], jornal: ["Jornal", "Newsletter"], reencontros: ["Reencontros", "Reunions"],
-              woodwards: ["Woodwards", "Woodwards"], contato: ["Contato", "Contact"]
+              woodwards: ["Os Woodward", "Woodwards"], contato: ["Contato", "Contact"]
             };
             var tools = document.querySelector(".quarto-navbar-tools") || document.querySelector(".navbar-container");
             var box = document.createElement("div");
