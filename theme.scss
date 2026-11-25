@@ -393,10 +393,12 @@ section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reenc
 /* ---------- Transfer board ---------- */
 
 .board-grid {
-  columns: 290px;
-  column-gap: 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
   text-align: left;
 }
+.board-col { flex: 1 1 0; min-width: 0; }
 
 .zone-card {
   break-inside: avoid;

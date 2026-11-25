@@ -383,13 +383,23 @@ viewof mapa = {
 ```{ojs}
 {
   const zonas = [...snapAtual.zonas].sort((a, b) => a.especial - b.especial);
-  return htl.html`<div class="board-grid">${zonas.map(z => {
+  const cartao = z => {
     const comps = z.areas.length;
     return htl.html`<article class=${z.especial ? "zone-card especial" : "zone-card"} data-zona=${z.nome}>
       <header><h3>${z.nome}</h3><span class="count">${comps} ${comps === 1 ? T("dupla", "companionship") : T("duplas", "companionships")}</span></header>
       ${z.areas.map((a, i) => linhaArea(a, z, i > 0 && a.n > 1 && z.areas[i - 1].nome === a.nome))}
     </article>`;
-  })}</div>`;
+  };
+  // Each zone is placed once in the shortest column, so opening a name only pushes cards down
+  // within that column (CSS multi-column layouts rebalance and make cards jump between columns).
+  const n = width >= 900 ? 3 : width >= 600 ? 2 : 1;
+  const colunas = Array.from({ length: n }, () => ({ altura: 0, zonas: [] }));
+  for (const z of zonas) {
+    const c = colunas.reduce((min, col) => col.altura < min.altura ? col : min);
+    c.zonas.push(z);
+    c.altura += z.areas.length + 2;
+  }
+  return htl.html`<div class="board-grid">${colunas.map(c => htl.html`<div class="board-col">${c.zonas.map(cartao)}</div>`)}</div>`;
 }
 ```
 
