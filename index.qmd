@@ -248,10 +248,6 @@ snapAtual = snaps[snapIdx]
     ? htl.html`<p class="aviso-divisao"><i class="bi bi-signpost-split"></i><span>${idioma === "en"
       ? htl.html`This month the mission was divided to create the <strong>Brazil Santa Maria Mission</strong>. The Ijuí and Santo Ângelo zones went to the new mission.`
       : htl.html`Neste mês a missão foi dividida para formar a <strong>Missão Brasil Santa Maria</strong>. As zonas de Ijuí e Santo Ângelo passaram para a nova missão.`}</span></p>`
-    : ""}
-  ${jornalPorMes.has(quadroKey)
-    ? htl.html`<a class="jornal-do-mes" target="_blank" rel="noopener" href=${jornalUrl(jornalPorMes.get(quadroKey))}>
-        <i class="bi bi-file-earmark-pdf"></i><span>${T("Ler", "Read")} <em>O Chamado</em> ${T("de", "for")} ${fmtMesAno(snapAtual)}</span></a>`
     : ""}`;
 }
 ```
