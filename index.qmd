@@ -12,16 +12,6 @@ pagetitle: "O Chamado · Missão Brasil Porto Alegre Norte"
 
 ```{=html}
 <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4500">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Escritório"></button>
-    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Marau"></button>
-    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Santa Rosa"></button>
-    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3" aria-label="Tramandaí"></button>
-    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="4" aria-label="Cruz Alta"></button>
-    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="5" aria-label="Santo Ângelo"></button>
-    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="6" aria-label="Capão da Canoa"></button>
-    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="7" aria-label="Vacaria"></button>
-  </div>
   <div class="carousel-inner">
     <div class="carousel-item active"><img src="images/escritorio.png" class="d-block w-100" alt="Escritório da missão"></div>
     <div class="carousel-item"><img src="images/marau.png" class="d-block w-100" alt="Marau"></div>
@@ -32,12 +22,24 @@ pagetitle: "O Chamado · Missão Brasil Porto Alegre Norte"
     <div class="carousel-item"><img src="images/capaodacanoa.png" class="d-block w-100" alt="Capão da Canoa"></div>
     <div class="carousel-item"><img src="images/vacaria.png" class="d-block w-100" alt="Vacaria"></div>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Anterior</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Próxima</span>
-  </button>
+  <div class="carousel-nav">
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <i class="bi bi-chevron-left" aria-hidden="true"></i><span class="visually-hidden">Anterior</span>
+    </button>
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Escritório"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Marau"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Santa Rosa"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3" aria-label="Tramandaí"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="4" aria-label="Cruz Alta"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="5" aria-label="Santo Ângelo"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="6" aria-label="Capão da Canoa"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="7" aria-label="Vacaria"></button>
+    </div>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+      <i class="bi bi-chevron-right" aria-hidden="true"></i><span class="visually-hidden">Próxima</span>
+    </button>
+  </div>
 </div>
 <p class="credito-fotos"><i class="bi bi-camera"></i> Fotos: cortesia do Élder George</p>
 ```

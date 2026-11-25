@@ -185,8 +185,29 @@ section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reenc
   box-shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.45);
 }
 
+#heroCarousel .carousel-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
 #heroCarousel .carousel-control-prev,
-#heroCarousel .carousel-control-next { bottom: 2.4rem; }
+#heroCarousel .carousel-control-next {
+  position: static;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba($primary, 0.3);
+  background: $paper;
+  color: $primary;
+  opacity: 1;
+  font-size: 1rem;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+#heroCarousel .carousel-control-prev:hover,
+#heroCarousel .carousel-control-next:hover { background: $primary; color: #fff; }
 
 #heroCarousel .carousel-item img {
   aspect-ratio: 16 / 10;
@@ -206,9 +227,8 @@ section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reenc
 }
 
 #heroCarousel .carousel-indicators {
-  order: 2;
   position: static;
-  margin: 1rem 0 0;
+  margin: 0;
   justify-content: center;
 }
 
