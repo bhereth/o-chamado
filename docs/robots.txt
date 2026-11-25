@@ -1,1 +1,1 @@
-Sitemap: https://bhereth.github.io/o-chamado/sitemap.xml
+Sitemap: https://ochamado.org/sitemap.xml
