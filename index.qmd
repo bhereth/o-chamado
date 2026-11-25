@@ -39,6 +39,7 @@ pagetitle: "O Chamado · Missão Brasil Porto Alegre Norte"
     <span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Próxima</span>
   </button>
 </div>
+<p class="credito-fotos"><i class="bi bi-camera"></i> Fotos: cortesia do Élder George</p>
 ```
 :::
 
@@ -59,7 +60,7 @@ pagetitle: "O Chamado · Missão Brasil Porto Alegre Norte"
 
 ## O quadro de transferências
 
-[Escolha um mês para ver todas as zonas, áreas e duplas da missão naquele momento. Toque num nome para ver quando o missionário chegou e saiu.]{.section-intro}
+[Escolha um mês para ver todas as zonas, áreas e duplas da missão naquele momento. Toque num nome para ver quando o missionário chegou e saiu. Viu algum erro? Escreva para [info@ochamado.net](mailto:info@ochamado.net).]{.section-intro}
 
 ```{ojs}
 quadro = FileAttachment("data/quadro.json").json()

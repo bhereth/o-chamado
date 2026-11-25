@@ -48,6 +48,16 @@ htl.html`<div>${[...new Set(newsletters.map(n => n.ano))].map(y => htl.html`
   </div>`)}</div>`
 ```
 
+```{=html}
+<div class="contato-card">
+  <i class="bi bi-envelope-paper"></i>
+  <div>
+    <strong>Tem uma edição que falta aqui?</strong>
+    <p>Se você guardou algum número do <em>O Chamado</em> que não está nesta lista, fotos da missão, correções ou comentários, escreva para <a href="mailto:info@ochamado.net">info@ochamado.net</a>.</p>
+  </div>
+</div>
+```
+
 :::
 ::::
 

@@ -616,6 +616,28 @@ section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reenc
   background: $faixa-rs;
 }
 
+.credito-fotos {
+  margin: 0.8rem auto 0;
+  font-size: 0.78rem;
+  color: $ink-muted;
+}
+
+.contato-card {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  text-align: left;
+  margin-top: 1rem;
+  padding: 1.2rem 1.4rem;
+  border-radius: $border-radius-lg;
+  background: $faixa-rs top / 100% 4px no-repeat, $gold-soft;
+}
+.contato-card i { font-size: 1.8rem; color: $primary; line-height: 1; }
+.contato-card strong { font-family: $headings-font-family; font-size: 1.15rem; }
+.contato-card p { margin: 0.3rem 0 0; }
+
+.nav-footer a { color: #f1d08a; }
+
 #woodwards { padding-bottom: 1.5rem; }
 
 .woodwards-foto {
