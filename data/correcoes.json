@@ -1,61 +1,8 @@
 {
-  "zonas": {
-    "Caxias": "Caxias do Sul",
-    "Caxia do Sul": "Caxias do Sul",
-    "Canoas Esteio": "Canoas-Esteio",
-    "Porto Algre": "Porto Alegre",
-    "Elders Viajantes": "Élderes Viajantes",
-    "Elderes Viajantes": "Élderes Viajantes"
-  },
   "zonasEspeciais": [
     "Assistentes",
     "Élderes Viajantes",
     "Staff"
   ],
-  "areas": {
-    "Cachoerinha": "Cachoeirinha",
-    "Farropilha": "Farroupilha",
-    "Farropilha B": "Farroupilha B",
-    "Matias Velho": "Mathias Velho",
-    "Planaltinha": "Planaltina",
-    "Primaveira": "Primavera",
-    "Rio Brando A": "Rio Branco A",
-    "Sapucais do Sul": "Sapucaia do Sul",
-    "Lago Vermelho A": "Lagoa Vermelha A",
-    "Lago Vermelho B": "Lagoa Vermelha B",
-    "Niteró B": "Niterói B",
-    "Higienopolis": "Higienópolis",
-    "Lindoia": "Lindóia",
-    "Petropolis": "Petrópolis",
-    "Timbauva": "Timbaúva",
-    "São Luis Gonzaga": "São Luiz Gonzaga",
-    "São Luis Casal": "São Luiz Casal",
-    "Staff - Ala 1": "Staff Ala 1",
-    "Moreira Cezar": "Moreira César",
-    "Moreira Cézar": "Moreira César",
-    "Moreira Cesar": "Moreira César",
-    "Moreira Cezar B": "Moreira César B",
-    "Moreira Cézar B": "Moreira César B",
-    "Moreira Cesar B": "Moreira César B",
-    "Guaraní": "Guarani",
-    "Rio Branco C A": "Rio Branco A",
-    "Rio Branco CA": "Rio Branco A"
-  },
-  "apelidos": {
-    "E Riberio": "E Ribeiro",
-    "E Periera": "E Pereira",
-    "S Periera": "S Pereira",
-    "E Cameiro": "E Carneiro",
-    "S Cameiro": "S Carneiro",
-    "E Piaulino": "E Piauilino",
-    "E Polachini": "E Polacchini",
-    "E Andreason": "E Andreasen",
-    "E Adreason": "E Andreasen",
-    "E Borgoyne": "E Burgoyne",
-    "E Featherston": "E Featherstone",
-    "E Oberhanslen": "E Oberhansley",
-    "E Kelly": "E Kelley",
-    "S Varella": "S Varela"
-  },
   "vinculos": []
 }

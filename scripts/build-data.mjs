@@ -32,15 +32,9 @@ const MESES = ["janeiro", "fevereiro", "marco", "abril", "maio", "junho", "julho
 const MES_NOME = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho",
   "agosto", "setembro", "outubro", "novembro", "dezembro"];
 
-const zonaMap = new Map(Object.entries(corr.zonas).map(([k, v]) => [norm(k), v]));
-// Área spelling fixes (typos and missing accents between months), matched exactly.
-const areaMap = new Map(Object.entries(corr.areas ?? {}));
+// Spelling is fixed in the TSV itself; correcoes.json only lists special zones and manual person links.
 const especiais = new Set(corr.zonasEspeciais.map(norm));
-const apelidos = new Map(Object.entries(corr.apelidos).map(([k, v]) => [norm(k), v]));
-const cleanLabel = (l) => {
-  const t = l.replace(/\s+/g, " ").trim();
-  return apelidos.get(norm(t)) ?? t;
-};
+const cleanLabel = (l) => l.replace(/\s+/g, " ").trim();
 
 const warnings = [];
 
@@ -84,7 +78,7 @@ for (let i = 1; i < lines.length; i++) {
     mes = idx + 1;
     zona = null;
   }
-  if (z) zona = zonaMap.get(norm(z)) ?? z;
+  if (z) zona = z;
   if (!ano || !mes || !zona) {
     warnings.push(`Linha ${i + 1}: sem ano/mês/zona definidos; ignorada.`);
     continue;
@@ -92,7 +86,7 @@ for (let i = 1; i < lines.length; i++) {
   const labels = ms.slice(0, 3).filter(Boolean).map(cleanLabel);
   const especial = especiais.has(norm(zona));
   if (!area && !especial) warnings.push(`Linha ${i + 1}: área em branco na zona ${zona}.`);
-  rows.push({ key: ymKey(ano, mes), ano, mes, zona, especial, area: area ? areaMap.get(area) ?? area : null, labels, linha: i + 1 });
+  rows.push({ key: ymKey(ano, mes), ano, mes, zona, especial, area: area || null, labels, linha: i + 1 });
 }
 
 // ---------- Build snapshots ----------
@@ -103,8 +97,7 @@ for (const r of rows) {
 }
 const snapKeys = [...byKey.keys()].sort();
 
-const rep = { dup: [], numeradas: [], cruzadas: [], zonasNaoMapeadas: new Set() };
-const knownZonas = new Set([...zonaMap.values(), ...zonaMap.keys()].map(norm));
+const rep = { dup: [], numeradas: [], cruzadas: [] };
 
 const snapshots = snapKeys.map((key) => {
   const srcRows = byKey.get(key);
@@ -161,7 +154,6 @@ const snapshots = snapKeys.map((key) => {
   const zonas = [];
   const zIdx = new Map();
   for (const r of kept) {
-    if (!knownZonas.has(norm(r.zona))) rep.zonasNaoMapeadas.add(r.zona);
     if (!zIdx.has(r.zona)) {
       zIdx.set(r.zona, zonas.length);
       zonas.push({ nome: r.zona, especial: r.especial, areas: [] });
@@ -433,8 +425,7 @@ for (const c of conflitos)
     (c.novo ? fmtP(c.novo) : "sem registro"));
 md.push("");
 
-md.push("## G. Zonas fora do mapa de correções / avisos", "");
-for (const z of rep.zonasNaoMapeadas) md.push(`- zona sem entrada em \`zonas\`: ${z} (ok se o nome já estiver correto)`);
+md.push("## G. Avisos", "");
 for (const w of warnings) md.push(`- ${w}`);
 md.push("");
 

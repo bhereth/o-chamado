@@ -236,24 +236,5 @@ Uma pessoa só pode estar numa área por mês. Ficou com a área que continua a 
 - 1998-11 `s-santana-1998-05` (Síster Santana, 1998-05 → 1999-09): fica em Farroupilha; S Santana em Lindóia → sem registro
 - 2000-03 `e-young-1999-07` (Élder Young, 1999-07 → 2001-05): fica em Guarani; E Young em Assistente → `e-young-1998-04` (Élder Young, 1998-04 → 2000-02)
 
-## G. Zonas fora do mapa de correções / avisos
+## G. Avisos
 
-- zona sem entrada em `zonas`: Canoas (ok se o nome já estiver correto)
-- zona sem entrada em `zonas`: Ijuí (ok se o nome já estiver correto)
-- zona sem entrada em `zonas`: Montenegro (ok se o nome já estiver correto)
-- zona sem entrada em `zonas`: Gravataí (ok se o nome já estiver correto)
-- zona sem entrada em `zonas`: Novo Hamburgo (ok se o nome já estiver correto)
-- zona sem entrada em `zonas`: Vacaria (ok se o nome já estiver correto)
-- zona sem entrada em `zonas`: Passo Fundo (ok se o nome já estiver correto)
-- zona sem entrada em `zonas`: Vergueiro (ok se o nome já estiver correto)
-- zona sem entrada em `zonas`: São Leopoldo (ok se o nome já estiver correto)
-- zona sem entrada em `zonas`: Osório (ok se o nome já estiver correto)
-- zona sem entrada em `zonas`: Santo Ângelo (ok se o nome já estiver correto)
-- zona sem entrada em `zonas`: Moinhos de Vento (ok se o nome já estiver correto)
-- zona sem entrada em `zonas`: Assistentes (ok se o nome já estiver correto)
-- zona sem entrada em `zonas`: Bento Gonçalves (ok se o nome já estiver correto)
-- zona sem entrada em `zonas`: Taquara (ok se o nome já estiver correto)
-- zona sem entrada em `zonas`: Staff (ok se o nome já estiver correto)
-- zona sem entrada em `zonas`: Erechim (ok se o nome já estiver correto)
-- zona sem entrada em `zonas`: Guaíba (ok se o nome já estiver correto)
-- zona sem entrada em `zonas`: Capão da Canoa (ok se o nome já estiver correto)
