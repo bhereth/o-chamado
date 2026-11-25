@@ -1,4 +1,5 @@
-// Builds data/cidades.json (hometown counts with coordinates) from data/home-towns.csv.
+// Builds data/cidades.json (counts of the cities where missionaries submitted their mission papers,
+// with coordinates) from data/home-towns.csv.
 // The CSV holds only City,State, one row per missionary, with no names, so the map shows
 // how many missionaries came from each place and nothing about who they were.
 //

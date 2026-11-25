@@ -608,7 +608,7 @@ viewof buscaArea = htl.html`<input type="search" id="busca-area" class="form-con
   }
   const [mesTop, nTop] = [...porMes].sort((a, b) => b[1] - a[1])[0];
   const [aTop, mTop] = mesTop.split("-").map(Number);
-  // Hometowns (counts only, no names).
+  // Cities the missionaries sent their mission papers from (counts only, no names).
   const cid = cidadesNatal.cidades;
   const estados = p => new Set(cid.filter(c => c.pais === p).map(c => c.estado));
   const topBR = cid.filter(c => c.pais === "BR").sort((a, b) => b.n - a.n)[0];
@@ -623,7 +623,7 @@ viewof buscaArea = htl.html`<input type="search" id="busca-area" class="form-con
       ${tile(conta(m => m.Nacionalidade === "norte americano"), T("norte-americanos", "North Americans"))}
       ${tile(fmtNum(mediaArea), T("meses, em média, numa mesma área", "months: average stay in one area"))}
       ${tile(Math.round(mediaComp), T("companheiros, em média, por missão", "companions: average per mission"))}
-      ${tile(cid.length, T("cidades natais", "hometowns"))}
+      ${tile(cid.length, T("cidades de origem", "hometowns"))}
       ${tile(estados("BR").size, T("estados brasileiros", "Brazilian states"))}
       ${tile(estados("US").size, T("estados americanos", "U.S. states"))}
     </div>
@@ -636,14 +636,14 @@ viewof buscaArea = htl.html`<input type="search" id="busca-area" class="form-con
 ## [De onde vieram]{.lang-pt}[Where they came from]{.lang-en}
 
 ::: {.section-intro}
-[Cada círculo é uma cidade natal; quanto maior o círculo, mais missionários vieram de lá.]{.lang-pt}[Each circle is a hometown; the bigger the circle, the more missionaries came from there.]{.lang-en}
+[Cada círculo é uma cidade de origem, de onde missionários mandaram os papéis da missão; quanto maior o círculo, mais missionários saíram de lá.]{.lang-pt}[Each circle is a hometown, the city where missionaries submitted their mission papers; the bigger the circle, the more missionaries came from there.]{.lang-en}
 :::
 
 ```{ojs}
 cidadesNatal = FileAttachment("data/cidades.json").json()
 
 {
-  const el = htl.html`<div class="mapa-cidades" role="region" aria-label=${T("Mapa das cidades natais dos missionários", "Map of the missionaries' hometowns")}></div>`;
+  const el = htl.html`<div class="mapa-cidades" role="region" aria-label=${T("Mapa das cidades de origem dos missionários", "Map of the missionaries' hometowns")}></div>`;
   const m = L.map(el, { scrollWheelZoom: false, zoomSnap: 0.25, worldCopyJump: true }).setView([5, -70], 2);
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
