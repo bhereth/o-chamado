@@ -637,6 +637,6 @@ jornalUrl = j => "o-chamado-newsletters/" + encodeURIComponent(j.arquivo)
 
 ::: {.column-screen}
 ```{=html}
-<img class="pampa" src="images/pampa.svg" alt="Silhueta do pampa gaúcho com o Laçador, um umbu e coxilhas">
+<img class="pampa" src="images/pampa.svg" alt="Silhueta do pampa gaúcho com o Laçador, araucárias e coxilhas">
 ```
 :::
