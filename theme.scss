@@ -683,12 +683,12 @@ section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reenc
   margin: 0 0 1.5rem;
 }
 .woodwards-foto img {
-  width: min(280px, 70vw);
+  width: min(300px, 72vw);
   aspect-ratio: 1;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 22px;
   padding: 6px;
-  background: conic-gradient($rs-verde 0 33.34%, $rs-vermelho 33.34% 66.67%, $rs-amarelo 66.67%);
+  background: linear-gradient(135deg, $rs-verde 0 33.34%, $rs-vermelho 33.34% 66.67%, $rs-amarelo 66.67%);
   box-shadow: 0 18px 40px -22px rgba(0, 0, 0, 0.5);
 }
 .woodwards-foto .credito { margin-top: 0.6rem; font-size: 0.75rem; color: $ink-muted; }
@@ -715,7 +715,7 @@ section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reenc
 .jornal-grid {
   margin-bottom: 1.25rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 0.55rem;
 }
 
@@ -1178,3 +1178,14 @@ $cores-regiao: (
   color: $ink-muted;
 }
 .jornal-faltam strong { color: $rs-vermelho; }
+
+@media (max-width: 640px) { .jornal-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+.jornal-card.faltando {
+  background: transparent;
+  border: 1.5px dashed rgba($primary, 0.25);
+  color: $ink-muted;
+}
+.jornal-card.faltando i { color: #b9b3a4; }
+.jornal-card.faltando small { font-style: italic; }
+.jornal-card.faltando:hover { background: rgba($primary, 0.05); color: $primary; box-shadow: none; }
