@@ -61,7 +61,7 @@ pagetitle: "O Chamado · Missão Brasil Porto Alegre Norte"
 </blockquote>
 
 <div class="missao-texto lang-pt" lang="pt">
-  <p class="missao-intro">A Missão Brasil Porto Alegre Norte cobria a metade norte do <strong>Rio Grande do Sul</strong>, o estado mais ao sul do Brasil: da zona norte de Porto Alegre e sua região metropolitana até a Serra Gaúcha, o Planalto e o Litoral Norte, e, até julho de 1998, o Noroeste e as Missões, perto da fronteira com a Argentina.</p>
+  <p class="missao-intro">A Missão Brasil Porto Alegre Norte cobria a metade norte do <strong>Rio Grande do Sul</strong>, o estado mais ao sul do Brasil: da zona norte de Porto Alegre e sua região metropolitana até a Serra Gaúcha, o Planalto e o Litoral Norte, e, até julho de 1998, o Noroeste e as Missões, perto da fronteira com a Argentina. <a href="#mapa">Ver o mapa das zonas ↓</a></p>
 
   <div class="regioes">
     <div class="regiao"><h3><i class="bi bi-buildings"></i> Porto Alegre e região metropolitana</h3>
@@ -89,7 +89,7 @@ pagetitle: "O Chamado · Missão Brasil Porto Alegre Norte"
 </div>
 
 <div class="missao-texto lang-en" lang="en">
-  <p class="missao-intro">The Brazil Porto Alegre North Mission covered the northern half of <strong>Rio Grande do Sul</strong>, Brazil's southernmost state: from the north side of Porto Alegre and its metro area up through the Serra Gaúcha highlands, the Planalto and the northern coast, and, until July 1998, the Northwest and the Missões region near the Argentine border.</p>
+  <p class="missao-intro">The Brazil Porto Alegre North Mission covered the northern half of <strong>Rio Grande do Sul</strong>, Brazil's southernmost state: from the north side of Porto Alegre and its metro area up through the Serra Gaúcha highlands, the Planalto and the northern coast, and, until July 1998, the Northwest and the Missões region near the Argentine border. <a href="#mapa">See the map of the zones ↓</a></p>
 
   <div class="regioes">
     <div class="regiao"><h3><i class="bi bi-buildings"></i> Porto Alegre and its metro area</h3>
@@ -273,11 +273,87 @@ function linhaArea(a, z, cont) {
 ```
 
 ```{ojs}
+ZONA_POS = ({
+  "Porto Alegre": [-30.035, -51.225], "Moinhos de Vento": [-30.012, -51.190], "Guaíba": [-30.114, -51.325],
+  "Canoas": [-29.917, -51.183], "Canoas-Esteio": [-29.852, -51.179], "Gravataí": [-29.944, -50.992],
+  "São Leopoldo": [-29.760, -51.147], "Novo Hamburgo": [-29.678, -51.131], "Taquara": [-29.650, -50.781],
+  "Montenegro": [-29.689, -51.461], "Caxias do Sul": [-29.168, -51.179], "Bento Gonçalves": [-29.171, -51.519],
+  "Vacaria": [-28.512, -50.934], "Passo Fundo": [-28.262, -52.408], "Vergueiro": [-28.230, -52.440],
+  "Erechim": [-27.634, -52.274], "Osório": [-29.887, -50.270], "Capão da Canoa": [-29.745, -50.010],
+  "Ijuí": [-28.388, -53.914], "Santo Ângelo": [-28.299, -54.263]
+})
+
+ZONA_METRO = ["Porto Alegre", "Moinhos de Vento", "Guaíba", "Canoas", "Canoas-Esteio", "Gravataí", "São Leopoldo", "Novo Hamburgo"]
+
+rsContorno = FileAttachment("data/rs.geojson").json()
+
+viewof mapa = {
+  const el = htl.html`<div id="mapa" class="mapa-missao" role="region" aria-label="Mapa das zonas da missão"></div>`;
+  const m = L.map(el, { scrollWheelZoom: false, zoomSnap: 0.25 }).setView([-29.0, -52.0], 7);
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 14
+  }).addTo(m);
+  L.geoJSON(rsContorno, { style: { color: "#1b5e46", weight: 1.5, fill: false, dashArray: "4 4" }, interactive: false }).addTo(m);
+  el.leaflet = m;
+  el.camada = L.layerGroup().addTo(m);
+  const metro = L.latLngBounds(ZONA_METRO.map(z => ZONA_POS[z])).pad(0.25);
+  L.marker([-30.12, -51.40], {
+    icon: L.divIcon({ className: "rotulo-grande-poa", html: "Grande Porto Alegre <i class='bi bi-zoom-in'></i>", iconSize: null }),
+    keyboard: true, title: "Aproximar a Grande Porto Alegre"
+  }).on("click", () => m.flyToBounds(metro, { duration: 0.8 })).addTo(m);
+  const zoomClasse = () => el.classList.toggle("zoom-perto", m.getZoom() >= 9);
+  m.on("zoomend", zoomClasse);
+  zoomClasse();
+  // The element is detached while this cell runs, so fit the view once it has a real size.
+  let enquadrado = false;
+  new ResizeObserver(() => {
+    m.invalidateSize();
+    if (!enquadrado && el.clientWidth > 0) {
+      m.fitBounds(L.latLngBounds(Object.values(ZONA_POS)).pad(0.08));
+      enquadrado = true;
+    }
+  }).observe(el);
+  return el;
+}
+```
+
+```{ojs}
+{
+  const el = viewof mapa, camada = el.camada;
+  camada.clearLayers();
+  const semLugar = [];
+  for (const z of snapAtual.zonas) {
+    const pos = ZONA_POS[z.nome];
+    if (!pos) { semLugar.push(z.nome); continue; }
+    const n = z.areas.length;
+    const marcador = L.circleMarker(pos, {
+      radius: 6 + Math.sqrt(n) * 3, color: "#fff", weight: 2,
+      fillColor: "#1b5e46", fillOpacity: 0.85
+    });
+    const metro = ZONA_METRO.includes(z.nome);
+    marcador.bindTooltip(`${z.nome} <span>${n}</span>`, {
+      permanent: true, direction: z.nome === "Vergueiro" ? "left" : "right", offset: [z.nome === "Vergueiro" ? -8 : 8, 0],
+      className: metro ? "rotulo-zona rotulo-metro" : "rotulo-zona"
+    });
+    marcador.on("click", () => {
+      const card = [...document.querySelectorAll(".zone-card")].find(c => c.dataset.zona === z.nome);
+      if (!card) return;
+      card.scrollIntoView({ behavior: "smooth", block: "center" });
+      card.classList.remove("destaque"); void card.offsetWidth; card.classList.add("destaque");
+    });
+    camada.addLayer(marcador);
+  }
+  return htl.html`<p class="mapa-legenda"><span class="ponto"></span> Zonas em ${snapAtual.mesNome} de ${snapAtual.ano}; o tamanho do círculo mostra o número de duplas. Toque numa zona para ver suas áreas.${semLugar.length ? ` Sem lugar no mapa: ${semLugar.join(", ")}.` : ""}</p>`;
+}
+```
+
+```{ojs}
 {
   const zonas = [...snapAtual.zonas].sort((a, b) => a.especial - b.especial);
   return htl.html`<div class="board-grid">${zonas.map(z => {
     const comps = z.areas.length;
-    return htl.html`<article class=${z.especial ? "zone-card especial" : "zone-card"}>
+    return htl.html`<article class=${z.especial ? "zone-card especial" : "zone-card"} data-zona=${z.nome}>
       <header><h3>${z.nome}</h3><span class="count">${comps} ${comps === 1 ? "dupla" : "duplas"}</span></header>
       ${z.areas.map((a, i) => linhaArea(a, z, i > 0 && a.n > 1 && z.areas[i - 1].nome === a.nome))}
     </article>`;

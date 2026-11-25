@@ -76,7 +76,7 @@ main.content {
 
 main.content > p:empty { display: none; }
 
-section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reencontros"], [id="woodwards"], [id="jornal"], [id="contato"] {
+section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reencontros"], [id="woodwards"], [id="jornal"], [id="contato"], [id="mapa"] {
   scroll-margin-top: 72px;
 }
 
@@ -900,3 +900,72 @@ section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reenc
 .regiao h3 { display: block; }
 .regiao h3 i { margin-right: 0.35rem; }
 .regiao h3 small { display: block; margin-top: 0.2rem; }
+
+/* ---------- Mapa ---------- */
+
+.mapa-missao {
+  height: clamp(340px, 55vw, 520px);
+  max-width: 1100px;
+  margin: 0 auto;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  box-shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.45);
+  background: #f2efe8;
+  z-index: 0;
+}
+.mapa-missao .leaflet-tooltip {
+  font-family: $font-family-sans-serif;
+  font-size: 0.82rem;
+  border-radius: $border-radius;
+}
+.mapa-legenda {
+  max-width: 1100px;
+  margin: 0.7rem auto 2.5rem;
+  font-size: 0.8rem;
+  color: $ink-muted;
+}
+.mapa-legenda .ponto {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: $primary;
+  vertical-align: middle;
+  margin-right: 0.3rem;
+}
+
+@keyframes destaque-zona {
+  0% { box-shadow: 0 0 0 0 rgba($rs-amarelo, 0.9); }
+  100% { box-shadow: 0 0 0 14px rgba($rs-amarelo, 0); }
+}
+.zone-card.destaque { animation: destaque-zona 1.2s ease-out 2; }
+.mapa-missao .leaflet-tile-pane { filter: grayscale(0.55) sepia(0.18) brightness(1.04); }
+
+.mapa-missao .leaflet-tooltip.rotulo-zona {
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  font-family: $font-family-sans-serif;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: $headings-color;
+  text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff;
+}
+.mapa-missao .leaflet-tooltip.rotulo-zona::before { display: none; }
+.mapa-missao .leaflet-tooltip.rotulo-zona span { color: $secondary; margin-left: 2px; }
+.mapa-missao:not(.zoom-perto) .rotulo-metro { display: none; }
+.mapa-missao.zoom-perto .rotulo-grande-poa { display: none; }
+
+.rotulo-grande-poa {
+  white-space: nowrap;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: $primary;
+  color: #fff;
+  font-family: $font-family-sans-serif;
+  font-size: 0.74rem;
+  font-weight: 600;
+  box-shadow: 0 6px 14px -8px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
