@@ -29,7 +29,7 @@ website:
       - href: index.qmd#templo
         text: Templo
       - href: index.qmd#jornal
-        text: Jornal
+        text: Jornais
       - href: index.qmd#reencontros
         text: Reencontros
       - href: index.qmd#woodwards
@@ -88,7 +88,7 @@ format:
             var root = document.documentElement;
             var NAV = {
               missao: ["Missão", "Mission"], areas: ["Áreas", "Areas"], missionarios: ["Missionários", "Missionaries"],
-              templo: ["Templo", "Temple"], jornal: ["Jornal", "Newsletter"], reencontros: ["Reencontros", "Reunions"],
+              templo: ["Templo", "Temple"], jornal: ["Jornais", "Newsletters"], reencontros: ["Reencontros", "Reunions"],
               woodwards: ["Os Woodward", "Woodwards"], contato: ["Contato", "Contact"]
             };
             var tools = document.querySelector(".quarto-navbar-tools") || document.querySelector(".navbar-container");

@@ -816,11 +816,11 @@ function cartaoPessoa({ p, label, ap }) {
 
 :::: {.band .column-screen #jornal}
 ```{=html}
-<div class="secao-topo"><span class="section-eyebrow"><span class="lang-pt">O Jornal</span><span class="lang-en">The Newsletter</span></span></div>
+<div class="secao-topo"><span class="section-eyebrow"><span class="lang-pt">Os Jornais</span><span class="lang-en">The Newsletters</span></span></div>
 ```
 ::: {.wrap}
 
-## [O boletim da missão]{.lang-pt}[The mission newsletter]{.lang-en}
+## [Os boletins da missão]{.lang-pt}[The mission newsletters]{.lang-en}
 
 ::: {.section-intro}
 [Edições de *O Chamado* publicadas durante a missão dos Woodward.]{.lang-pt}[Issues of *O Chamado* published during the Woodwards' mission. The newsletters are in Portuguese.]{.lang-en}
