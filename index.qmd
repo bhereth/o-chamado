@@ -51,6 +51,7 @@ pagetitle: "O Chamado · Missão Brasil Porto Alegre Norte"
   Eleva o coração e regozija-te, pois é chegada a hora de tua missão.
   <footer>Doutrina e Convênios 31:3</footer>
 </blockquote>
+<p class="missao-historia"><strong>Julho de 1998:</strong> a missão foi dividida para formar a <strong>Missão Brasil Santa Maria</strong>. As zonas de Ijuí e Santo Ângelo passaram para a nova missão.</p>
 ```
 :::
 
@@ -82,6 +83,7 @@ aparicoes = {
 function estado(v) { const el = htl.html`<span hidden></span>`; el.value = v; return el; }
 function definir(el, v) { el.value = v; el.dispatchEvent(new Event("input", { bubbles: true })); }
 viewof quadroKey = estado("1997-10")
+DIVISAO = "1998-07"
 snapIdx = snaps.findIndex(s => s.key === quadroKey)
 snapAtual = snaps[snapIdx]
 ```
@@ -105,7 +107,12 @@ snapAtual = snaps[snapIdx]
         return htl.svg`<rect class=${s.key === quadroKey ? "active" : ""} x=${i * bw + gap / 2} y=${H - h} width=${bw - gap} height=${h} rx="2"
           onclick=${() => definir(viewof quadroKey, s.key)}><title>${fmtYM(s.key)}: ${s.stats.zonas} zonas</title></rect>`;
       })}
+      ${(() => {
+        const i = snaps.findIndex(s => s.key === DIVISAO);
+        return i < 0 ? "" : htl.svg`<line class="marco-divisao" x1=${i * bw} x2=${i * bw} y1="0" y2=${H}><title>Julho de 1998: divisão da missão</title></line>`;
+      })()}
     </svg>`}
+    <p class="growth-nota"><span class="marco"></span> Julho de 1998: a missão foi dividida para formar a Missão Brasil Santa Maria.</p>
   </div>`;
 }
 ```
@@ -125,6 +132,9 @@ snapAtual = snaps[snapIdx]
     <span class="snap-label">${snapAtual.mesNome} de ${snapAtual.ano}</span>
     <button class="pill" aria-label="Próximo mês" disabled=${snapIdx === snaps.length - 1} onclick=${() => go(snaps[snapIdx + 1].key)}>›</button>
   </div>
+  ${quadroKey === DIVISAO
+    ? htl.html`<p class="aviso-divisao"><i class="bi bi-signpost-split"></i><span>Neste mês a missão foi dividida para formar a <strong>Missão Brasil Santa Maria</strong>. As zonas de Ijuí e Santo Ângelo passaram para a nova missão.</span></p>`
+    : ""}
   ${jornalPorMes.has(quadroKey)
     ? htl.html`<a class="jornal-do-mes" target="_blank" rel="noopener" href=${jornalUrl(jornalPorMes.get(quadroKey))}>
         <i class="bi bi-file-earmark-pdf"></i><span>Ler <em>O Chamado</em> de ${snapAtual.mesNome} de ${snapAtual.ano}</span></a>`
