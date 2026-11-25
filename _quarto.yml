@@ -12,10 +12,11 @@ project:
     - "images/mapa-rs-*.svg"
 
 website:
-  title: "O Chamado"
+  title: "O Chamado — Missão Porto Alegre Norte com os Woodward (1997–2000)"
   site-url: "https://ochamado.org/"
   page-navigation: false
   navbar:
+    title: "O Chamado"
     background: primary
     pinned: true
     left:

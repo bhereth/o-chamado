@@ -1,6 +1,5 @@
 ---
 title: ""
-pagetitle: "O Chamado · Missão Brasil Porto Alegre Norte"
 ---
 
 ::: {.hero .column-screen}
