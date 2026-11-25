@@ -1219,3 +1219,23 @@ $cores-regiao: (
   color: rgba(255, 255, 255, 0.75);
 }
 .credito-campos a { color: inherit; }
+
+/* ---------- Legenda do quadro ---------- */
+
+.legenda-quadro {
+  max-width: 820px;
+  margin: 1rem auto 0;
+  padding: 1rem 1.25rem;
+  border-radius: $border-radius-lg;
+  background: $paper;
+  text-align: left;
+  font-size: 0.88rem;
+  color: $ink-muted;
+  box-shadow: 0 10px 24px -20px rgba(0, 0, 0, 0.35);
+}
+.legenda-quadro p { display: flex; align-items: flex-start; gap: 0.75rem; margin: 0.35rem 0; }
+.legenda-quadro .chip { flex-shrink: 0; cursor: default; }
+.legenda-quadro .chip:hover { background: $cream; }
+@media (max-width: 575.98px) {
+  .legenda-quadro p { flex-direction: column; gap: 0.3rem; margin: 0.6rem 0; }
+}

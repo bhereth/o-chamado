@@ -393,6 +393,13 @@ viewof mapa = {
   })}</div>`;
 }
 ```
+
+```{=html}
+<div class="legenda-quadro">
+  <p><span class="chip">Élder Widerberg</span> <span class="lang-pt">Toque num nome para ver quando o missionário chegou e saiu.</span><span class="lang-en">Tap a name to see when that missionary arrived and left.</span></p>
+  <p><span class="chip sem-registro">Síster Sena</span> <span class="lang-pt">Borda tracejada: ainda não conseguimos ligar este nome a ninguém da lista de missionários. Pode estar faltando na lista, ou há dois missionários com o mesmo nome no mesmo período. Se você sabe quem é, escreva para <a href="mailto:info@ochamado.net">info@ochamado.net</a>.</span><span class="lang-en">Dashed border: we couldn't match this name to anyone on the missionary list yet. They may be missing from the list, or two missionaries shared the name at the same time. If you know who it is, email <a href="mailto:info@ochamado.net">info@ochamado.net</a>.</span></p>
+</div>
+```
 :::
 ::::
 
@@ -638,8 +645,8 @@ jornalUrl = j => "o-chamado-newsletters/" + encodeURIComponent(j.arquivo)
 ::: {.column-screen}
 ```{=html}
 <div class="pampa-foto">
-  <img src="images/campos-araucarias.jpg" alt="Araucárias numa coxilha dos Campos de Cima da Serra">
-  <span class="credito-campos"><span class="lang-pt">Foto</span><span class="lang-en">Photo</span>: <a href="https://commons.wikimedia.org/wiki/File:Arauc%C3%A1rias_nos_Campos_de_Cima_da_Serra.jpg" target="_blank" rel="noopener">Paulo Hopper</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></span>
+  <img src="images/serra-canela.jpg" alt="Mata de araucárias numa encosta da Serra Gaúcha, em Canela" style="object-position: 50% 62%">
+  <span class="credito-campos"><span class="lang-pt">Foto</span><span class="lang-en">Photo</span>: <a href="https://commons.wikimedia.org/wiki/File:Paisagem_Natura_de_Canela.jpg" target="_blank" rel="noopener">Cesar Vieira</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></span>
 </div>
 ```
 :::
