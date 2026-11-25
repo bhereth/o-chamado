@@ -161,7 +161,7 @@ document.querySelectorAll("#missao [data-svg]").forEach(function (el) {
 ## [O quadro de transferências]{.lang-pt}[The transfer board]{.lang-en}
 
 ::: {.section-intro}
-[Escolha um mês para ver todas as zonas, áreas e duplas da missão naquele momento. Toque num nome para ver quando o missionário chegou e saiu. Viu algum erro? Escreva para [info@ochamado.net](mailto:info@ochamado.net).]{.lang-pt}[Pick a month to see every zone, area and companionship in the mission at that time. Tap a name to see when that missionary arrived and left. Spot a mistake? Email [info@ochamado.net](mailto:info@ochamado.net).]{.lang-en}
+[Escolha um mês para ver todas as zonas, áreas e duplas da missão naquele momento. Toque num nome para ver quando o missionário chegou e saiu. Viu algum erro? Escreva para [info@ochamado.org](mailto:info@ochamado.org).]{.lang-pt}[Pick a month to see every zone, area and companionship in the mission at that time. Tap a name to see when that missionary arrived and left. Spot a mistake? Email [info@ochamado.org](mailto:info@ochamado.org).]{.lang-en}
 :::
 
 ```{ojs}
@@ -397,7 +397,7 @@ viewof mapa = {
 ```{=html}
 <div class="legenda-quadro">
   <p><span class="chip">Élder Widerberg</span> <span class="lang-pt">Toque num nome para ver quando o missionário chegou e saiu.</span><span class="lang-en">Tap a name to see when that missionary arrived and left.</span></p>
-  <p><span class="chip sem-registro">Síster Sena</span> <span class="lang-pt">Borda tracejada: ainda não conseguimos ligar este nome a ninguém da lista de missionários. Pode estar faltando na lista, ou há dois missionários com o mesmo nome no mesmo período. Se você sabe quem é, escreva para <a href="mailto:info@ochamado.net">info@ochamado.net</a>.</span><span class="lang-en">Dashed border: we couldn't match this name to anyone on the missionary list yet. They may be missing from the list, or two missionaries shared the name at the same time. If you know who it is, email <a href="mailto:info@ochamado.net">info@ochamado.net</a>.</span></p>
+  <p><span class="chip sem-registro">Síster Sena</span> <span class="lang-pt">Borda tracejada: ainda não conseguimos ligar este nome a ninguém da lista de missionários. Pode estar faltando na lista, ou há dois missionários com o mesmo nome no mesmo período. Se você sabe quem é, escreva para <a href="mailto:info@ochamado.org">info@ochamado.org</a>.</span><span class="lang-en">Dashed border: we couldn't match this name to anyone on the missionary list yet. They may be missing from the list, or two missionaries shared the name at the same time. If you know who it is, email <a href="mailto:info@ochamado.org">info@ochamado.org</a>.</span></p>
 </div>
 ```
 :::
@@ -527,7 +527,7 @@ function cartaoPessoa({ p, label, ap }) {
       <li><span class="data"><span class="lang-pt">dez 2000</span><span class="lang-en">Dec 2000</span></span><span><span class="lang-pt">Visitação pública, com cerca de 25 mil visitantes.</span><span class="lang-en">Public open house, with about 25,000 visitors.</span></span></li>
       <li><span class="data"><span class="lang-pt">17 dez 2000</span><span class="lang-en">Dec 17, 2000</span></span><span><span class="lang-pt">O Presidente Hinckley dedica o templo, o 102º da Igreja e o terceiro do Brasil, no bairro Vila Jardim, com vista para a cidade e o Guaíba.</span><span class="lang-en">President Hinckley dedicates the temple, the Church's 102nd and Brazil's third, in the Vila Jardim neighborhood overlooking the city and the Guaíba.</span></span></li>
     </ol>
-    <p class="templo-chamada"><i class="bi bi-camera"></i> <span class="lang-pt">Você estava na abertura de terra? Mande suas fotos e lembranças para</span><span class="lang-en">Were you at the groundbreaking? Send your photos and memories to</span> <a href="mailto:info@ochamado.net?subject=Abertura%20de%20terra%20do%20Templo%20de%20Porto%20Alegre">info@ochamado.net</a>.</p>
+    <p class="templo-chamada"><i class="bi bi-camera"></i> <span class="lang-pt">Você estava na abertura de terra? Mande suas fotos e lembranças para</span><span class="lang-en">Were you at the groundbreaking? Send your photos and memories to</span> <a href="mailto:info@ochamado.org?subject=Abertura%20de%20terra%20do%20Templo%20de%20Porto%20Alegre">info@ochamado.org</a>.</p>
     <p class="templo-fonte"><span class="lang-pt">Fonte</span><span class="lang-en">Source</span>: <a href="https://www.thechurchnews.com/1998/5/9/23250717/be-loyal-worthy-to-enter-temple-members-urged/" target="_blank" rel="noopener">Church News, <span class="lang-pt">9 de maio de 1998</span><span class="lang-en">May 9, 1998</span></a>.</p>
   </div>
 </div>
@@ -563,7 +563,7 @@ jornalUrl = j => "o-chamado-newsletters/" + encodeURIComponent(j.arquivo)
     if (j) return htl.html`<a class="jornal-card" target="_blank" rel="noopener" href=${jornalUrl(j)}>
         <i class="bi bi-file-earmark-pdf"></i><span><strong>${MES_NOME[mes - 1]}</strong><small>${ano}</small></span></a>`;
     const assunto = T(`Tenho O Chamado de ${MES_NOME[mes - 1].toLowerCase()} de ${ano}`, `I have O Chamado for ${MES_NOME[mes - 1]} ${ano}`);
-    return htl.html`<a class="jornal-card faltando" href=${`mailto:info@ochamado.net?subject=${encodeURIComponent(assunto)}`}
+    return htl.html`<a class="jornal-card faltando" href=${`mailto:info@ochamado.org?subject=${encodeURIComponent(assunto)}`}
         title=${T("Edição faltando: se você tem, toque para nos escrever", "Missing issue: if you have it, tap to email us")}>
         <i class="bi bi-file-earmark"></i><span><strong>${MES_NOME[mes - 1]}</strong><small>${T("faltando", "missing")}</small></span></a>`;
   };
@@ -578,7 +578,7 @@ jornalUrl = j => "o-chamado-newsletters/" + encodeURIComponent(j.arquivo)
   <i class="bi bi-envelope-paper"></i>
   <div>
     <strong><span class="lang-pt">Tem uma edição que falta aqui?</span><span class="lang-en">Have an issue that's missing here?</span></strong>
-    <p><span class="lang-pt">Os meses em cinza ainda não têm jornal. Se você guardou algum desses números do <em>O Chamado</em>, toque no mês ou escreva para</span><span class="lang-en">The grey months don't have a newsletter yet. If you kept one of those issues of <em>O Chamado</em>, tap the month or email</span> <a href="mailto:info@ochamado.net">info@ochamado.net</a>.</p>
+    <p><span class="lang-pt">Os meses em cinza ainda não têm jornal. Se você guardou algum desses números do <em>O Chamado</em>, toque no mês ou escreva para</span><span class="lang-en">The grey months don't have a newsletter yet. If you kept one of those issues of <em>O Chamado</em>, tap the month or email</span> <a href="mailto:info@ochamado.org">info@ochamado.org</a>.</p>
   </div>
 </div>
 ```
@@ -637,7 +637,7 @@ jornalUrl = j => "o-chamado-newsletters/" + encodeURIComponent(j.arquivo)
 :::
 
 ```{=html}
-<a class="email-btn" href="mailto:info@ochamado.net?subject=O%20Chamado%20-%20coment%C3%A1rio"><i class="bi bi-envelope"></i> info@ochamado.net</a>
+<a class="email-btn" href="mailto:info@ochamado.org?subject=O%20Chamado%20-%20coment%C3%A1rio"><i class="bi bi-envelope"></i> info@ochamado.org</a>
 <p class="organizador"><span class="lang-pt">Site organizado pelo <strong>Élder Bill Hereth</strong>, que serviu com os Woodward.</span><span class="lang-en">Site organized by <strong>Elder Bill Hereth</strong>, who served with the Woodwards.</span></p>
 ```
 :::
