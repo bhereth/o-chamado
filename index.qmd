@@ -541,14 +541,7 @@ function cartaoPessoa({ p, label, ap }) {
 :::
 
 ```{ojs}
-jornais = [
-  [1997, 10], [1997, 12], [1998, 1], [1998, 2],
-  [1999, 1], [1999, 3], [1999, 4], [1999, 5], [1999, 6], [1999, 7], [1999, 10], [1999, 11], [1999, 12],
-  [2000, 1], [2000, 2], [2000, 3], [2000, 4], [2000, 5], [2000, 6]
-].map(([ano, mes]) => {
-  const key = `${ano}-${String(mes).padStart(2, "0")}`;
-  return { ano, mes, key, arquivo: `O Chamado - ${key}.pdf` };
-})
+jornais = FileAttachment("data/jornais.json").json()
 jornalPorMes = new Map(jornais.map(j => [j.key, j]))
 jornalUrl = j => "o-chamado-newsletters/" + encodeURIComponent(j.arquivo)
 ```
@@ -563,6 +556,20 @@ htl.html`<div>${[...new Set(jornais.map(j => j.ano))].map(y => htl.html`
         <span><strong>${MES_NOME[j.mes - 1]}</strong><small>${j.ano}</small></span>
       </a>`)}
   </div>`)}</div>`
+```
+
+```{ojs}
+{
+  // Months of the Woodwards' mission (Jul 1997 – Jun 2000) with no newsletter in the folder yet.
+  const tem = new Set(jornais.map(j => j.key)), faltam = [];
+  for (let n = 1997 * 12 + 6; n <= 2000 * 12 + 5; n++) {
+    const key = `${Math.floor(n / 12)}-${String(n % 12 + 1).padStart(2, "0")}`;
+    if (!tem.has(key)) faltam.push(fmtYM(key));
+  }
+  return faltam.length
+    ? htl.html`<p class="jornal-faltam"><strong>${T("Ainda faltam", "Still missing")}:</strong> ${faltam.join(" · ")}</p>`
+    : htl.html`<p class="jornal-faltam">${T("Temos todas as edições da época dos Woodward!", "We have every issue from the Woodwards' time!")}</p>`;
+}
 ```
 
 ```{=html}

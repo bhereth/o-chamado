@@ -326,6 +326,14 @@ const writeIfChanged = (f, text) => {
 };
 writeIfChanged("data/quadro.json", JSON.stringify(out) + "\n");
 
+// Newsletter list, built from whatever PDFs named "O Chamado - YYYY-MM.pdf" are in the folder.
+const jornais = fs.readdirSync(p("o-chamado-newsletters"))
+  .map((f) => f.match(/^O Chamado - (\d{4})-(\d{2})\.pdf$/))
+  .filter(Boolean)
+  .map(([arquivo, ano, mes]) => ({ ano: Number(ano), mes: Number(mes), key: `${ano}-${mes}`, arquivo }))
+  .sort((a, b) => a.key.localeCompare(b.key));
+writeIfChanged("data/jornais.json", JSON.stringify(jornais, null, 1) + "\n");
+
 // ---------- Report ----------
 const lev = (a, b) => {
   const m = Array.from({ length: a.length + 1 }, (_, i) => [i]);

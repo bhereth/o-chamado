@@ -1170,3 +1170,11 @@ $cores-regiao: (
   filter: drop-shadow(0 16px 26px rgba(0, 0, 0, 0.16));
 }
 .globo svg, .mapa-rs svg, .globo img, .mapa-rs img { display: block; width: 100%; height: auto; }
+
+.jornal-faltam {
+  max-width: 760px;
+  margin: 1.75rem auto 0;
+  font-size: 0.9rem;
+  color: $ink-muted;
+}
+.jornal-faltam strong { color: $rs-vermelho; }
