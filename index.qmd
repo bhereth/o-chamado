@@ -160,6 +160,8 @@ document.querySelectorAll("#missao [data-svg]").forEach(function (el) {
 ## [O quadro de transferências]{.lang-pt}[The transfer board]{.lang-en}
 
 ::: {.section-intro}
+[Foi nessas cidades e bairros que os missionários trabalharam. A cada transferência, companheiros mudavam, áreas novas se abriam e as zonas se reorganizavam conforme a missão crescia. O Chamado publicava o quadro de transferências, e aqui estão reunidos os quadros de outubro de 1997 a junho de 2000.]{.lang-pt}[These are the cities and neighborhoods where the missionaries served. At each transfer, companionships changed, new areas opened and zones were reorganized as the mission grew. O Chamado printed the transfer board, and the boards from October 1997 to June 2000 are gathered here.]{.lang-en}
+
 [Escolha um mês para ver todas as zonas, áreas e duplas da missão naquele momento. Toque num nome para ver quando o missionário chegou à missão (não a entrada no CTM) e quando saiu. Viu algum erro? Escreva para [info@ochamado.org](mailto:info@ochamado.org).]{.lang-pt}[Pick a month to see every zone, area and companionship in the mission at that time. Tap a name to see when that missionary arrived in the mission (not when they entered the MTC) and when they left. Spot a mistake? Email [info@ochamado.org](mailto:info@ochamado.org).]{.lang-en}
 :::
 
