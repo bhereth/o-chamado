@@ -53,14 +53,6 @@ $faixa-rs-diag: linear-gradient(to bottom right, $rs-verde 0 37%, $rs-vermelho 3
   grid-template-rows: [content-top] minmax(max-content, 1fr) [content-bottom] 0 [page-bottom];
 }
 
-.pampa {
-  display: block;
-  width: 100%;
-  height: max(110px, 16vw);
-  object-fit: cover;
-  object-position: 50% 100%;
-  margin-bottom: -1px;
-}
 
 html { scroll-behavior: smooth; }
 
@@ -693,7 +685,7 @@ section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reenc
 }
 .woodwards-foto .credito { margin-top: 0.6rem; font-size: 0.75rem; color: $ink-muted; }
 .woodwards-foto .credito a { color: inherit; }
-.band:has(+ .column-screen .pampa) { padding-bottom: 1.5rem; }
+.band:has(+ .column-screen .pampa-foto) { padding-bottom: 1.5rem; }
 
 .woodwards-names {
   font-family: $headings-font-family;
@@ -776,7 +768,7 @@ section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reenc
 }
 .email-btn:hover { background: $rs-vermelho; color: #fff; transform: translateY(-1px); }
 
-.column-screen:has(> .pampa), .column-screen:has(.pampa) { background: rgba($primary, 0.05); }
+.column-screen:has(.pampa-foto) { background: rgba($primary, 0.05); }
 
 /* ---------- Divisão da missão (julho de 1998) ---------- */
 
@@ -1189,3 +1181,41 @@ $cores-regiao: (
 .jornal-card.faltando i { color: #b9b3a4; }
 .jornal-card.faltando small { font-style: italic; }
 .jornal-card.faltando:hover { background: rgba($primary, 0.05); color: $primary; box-shadow: none; }
+
+/* ---------- Foto do rodapé (duotone verde) ---------- */
+
+// Grey photo screened over dark green, then tinted sage: shadows go dark green, highlights sage.
+.pampa-foto {
+  position: relative;
+  height: clamp(170px, 22vw, 320px);
+  overflow: hidden;
+  background: $footer-bg;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 38%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 38%);
+}
+.pampa-foto img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 38%;
+  filter: grayscale(1) contrast(1.15) brightness(1.05);
+  mix-blend-mode: screen;
+}
+.pampa-foto::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #8fbfa3;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+.credito-campos {
+  position: absolute;
+  right: 12px;
+  bottom: 8px;
+  z-index: 2;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+.credito-campos a { color: inherit; }

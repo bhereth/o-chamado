@@ -637,6 +637,9 @@ jornalUrl = j => "o-chamado-newsletters/" + encodeURIComponent(j.arquivo)
 
 ::: {.column-screen}
 ```{=html}
-<img class="pampa" src="images/pampa.svg" alt="Silhueta do pampa gaúcho com o Laçador, araucárias e coxilhas">
+<div class="pampa-foto">
+  <img src="images/campos-araucarias.jpg" alt="Araucárias numa coxilha dos Campos de Cima da Serra">
+  <span class="credito-campos"><span class="lang-pt">Foto</span><span class="lang-en">Photo</span>: <a href="https://commons.wikimedia.org/wiki/File:Arauc%C3%A1rias_nos_Campos_de_Cima_da_Serra.jpg" target="_blank" rel="noopener">Paulo Hopper</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></span>
+</div>
 ```
 :::
