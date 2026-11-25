@@ -16,17 +16,17 @@ website:
     background: primary
     left:
       - href: index.qmd#missao
-        text: A Missão
+        text: Missão
       - href: index.qmd#areas
-        text: As Áreas
+        text: Áreas
       - href: index.qmd#missionarios
-        text: Os Missionários
+        text: Missionários
       - href: index.qmd#jornal
-        text: O Jornal
+        text: Jornal
       - href: index.qmd#reencontros
-        text: Os Reencontros
+        text: Reencontros
       - href: index.qmd#woodwards
-        text: Os Woodwards
+        text: Woodwards
       - href: index.qmd#contato
         text: Contato
   page-footer:
