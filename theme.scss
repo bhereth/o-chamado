@@ -173,13 +173,22 @@ section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reenc
 
 .hero-compact { padding-bottom: 1.5rem; }
 
+// Dots sit below the photo (not over it): the card styling moves to .carousel-inner.
 #heroCarousel {
+  display: flex;
+  flex-direction: column;
   max-width: 980px;
   margin: 2.5rem auto 0;
+}
+
+#heroCarousel .carousel-inner {
   border-radius: $border-radius-lg;
   overflow: hidden;
   box-shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.45);
 }
+
+#heroCarousel .carousel-control-prev,
+#heroCarousel .carousel-control-next { bottom: 2.4rem; }
 
 #heroCarousel .carousel-item img {
   aspect-ratio: 16 / 10;
@@ -198,14 +207,23 @@ section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reenc
   text-align: left;
 }
 
-#heroCarousel .carousel-indicators { margin-bottom: 0.8rem; justify-content: flex-end; margin-right: 1.5rem; }
+#heroCarousel .carousel-indicators {
+  order: 2;
+  position: static;
+  margin: 1rem 0 0;
+  justify-content: center;
+}
 
 #heroCarousel .carousel-indicators [data-bs-target] {
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
+  margin: 0 5px;
   border-radius: 50%;
   border: 0;
+  background-color: $primary;
+  opacity: 0.25;
 }
+#heroCarousel .carousel-indicators .active { opacity: 1; }
 
 /* ---------- Sections ---------- */
 
