@@ -160,7 +160,7 @@ document.querySelectorAll("#missao [data-svg]").forEach(function (el) {
 ## [O quadro de transferências]{.lang-pt}[The transfer board]{.lang-en}
 
 ::: {.section-intro}
-[Escolha um mês para ver todas as zonas, áreas e duplas da missão naquele momento. Toque num nome para ver quando o missionário chegou e saiu. Viu algum erro? Escreva para [info@ochamado.org](mailto:info@ochamado.org).]{.lang-pt}[Pick a month to see every zone, area and companionship in the mission at that time. Tap a name to see when that missionary arrived and left. Spot a mistake? Email [info@ochamado.org](mailto:info@ochamado.org).]{.lang-en}
+[Escolha um mês para ver todas as zonas, áreas e duplas da missão naquele momento. Toque num nome para ver quando o missionário chegou à missão (não a entrada no CTM) e quando saiu. Viu algum erro? Escreva para [info@ochamado.org](mailto:info@ochamado.org).]{.lang-pt}[Pick a month to see every zone, area and companionship in the mission at that time. Tap a name to see when that missionary arrived in the mission (not when they entered the MTC) and when they left. Spot a mistake? Email [info@ochamado.org](mailto:info@ochamado.org).]{.lang-en}
 :::
 
 ```{ojs}
@@ -421,7 +421,7 @@ viewof mapa = {
 ## [Chegadas e saídas]{.lang-pt}[Arrivals and departures]{.lang-en}
 
 ::: {.section-intro}
-[515 missionários serviram com os Woodward. Escolha o ano e o mês para ver quem chegou e quem partiu.]{.lang-pt}[515 missionaries served with the Woodwards. Pick a year and month to see who arrived and who went home.]{.lang-en}
+[515 missionários serviram com os Woodward. Escolha o ano e o mês para ver quem chegou e quem partiu. A chegada é o mês em que o missionário chegou à missão, não a entrada no CTM.]{.lang-pt}[515 missionaries served with the Woodwards. Pick a year and month to see who arrived and who went home. Arrival is the month the missionary arrived in the mission, not when they entered the MTC.]{.lang-en}
 :::
 
 ```{ojs}
