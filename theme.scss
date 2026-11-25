@@ -76,7 +76,7 @@ main.content {
 
 main.content > p:empty { display: none; }
 
-section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reencontros"], [id="woodwards"] {
+section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reencontros"], [id="woodwards"], [id="jornal"], [id="contato"] {
   scroll-margin-top: 72px;
 }
 
@@ -151,7 +151,6 @@ section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reenc
   background: linear-gradient(180deg, $rs-verde 0 33.34%, $rs-vermelho 33.34% 66.67%, $rs-amarelo 66.67%);
   opacity: 0.9;
 }
-.hero-compact::before { top: 10px; }
 @media (max-width: 767.98px) {
   .hero::before { width: 300px; height: 30px; right: -110px; top: 18px; }
 }
@@ -171,7 +170,6 @@ section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reenc
   margin-bottom: 0;
 }
 
-.hero-compact { padding-bottom: 1.5rem; }
 
 // Dots sit below the photo (not over it): the card styling moves to .carousel-inner.
 #heroCarousel {
@@ -656,7 +654,6 @@ section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reenc
 
 .nav-footer a { color: #f1d08a; }
 
-#woodwards { padding-bottom: 1.5rem; }
 
 .woodwards-foto {
   display: flex;
@@ -676,7 +673,6 @@ section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reenc
 }
 .woodwards-foto .credito { margin-top: 0.6rem; font-size: 0.75rem; color: $ink-muted; }
 .woodwards-foto .credito a { color: inherit; }
-.hero-compact + .band { padding-top: 1.5rem; }
 .band:has(+ .column-screen .pampa) { padding-bottom: 1.5rem; }
 
 .woodwards-names {
@@ -723,3 +719,39 @@ section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reenc
 .jornal-card i { font-size: 1.5rem; color: $secondary; }
 .jornal-card strong { display: block; font-weight: 600; }
 .jornal-card small { color: $ink-muted; }
+
+/* ---------- Jornal do mês / contato ---------- */
+
+.jornal-do-mes {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: -1rem 0 2rem;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  background: $gold-soft;
+  color: $headings-color;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+.jornal-do-mes:hover { background: darken($gold-soft, 6%); color: $primary; }
+.jornal-do-mes i { color: $secondary; font-size: 1.1rem; }
+
+.email-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  background: $primary;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 14px 28px -18px rgba(0, 0, 0, 0.6);
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+.email-btn:hover { background: $rs-vermelho; color: #fff; transform: translateY(-1px); }
+
+.column-screen:has(> .pampa), .column-screen:has(.pampa) { background: rgba($primary, 0.05); }
