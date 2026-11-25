@@ -119,9 +119,23 @@ pagetitle: "O Chamado · Missão Brasil Porto Alegre Norte"
 :::
 
 :::: {.band .column-screen .section-muted #areas}
+::: {.secao-topo}
 ```{=html}
-<div class="secao-topo"><span class="section-eyebrow"><span class="lang-pt">As Áreas</span><span class="lang-en">The Areas</span></span></div>
+<span class="section-eyebrow"><span class="lang-pt">As Áreas</span><span class="lang-en">The Areas</span></span>
 ```
+
+```{ojs}
+{
+  const go = k => definir(viewof quadroKey, k);
+  return htl.html`<div class="nav-mes">
+    <button class="nav-mes-btn" aria-label=${T("Mês anterior", "Previous month")} disabled=${snapIdx === 0} onclick=${() => go(snaps[snapIdx - 1].key)}><i class="bi bi-chevron-left"></i></button>
+    <span class="snap-label">${fmtMesAno(snapAtual)}</span>
+    <button class="nav-mes-btn" aria-label=${T("Próximo mês", "Next month")} disabled=${snapIdx === snaps.length - 1} onclick=${() => go(snaps[snapIdx + 1].key)}><i class="bi bi-chevron-right"></i></button>
+  </div>`;
+}
+```
+:::
+
 ::: {.wrap}
 
 ## [O quadro de transferências]{.lang-pt}[The transfer board]{.lang-en}
@@ -210,11 +224,6 @@ snapAtual = snaps[snapIdx]
   return htl.html`<div class="filter-panel">
     <div class="pill-group">${anos.map(a => pill(a, a === snapAtual.ano, () => go(snaps.find(s => s.ano === a).key)))}</div>
     <div class="pill-group">${doAno.map(s => pill(MES[s.mes - 1], s.key === quadroKey, () => go(s.key)))}</div>
-  </div>
-  <div class="snap-nav">
-    <button class="pill" aria-label=${T("Mês anterior", "Previous month")} disabled=${snapIdx === 0} onclick=${() => go(snaps[snapIdx - 1].key)}>‹</button>
-    <span class="snap-label">${fmtMesAno(snapAtual)}</span>
-    <button class="pill" aria-label=${T("Próximo mês", "Next month")} disabled=${snapIdx === snaps.length - 1} onclick=${() => go(snaps[snapIdx + 1].key)}>›</button>
   </div>
   ${quadroKey === DIVISAO
     ? htl.html`<p class="aviso-divisao"><i class="bi bi-signpost-split"></i><span>${idioma === "en"

@@ -1089,3 +1089,42 @@ html[data-lang="en"] .lang-pt { display: none !important; }
   color: $ink-muted;
 }
 .organizador strong { color: $headings-color; }
+
+/* ---------- Mês fixo na barra de "As Áreas" ---------- */
+
+.secao-topo .cell,
+.secao-topo .cell-output,
+.secao-topo .cell-output-display { margin: 0; }
+.secao-topo > p:empty { display: none; }
+
+.nav-mes {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.nav-mes .snap-label {
+  font-family: $headings-font-family;
+  font-size: 1.1rem;
+  min-width: 9.5em;
+  text-align: center;
+  color: $headings-color;
+}
+.nav-mes .snap-label::first-letter { text-transform: uppercase; }
+.nav-mes-btn,
+.nav-mes-btn.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid rgba($primary, 0.3);
+  background: $paper;
+  color: $primary;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.nav-mes-btn:hover:not(:disabled) { background: $primary; color: #fff; }
+.nav-mes-btn:disabled { opacity: 0.35; cursor: default; }
+.filter-panel { margin-bottom: 1.5rem; }
