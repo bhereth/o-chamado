@@ -553,7 +553,7 @@ function cartaoPessoa({ p, label, ap }) {
 ## [O boletim da missão]{.lang-pt}[The mission newsletter]{.lang-en}
 
 ::: {.section-intro}
-[Edições do *O Chamado* publicadas durante a missão dos Woodward.]{.lang-pt}[Issues of *O Chamado* published during the Woodwards' mission. The newsletters are in Portuguese.]{.lang-en}
+[Edições de *O Chamado* publicadas durante a missão dos Woodward.]{.lang-pt}[Issues of *O Chamado* published during the Woodwards' mission. The newsletters are in Portuguese.]{.lang-en}
 :::
 
 ```{ojs}
@@ -587,7 +587,7 @@ jornalUrl = j => "o-chamado-newsletters/" + encodeURIComponent(j.arquivo)
   <i class="bi bi-envelope-paper"></i>
   <div>
     <strong><span class="lang-pt">Tem uma edição que falta aqui?</span><span class="lang-en">Have an issue that's missing here?</span></strong>
-    <p><span class="lang-pt">Os meses em cinza ainda não têm jornal. Se você guardou algum desses números do <em>O Chamado</em>, toque no mês ou escreva para</span><span class="lang-en">The grey months don't have a newsletter yet. If you kept one of those issues of <em>O Chamado</em>, tap the month or email</span> <a href="mailto:info@ochamado.org">info@ochamado.org</a>.</p>
+    <p><span class="lang-pt">Os meses em cinza ainda não têm jornal. Se você guardou algum desses números de <em>O Chamado</em>, toque no mês ou escreva para</span><span class="lang-en">The grey months don't have a newsletter yet. If you kept one of those issues of <em>O Chamado</em>, tap the month or email</span> <a href="mailto:info@ochamado.org">info@ochamado.org</a>.</p>
   </div>
 </div>
 ```
