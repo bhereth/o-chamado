@@ -355,12 +355,20 @@ dialogos = {
       : htl.html`<div class="meta">${T("Sem registro de chegada/saída", "No arrival/departure record")} · ${nQuadros}</div>`;
     mostrarDialogo(htl.html`${topoDialogo(x ? `${x.titulo} ${x.plaqueta}` : nomeCompleto(p.n), meta)}
       <div class="dlg-corpo">
+        ${ap.length ? htl.html`<button class="pill botao-jornada" onclick=${() => verJornada(chavePessoa(p))}><i class="bi bi-signpost-2"></i> ${T("Ver a jornada no mapa", "See the journey on the map")}</button>` : ""}
         ${ap.length ? tabelaPessoa(ap) : htl.html`<p class="busca-hint">${T("Não aparece nos quadros de transferências.", "Not on any transfer board.")}</p>`}
         ${x ? "" : htl.html`<p class="dlg-nota">${T("Ainda não conseguimos ligar este nome a ninguém da lista de missionários. Se você sabe quem é, escreva para info@ochamado.org.",
           "We couldn't match this name to anyone on the missionary list yet. If you know who it is, email info@ochamado.org.")}</p>`}
         <p class="dlg-nota">${T("A chegada é o mês em que o missionário chegou ao campo missionário. ↓ = igual à linha de cima. A linha destacada é o mês escolhido no quadro.",
           "Arrival is the month the missionary arrived in the mission field. ↓ = same as the row above. The highlighted row is the month selected on the board.")}</p>
       </div>`);
+  }
+
+  // Closes the window and plays this missionary's journey on the journey map.
+  function verJornada(chave) {
+    dlgArea.close();
+    definir(viewof jornadaModo, { tipo: "pessoa", chave, auto: true });
+    document.getElementById("mapa-jornada")?.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 
   function abrirArea(a, z) {
@@ -504,17 +512,37 @@ viewof mapa = {
     icon: L.divIcon({ className: "rotulo-grande-poa", html: "Grande Porto Alegre <i class='bi bi-zoom-in'></i>", iconSize: null }),
     keyboard: true
   }).on("click", () => m.flyToBounds(metro, { duration: 0.8 })).addTo(m);
-  const zoomClasse = () => el.classList.toggle("zoom-perto", m.getZoom() >= 9);
-  m.on("zoomend", zoomClasse);
+  // "Whole mission" button: shown whenever the map is zoomed in past the full view
+  // (after "Greater Porto Alegre", a filter's auto zoom, or zooming by hand).
+  const inteira = L.latLngBounds(Object.values(ZONA_POS)).pad(0.08);
+  const Voltar = L.Control.extend({
+    onAdd() {
+      const b = L.DomUtil.create("button", "btn-missao-inteira");
+      b.type = "button";
+      L.DomEvent.disableClickPropagation(b);
+      L.DomEvent.on(b, "click", () => m.flyToBounds(inteira, { duration: 0.8 }));
+      el.botaoVoltar = b;
+      return b;
+    }
+  });
+  new Voltar({ position: "topright" }).addTo(m);
+  const zoomClasse = () => {
+    el.classList.toggle("zoom-perto", m.getZoom() >= 9);
+    // Shown whenever the view is not the whole mission: zoomed in by any means, or dragged aside.
+    const foraDaVista = !m.getBounds().pad(0.05).contains(inteira.pad(-0.08));
+    el.classList.toggle("zoom-dentro", el.clientWidth > 0 && (m.getZoom() > m.getBoundsZoom(inteira) + 0.1 || foraDaVista));
+  };
+  m.on("zoomend moveend", zoomClasse);
   zoomClasse();
   // The element is detached while this cell runs, so fit the view once it has a real size.
   let enquadrado = false;
   new ResizeObserver(() => {
     m.invalidateSize();
     if (!enquadrado && el.clientWidth > 0) {
-      m.fitBounds(L.latLngBounds(Object.values(ZONA_POS)).pad(0.08));
+      m.fitBounds(inteira);
       enquadrado = true;
     }
+    zoomClasse();
   }).observe(el);
   return el;
 }
@@ -525,6 +553,7 @@ viewof mapa = {
   const el = viewof mapa, camada = el.camada;
   camada.clearLayers();
   el.grandePoa.setIcon(L.divIcon({ className: "rotulo-grande-poa", html: `${T("Grande Porto Alegre", "Greater Porto Alegre")} <i class='bi bi-zoom-in'></i>`, iconSize: null }));
+  el.botaoVoltar.innerHTML = `<i class="bi bi-zoom-out"></i> ${T("Ver a missão inteira", "See the whole mission")}`;
   // Zones: a small ring with the zone's name; tapping it scrolls to the zone's card.
   const ocultas = new Set(zonasOcultas);
   for (const z of snapAtual.zonas) {
@@ -854,6 +883,280 @@ mesesDe = a => a === 1997 ? [7, 8, 9, 10, 11, 12] : a === 2000 ? [1, 2, 3, 4, 5,
   return htl.html`<div class="missionary-board">
     ${panel(ch, "panel-chegadas", "bi-airplane-fill", T("Chegadas", "Arrivals"), T("Nenhuma chegada neste mês.", "No arrivals this month."))}
     ${panel(sa, "panel-saidas", "bi-house-heart-fill", T("Saídas", "Departures"), T("Nenhuma saída neste mês.", "No departures this month."))}
+  </div>`;
+}
+```
+
+## [A jornada]{.lang-pt}[The journey]{.lang-en}
+
+::: {.section-intro}
+[Veja o caminho dos missionários pela missão: cada nome sai do escritório da missão em Porto Alegre, passa pelas áreas dos quadros de transferências e volta a Porto Alegre no fim da missão. Escolha quem chegou ou quem saiu no mês escolhido acima, ou abra a janela de um missionário e toque em “Ver a jornada”.]{.lang-pt}[Follow the missionaries' path through the mission: each name leaves the mission office in Porto Alegre, moves through the areas on the transfer boards and returns to Porto Alegre at the end of the mission. Pick who arrived or who left in the month chosen above, or open a missionary's window and tap “See the journey”.]{.lang-en}
+:::
+
+```{ojs}
+// Who the journey map follows: the cohort that arrived or left in the month picked above,
+// or one missionary (from the "See the journey" button in their window). auto = start playing.
+viewof jornadaModo = estado({ tipo: "chegada", auto: false })
+chaveMes = (a, m) => `${a}-${String(m).padStart(2, "0")}`
+mesAntes = k => { let [y, m] = k.split("-").map(Number); if (--m === 0) { m = 12; y--; } return chaveMes(y, m); }
+mesDepois = k => { let [y, m] = k.split("-").map(Number); if (++m === 13) { m = 1; y++; } return chaveMes(y, m); }
+turma = (campo, k) => quadro.missionarios.filter(p => p[campo] === k && aparicoes.has(p.id))
+  .sort((a, b) => a.plaqueta.localeCompare(b.plaqueta, "pt"))
+
+jornadaLista = {
+  if (jornadaModo.tipo === "pessoa") {
+    const x = pessoas.get(jornadaModo.chave) ?? null;
+    return [{ chave: jornadaModo.chave, x, nome: x ? `${x.titulo} ${x.plaqueta}` : nomeCompleto(jornadaModo.chave.slice(1)) }];
+  }
+  return turma(jornadaModo.tipo === "saida" ? "saida" : "chegada", chaveMes(anoSel, mesSel))
+    .map(x => ({ chave: x.id, x, nome: `${x.titulo} ${x.plaqueta}` }));
+}
+
+// A missionary's stops, month by month: the mission office at arrival, every área on the boards,
+// and the office again at departure. Someone who drops off the boards before leaving (for example,
+// the zones that went to the Santa Maria mission in July 1998) fades out instead of returning.
+trajetoJornada = (chave, x) => {
+  const ap = aparicoes.get(chave) ?? [];
+  if (!ap.length) return null;
+  const pri = ap[0].key, ult = ap.at(-1).key, ultSnap = snaps.at(-1).key;
+  const ev = [{ key: x?.chegada && x.chegada < pri ? x.chegada : mesAntes(pri), pos: ESCRITORIO, tipo: "chegada" }];
+  for (const a of ap) {
+    const c = a.especial || !a.areaNome ? null : areaCoord(a.areaNome, a.zona);
+    const pos = c ? [c.lat, c.lon] : a.especial ? ESCRITORIO : (ZONA_POS[a.zona] ?? ev.at(-1).pos);
+    ev.push({ key: a.key, pos, tipo: "area", area: a.especial ? a.zona : (a.areaNome ?? a.area), zona: a.zona, aprox: c?.fonte === "aproximado" });
+  }
+  const sumiu = snaps.find(s => s.key > ult && (!x?.saida || s.key < x.saida));
+  if (sumiu) {
+    const santaMaria = ["Ijuí", "Santo Ângelo"].includes(ap.at(-1).zona) && ult < DIVISAO;
+    ev.push({ key: sumiu.key, pos: ev.at(-1).pos, tipo: "fim", santaMaria });
+  } else if (x?.saida && x.saida <= mesDepois(ultSnap)) {
+    ev.push({ key: x.saida > ult ? x.saida : mesDepois(ult), pos: ESCRITORIO, tipo: "saida" });
+  }
+  return ev;
+}
+```
+
+```{ojs}
+{
+  const k = chaveMes(anoSel, mesSel);
+  const ch = turma("chegada", k).length, sa = turma("saida", k).length;
+  const modo = jornadaModo.tipo;
+  const botao = (tipo, txt, n) => htl.html`<button class=${modo === tipo ? "pill active" : "pill"} disabled=${n === 0}
+    onclick=${() => definir(viewof jornadaModo, { tipo, auto: true })}>${txt} <span class="jornada-n">${n}</span></button>`;
+  return htl.html`<div class="pill-group jornada-escolha">
+    ${botao("chegada", T(`Chegaram em ${fmtYM(k)}`, `Arrived ${fmtYM(k)}`), ch)}
+    ${botao("saida", T(`Saíram em ${fmtYM(k)}`, `Left ${fmtYM(k)}`), sa)}
+    ${modo === "pessoa" ? htl.html`<span class="pill active jornada-pessoa">${jornadaLista[0].nome}
+      <button aria-label=${T("Voltar para a turma", "Back to the cohort")} onclick=${() => definir(viewof jornadaModo, { tipo: "chegada", auto: false })}><i class="bi bi-x"></i></button></span>` : ""}
+  </div>`;
+}
+```
+
+```{ojs}
+viewof mapaJornada = {
+  const el = htl.html`<div id="mapa-jornada" class="mapa-jornada" role="region" aria-label="Mapa da jornada dos missionários / Map of the missionaries' journey"></div>`;
+  const m = L.map(el, { scrollWheelZoom: false, zoomSnap: 0.25 }).setView([-29.5, -51.6], 7);
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 14
+  }).addTo(m);
+  L.geoJSON(rsContorno, { style: { color: "#1b5e46", weight: 1.5, fill: false, dashArray: "4 4" }, interactive: false }).addTo(m);
+  el.leaflet = m;
+  el.camada = L.layerGroup().addTo(m);
+  // The element is detached while this cell runs; fit the view once it has a real size.
+  new ResizeObserver(() => {
+    m.invalidateSize();
+    if (el.limites && !el.enquadrado && el.clientWidth > 0) { m.fitBounds(el.limites, { maxZoom: 11 }); el.enquadrado = true; }
+  }).observe(el);
+  return el;
+}
+```
+
+```{ojs}
+{
+  const el = viewof mapaJornada, m = el.leaflet, camada = el.camada;
+  camada.clearLayers();
+  if (el.controle) el.controle.remove();
+  const autoplay = jornadaModo.auto && el.ultimoModo !== jornadaModo;
+  el.ultimoModo = jornadaModo;
+  const VERDE = "#1b5e46", OURO = "#b8862a";
+  const reduzir = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const PAUSA = reduzir ? 1.4 : 0.55, MOVE = reduzir ? 0 : 0.9, PASSO = PAUSA + MOVE;
+
+  L.circleMarker(ESCRITORIO, { radius: 5, color: VERDE, weight: 2.5, fillColor: "#fff", fillOpacity: 1, interactive: false })
+    .bindTooltip(T("Escritório da missão", "Mission office"), { permanent: true, direction: "left", offset: [-8, 0], className: "rotulo-zona rotulo-metro" })
+    .addTo(camada);
+
+  const viagens = jornadaLista.map(v => ({ ...v, ev: trajetoJornada(v.chave, v.x) })).filter(v => v.ev);
+  const enquadrar = pts => {
+    el.limites = L.latLngBounds(pts).pad(0.12);
+    el.enquadrado = false;
+    if (el.clientWidth > 0) { m.fitBounds(el.limites, { maxZoom: 11 }); el.enquadrado = true; }
+  };
+  if (!viagens.length) {
+    enquadrar(Object.values(ZONA_POS));
+    return htl.html`<p class="busca-hint">${T("Ninguém desta turma aparece nos quadros de transferências, que começam em outubro de 1997.",
+      "No one in this group is on the transfer boards, which start in October 1997.")}</p>`;
+  }
+  enquadrar([ESCRITORIO, ...viagens.flatMap(v => v.ev.map(e => e.pos))]);
+
+  // Steps: every month in which someone in the group moves.
+  const passos = [...new Set(viagens.flatMap(v => v.ev.map(e => e.key)))].sort();
+  const n = passos.length;
+  const chavePos = p => `${p[0]},${p[1]}`;
+
+  for (const v of viagens) {
+    // Where the person is at each step: j = index of their latest stop; vis = on the map.
+    v.est = passos.map(k => {
+      let j = -1;
+      v.ev.forEach((e, q) => { if (e.key <= k) j = q; });
+      if (j < 0) return { vis: false, j, pos: v.ev[0].pos };
+      const e = v.ev[j];
+      const foi = e.tipo === "fim" || (e.tipo === "saida" && e.key < k);
+      return { vis: !foi, j, pos: e.pos };
+    });
+    v.trilha = L.polyline([], { color: VERDE, weight: 2, opacity: 0.55, interactive: false }).addTo(camada);
+    // Pins: one per place visited, shown once the person has reached it.
+    const vistos = new Map();
+    v.ev.forEach((e, q) => {
+      if (e.tipo !== "area" || vistos.has(chavePos(e.pos))) return;
+      vistos.set(chavePos(e.pos), { q, pino: L.circleMarker(e.pos, { radius: 3.5, color: "#fff", weight: 1, fillColor: VERDE, fillOpacity: 0.9 })
+        .bindTooltip(`<strong>${e.area}</strong> <span class="mapa-dica-zona">${e.zona}</span>${e.aprox ? `<br><em>${T("posição aproximada", "approximate location")}</em>` : ""}`, { direction: "top", offset: [0, -4], className: "dica-area" }) });
+    });
+    v.pinos = [...vistos.values()];
+    v.pill = htl.html`<div class="jornada-pill" title=${v.nome}>${v.nome}</div>`;
+    v.marcador = L.marker(v.ev[0].pos, { icon: L.divIcon({ className: "jornada-marcador", html: v.pill, iconSize: null }), keyboard: false })
+      .on("click", () => abrirPessoa(v.x ? { id: v.x.id } : { id: null, n: v.chave.slice(1) }))
+      .addTo(camada);
+    v.ultJ = null; v.ultDy = null;
+  }
+
+  // At each step, people sharing a point are stacked; more than four collapse into one count pill.
+  const grupos = passos.map((k, i) => {
+    const porPonto = new Map();
+    for (const v of viagens) if (v.est[i].vis) {
+      const c = chavePos(v.est[i].pos);
+      if (!porPonto.has(c)) porPonto.set(c, []);
+      porPonto.get(c).push(v);
+    }
+    const juntos = [];
+    for (const g of porPonto.values()) {
+      if (g.length > 4) { juntos.push({ pos: g[0].est[i].pos, nomes: g.map(v => v.nome) }); g.forEach(v => { v.est[i].junto = true; v.est[i].dy = 0; }); }
+      else g.forEach((v, q) => { v.est[i].dy = q * 22 - (g.length - 1) * 11; });
+    }
+    return juntos;
+  });
+  const camadaGrupos = L.layerGroup().addTo(camada);
+  let grupoMostrado = null;
+  const mostrarGrupos = i => {
+    if (grupoMostrado === i) return;
+    grupoMostrado = i;
+    camadaGrupos.clearLayers();
+    if (i === null) return;
+    for (const g of grupos[i]) L.marker(g.pos, {
+      icon: L.divIcon({ className: "jornada-marcador", html: `<div class="jornada-pill jornada-grupo">${g.nomes.length} ${T("missionários", "missionaries")}</div>`, iconSize: null })
+    }).bindTooltip(g.nomes.join("<br>"), { direction: "top", offset: [0, -10] }).addTo(camadaGrupos);
+  };
+
+  let foco = viagens.length === 1 ? viagens[0] : null;
+  const aplicarFoco = () => {
+    for (const v of viagens) {
+      const f = v === foco, apagado = foco && !f;
+      v.trilha.setStyle({ color: f ? OURO : VERDE, weight: f ? 3.5 : 2, opacity: apagado ? 0.15 : 0.6 });
+      if (f) v.trilha.bringToFront();
+      v.pill.classList.toggle("foco", f && viagens.length > 1);
+      v.pill.classList.toggle("apagado", !!apagado);
+      v.marcador.setZIndexOffset(f ? 1000 : 0);
+      v.pinos.forEach(p => p.pino.setStyle({ fillColor: f ? OURO : VERDE, fillOpacity: apagado ? 0.25 : 0.9 }));
+    }
+    legenda.querySelectorAll("button").forEach((b, q) => b.classList.toggle("active", viagens[q] === foco));
+  };
+
+  const ease = u => u < 0.5 ? 2 * u * u : 1 - (-2 * u + 2) ** 2 / 2;
+  const lerp = (a, b, u) => [a[0] + (b[0] - a[0]) * u, a[1] + (b[1] - a[1]) * u];
+  const rotuloMes = htl.html`<span class="jornada-mes"></span>`;
+  const slider = htl.html`<input type="range" class="jornada-slider" min="0" max=${n - 1} step="1" value="0" aria-label=${T("Mês", "Month")}>`;
+  const itinerario = viagens.length === 1 ? htl.html`<ol class="jornada-itinerario">${viagens[0].ev.map(e => htl.html`<li>
+      <span class="periodo">${fmtYM(e.key)}</span>
+      <span>${e.tipo === "chegada" ? T("Chegada: escritório da missão, Porto Alegre", "Arrival: mission office, Porto Alegre")
+        : e.tipo === "saida" ? T("Saída: de volta a Porto Alegre", "Departure: back to Porto Alegre")
+        : e.tipo === "fim" ? (e.santaMaria ? T("Passou para a Missão Brasil Santa Maria", "Moved to the Brazil Santa Maria Mission") : T("Não aparece mais nos quadros", "No longer on the boards"))
+        : htl.html`${e.area} <span class="zona">${e.zona}</span>`}</span></li>`)}</ol>` : null;
+
+  function desenhar(f) {
+    const i = Math.min(Math.floor(f), n - 1), u = f - i, b = Math.min(i + 1, n - 1);
+    const repouso = u === 0;
+    for (const v of viagens) {
+      const A = v.est[i], B = v.est[b];
+      let pos, op;
+      if (repouso) { pos = A.pos; op = A.vis && !A.junto ? 1 : 0; }
+      else if (A.vis && B.vis) { pos = lerp(A.pos, B.pos, ease(u)); op = 1; }
+      else { pos = A.vis ? A.pos : B.pos; op = A.vis ? 1 - u : B.vis ? u : 0; }
+      v.marcador.setLatLng(pos);
+      v.marcador.setOpacity(op);
+      const icone = v.marcador.getElement();
+      if (icone) icone.style.pointerEvents = op < 0.1 ? "none" : "";
+      const dy = (repouso ? A.dy : B.dy) ?? 0;
+      if (dy !== v.ultDy) { v.pill.style.setProperty("--dy", `${dy}px`); v.ultDy = dy; }
+      const pts = A.j >= 0 ? v.ev.slice(0, A.j + 1).filter(e => e.tipo !== "fim").map(e => e.pos) : [];
+      if (!repouso && A.vis && B.vis && B.j > A.j && v.ev[B.j].tipo !== "fim") pts.push(pos);
+      v.trilha.setLatLngs(pts);
+      if (A.j !== v.ultJ) {
+        v.pinos.forEach(p => { const ver = p.q <= A.j; if (ver !== camada.hasLayer(p.pino)) ver ? camada.addLayer(p.pino) : camada.removeLayer(p.pino); });
+        v.ultJ = A.j;
+      }
+    }
+    mostrarGrupos(repouso ? i : null);
+    const atual = repouso || u < 0.5 ? i : b;
+    rotuloMes.textContent = fmtYM(passos[atual]);
+    slider.value = atual;
+    if (itinerario) [...itinerario.children].forEach((li, q) => li.classList.toggle("atual", q === viagens[0].est[atual].j));
+  }
+
+  // Clock: each step holds, then moves to the next.
+  const total = (n - 1) * PASSO;
+  let t = 0, tocando = false, antes = null, raf = null;
+  const fDe = t => {
+    if (t >= total) return n - 1;
+    const i = Math.floor(t / PASSO), w = MOVE ? (t - i * PASSO - PAUSA) / MOVE : (t - i * PASSO >= PAUSA ? 1 : 0);
+    return w <= 0 ? i : w >= 1 ? i + 1 : i + w;
+  };
+  const botaoPlay = htl.html`<button class="jornada-play" aria-label=${T("Tocar", "Play")}><i class="bi bi-play-fill"></i></button>`;
+  const marcarBotao = () => {
+    botaoPlay.innerHTML = tocando ? '<i class="bi bi-pause-fill"></i>' : t >= total ? '<i class="bi bi-arrow-counterclockwise"></i>' : '<i class="bi bi-play-fill"></i>';
+    botaoPlay.setAttribute("aria-label", tocando ? T("Pausar", "Pause") : t >= total ? T("Recomeçar", "Restart") : T("Tocar", "Play"));
+  };
+  const quadroAnim = ts => {
+    if (!tocando) return;
+    if (antes !== null) t += (ts - antes) / 1000;
+    antes = ts;
+    desenhar(fDe(t));
+    if (t >= total) { tocando = false; marcarBotao(); return; }
+    raf = requestAnimationFrame(quadroAnim);
+  };
+  const tocar = () => { if (t >= total) t = 0; tocando = true; antes = null; marcarBotao(); raf = requestAnimationFrame(quadroAnim); };
+  const pausar = () => { tocando = false; cancelAnimationFrame(raf); marcarBotao(); };
+  botaoPlay.onclick = () => tocando ? pausar() : tocar();
+  slider.oninput = () => { pausar(); t = +slider.value * PASSO; desenhar(+slider.value); marcarBotao(); };
+  invalidation.then(() => { tocando = false; cancelAnimationFrame(raf); });
+
+  const caixa = htl.html`<div class="jornada-controle">${botaoPlay}${rotuloMes}</div>`;
+  L.DomEvent.disableClickPropagation(caixa);
+  el.controle = new (L.Control.extend({ onAdd: () => caixa }))({ position: "topright" }).addTo(m);
+
+  const legenda = htl.html`<div class="jornada-legenda">${viagens.length > 1 ? viagens.map(v => htl.html`<button class="chip" onclick=${() => { foco = foco === v ? null : v; aplicarFoco(); }}>${v.nome}</button>`) : ""}</div>`;
+  aplicarFoco();
+  desenhar(0);
+  marcarBotao();
+  if (autoplay) setTimeout(tocar, 700);
+
+  return htl.html`<div class="jornada-baixo">
+    <div class="jornada-linha">${slider}</div>
+    ${viagens.length > 1 ? htl.html`<p class="jornada-dica">${T("Toque num nome para destacar a jornada dele; toque no nome no mapa para abrir a janela do missionário.",
+      "Tap a name to highlight that journey; tap a name on the map to open the missionary's window.")}</p>` : ""}
+    ${legenda}${itinerario ?? ""}
+    <p class="dlg-nota">${T("Os quadros de transferências começam em outubro de 1997 e faltam alguns meses; entre um quadro e outro, o missionário fica parado no mapa. Algumas áreas têm posição aproximada.",
+      "The transfer boards start in October 1997 and a few months are missing; between boards, the missionary stays put on the map. Some areas have an approximate location.")}</p>
   </div>`;
 }
 ```

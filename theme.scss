@@ -1189,6 +1189,23 @@ html[data-lang="en"] .lang-pt { display: none !important; }
   cursor: pointer;
 }
 
+.btn-missao-inteira {
+  display: none;
+  white-space: nowrap;
+  padding: 0.3rem 0.75rem;
+  border: 0;
+  border-radius: 999px;
+  background: $primary;
+  color: #fff;
+  font-family: $font-family-sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  box-shadow: 0 6px 14px -8px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+.btn-missao-inteira:hover { background: darken($primary, 6%); }
+.mapa-missao.zoom-dentro .btn-missao-inteira { display: inline-block; }
+
 /* ---------- Título fixo de cada seção ---------- */
 
 // Sits at the top of its band and sticks under the navbar while the band scrolls past.
@@ -1465,3 +1482,75 @@ $cores-regiao: (
   .legenda-quadro p { flex-direction: column; gap: 0.3rem; margin: 0.6rem 0; }
 }
 .organizador + .organizador { margin-top: 0.35rem; }
+
+/* ---------- Journey map ---------- */
+
+.jornada-escolha { margin-bottom: 0.9rem; }
+.jornada-escolha .jornada-n {
+  display: inline-block; min-width: 1.4em; margin-left: 0.25rem; padding: 0 0.35rem;
+  border-radius: 999px; background: rgba($primary, 0.12); font-size: 0.78rem; font-weight: 600;
+}
+.jornada-escolha .pill.active .jornada-n { background: rgba(#fff, 0.25); }
+.jornada-pessoa { display: inline-flex; align-items: center; gap: 0.3rem; cursor: default; }
+.jornada-pessoa button { border: 0; background: none; color: inherit; padding: 0; line-height: 1; cursor: pointer; }
+
+.mapa-jornada {
+  height: 540px;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  box-shadow: 0 10px 24px -18px rgba(0, 0, 0, 0.35);
+}
+@media (max-width: 575.98px) { .mapa-jornada { height: 420px; } }
+
+.jornada-marcador { background: none; border: 0; }
+.jornada-pill {
+  position: absolute; left: 0; top: 0;
+  transform: translate(-6px, calc(-50% + var(--dy, 0px)));
+  transition: transform 0.35s ease, background-color 0.2s ease, opacity 0.2s ease;
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  white-space: nowrap;
+  background: #fff;
+  border: 1.5px solid $primary;
+  color: $headings-color;
+  border-radius: 999px;
+  padding: 1px 8px 1px 2px;
+  font: 600 0.72rem/1.45 $font-family-sans-serif;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.jornada-pill::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: $primary; flex: none; }
+.jornada-pill.foco { border-color: $secondary; background: $gold-soft; }
+.jornada-pill.foco::before { background: $secondary; }
+.jornada-pill.apagado { opacity: 0.35; }
+.jornada-grupo { background: $primary; color: #fff; cursor: default; }
+.jornada-grupo::before { background: #fff; }
+
+.jornada-controle {
+  display: flex; align-items: center; gap: 0.55rem;
+  background: rgba(#fff, 0.94);
+  border-radius: 999px;
+  padding: 0.25rem 0.85rem 0.25rem 0.25rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+.jornada-play {
+  width: 2.4rem; height: 2.4rem; border-radius: 50%; border: 0;
+  background: $primary; color: #fff; font-size: 1.35rem; line-height: 1;
+  display: inline-flex; align-items: center; justify-content: center; cursor: pointer;
+}
+.jornada-play:hover { background: darken($primary, 6%); }
+.jornada-mes { font-family: $headings-font-family; font-size: 1.2rem; font-weight: 600; color: $headings-color; min-width: 5.5em; }
+
+.jornada-baixo { margin: 0.6rem 0 2.5rem; }
+.jornada-linha { display: flex; align-items: center; }
+.jornada-slider { width: 100%; accent-color: $primary; }
+.jornada-dica { font-size: 0.85rem; color: $ink-muted; text-align: center; margin: 0.5rem 0; }
+.jornada-legenda { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.35rem; }
+.jornada-legenda .chip.active { background: $gold-soft; border-color: $secondary; }
+
+.jornada-itinerario { list-style: none; padding: 0; margin: 0.5rem auto 0; max-width: 520px; font-size: 0.88rem; }
+.jornada-itinerario li { display: flex; gap: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 0.4rem; transition: background-color 0.2s ease; }
+.jornada-itinerario li.atual { background: $gold-soft; font-weight: 600; }
+.jornada-itinerario .periodo { color: $ink-muted; min-width: 4.8em; font-variant-numeric: tabular-nums; }
+.jornada-itinerario .zona { color: $ink-muted; font-size: 0.8rem; margin-left: 0.3rem; }
+
+.botao-jornada { margin: 0.25rem 0 0.75rem; }
