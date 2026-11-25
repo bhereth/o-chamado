@@ -77,7 +77,7 @@ main.content {
 main.content > p:empty { display: none; }
 
 section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reencontros"], [id="woodwards"], [id="jornal"], [id="contato"], [id="mapa"] {
-  scroll-margin-top: 72px;
+  scroll-margin-top: var(--nav-h, 67px);
 }
 
 .navbar-title { font-family: $headings-font-family; letter-spacing: 0.02em; }
@@ -969,3 +969,87 @@ section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reenc
   box-shadow: 0 6px 14px -8px rgba(0, 0, 0, 0.6);
   cursor: pointer;
 }
+
+/* ---------- Título fixo de cada seção ---------- */
+
+// Sits at the top of its band and sticks under the navbar while the band scrolls past.
+.secao-topo {
+  position: sticky;
+  top: var(--nav-h, 67px);
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin: -5rem -1rem 3rem;
+  padding: 0.65rem 1rem;
+  background: rgba($body-bg, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba($primary, 0.1);
+}
+.section-muted > .secao-topo { background: rgba(mix($primary, $body-bg, 5%), 0.92); }
+.section-dark > .secao-topo {
+  background: rgba($footer-bg, 0.92);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+.secao-topo .section-eyebrow { margin: 0; }
+.secao-topo .lang-toggle { margin: 0; }
+
+/* ---------- Templo ---------- */
+
+.templo {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: start;
+  text-align: left;
+}
+@media (max-width: 860px) { .templo { grid-template-columns: 1fr; } }
+
+.templo-foto { margin: 0; }
+.templo-foto img {
+  width: 100%;
+  border-radius: $border-radius-lg;
+  box-shadow: 0 22px 44px -26px rgba(0, 0, 0, 0.5);
+}
+.templo-foto .credito { display: block; margin-top: 0.5rem; font-size: 0.72rem; color: $ink-muted; }
+.templo-foto .credito a { color: inherit; }
+
+.templo-destaque { font-size: 1.08rem; line-height: 1.65; margin-bottom: 1.5rem; }
+
+.linha-tempo { list-style: none; padding: 0; margin: 0 0 1.5rem; border-left: 2px solid rgba($primary, 0.2); }
+.linha-tempo li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  gap: 0.75rem;
+  padding: 0.45rem 0 0.45rem 1.1rem;
+  font-size: 0.93rem;
+  line-height: 1.5;
+}
+.linha-tempo li::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 0.85rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: $paper;
+  border: 2px solid $primary;
+}
+.linha-tempo li.marco-woodward::before { background: $rs-amarelo; border-color: $rs-vermelho; }
+.linha-tempo .data { font-weight: 700; color: $primary; font-size: 0.82rem; letter-spacing: 0.02em; padding-top: 0.1rem; }
+
+.templo-chamada {
+  padding: 0.8rem 1rem;
+  border-radius: $border-radius;
+  background: $paper;
+  border-left: 4px solid $rs-amarelo;
+  font-size: 0.92rem;
+}
+.templo-chamada i { color: $secondary; margin-right: 0.3rem; }
+.templo-fonte { font-size: 0.75rem; color: $ink-muted; }
+.templo-fonte a { color: inherit; }

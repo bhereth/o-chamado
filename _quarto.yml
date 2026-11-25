@@ -14,6 +14,7 @@ website:
   page-navigation: false
   navbar:
     background: primary
+    pinned: true
     left:
       - href: index.qmd#missao
         text: Missão
@@ -21,6 +22,8 @@ website:
         text: Áreas
       - href: index.qmd#missionarios
         text: Missionários
+      - href: index.qmd#templo
+        text: Templo
       - href: index.qmd#jornal
         text: Jornal
       - href: index.qmd#reencontros
@@ -50,6 +53,20 @@ format:
           <link rel="preconnect" href="https://fonts.googleapis.com">
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
           <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap">
+
+    include-after-body:
+      - text: |
+          <script>
+          (function () {
+            function navH() {
+              var h = document.getElementById("quarto-header");
+              if (h) document.documentElement.style.setProperty("--nav-h", h.offsetHeight + "px");
+            }
+            navH();
+            addEventListener("resize", navH);
+            addEventListener("load", navH);
+          })();
+          </script>
 
 execute:
   echo: false
