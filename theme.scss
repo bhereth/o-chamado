@@ -73,6 +73,20 @@ section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reenc
 }
 
 .navbar-title { font-family: $headings-font-family; letter-spacing: 0.02em; }
+
+.atalho-busca { text-align: center; margin: 2rem 0 0; }
+.atalho-busca a {
+  display: inline-block;
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid rgba($primary, 0.3);
+  background: $paper;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.15s, color 0.15s;
+}
+.atalho-busca a:hover { background: $primary; color: #fff; }
+.atalho-busca i { margin-right: 0.3rem; }
 .navbar .nav-link { font-size: 0.92rem; letter-spacing: 0.02em; }
 
 .nav-footer { font-size: 0.9rem; }

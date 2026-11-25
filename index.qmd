@@ -63,7 +63,7 @@ title: ""
 <div class="missao-texto lang-pt" lang="pt">
   <div class="intro-com-globo">
     <div class="globo" data-svg="images/globo-pt.svg"></div>
-    <p class="missao-intro">A Missão Brasil Porto Alegre Norte cobria a metade norte do <strong>Rio Grande do Sul</strong>, o estado mais ao sul do Brasil: da zona norte de Porto Alegre e sua região metropolitana até a Serra Gaúcha, o Planalto e o Litoral Norte, e, até julho de 1998, o Noroeste e as Missões, perto da fronteira com a Argentina. <a href="#mapa">Ver o mapa das zonas ↓</a></p>
+    <p class="missao-intro">A Missão Brasil Porto Alegre Norte cobria a metade norte do <strong>Rio Grande do Sul</strong>, o estado mais ao sul do Brasil: da zona norte de Porto Alegre e sua região metropolitana até a Serra Gaúcha, o Planalto e o Litoral Norte, e, até julho de 1998, o Noroeste e as Missões, perto da fronteira com a Argentina.</p>
   </div>
 
   <div class="mapa-rs" data-svg="images/mapa-rs-pt.svg"></div>
@@ -95,7 +95,7 @@ title: ""
 <div class="missao-texto lang-en" lang="en">
   <div class="intro-com-globo">
     <div class="globo" data-svg="images/globo-en.svg"></div>
-    <p class="missao-intro">The Brazil Porto Alegre North Mission covered the northern half of <strong>Rio Grande do Sul</strong>, Brazil's southernmost state: from the north side of Porto Alegre and its metro area up through the Serra Gaúcha highlands, the Planalto and the northern coast, and, until July 1998, the Northwest and the Missões region near the Argentine border. <a href="#mapa">See the map of the zones ↓</a></p>
+    <p class="missao-intro">The Brazil Porto Alegre North Mission covered the northern half of <strong>Rio Grande do Sul</strong>, Brazil's southernmost state: from the north side of Porto Alegre and its metro area up through the Serra Gaúcha highlands, the Planalto and the northern coast, and, until July 1998, the Northwest and the Missões region near the Argentine border.</p>
   </div>
 
   <div class="mapa-rs" data-svg="images/mapa-rs-en.svg"></div>
@@ -123,6 +123,8 @@ title: ""
   </div>
 
 </div>
+
+<p class="atalho-busca"><a href="#busca" onclick="var b=document.getElementById('busca'); if (b) { event.preventDefault(); b.scrollIntoView({behavior:'smooth', block:'center'}); b.focus({preventScroll:true}); }"><i class="bi bi-search"></i> <span class="lang-pt">Procurando alguém? Vá direto para a busca de missionários</span><span class="lang-en">Looking for someone? Jump to the missionary search</span> ↓</a></p>
 
 <script>
 // Inline the map/globe SVGs (an <img> would not use the page fonts).
