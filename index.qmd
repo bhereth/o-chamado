@@ -371,8 +371,8 @@ viewof mapa = {
     camada.addLayer(marcador);
   }
   return htl.html`<p class="mapa-legenda"><span class="ponto"></span> ${T(
-    `Zonas em ${fmtMesAno(snapAtual)}; o tamanho do círculo mostra o número de duplas. Toque numa zona para ver suas áreas.${semLugar.length ? ` Sem lugar no mapa: ${semLugar.join(", ")}.` : ""}`,
-    `Zones in ${fmtMesAno(snapAtual)}; circle size shows the number of companionships. Tap a zone to see its areas.${semLugar.length ? ` Not on the map: ${semLugar.join(", ")}.` : ""}`)}</p>`;
+    `Zonas em ${fmtMesAno(snapAtual)}. Toque numa zona para ver suas áreas.${semLugar.length ? ` Sem lugar no mapa: ${semLugar.join(", ")}.` : ""}`,
+    `Zones in ${fmtMesAno(snapAtual)}. Tap a zone to see its areas.${semLugar.length ? ` Not on the map: ${semLugar.join(", ")}.` : ""}`)}</p>`;
 }
 ```
 
