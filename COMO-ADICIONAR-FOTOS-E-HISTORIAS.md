@@ -14,17 +14,17 @@ Nada disso exige mexer em código. Depois de qualquer mudança, gere o site de n
 | `mes` | opcional: mês da foto, se for de um mês específico; ela aparece em "Chegadas e saídas" nesse mês | `1999-08` |
 | `legenda_pt` | legenda em português | `Batismo em Canoas.` |
 | `legenda_en` | legenda em inglês | `A baptism in Canoas.` |
-| `cortesia` | quem tirou ou mandou a foto | `Élder Billy Hereth` |
+| `cortesia` | quem tirou ou mandou a foto | `Élder Hereth` |
 | `link` | opcional: link da fonte, se a foto veio de um site | |
 | `licenca` | opcional: licença, para fotos do Wikimedia Commons etc. | `CC BY-SA 4.0` |
 | `na_secao` | `sim` para mostrar a foto no fim da seção; `não` se ela já está colocada à mão no site | `sim` |
 
 **Seções:** `inicio` (carrossel do topo; colocado à mão), `missao`, `areas`, `missionarios`, `templo`, `jornais`, `fotos` (só na seção Fotos), `historias`, `reencontros`, `woodwards`, `contato`.
 
-Toda foto da planilha também aparece na seção **Fotos**, que mostra todas em ordem aleatória, exceto as da seção `inicio` (o carrossel do topo da página), que já ficam à vista lá.
+Toda foto da planilha também aparece na seção **Fotos**, que mostra todas em ordem aleatória.
 
 O crédito é montado sozinho:
-- sem licença nem link → "Foto: cortesia do Élder Billy Hereth" / "Photo courtesy of Elder Billy Hereth";
+- sem licença nem link → "Foto: cortesia do Élder Hereth" / "Photo courtesy of Elder Hereth";
 - com link e sem licença → "Foto: Church News, 2007";
 - com licença → "Foto: Ricardo630, Wikimedia Commons, CC BY 3.0".
 

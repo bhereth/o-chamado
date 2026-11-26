@@ -56,7 +56,7 @@ function lerCsv(texto) {
   return linhas.map((l, n) => ({ ...Object.fromEntries(cab.map((h, i) => [h, (l[i] ?? "").trim()])), __linha: n + 2 }));
 }
 
-// "Élder Billy Hereth" → "do Élder…" / "Elder Billy Hereth"; "Síster X" → "da Síster…".
+// "Élder Hereth" → "do Élder…" / "Elder Hereth"; "Síster X" → "da Síster…".
 const artigo = (nome) => /^(síster|sister|irmã|presidente? woodward e)/i.test(nome) ? "da" : /^(élder|elder|presidente|irmão|bispo|o )/i.test(nome) ? "do" : "de";
 const emIngles = (nome) => nome.replace(/^Élder\b/, "Elder").replace(/^Síster\b/, "Sister").replace(/^Presidente\b/, "President");
 

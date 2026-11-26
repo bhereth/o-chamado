@@ -1490,7 +1490,7 @@ galeriaSecao("missionarios")
         <img src="images/templo-noite.jpg" alt="Templo de Porto Alegre Brasil iluminado à noite" loading="lazy">
         <figcaption><span class="lang-pt">O templo iluminado à noite.</span><span class="lang-en">The temple lit up at night.</span></figcaption>
       </figure>
-      <p class="credito templo-galeria-credito"><span class="lang-pt">Fotos: cortesia do Élder Billy Hereth</span><span class="lang-en">Photos courtesy of Elder Billy Hereth</span></p>
+      <p class="credito templo-galeria-credito"><span class="lang-pt">Fotos: cortesia do Élder Hereth</span><span class="lang-en">Photos courtesy of Elder Hereth</span></p>
     </div>
   </div>
   <div class="templo-texto">
@@ -1599,8 +1599,7 @@ galeriaSecao = secao => {
   </div>`)}</div>`;
 }
 ordemFotos = {
-  // The top-of-page carousel photos (secao "inicio") are already on screen there, so they are left out here.
-  const l = catalogoFotos.fotos.filter(f => f.secao !== "inicio");
+  const l = [...catalogoFotos.fotos];
   for (let i = l.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [l[i], l[j]] = [l[j], l[i]]; }
   return { fotos: l, atual: 0 };
 }
@@ -1780,7 +1779,7 @@ galeriaSecao("woodwards")
 
 ```{=html}
 <a class="email-btn" href="mailto:info@ochamado.org?subject=O%20Chamado%20-%20coment%C3%A1rio"><i class="bi bi-envelope"></i> info@ochamado.org</a>
-<p class="organizador"><span class="lang-pt">Site organizado pelo <strong>Élder Billy Hereth</strong>, que serviu com os Woodward, com a ajuda do sobrinho, <strong>Nathan Garcia</strong>, que serviu na Missão Portugal Porto e digitou os registros do quadro de transferências a partir dos jornais da missão.</span><span class="lang-en">Site organized by <strong>Elder Billy Hereth</strong>, who served with the Woodwards, with help from his nephew <strong>Nathan Garcia</strong>, who served in the Portugal Porto Mission and typed in the transfer board records from the mission newsletters.</span></p>
+<p class="organizador"><span class="lang-pt">Site organizado pelo <strong>Élder Hereth</strong>, que serviu com os Woodward, com a ajuda do sobrinho, que serviu na Missão Portugal Porto e digitou os registros do quadro de transferências a partir dos jornais da missão.</span><span class="lang-en">Site organized by <strong>Elder Hereth</strong>, who served with the Woodwards, with help from his nephew, who served in the Portugal Porto Mission and typed in the transfer board records from the mission newsletters.</span></p>
 <p class="organizador"><span class="lang-pt">Agradecemos ao <strong>Presidente Arlan Woodward</strong> e à <strong>Síster Sally Woodward</strong>, em memória, que guardaram e compartilharam os registros da missão e, anos atrás, deixaram recursos para preservá-los e manter as versões anteriores, a atual e as futuras deste site.</span><span class="lang-en">With thanks to <strong>President Arlan Woodward</strong> and, in loving memory, <strong>Sister Sally Woodward</strong>, who kept and shared the mission's records and, years ago, set aside funds to preserve them and keep previous, current, and future versions of this site going.</span></p>
 ```
 
