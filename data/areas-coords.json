@@ -169,14 +169,6 @@
    "nota": "Carazinho, Rio Grande do Sul, Região Sul"
   },
   {
-   "area": "Caxias do Sul",
-   "zona": "Caxias do Sul",
-   "lat": -29.1629,
-   "lon": -51.1792,
-   "fonte": "ibge",
-   "nota": "cidade de Caxias do Sul"
-  },
-  {
    "area": "Caxias",
    "zona": "Caxias do Sul",
    "lat": -29.1629,
@@ -234,14 +226,6 @@
   },
   {
    "area": "Eldorado do Sul",
-   "zona": "Moinhos de Vento",
-   "lat": -29.9976,
-   "lon": -51.3064,
-   "fonte": "osm",
-   "nota": "Eldorado do Sul, Rio Grande do Sul, Região Sul"
-  },
-  {
-   "area": "Eldorado",
    "zona": "Moinhos de Vento",
    "lat": -29.9976,
    "lon": -51.3064,
@@ -393,22 +377,6 @@
    "nota": "Colina, Guaíba, Rio Grande do Sul"
   },
   {
-   "area": "Guaíba Jardim",
-   "zona": "Moinhos de Vento",
-   "lat": -30.1157,
-   "lon": -51.364,
-   "fonte": "osm",
-   "nota": "Jardim dos Lagos, Guaíba, Rio Grande do Sul"
-  },
-  {
-   "area": "Guaíba",
-   "zona": "Moinhos de Vento",
-   "lat": -30.1136,
-   "lon": -51.3253,
-   "fonte": "manual",
-   "nota": "cidade de Guaíba"
-  },
-  {
    "area": "Harmonia",
    "zona": "Canoas",
    "lat": -29.914,
@@ -467,18 +435,18 @@
   {
    "area": "Jardim Guaíba",
    "zona": "Guaíba",
-   "lat": -30.1194,
-   "lon": -51.3696,
-   "fonte": "aproximado",
-   "nota": "palpite: UERGS - Universidade Estadual do Rio Grande do Sul, 230, Rua Santa Maria"
+   "lat": -30.1157,
+   "lon": -51.364,
+   "fonte": "osm",
+   "nota": "Jardim dos Lagos, Guaíba, Rio Grande do Sul"
   },
   {
    "area": "Jardim Guaíba",
    "zona": "Moinhos de Vento",
-   "lat": -30.1194,
-   "lon": -51.3696,
-   "fonte": "aproximado",
-   "nota": "palpite: mesmo lugar de Jardim Guaíba (zona Guaíba)"
+   "lat": -30.1157,
+   "lon": -51.364,
+   "fonte": "osm",
+   "nota": "Jardim dos Lagos, Guaíba, Rio Grande do Sul"
   },
   {
    "area": "Kephas",
@@ -593,14 +561,6 @@
    "nota": "não encontrado; onde ficava a zona"
   },
   {
-   "area": "Morada do Sul",
-   "zona": "Passo Fundo",
-   "lat": -28.262,
-   "lon": -52.408,
-   "fonte": "aproximado",
-   "nota": "não encontrado; onde ficava a zona"
-  },
-  {
    "area": "Moreira César",
    "zona": "Caxias do Sul",
    "lat": -29.16,
@@ -615,14 +575,6 @@
    "lon": -51.1649,
    "fonte": "osm",
    "nota": "Niterói, Canoas, Rio Grande do Sul"
-  },
-  {
-   "area": "Novo Hamburgo Ala",
-   "zona": "Novo Hamburgo",
-   "lat": -29.678,
-   "lon": -51.131,
-   "fonte": "aproximado",
-   "nota": "ala/escritório; onde ficava a zona"
   },
   {
    "area": "Novo Hamburgo",
@@ -850,14 +802,6 @@
   },
   {
    "area": "Sapucaia do Sul",
-   "zona": "São Leopoldo",
-   "lat": -29.8197,
-   "lon": -51.1609,
-   "fonte": "osm",
-   "nota": "Sapucaia do Sul, Rio Grande do Sul, Região Sul"
-  },
-  {
-   "area": "Sapucaia",
    "zona": "São Leopoldo",
    "lat": -29.8197,
    "lon": -51.1609,

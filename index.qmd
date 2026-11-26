@@ -189,14 +189,16 @@ fmtYM = k => { if (!k) return "—"; const [y, m] = k.split("-"); return idioma 
 fmtMesAno = s => idioma === "en" ? `${MES_NOME[s.mes - 1]} ${s.ano}` : `${MES_NOME[s.mes - 1].toLowerCase()} de ${s.ano}`
 nacionalidade = n => idioma === "en" ? ({ "brasileiro": "Brazilian", "norte americano": "North American" }[n] ?? n) : n
 nomeCompleto = l => l.replace(/^E\s+/, "Élder ").replace(/^S\s+/, "Síster ")
+// Letters (A, B, C) and role tags (LD, LZ, Casal) mark companionships within one área; numbers are separate wards.
+semLetra = n => n == null ? n : n.replace(/(\s+(LD|LZ|Casal|[A-D]))+$/i, "").trim()
 norm = s => String(s ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/-/g, " ").replace(/\s+/g, " ").trim()
 aparicoes = {
   const m = new Map();
   for (const s of snaps) for (const z of s.zonas) for (const a of z.areas) for (const p of a.dupla) {
     const k = p.id ?? "?" + p.n;
     if (!m.has(k)) m.set(k, []);
-    // area = the área name without the board's #1/#2 (that only separates two companionships in the same área).
-    m.get(k).push({ key: s.key, zona: z.nome, especial: z.especial, areaNome: a.nome, area: a.nome ?? z.nome, companheiros: a.dupla.filter(x => x !== p) });
+    // area = the área name without the board's #1/#2 or A/B/LD… (those only tell companionships in the same área apart).
+    m.get(k).push({ key: s.key, zona: z.nome, especial: z.especial, areaNome: a.nome, area: semLetra(a.nome) ?? z.nome, companheiros: a.dupla.filter(x => x !== p) });
   }
   return m;
 }
@@ -271,7 +273,7 @@ snapAtual = snaps[snapIdx]
 // Area history: same área name across snapshots, even when its zone changed (zones split over time).
 // "Rio Branco" exists both in Porto Alegre and in Caxias do Sul, so those are kept apart by region.
 chaveArea = (nome, zona) => {
-  const k = norm(nome);
+  const k = norm(semLetra(nome));
   return /^rio branco/.test(k) ? k + (["Moinhos de Vento", "Porto Alegre"].includes(zona) ? "|poa" : "|serra") : k;
 }
 
@@ -283,7 +285,7 @@ historicoArea = {
       for (const a of z.areas) {
         if (!a.nome) continue;
         const k = chaveArea(a.nome, z.nome);
-        if (!m.has(k)) m.set(k, { nome: a.nome, zonas: [], duplas: new Map(), ini: i, fim: i });
+        if (!m.has(k)) m.set(k, { nome: semLetra(a.nome), zonas: [], duplas: new Map(), ini: i, fim: i });
         const h = m.get(k);
         h.fim = i;
         if (!h.zonas.includes(z.nome)) h.zonas.push(z.nome);
@@ -961,7 +963,7 @@ trajetoJornada = (chave, x) => {
   for (const a of ap) {
     const c = a.especial || !a.areaNome ? null : areaCoord(a.areaNome, a.zona);
     const pos = c ? [c.lat, c.lon] : a.especial ? ESCRITORIO : (ZONA_POS[a.zona] ?? ev.at(-1)?.pos ?? ESCRITORIO);
-    ev.push({ key: `${a.key}|1`, pos, tipo: "area", area: a.especial ? a.zona : (a.areaNome ?? a.area), zona: a.zona, aprox: c?.fonte === "aproximado",
+    ev.push({ key: `${a.key}|1`, pos, tipo: "area", area: a.especial ? a.zona : a.area, zona: a.zona, aprox: c?.fonte === "aproximado",
       companheiros: a.companheiros.map(p => nomeCompleto(p.n)) });
   }
   const sumiu = snaps.find(s => s.key > ult && (!x?.saida || s.key < x.saida));
