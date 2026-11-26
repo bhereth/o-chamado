@@ -124,7 +124,7 @@ title: ""
 
 </div>
 
-<p class="atalho-busca"><a href="#busca" onclick="var b=document.getElementById('busca'); if (b) { event.preventDefault(); b.scrollIntoView({behavior:'smooth', block:'center'}); b.focus({preventScroll:true}); }"><i class="bi bi-search"></i> <span class="lang-pt">Procurando alguém? Vá direto para a busca de missionários</span><span class="lang-en">Looking for someone? Jump to the missionary search</span> ↓</a></p>
+<p class="atalho-busca"><a href="#busca" onclick="var b=document.getElementById('busca'); if (b) { event.preventDefault(); b.scrollIntoView({behavior:'smooth', block:'center'}); b.focus({preventScroll:true}); }"><i class="bi bi-search"></i> <span class="lang-pt">Encontre a jornada de um missionário</span><span class="lang-en">Find a missionary's journey</span> ↓</a></p>
 
 <script>
 // Inline the map/globe SVGs (an <img> would not use the page fonts).
@@ -748,7 +748,7 @@ viewof buscaArea = htl.html`<input type="search" id="busca-area" class="form-con
 ## [Em números]{.lang-pt}[By the numbers]{.lang-en}
 
 ::: {.section-intro}
-[Ao todo, 515 missionários serviram com os Woodward: élderes e sísteres, brasileiros e norte-americanos, quase meio a meio.]{.lang-pt}[In all, 515 missionaries served with the Woodwards: elders and sisters, Brazilians and North Americans, in nearly equal numbers.]{.lang-en}
+[Ao todo, 515 missionários, élderes e sísteres, serviram com os Woodward. Brasileiros e norte-americanos vieram quase meio a meio.]{.lang-pt}[In all, 515 missionaries, elders and sisters, served with the Woodwards. Brazilians and North Americans came in nearly equal numbers.]{.lang-en}
 :::
 
 ```{ojs}
