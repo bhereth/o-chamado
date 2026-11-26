@@ -667,7 +667,7 @@ viewof mapa = {
   return htl.html`<p class="mapa-legenda"><span class="ponto ponto-area"></span> ${T(
     `Áreas em ${fmtMesAno(snapAtual)}; toque numa área para ver todas as duplas que passaram por ela.`,
     `Areas in ${fmtMesAno(snapAtual)}; tap an area to see every companionship that served there.`)}
-    <span class="ponto ponto-zona"></span> ${T("Zonas; toque no nome para ver o cartão da zona.", "Zones; tap a name to see the zone's card.")}</p>`;
+    <span class="ponto ponto-zona"></span> ${T("Zonas: toque no nome de uma zona para ir até as duplas dela, logo abaixo do mapa.", "Zones: tap a zone's name to jump to its companionships, just below the map.")}</p>`;
 }
 ```
 
