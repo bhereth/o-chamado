@@ -1616,3 +1616,10 @@ $cores-regiao: (
 .jornada-pill.esquerda .jornada-pill-linha { justify-content: flex-end; }
 .jornada-pill-linha .jornada-conta { margin-left: 0; }
 .jornada-pill-linha[hidden] { display: none; }
+
+/* Temple: Elder Hereth's photos (construction and the finished temple), 2×2 under the main photo */
+.templo-galeria { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-top: 1.2rem; align-items: start; }
+.templo-galeria figure { margin: 0; }
+.templo-galeria img { width: 100%; aspect-ratio: 7 / 4; object-fit: cover; border-radius: $border-radius; box-shadow: 0 14px 30px -22px rgba(0, 0, 0, 0.5); }
+.templo-galeria figcaption { font-size: 0.8rem; color: $body-color; margin-top: 0.35rem; line-height: 1.35; }
+.templo-galeria-credito { grid-column: 1 / -1; margin: 0; font-size: 0.72rem; color: $ink-muted; }

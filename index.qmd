@@ -1449,6 +1449,25 @@ viewof mapaJornada = {
   <div class="templo-foto">
     <img src="images/templo.jpg" alt="Templo de Porto Alegre Brasil">
     <span class="credito"><span class="lang-pt">Foto</span><span class="lang-en">Photo</span>: <a href="https://commons.wikimedia.org/wiki/File:Templo_de_Porto_Alegre_(16_November_2008).jpg" target="_blank" rel="noopener">Ricardo630</a>, Wikimedia Commons, <a href="https://creativecommons.org/licenses/by/3.0/deed.pt_BR" target="_blank" rel="noopener">CC BY 3.0</a></span>
+    <div class="templo-galeria">
+      <figure>
+        <img src="images/templo-obra-cidade.jpg" alt="Obra do Templo de Porto Alegre, com andaimes e blocos, e a cidade ao fundo" loading="lazy">
+        <figcaption><span class="lang-pt">A obra no alto do morro, com a cidade ao fundo.</span><span class="lang-en">The construction site on the hill, with the city beyond.</span></figcaption>
+      </figure>
+      <figure>
+        <img src="images/templo-obra-placa.jpg" alt="Um élder diante do tapume e das placas da obra do Templo de Porto Alegre" loading="lazy">
+        <figcaption><span class="lang-pt">Um élder diante do tapume e das placas da obra.</span><span class="lang-en">An elder in front of the construction fence and signs.</span></figcaption>
+      </figure>
+      <figure>
+        <img src="images/templo-pronto.jpg" alt="Templo de Porto Alegre Brasil pronto, num dia de céu azul" loading="lazy">
+        <figcaption><span class="lang-pt">O templo pronto.</span><span class="lang-en">The finished temple.</span></figcaption>
+      </figure>
+      <figure>
+        <img src="images/templo-noite.jpg" alt="Templo de Porto Alegre Brasil iluminado à noite" loading="lazy">
+        <figcaption><span class="lang-pt">O templo iluminado à noite.</span><span class="lang-en">The temple lit up at night.</span></figcaption>
+      </figure>
+      <p class="credito templo-galeria-credito"><span class="lang-pt">Fotos: cortesia do Élder Billy Hereth</span><span class="lang-en">Photos courtesy of Elder Billy Hereth</span></p>
+    </div>
   </div>
   <div class="templo-texto">
     <p class="templo-destaque lang-pt">No dia <strong>2 de maio de 1998</strong>, durante a missão dos Woodward, mais de 3.500 pessoas se reuniram numa encosta com vista para Porto Alegre para a cerimônia de abertura de terra do primeiro templo do Rio Grande do Sul.</p>
