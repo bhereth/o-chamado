@@ -519,6 +519,9 @@ corZona = z => ZONA_COR[z] ?? "#555"
 // Zones hidden on the areas map (kept when the month changes).
 viewof zonasOcultas = estado([])
 
+// Zone cards left open on phones (kept when the month changes).
+zonasAbertas = new Set()
+
 // Where each área was (data/areas-coords.json, built by scripts/geocode-areas.mjs and hand-checked).
 // Áreas are grouped without their A/B letters, numbers and LD/LZ/Casal tags.
 areasCoords = FileAttachment("data/areas-coords.json").json()
@@ -603,6 +606,7 @@ viewof mapa = {
     marcador.on("click", () => {
       const card = [...document.querySelectorAll(".zone-card")].find(c => c.dataset.zona === z.nome);
       if (!card) return;
+      if (card.tagName === "DETAILS") card.open = true;
       card.scrollIntoView({ behavior: "smooth", block: "center" });
       card.classList.remove("destaque"); void card.offsetWidth; card.classList.add("destaque");
     });
@@ -625,6 +629,7 @@ viewof mapa = {
       ponto.on("click", () => {
         const card = [...document.querySelectorAll(".zone-card")].find(c => c.dataset.zona === z.nome);
         if (!card) return;
+        if (card.tagName === "DETAILS") card.open = true;
         card.scrollIntoView({ behavior: "smooth", block: "center" });
         card.classList.remove("destaque"); void card.offsetWidth; card.classList.add("destaque");
       });
@@ -688,10 +693,21 @@ viewof mapa = {
   const ocultas = new Set(zonasOcultas);
   const zonas = [...snapAtual.zonas].filter(z => z.especial ? mostrarEspeciais : !ocultas.has(z.nome)).sort((a, b) => a.especial - b.especial);
   const nOcultas = snapAtual.zonas.filter(z => !z.especial && ocultas.has(z.nome)).length;
+  // On phones and tablets (under 900px) each zone is a collapsible card, closed at first, so the board isn't ten screens long.
+  const celular = width < 900;
   const cartao = z => {
     const comps = z.areas.length;
+    const contagem = `${comps} ${comps === 1 ? T("dupla", "companionship") : T("duplas", "companionships")}`;
+    if (celular) {
+      const d = htl.html`<details class=${z.especial ? "zone-card especial colapsavel" : "zone-card colapsavel"} data-zona=${z.nome} open=${zonasAbertas.has(z.nome)}>
+        <summary><h3>${z.nome}</h3><span class="count">${contagem}</span><i class="bi bi-chevron-down seta-zona"></i></summary>
+        ${z.areas.map((a, i) => linhaArea(a, z, i > 0 && a.n > 1 && z.areas[i - 1].nome === a.nome))}
+      </details>`;
+      d.addEventListener("toggle", () => { d.open ? zonasAbertas.add(z.nome) : zonasAbertas.delete(z.nome); });
+      return d;
+    }
     return htl.html`<article class=${z.especial ? "zone-card especial" : "zone-card"} data-zona=${z.nome}>
-      <header><h3>${z.nome}</h3><span class="count">${comps} ${comps === 1 ? T("dupla", "companionship") : T("duplas", "companionships")}</span></header>
+      <header><h3>${z.nome}</h3><span class="count">${contagem}</span></header>
       ${z.areas.map((a, i) => linhaArea(a, z, i > 0 && a.n > 1 && z.areas[i - 1].nome === a.nome))}
     </article>`;
   };
@@ -706,7 +722,13 @@ viewof mapa = {
   }
   const aviso = nOcultas ? htl.html`<p class="aviso-filtro">${T(`${nOcultas} ${nOcultas === 1 ? "zona escondida" : "zonas escondidas"} pelo filtro do mapa.`, `${nOcultas} ${nOcultas === 1 ? "zone" : "zones"} hidden by the map filter.`)}
     <button class="filtro-tudo" onclick=${() => definir(viewof zonasOcultas, [])}>${T("Mostrar todas", "Show all")}</button></p>` : "";
-  return htl.html`<div>${aviso}<div class="board-grid">${colunas.map(c => htl.html`<div class="board-col">${c.zonas.map(cartao)}</div>`)}</div></div>`;
+  const grade = htl.html`<div class="board-grid">${colunas.map(c => htl.html`<div class="board-col">${c.zonas.map(cartao)}</div>`)}</div>`;
+  const todas = abrir => () => grade.querySelectorAll("details.zone-card").forEach(d => { d.open = abrir; });
+  const controles = celular ? htl.html`<div class="quadro-abrir">
+    <button class="filtro-tudo" onclick=${todas(true)}>${T("Abrir todas", "Open all")}</button>
+    <button class="filtro-tudo" onclick=${todas(false)}>${T("Fechar todas", "Close all")}</button>
+  </div>` : "";
+  return htl.html`<div>${aviso}${controles}${grade}</div>`;
 }
 ```
 

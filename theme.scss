@@ -1707,3 +1707,12 @@ $cores-regiao: (
   .faixa-mes .nav-mes { gap: 0.3rem; }
   .faixa-mes .nav-mes .snap-label { font-size: 0.88rem; min-width: 0; white-space: nowrap; }
 }
+
+/* Phones: zone cards fold up (details/summary) */
+details.zone-card.colapsavel { padding-bottom: 0.4rem; margin-bottom: 0.7rem; }
+details.zone-card summary { display: flex; align-items: baseline; gap: 0.5rem; cursor: pointer; list-style: none; padding: 0.15rem 0 0.35rem; }
+details.zone-card summary::-webkit-details-marker { display: none; }
+details.zone-card .seta-zona { align-self: center; color: $primary; font-size: 0.9rem; transition: transform 0.2s ease; }
+details.zone-card[open] .seta-zona { transform: rotate(180deg); }
+details.zone-card[open] summary { margin-bottom: 0.4rem; }
+.quadro-abrir { display: flex; justify-content: center; gap: 0.5rem; margin: 0 0 0.9rem; }
