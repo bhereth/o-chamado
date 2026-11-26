@@ -1609,3 +1609,9 @@ $cores-regiao: (
 .nav-footer-left, .nav-footer-right { display: none; }
 .nav-footer { justify-content: center; min-height: 0; padding-top: 0.9rem; padding-bottom: 0.9rem; }
 .nav-footer-center { min-height: 0; margin: 0; }
+.jornada-seguir {
+  width: 2rem; height: 2rem; border-radius: 50%; border: 1px solid rgba($primary, 0.35);
+  background: $paper; color: $primary; font-size: 1rem; line-height: 1;
+  display: inline-flex; align-items: center; justify-content: center; cursor: pointer; margin-left: 0.15rem;
+}
+.jornada-seguir.ativo { background: $primary; color: #fff; border-color: $primary; }

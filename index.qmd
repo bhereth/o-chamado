@@ -1316,24 +1316,54 @@ viewof mapaJornada = {
     botaoPlay.innerHTML = tocando ? '<i class="bi bi-pause-fill"></i>' : t >= total ? '<i class="bi bi-arrow-counterclockwise"></i>' : '<i class="bi bi-play-fill"></i>';
     botaoPlay.setAttribute("aria-label", tocando ? T("Pausar", "Pause") : t >= total ? T("Recomeçar", "Restart") : T("Tocar", "Play"));
   };
+  let seguir = el.seguir ?? true, passoCamera = null;
+  const enquadrarPasso = (i, animar) => {
+    const v = viagens[0];
+    const a = v.est[i], b = v.est[Math.min(i + 1, n - 1)];
+    const lim = L.latLngBounds([a.pos, b.pos]);
+    const opc = { ...el.margens(), maxZoom: 10 };
+    if (animar) m.flyToBounds(lim, { ...opc, duration: Math.max(0.6, PAUSA * 0.6 + MOVE * 0.9) });
+    else m.fitBounds(lim, { ...opc, animate: false });
+  };
+  const camera = t => {
+    if (!seguir) return;
+    if (t >= total) {
+      if (passoCamera !== "fim") { passoCamera = "fim"; m.flyToBounds(el.limites, { ...el.margens(), duration: 1.2 }); }
+      return;
+    }
+    const i = Math.floor(t / PASSO);
+    if (i !== passoCamera && t - i * PASSO >= PAUSA * 0.4) { passoCamera = i; enquadrarPasso(i, true); }
+  };
   const quadroAnim = ts => {
     if (!tocando) return;
     if (antes !== null) t += (ts - antes) / 1000;
     antes = ts;
     desenhar(fDe(t));
+    camera(t);
     if (t >= total) { tocando = false; marcarBotao(); return; }
     raf = requestAnimationFrame(quadroAnim);
   };
-  const tocar = () => { if (t >= total) t = 0; tocando = true; antes = null; marcarBotao(); raf = requestAnimationFrame(quadroAnim); };
+  const tocar = () => { if (t >= total) t = 0; passoCamera = null; tocando = true; antes = null; marcarBotao(); raf = requestAnimationFrame(quadroAnim); };
   const pausar = () => { tocando = false; cancelAnimationFrame(raf); marcarBotao(); };
   botaoPlay.onclick = () => tocando ? pausar() : tocar();
-  slider.oninput = () => { pausar(); t = +slider.value * PASSO; desenhar(+slider.value); marcarBotao(); };
+  slider.oninput = () => {
+    pausar(); t = +slider.value * PASSO; desenhar(+slider.value); marcarBotao();
+    if (seguir) { passoCamera = +slider.value; enquadrarPasso(+slider.value, false); }
+  };
+  const botaoSeguir = htl.html`<button class=${seguir ? "jornada-seguir ativo" : "jornada-seguir"} aria-pressed=${seguir}
+    title=${T("Acompanhar a jornada no mapa (zoom automático)", "Follow the journey on the map (auto zoom)")}><i class="bi bi-crosshair"></i></button>`;
+  botaoSeguir.onclick = () => {
+    seguir = !seguir; el.seguir = seguir;
+    botaoSeguir.classList.toggle("ativo", seguir); botaoSeguir.setAttribute("aria-pressed", seguir);
+    if (seguir) { passoCamera = Math.min(Math.floor(t / PASSO), n - 1); enquadrarPasso(passoCamera, true); }
+    else m.flyToBounds(el.limites, { ...el.margens(), duration: 0.8 });
+  };
   // When this cell re-runs for the same people (for example, a language switch), carry on from the same moment.
   const assinatura = jornadaModo.tipo + "|" + viagens.map(v => v.chave).join(",");
   const salvo = el.salvo?.assinatura === assinatura && el.salvo.modo === jornadaModo ? el.salvo : null;
   invalidation.then(() => { el.salvo = { assinatura, modo: jornadaModo, t, tocando: tocando || timer !== null }; tocando = false; cancelAnimationFrame(raf); clearTimeout(timer); });
 
-  const caixa = htl.html`<div class="jornada-controle">${botaoPlay}<div class="jornada-rotulos">${rotuloMes}${rotuloMarco}</div></div>`;
+  const caixa = htl.html`<div class="jornada-controle">${botaoPlay}<div class="jornada-rotulos">${rotuloMes}${rotuloMarco}</div>${botaoSeguir}</div>`;
   L.DomEvent.disableClickPropagation(caixa);
   el.controle = new (L.Control.extend({ onAdd: () => caixa }))({ position: "topright" }).addTo(m);
 
