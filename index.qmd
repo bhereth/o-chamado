@@ -1353,7 +1353,9 @@ viewof mapaJornada = {
     const z = Math.max(6, Math.min(10, Math.floor(alvo.zoom)));
     const zAtual = Math.round(m.getZoom());
     if (!animar) { m.setView(alvo.center, z, { animate: false }); return; }
-    const dur = Math.max(0.6, PAUSA * 0.6 + MOVE * 0.9);
+    // The camera moves during the hold, before the name moves: moving both at once lets the trail and the
+    // dots drift apart while Leaflet animates the zoom.
+    const dur = Math.max(0.5, PAUSA - 0.15);
     const vista = m.getBounds().pad(-0.18);
     if (z === zAtual && vista.contains(lim)) return;
     if (z === zAtual || (z === zAtual + 1 && vista.contains(lim))) m.panTo(alvo.center, { animate: true, duration: dur, easeLinearity: 0.2 });
@@ -1366,7 +1368,7 @@ viewof mapaJornada = {
       return;
     }
     const i = Math.floor(t / PASSO);
-    if (i !== passoCamera && t - i * PASSO >= PAUSA * 0.4) { passoCamera = i; enquadrarPasso(i, true); }
+    if (i !== passoCamera) { passoCamera = i; enquadrarPasso(i, true); }
   };
   const quadroAnim = ts => {
     if (!tocando) return;
@@ -1394,6 +1396,10 @@ viewof mapaJornada = {
   };
   el.addEventListener("autozoom", aoMudarZoom);
   invalidation.then(() => el.removeEventListener("autozoom", aoMudarZoom));
+  // After every camera move, redraw the trail, dots and name so they line up again.
+  const realinhar = () => desenhar(fDe(t));
+  m.on("zoomend moveend", realinhar);
+  invalidation.then(() => m.off("zoomend moveend", realinhar));
   // When this cell re-runs for the same people (for example, a language switch), carry on from the same moment.
   const assinatura = jornadaModo.tipo + "|" + viagens.map(v => v.chave).join(",");
   const salvo = el.salvo?.assinatura === assinatura && el.salvo.modo === jornadaModo ? el.salvo : null;
