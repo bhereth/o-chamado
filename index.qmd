@@ -1026,7 +1026,22 @@ function cartaoPessoa({ p, label, ap }) {
   return htl.html`<div class="jornada-pessoa-topo">
     <h3>${v.nome}</h3>
     <p class="meta">${v.x ? `${nacionalidade(v.x.nacionalidade ?? "")} · ${T("Chegada", "Arrived")} ${fmtYM(v.x.chegada)} · ${T("Saída", "Left")} ${fmtYM(v.x.saida)}` : T("Sem registro de chegada/saída", "No arrival/departure record")}</p>
+    ${botaoAutoZoom()}
   </div>`;
+}
+
+// Toggle for the camera that follows the journey (auto zoom); on by default.
+function botaoAutoZoom() {
+  const mapa = viewof mapaJornada;
+  const b = htl.html`<button class="pill jornada-zoom-toggle"></button>`;
+  const atualizar = () => {
+    const ligado = mapa.seguir ?? true;
+    b.setAttribute("aria-pressed", ligado);
+    b.replaceChildren(htl.html`<i class=${ligado ? "bi bi-zoom-out" : "bi bi-zoom-in"}></i> ${ligado ? T("Desligar o zoom automático", "Turn off auto zoom") : T("Ligar o zoom automático", "Turn on auto zoom")}`);
+  };
+  b.onclick = () => { mapa.seguir = !(mapa.seguir ?? true); mapa.dispatchEvent(new Event("autozoom")); atualizar(); };
+  atualizar();
+  return b;
 }
 ```
 
@@ -1361,20 +1376,20 @@ viewof mapaJornada = {
     pausar(); t = +slider.value * PASSO; desenhar(+slider.value); marcarBotao();
     if (seguir) { passoCamera = +slider.value; enquadrarPasso(+slider.value, false); }
   };
-  const botaoSeguir = htl.html`<button class=${seguir ? "jornada-seguir ativo" : "jornada-seguir"} aria-pressed=${seguir}
-    title=${T("Acompanhar a jornada no mapa (zoom automático)", "Follow the journey on the map (auto zoom)")}><i class="bi bi-crosshair"></i></button>`;
-  botaoSeguir.onclick = () => {
-    seguir = !seguir; el.seguir = seguir;
-    botaoSeguir.classList.toggle("ativo", seguir); botaoSeguir.setAttribute("aria-pressed", seguir);
+  // The "Turn auto zoom on/off" button above the map sets el.seguir and fires "autozoom" on the map.
+  const aoMudarZoom = () => {
+    seguir = el.seguir ?? true;
     if (seguir) { passoCamera = Math.min(Math.floor(t / PASSO), n - 1); enquadrarPasso(passoCamera, true); }
     else m.flyToBounds(el.limites, { ...el.margens(), duration: 0.8 });
   };
+  el.addEventListener("autozoom", aoMudarZoom);
+  invalidation.then(() => el.removeEventListener("autozoom", aoMudarZoom));
   // When this cell re-runs for the same people (for example, a language switch), carry on from the same moment.
   const assinatura = jornadaModo.tipo + "|" + viagens.map(v => v.chave).join(",");
   const salvo = el.salvo?.assinatura === assinatura && el.salvo.modo === jornadaModo ? el.salvo : null;
   invalidation.then(() => { el.salvo = { assinatura, modo: jornadaModo, t, tocando: tocando || timer !== null }; tocando = false; cancelAnimationFrame(raf); clearTimeout(timer); });
 
-  const caixa = htl.html`<div class="jornada-controle">${botaoPlay}<div class="jornada-rotulos">${rotuloMes}${rotuloMarco}</div>${botaoSeguir}</div>`;
+  const caixa = htl.html`<div class="jornada-controle">${botaoPlay}<div class="jornada-rotulos">${rotuloMes}${rotuloMarco}</div></div>`;
   L.DomEvent.disableClickPropagation(caixa);
   el.controle = new (L.Control.extend({ onAdd: () => caixa }))({ position: "topright" }).addTo(m);
 
