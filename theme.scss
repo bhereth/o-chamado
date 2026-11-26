@@ -1604,3 +1604,8 @@ $cores-regiao: (
 .growth-bars rect.sem-dados { fill: rgba($ink-muted, 0.25); cursor: default; }
 .historico-table tr.sem-dados td { color: rgba($ink-muted, 0.85); font-style: italic; background: rgba($ink-muted, 0.06); }
 .jornada-fim { text-align: center; margin-top: 1rem; }
+
+/* Footer: only the centre column is used; the empty left/right columns stacked on phones and left a tall blank band. */
+.nav-footer-left, .nav-footer-right { display: none; }
+.nav-footer { justify-content: center; min-height: 0; padding-top: 0.9rem; padding-bottom: 0.9rem; }
+.nav-footer-center { min-height: 0; margin: 0; }

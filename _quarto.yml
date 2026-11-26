@@ -39,8 +39,7 @@ website:
   page-footer:
     background: dark
     center: |
-      O Chamado da Missão Brasil Porto Alegre Norte · 1997–2000<br>
-      *The Call of the Brazil Porto Alegre North Mission*
+      O Chamado da Missão Brasil Porto Alegre Norte <span style="white-space: nowrap">· 1997–2000</span>
 
 format:
   html:
