@@ -887,6 +887,8 @@ mesesDe = a => a === 1997 ? [7, 8, 9, 10, 11, 12] : a === 2000 ? [1, 2, 3, 4, 5,
 ```{ojs}
 {
   const pill = (label, active, onclick) => htl.html`<button class=${active ? "pill active" : "pill"} onclick=${onclick}>${label}</button>`;
+  // Months with a photo in data/fotos.csv get a small camera icon.
+  const comFoto = new Set(catalogoFotos.fotos.filter(f => f.mes).map(f => f.mes));
   // Previous / next month across years (July 1997 – July 2000).
   const todos = [1997, 1998, 1999, 2000].flatMap(a => mesesDe(a).map(m => [a, m]));
   const i = todos.findIndex(([a, m]) => a === anoSel && m === mesSel);
@@ -896,7 +898,9 @@ mesesDe = a => a === 1997 ? [7, 8, 9, 10, 11, 12] : a === 2000 ? [1, 2, 3, 4, 5,
       if (!mesesDe(a).includes(mesSel)) definir(viewof mesSel, mesesDe(a)[0]);
       definir(viewof anoSel, a);
     }))}</div>
-    <div class="pill-group"><span class="filter-label">${T("Mês", "Month")}</span>${mesesDe(anoSel).map(m => pill(MES[m - 1], m === mesSel, () => definir(viewof mesSel, m)))}</div>
+    <div class="pill-group"><span class="filter-label">${T("Mês", "Month")}</span>${mesesDe(anoSel).map(m => pill(comFoto.has(`${anoSel}-${String(m).padStart(2, "0")}`)
+      ? htl.html`${MES[m - 1]} <i class="bi bi-camera-fill pill-foto" title=${T("Tem foto deste mês", "Has a photo from this month")}></i>`
+      : MES[m - 1], m === mesSel, () => definir(viewof mesSel, m)))}</div>
     <div class="nav-mes nav-mes-chegadas">
       <button class="nav-mes-btn" aria-label=${T("Mês anterior", "Previous month")} disabled=${i <= 0} onclick=${() => ir(i - 1)}><i class="bi bi-chevron-left"></i></button>
       <span class="snap-label">${fmtMesAno({ ano: anoSel, mes: mesSel })}</span>
@@ -1595,7 +1599,8 @@ galeriaSecao = secao => {
   </div>`)}</div>`;
 }
 ordemFotos = {
-  const l = [...catalogoFotos.fotos];
+  // The top-of-page carousel photos (secao "inicio") are already on screen there, so they are left out here.
+  const l = catalogoFotos.fotos.filter(f => f.secao !== "inicio");
   for (let i = l.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [l[i], l[j]] = [l[j], l[i]]; }
   return { fotos: l, atual: 0 };
 }

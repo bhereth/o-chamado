@@ -19,9 +19,9 @@ Nada disso exige mexer em código. Depois de qualquer mudança, gere o site de n
 | `licenca` | opcional: licença, para fotos do Wikimedia Commons etc. | `CC BY-SA 4.0` |
 | `na_secao` | `sim` para mostrar a foto no fim da seção; `não` se ela já está colocada à mão no site | `sim` |
 
-**Seções:** `missao`, `areas`, `missionarios`, `templo`, `jornais`, `fotos` (só na seção Fotos), `historias`, `reencontros`, `woodwards`, `contato`.
+**Seções:** `inicio` (carrossel do topo; colocado à mão), `missao`, `areas`, `missionarios`, `templo`, `jornais`, `fotos` (só na seção Fotos), `historias`, `reencontros`, `woodwards`, `contato`.
 
-Toda foto da planilha também aparece na seção **Fotos**, que mostra todas em ordem aleatória.
+Toda foto da planilha também aparece na seção **Fotos**, que mostra todas em ordem aleatória, exceto as da seção `inicio` (o carrossel do topo da página), que já ficam à vista lá.
 
 O crédito é montado sozinho:
 - sem licença nem link → "Foto: cortesia do Élder Billy Hereth" / "Photo courtesy of Elder Billy Hereth";
