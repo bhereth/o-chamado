@@ -1387,7 +1387,7 @@ viewof mapaJornada = {
       <li><span class="data"><span class="lang-pt">dez 2000</span><span class="lang-en">Dec 2000</span></span><span><span class="lang-pt">Visitação pública, com cerca de 25 mil visitantes.</span><span class="lang-en">Public open house, with about 25,000 visitors.</span></span></li>
       <li><span class="data"><span class="lang-pt">17 dez 2000</span><span class="lang-en">Dec 17, 2000</span></span><span><span class="lang-pt">O Presidente Hinckley dedica o templo, o 102º da Igreja e o terceiro do Brasil, no bairro Vila Jardim, com vista para a cidade e o Guaíba.</span><span class="lang-en">President Hinckley dedicates the temple, the Church's 102nd and Brazil's third, in the Vila Jardim neighborhood overlooking the city and the Guaíba.</span></span></li>
     </ol>
-    <p class="templo-chamada"><i class="bi bi-camera"></i> <span class="lang-pt">Você estava na abertura de terra? Mande suas fotos e lembranças para</span><span class="lang-en">Were you at the groundbreaking? Send your photos and memories to</span> <a href="mailto:info@ochamado.org?subject=Abertura%20de%20terra%20do%20Templo%20de%20Porto%20Alegre">info@ochamado.org</a>.</p>
+    <p class="templo-chamada"><i class="bi bi-camera"></i> <span class="lang-pt">Esteve na abertura de terra? Fotos e lembranças desse dia são bem-vindas em</span><span class="lang-en">Were you at the groundbreaking? Photos and memories of that day are welcome at</span> <a href="mailto:info@ochamado.org?subject=Abertura%20de%20terra%20do%20Templo%20de%20Porto%20Alegre">info@ochamado.org</a><span class="lang-pt">, para que possam ser incluídas aqui.</span><span class="lang-en">, so they can be added here.</span></p>
     <p class="templo-fonte"><span class="lang-pt">Fonte</span><span class="lang-en">Source</span>: <a href="https://www.thechurchnews.com/1998/5/9/23250717/be-loyal-worthy-to-enter-temple-members-urged/" target="_blank" rel="noopener">Church News, <span class="lang-pt">9 de maio de 1998</span><span class="lang-en">May 9, 1998</span></a>.</p>
   </div>
 </div>
@@ -1493,7 +1493,7 @@ jornalUrl = j => "o-chamado-newsletters/" + encodeURIComponent(j.arquivo)
 ## [Comentários e sugestões]{.lang-pt}[Comments and suggestions]{.lang-en}
 
 ::: {.section-intro}
-[Tem fotos, histórias, correções no quadro de transferências ou ideias para o site? Adoraríamos ouvir de você.]{.lang-pt}[Have photos, stories, corrections to the transfer board or ideas for the site? We'd love to hear from you.]{.lang-en}
+[Fotos, histórias, correções no quadro de transferências e ideias para o site são bem-vindas. Com permissão, fotos e histórias podem ser incluídas no site.]{.lang-pt}[Photos, stories, corrections to the transfer board and ideas for the site are welcome. With permission, photos and stories may be added to the site.]{.lang-en}
 :::
 
 ```{=html}
