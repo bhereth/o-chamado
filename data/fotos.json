@@ -1,0 +1,293 @@
+{
+ "geradoDe": "data/fotos.csv (não edite este arquivo; edite a planilha)",
+ "fotos": [
+  {
+   "src": "images/escritorio.png",
+   "pt": "O escritório da missão, em Porto Alegre.",
+   "en": "The mission office in Porto Alegre.",
+   "credito": [
+    "Foto: cortesia do Élder George",
+    "Photo courtesy of Elder George"
+   ],
+   "link": null,
+   "onde": [
+    "#",
+    "Início da página",
+    "Top of the page"
+   ],
+   "secao": "inicio",
+   "naSecao": false,
+   "mes": null
+  },
+  {
+   "src": "images/marau.png",
+   "pt": "Marau.",
+   "en": "Marau.",
+   "credito": [
+    "Foto: cortesia do Élder George",
+    "Photo courtesy of Elder George"
+   ],
+   "link": null,
+   "onde": [
+    "#",
+    "Início da página",
+    "Top of the page"
+   ],
+   "secao": "inicio",
+   "naSecao": false,
+   "mes": null
+  },
+  {
+   "src": "images/santarosa.png",
+   "pt": "Santa Rosa.",
+   "en": "Santa Rosa.",
+   "credito": [
+    "Foto: cortesia do Élder George",
+    "Photo courtesy of Elder George"
+   ],
+   "link": null,
+   "onde": [
+    "#",
+    "Início da página",
+    "Top of the page"
+   ],
+   "secao": "inicio",
+   "naSecao": false,
+   "mes": null
+  },
+  {
+   "src": "images/tramandai.png",
+   "pt": "Tramandaí.",
+   "en": "Tramandaí.",
+   "credito": [
+    "Foto: cortesia do Élder George",
+    "Photo courtesy of Elder George"
+   ],
+   "link": null,
+   "onde": [
+    "#",
+    "Início da página",
+    "Top of the page"
+   ],
+   "secao": "inicio",
+   "naSecao": false,
+   "mes": null
+  },
+  {
+   "src": "images/cruzalta.png",
+   "pt": "Cruz Alta.",
+   "en": "Cruz Alta.",
+   "credito": [
+    "Foto: cortesia do Élder George",
+    "Photo courtesy of Elder George"
+   ],
+   "link": null,
+   "onde": [
+    "#",
+    "Início da página",
+    "Top of the page"
+   ],
+   "secao": "inicio",
+   "naSecao": false,
+   "mes": null
+  },
+  {
+   "src": "images/santoangelo.png",
+   "pt": "Santo Ângelo.",
+   "en": "Santo Ângelo.",
+   "credito": [
+    "Foto: cortesia do Élder George",
+    "Photo courtesy of Elder George"
+   ],
+   "link": null,
+   "onde": [
+    "#",
+    "Início da página",
+    "Top of the page"
+   ],
+   "secao": "inicio",
+   "naSecao": false,
+   "mes": null
+  },
+  {
+   "src": "images/capaodacanoa.png",
+   "pt": "Capão da Canoa.",
+   "en": "Capão da Canoa.",
+   "credito": [
+    "Foto: cortesia do Élder George",
+    "Photo courtesy of Elder George"
+   ],
+   "link": null,
+   "onde": [
+    "#",
+    "Início da página",
+    "Top of the page"
+   ],
+   "secao": "inicio",
+   "naSecao": false,
+   "mes": null
+  },
+  {
+   "src": "images/vacaria.png",
+   "pt": "Vacaria.",
+   "en": "Vacaria.",
+   "credito": [
+    "Foto: cortesia do Élder George",
+    "Photo courtesy of Elder George"
+   ],
+   "link": null,
+   "onde": [
+    "#",
+    "Início da página",
+    "Top of the page"
+   ],
+   "secao": "inicio",
+   "naSecao": false,
+   "mes": null
+  },
+  {
+   "src": "images/templo.jpg",
+   "pt": "O Templo de Porto Alegre Brasil (2008).",
+   "en": "The Porto Alegre Brazil Temple (2008).",
+   "credito": [
+    "Foto: Ricardo630, Wikimedia Commons, CC BY 3.0",
+    "Photo: Ricardo630, Wikimedia Commons, CC BY 3.0"
+   ],
+   "link": "https://commons.wikimedia.org/wiki/File:Templo_de_Porto_Alegre_(16_November_2008).jpg",
+   "onde": [
+    "#templo",
+    "Templo",
+    "Temple"
+   ],
+   "secao": "templo",
+   "naSecao": false,
+   "mes": null
+  },
+  {
+   "src": "images/templo-obra-cidade.jpg",
+   "pt": "A obra do templo no alto do morro, com a cidade ao fundo.",
+   "en": "The temple construction site on the hill, with the city beyond.",
+   "credito": [
+    "Foto: cortesia do Élder Billy Hereth",
+    "Photo courtesy of Elder Billy Hereth"
+   ],
+   "link": null,
+   "onde": [
+    "#templo",
+    "Templo",
+    "Temple"
+   ],
+   "secao": "templo",
+   "naSecao": false,
+   "mes": null
+  },
+  {
+   "src": "images/templo-obra-placa.jpg",
+   "pt": "O Élder Hereth diante do tapume e das placas da obra do templo.",
+   "en": "Elder Hereth in front of the temple construction fence and signs.",
+   "credito": [
+    "Foto: cortesia do Élder Billy Hereth",
+    "Photo courtesy of Elder Billy Hereth"
+   ],
+   "link": null,
+   "onde": [
+    "#templo",
+    "Templo",
+    "Temple"
+   ],
+   "secao": "templo",
+   "naSecao": false,
+   "mes": null
+  },
+  {
+   "src": "images/templo-pronto.jpg",
+   "pt": "O templo pronto.",
+   "en": "The finished temple.",
+   "credito": [
+    "Foto: cortesia do Élder Billy Hereth",
+    "Photo courtesy of Elder Billy Hereth"
+   ],
+   "link": null,
+   "onde": [
+    "#templo",
+    "Templo",
+    "Temple"
+   ],
+   "secao": "templo",
+   "naSecao": false,
+   "mes": null
+  },
+  {
+   "src": "images/templo-noite.jpg",
+   "pt": "O templo iluminado à noite.",
+   "en": "The temple lit up at night.",
+   "credito": [
+    "Foto: cortesia do Élder Billy Hereth",
+    "Photo courtesy of Elder Billy Hereth"
+   ],
+   "link": null,
+   "onde": [
+    "#templo",
+    "Templo",
+    "Temple"
+   ],
+   "secao": "templo",
+   "naSecao": false,
+   "mes": null
+  },
+  {
+   "src": "images/woodwards.jpg",
+   "pt": "Sally e Arlan Woodward.",
+   "en": "Sally and Arlan Woodward.",
+   "credito": [
+    "Foto: Church News, 2007",
+    "Photo: Church News, 2007"
+   ],
+   "link": "https://www.thechurchnews.com/2007/11/17/23232387/missionary-training-center-presidents-4/",
+   "onde": [
+    "#woodwards",
+    "Os Woodward",
+    "The Woodwards"
+   ],
+   "secao": "woodwards",
+   "naSecao": false,
+   "mes": null
+  },
+  {
+   "src": "images/despedida-1999.jpg",
+   "pt": "Despedida do Élder Hereth na casa da missão, com o Presidente e a Síster Woodward e outros missionários (agosto de 1999).",
+   "en": "Elder Hereth's farewell at the mission home, with President and Sister Woodward and other missionaries (August 1999).",
+   "credito": [
+    "Foto: cortesia do Élder Billy Hereth",
+    "Photo courtesy of Elder Billy Hereth"
+   ],
+   "link": null,
+   "onde": [
+    "#missionarios",
+    "Chegadas e saídas, agosto de 1999",
+    "Arrivals and departures, August 1999"
+   ],
+   "secao": "missionarios",
+   "naSecao": false,
+   "mes": "1999-08"
+  },
+  {
+   "src": "images/serra-canela.jpg",
+   "pt": "Mata de araucárias na Serra Gaúcha, em Canela.",
+   "en": "Araucaria forest in the Serra Gaúcha, in Canela.",
+   "credito": [
+    "Foto: Cesar Vieira, Wikimedia Commons, CC BY-SA 4.0",
+    "Photo: Cesar Vieira, Wikimedia Commons, CC BY-SA 4.0"
+   ],
+   "link": "https://commons.wikimedia.org/wiki/File:Paisagem_Natura_de_Canela.jpg",
+   "onde": [
+    "#contato",
+    "Contato",
+    "Contact"
+   ],
+   "secao": "contato",
+   "naSecao": false,
+   "mes": null
+  }
+ ]
+}

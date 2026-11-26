@@ -137,6 +137,10 @@ document.querySelectorAll("#missao [data-svg]").forEach(function (el) {
 </script>
 
 ```
+
+```{ojs}
+galeriaSecao("missao")
+```
 :::
 
 :::: {.band .column-screen .section-muted #areas}
@@ -738,6 +742,10 @@ viewof buscaArea = htl.html`<input type="search" id="busca-area" class="form-con
 }
 ```
 :::
+
+```{ojs}
+galeriaSecao("areas")
+```
 :::
 ::::
 
@@ -915,9 +923,17 @@ mesesDe = a => a === 1997 ? [7, 8, 9, 10, 11, 12] : a === 2000 ? [1, 2, 3, 4, 5,
           onclick=${() => abrirPessoa({ id: idDe(m), n: `${m["Título"][0]} ${m.Plaqueta}` })}>${m["Título"]} ${m.Plaqueta}</button><span class="tag">${nacionalidade(m.Nacionalidade)}</span></li>`)}</ul>`
       : htl.html`<p class="missionary-empty">${vazio}</p>`}
   </div>`;
-  return htl.html`<div class="missionary-board">
-    ${panel(ch, "panel-chegadas", "bi-airplane-fill", T("Chegadas", "Arrivals"), T("Nenhuma chegada neste mês.", "No arrivals this month."))}
-    ${panel(sa, "panel-saidas", "bi-house-heart-fill", T("Saídas", "Departures"), T("Nenhuma saída neste mês.", "No departures this month."))}
+  // Photos from the catalog (data/fotos.json) that belong to this month.
+  const fotos = catalogoFotos.fotos.filter(f => f.mes === `${anoSel}-${String(mesSel).padStart(2, "0")}`);
+  return htl.html`<div>
+    <div class="missionary-board">
+      ${panel(ch, "panel-chegadas", "bi-airplane-fill", T("Chegadas", "Arrivals"), T("Nenhuma chegada neste mês.", "No arrivals this month."))}
+      ${panel(sa, "panel-saidas", "bi-house-heart-fill", T("Saídas", "Departures"), T("Nenhuma saída neste mês.", "No departures this month."))}
+    </div>
+    ${fotos.map(f => htl.html`<div class="despedida-foto">
+      <img src=${f.src} alt=${f.alt} loading="lazy">
+      <p class="despedida-legenda">${T(f.pt, f.en)}<span class="credito">${T(f.credito[0], f.credito[1])}</span></p>
+    </div>`)}
   </div>`;
 }
 ```
@@ -1433,6 +1449,10 @@ viewof mapaJornada = {
 }
 ```
 
+
+```{ojs}
+galeriaSecao("missionarios")
+```
 :::
 ::::
 
@@ -1455,8 +1475,8 @@ viewof mapaJornada = {
         <figcaption><span class="lang-pt">A obra no alto do morro, com a cidade ao fundo.</span><span class="lang-en">The construction site on the hill, with the city beyond.</span></figcaption>
       </figure>
       <figure>
-        <img src="images/templo-obra-placa.jpg" alt="Um élder diante do tapume e das placas da obra do Templo de Porto Alegre" loading="lazy">
-        <figcaption><span class="lang-pt">Um élder diante do tapume e das placas da obra.</span><span class="lang-en">An elder in front of the construction fence and signs.</span></figcaption>
+        <img src="images/templo-obra-placa.jpg" alt="O Élder Hereth diante do tapume e das placas da obra do Templo de Porto Alegre" loading="lazy">
+        <figcaption><span class="lang-pt">O Élder Hereth diante do tapume e das placas da obra.</span><span class="lang-en">Elder Hereth in front of the construction fence and signs.</span></figcaption>
       </figure>
       <figure>
         <img src="images/templo-pronto.jpg" alt="Templo de Porto Alegre Brasil pronto, num dia de céu azul" loading="lazy">
@@ -1482,6 +1502,10 @@ viewof mapaJornada = {
     <p class="templo-fonte"><span class="lang-pt">Fonte</span><span class="lang-en">Source</span>: <a href="https://www.thechurchnews.com/1998/5/9/23250717/be-loyal-worthy-to-enter-temple-members-urged/" target="_blank" rel="noopener">Church News, <span class="lang-pt">9 de maio de 1998</span><span class="lang-en">May 9, 1998</span></a>.</p>
   </div>
 </div>
+```
+
+```{ojs}
+galeriaSecao("templo")
 ```
 :::
 ::::
@@ -1533,6 +1557,159 @@ jornalUrl = j => "o-chamado-newsletters/" + encodeURIComponent(j.arquivo)
   </div>
 </div>
 ```
+
+```{ojs}
+galeriaSecao("jornais")
+```
+:::
+::::
+
+:::: {.band .column-screen .section-muted #fotos}
+```{=html}
+<div class="secao-topo"><span class="section-eyebrow"><span class="lang-pt">Fotos</span><span class="lang-en">Photos</span></span></div>
+```
+::: {.wrap}
+
+## [Fotos da missão]{.lang-pt}[Mission photos]{.lang-en}
+
+::: {.section-intro}
+[Todas as fotos do site num só lugar, numa ordem diferente a cada visita. Tem fotos da missão? Escreva para [info@ochamado.org](mailto:info@ochamado.org).]{.lang-pt}[Every photo on the site in one place, in a different order on each visit. Have photos from the mission? Email [info@ochamado.org](mailto:info@ochamado.org).]{.lang-en}
+:::
+
+::: {.nota-fotos}
+[Publicamos fotos enviadas por ex-missionários e amigos da missão. Só identificamos pessoas pelo nome com a permissão delas. Se você aparece numa foto e prefere que ela seja retirada, ou que seu nome não apareça, escreva para [info@ochamado.org](mailto:info@ochamado.org).]{.lang-pt}[We publish photos sent in by former missionaries and friends of the mission. People are only named with their permission. If you appear in a photo and would rather it be removed, or your name left out, email [info@ochamado.org](mailto:info@ochamado.org).]{.lang-en}
+:::
+
+```{ojs}
+// All of the site's photos (data/fotos.json), shuffled once per visit. The object also remembers the
+// current photo, so switching languages keeps the place.
+catalogoFotos = FileAttachment("data/fotos.json").json()
+// Photos from data/fotos.csv marked for a section (na_secao = sim), shown at the end of that section.
+galeriaSecao = secao => {
+  const l = catalogoFotos.fotos.filter(f => f.secao === secao && f.naSecao && !f.mes);
+  if (!l.length) return htl.html`<span class="galeria-vazia"></span>`;
+  return htl.html`<div class="galeria-secao">${l.map(f => htl.html`<div class="galeria-item">
+    <img src=${f.src} alt=${T(f.pt, f.en)} loading="lazy">
+    <p class="galeria-legenda">${T(f.pt, f.en)}
+      <span class="credito">${f.link ? htl.html`<a href=${f.link} target="_blank" rel="noopener">${T(f.credito[0], f.credito[1])}</a>` : T(f.credito[0], f.credito[1])}</span></p>
+  </div>`)}</div>`;
+}
+ordemFotos = {
+  const l = [...catalogoFotos.fotos];
+  for (let i = l.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [l[i], l[j]] = [l[j], l[i]]; }
+  return { fotos: l, atual: 0 };
+}
+```
+
+```{ojs}
+// Slideshow: one photo at a time, advancing every few seconds while the section is on screen.
+{
+  const { fotos } = ordemFotos, n = fotos.length;
+  const INTERVALO = 6000;
+  const img = htl.html`<img class="fotos-img" alt="">`;
+  const legenda = htl.html`<p class="fotos-legenda"></p>`;
+  const credito = htl.html`<p class="fotos-credito"></p>`;
+  const contador = htl.html`<span class="fotos-contador"></span>`;
+  const botaoPlay = htl.html`<button class="fotos-play"></button>`;
+  // Plays on its own even with "reduce motion" on (going through the photos is the point); the button pauses it.
+  let tocando = true, visivel = false, timer = null;
+  const pre = new Image();
+  const mostrar = i => {
+    ordemFotos.atual = (i + n) % n;
+    const f = fotos[ordemFotos.atual];
+    img.classList.add("trocando");
+    setTimeout(() => {
+      img.src = f.src; img.alt = T(f.pt, f.en);
+      img.onload = () => img.classList.remove("trocando");
+      if (img.complete) img.classList.remove("trocando");
+    }, 180);
+    legenda.textContent = T(f.pt, f.en);
+    const ondeLink = htl.html`<a href=${f.onde[0]} onclick=${() => {
+      if (f.mes) { const [a, m] = f.mes.split("-").map(Number); definir(viewof mesSel, m); definir(viewof anoSel, a); }
+    }}>${T("Ver no site: ", "See it on the site: ")}${T(f.onde[1], f.onde[2])}</a>`;
+    credito.replaceChildren(
+      f.link ? htl.html`<a href=${f.link} target="_blank" rel="noopener">${T(f.credito[0], f.credito[1])}</a>` : T(f.credito[0], f.credito[1]),
+      " · ", ondeLink);
+    contador.textContent = `${ordemFotos.atual + 1} ${T("de", "of")} ${n}`;
+    pre.src = fotos[(ordemFotos.atual + 1) % n].src;
+  };
+  const agendar = () => { clearTimeout(timer); if (tocando && visivel) timer = setTimeout(() => { mostrar(ordemFotos.atual + 1); agendar(); }, INTERVALO); };
+  const marcarPlay = () => {
+    botaoPlay.innerHTML = tocando ? '<i class="bi bi-pause-fill"></i>' : '<i class="bi bi-play-fill"></i>';
+    botaoPlay.setAttribute("aria-label", tocando ? T("Pausar", "Pause") : T("Tocar", "Play"));
+  };
+  botaoPlay.onclick = () => { tocando = !tocando; marcarPlay(); agendar(); };
+  const ir = d => () => { mostrar(ordemFotos.atual + d); agendar(); };
+  const obs = new IntersectionObserver(es => { visivel = es[0].isIntersecting; agendar(); }, { threshold: 0.3 });
+  const caixa = htl.html`<div class="fotos-show">
+    <div class="fotos-palco">
+      ${img}
+      <button class="fotos-seta fotos-ant" aria-label=${T("Foto anterior", "Previous photo")} onclick=${ir(-1)}><i class="bi bi-chevron-left"></i></button>
+      <button class="fotos-seta fotos-prox" aria-label=${T("Próxima foto", "Next photo")} onclick=${ir(1)}><i class="bi bi-chevron-right"></i></button>
+    </div>
+    <div class="fotos-info">${legenda}${credito}</div>
+    <div class="fotos-controles">${botaoPlay}${contador}</div>
+  </div>`;
+  obs.observe(caixa);
+  invalidation.then(() => { clearTimeout(timer); obs.disconnect(); });
+  marcarPlay();
+  mostrar(ordemFotos.atual);
+  return caixa;
+}
+```
+
+:::
+::::
+
+:::: {.band .column-screen #historias}
+```{=html}
+<div class="secao-topo"><span class="section-eyebrow"><span class="lang-pt">Histórias</span><span class="lang-en">Stories</span></span></div>
+```
+::: {.wrap}
+
+## [Histórias da missão]{.lang-pt}[Mission stories]{.lang-en}
+
+::: {.section-intro}
+[Batismos, chuvas de verão, ônibus lotados, aquela família que ninguém esquece. Toda missão tem histórias. Mande a sua para que ela fique guardada aqui junto com as dos outros missionários.]{.lang-pt}[Baptisms, summer storms, packed buses, that one family no one forgets. Every mission has its stories. Send yours so it can be kept here with those of other missionaries.]{.lang-en}
+:::
+
+```{ojs}
+historiasDados = FileAttachment("data/historias.json").json()
+```
+
+```{ojs}
+// Stories from historias/*.md: a card per story that opens to read.
+{
+  const l = historiasDados.historias;
+  const corpo = h => htl.html`<div class="historia-texto" lang=${h.idioma}>${h.paragrafos.map(p => { const el = htl.html`<p></p>`; el.innerHTML = p; return el; })}</div>`;
+  const meta = h => [h.autor, h.area, h.ano].filter(Boolean).join(" · ");
+  const outraLingua = h => (idioma === "en" && h.idioma === "pt") ? " (in Portuguese)" : (idioma === "pt" && h.idioma === "en") ? " (em inglês)" : "";
+  return l.length
+    ? htl.html`<div class="historias-lista">${l.map(h => htl.html`<details class="historia">
+        <summary><span class="historia-titulo">${h.titulo}</span><span class="historia-meta">${meta(h)}${outraLingua(h)}</span></summary>
+        ${corpo(h)}
+      </details>`)}</div>`
+    : htl.html`<p class="historias-vazio">${T("Ainda não há histórias publicadas. Que tal mandar a primeira?", "No stories yet. Why not send the first one?")}</p>`;
+}
+```
+
+```{ojs}
+// Invitation: an email already set up with what to send.
+{
+  const corpo = T(
+    "Título:\nSeu nome na missão (ex.: Élder Silva):\nAno:\nÁrea ou cidade:\n\nHistória:\n\n\n\nAutorizo a publicação desta história no site O Chamado: sim\n",
+    "Title:\nYour name in the mission (e.g. Elder Silva):\nYear:\nArea or city:\n\nStory:\n\n\n\nI allow this story to be published on the O Chamado site: yes\n");
+  const href = "mailto:info@ochamado.org?subject=" + encodeURIComponent(T("História da missão", "Mission story")) + "&body=" + encodeURIComponent(corpo);
+  return htl.html`<div class="historias-convite">
+    <p>${T("Escreva do jeito que lembrar, em português ou em inglês. Fotos da mesma época também são bem-vindas.", "Write it the way you remember it, in Portuguese or English. Photos from the same time are welcome too.")}</p>
+    <a class="email-btn" href=${href}><i class="bi bi-envelope"></i> ${T("Mandar uma história", "Send a story")}</a>
+  </div>`;
+}
+```
+```{ojs}
+galeriaSecao("historias")
+```
+
 :::
 ::::
 
@@ -1554,6 +1731,10 @@ jornalUrl = j => "o-chamado-newsletters/" + encodeURIComponent(j.arquivo)
 </a>
 <p class="credito-video"><i class="bi bi-camera-video"></i> <span class="lang-pt">Vídeo: cortesia do Élder George</span><span class="lang-en">Video courtesy of Elder George</span></p>
 ```
+
+```{ojs}
+galeriaSecao("reencontros")
+```
 :::
 ::::
 
@@ -1574,6 +1755,11 @@ jornalUrl = j => "o-chamado-newsletters/" + encodeURIComponent(j.arquivo)
 ::: {.section-intro}
 [Presidiram a Missão Brasil Porto Alegre Norte de julho de 1997 a julho de 2000. Em 2007 voltaram ao Brasil para presidir o Centro de Treinamento Missionário.]{.lang-pt}[Presided over the Brazil Porto Alegre North Mission, July 1997 – July 2000. In 2007 they returned to Brazil to preside over the Missionary Training Center.]{.lang-en}
 :::
+
+```{ojs}
+galeriaSecao("woodwards")
+```
+
 :::
 
 ::: {.band .column-screen .section-muted #contato}
@@ -1591,6 +1777,10 @@ jornalUrl = j => "o-chamado-newsletters/" + encodeURIComponent(j.arquivo)
 <a class="email-btn" href="mailto:info@ochamado.org?subject=O%20Chamado%20-%20coment%C3%A1rio"><i class="bi bi-envelope"></i> info@ochamado.org</a>
 <p class="organizador"><span class="lang-pt">Site organizado pelo <strong>Élder Billy Hereth</strong>, que serviu com os Woodward, com a ajuda do sobrinho, <strong>Nathan Garcia</strong>, que serviu na Missão Portugal Porto e digitou os registros do quadro de transferências a partir dos jornais da missão.</span><span class="lang-en">Site organized by <strong>Elder Billy Hereth</strong>, who served with the Woodwards, with help from his nephew <strong>Nathan Garcia</strong>, who served in the Portugal Porto Mission and typed in the transfer board records from the mission newsletters.</span></p>
 <p class="organizador"><span class="lang-pt">Agradecemos ao <strong>Presidente Arlan Woodward</strong> e à <strong>Síster Sally Woodward</strong>, em memória, que guardaram e compartilharam os registros da missão e, anos atrás, deixaram recursos para preservá-los e manter as versões anteriores, a atual e as futuras deste site.</span><span class="lang-en">With thanks to <strong>President Arlan Woodward</strong> and, in loving memory, <strong>Sister Sally Woodward</strong>, who kept and shared the mission's records and, years ago, set aside funds to preserve them and keep previous, current, and future versions of this site going.</span></p>
+```
+
+```{ojs}
+galeriaSecao("contato")
 ```
 :::
 

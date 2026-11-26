@@ -1623,3 +1623,60 @@ $cores-regiao: (
 .templo-galeria img { width: 100%; aspect-ratio: 7 / 4; object-fit: cover; border-radius: $border-radius; box-shadow: 0 14px 30px -22px rgba(0, 0, 0, 0.5); }
 .templo-galeria figcaption { font-size: 0.8rem; color: $body-color; margin-top: 0.35rem; line-height: 1.35; }
 .templo-galeria-credito { grid-column: 1 / -1; margin: 0; font-size: 0.72rem; color: $ink-muted; }
+
+/* Woodwards: Elder Hereth's farewell photo */
+.despedida-foto { display: block; box-sizing: border-box; width: min(720px, 100%); margin: 2rem auto 0; padding: 0; text-align: center; }
+.despedida-foto img { display: block; box-sizing: border-box; width: 100%; max-width: 100%; height: auto; margin: 0 auto; border-radius: $border-radius-lg; box-shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.5); }
+.despedida-foto .despedida-legenda { margin: 0.6rem 0 0; font-size: 0.9rem; color: $body-color; line-height: 1.4; }
+.despedida-foto .credito { display: block; margin-top: 0.2rem; font-size: 0.72rem; color: $ink-muted; }
+
+/* Photos section: one photo at a time, shuffled */
+.fotos-show { max-width: 900px; margin: 0 auto; }
+.fotos-palco { position: relative; aspect-ratio: 16 / 10; background: #15291f; border-radius: $border-radius-lg; overflow: hidden; box-shadow: 0 22px 44px -26px rgba(0, 0, 0, 0.55); }
+.fotos-img { width: 100%; height: 100%; object-fit: contain; display: block; transition: opacity 0.18s ease; }
+.fotos-img.trocando { opacity: 0; }
+.fotos-seta {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 2.6rem; height: 2.6rem; border-radius: 50%; border: 0;
+  background: rgba(#fff, 0.85); color: $primary; font-size: 1.2rem;
+  display: inline-flex; align-items: center; justify-content: center; cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+.fotos-seta:hover { background: #fff; }
+.fotos-ant { left: 0.75rem; }
+.fotos-prox { right: 0.75rem; }
+.fotos-info { text-align: center; margin-top: 0.75rem; min-height: 3.2rem; }
+.fotos-legenda { margin: 0; font-size: 1rem; color: $headings-color; }
+.fotos-credito { margin: 0.2rem 0 0; font-size: 0.78rem; color: $ink-muted; }
+.fotos-credito a { color: inherit; }
+.fotos-controles { display: flex; justify-content: center; align-items: center; gap: 0.75rem; margin-top: 0.5rem; }
+.fotos-play { width: 2.2rem; height: 2.2rem; border-radius: 50%; border: 1px solid rgba($primary, 0.35); background: $paper; color: $primary; font-size: 1.1rem; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+.fotos-play:hover { background: $primary; color: #fff; }
+.fotos-contador { font-size: 0.85rem; color: $ink-muted; font-variant-numeric: tabular-nums; }
+@media (max-width: 575.98px) { .fotos-palco { aspect-ratio: 4 / 3; } .fotos-seta { width: 2.2rem; height: 2.2rem; } }
+
+/* Small gallery at the end of a section (photos from data/fotos.csv) */
+.galeria-secao { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin: 2rem auto 0; max-width: 960px; }
+.galeria-item { width: min(280px, 100%); }
+.galeria-item img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: $border-radius; box-shadow: 0 14px 30px -22px rgba(0, 0, 0, 0.5); }
+.galeria-legenda { margin: 0.4rem 0 0; font-size: 0.82rem; line-height: 1.35; text-align: left; }
+.galeria-legenda .credito { display: block; margin-top: 0.15rem; font-size: 0.7rem; color: $ink-muted; }
+.galeria-legenda .credito a { color: inherit; }
+.section-dark .galeria-legenda { color: $footer-fg; }
+.galeria-vazia { display: none; }
+
+/* Stories */
+.historias-lista { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.75rem; text-align: left; }
+.historia { background: $paper; border: 1px solid rgba($primary, 0.15); border-radius: $border-radius; padding: 0.9rem 1.1rem; box-shadow: 0 10px 24px -22px rgba(0, 0, 0, 0.4); }
+.historia summary { cursor: pointer; list-style: none; display: flex; flex-direction: column; gap: 0.15rem; }
+.historia summary::-webkit-details-marker { display: none; }
+.historia summary::after { content: "\F282"; font-family: "bootstrap-icons"; align-self: flex-end; margin-top: -1.4rem; color: $primary; transition: transform 0.2s ease; }
+.historia[open] summary::after { transform: rotate(180deg); }
+.historia-titulo { font-family: $headings-font-family; font-size: 1.2rem; font-weight: 600; color: $headings-color; padding-right: 1.5rem; }
+.historia-meta { font-size: 0.82rem; color: $ink-muted; }
+.historia-texto { margin-top: 0.75rem; line-height: 1.6; }
+.historia-texto p { margin: 0 0 0.75rem; }
+.historias-vazio { text-align: center; color: $ink-muted; font-style: italic; }
+.historias-convite { text-align: center; margin: 1.75rem auto 0; max-width: 620px; }
+.historias-convite p { color: $ink-muted; }
+.nota-fotos { max-width: 640px; margin: -0.5rem auto 1.5rem; text-align: center; font-size: 0.82rem; color: $ink-muted; }

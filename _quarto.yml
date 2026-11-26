@@ -1,7 +1,9 @@
 project:
   type: website
   output-dir: docs
-  pre-render: node scripts/build-data.mjs
+  pre-render:
+    - node scripts/build-data.mjs
+    - node scripts/build-conteudo.mjs
   render:
     - index.qmd
   resources:
@@ -10,6 +12,7 @@ project:
     - "CNAME"
     - "images/globo-*.svg"
     - "images/mapa-rs-*.svg"
+    - "images/**"
 
 website:
   title: "O Chamado — Missão Porto Alegre Norte com os Woodward (1997–2000)"
@@ -30,6 +33,10 @@ website:
         text: Templo
       - href: index.qmd#jornal
         text: Jornais
+      - href: index.qmd#fotos
+        text: Fotos
+      - href: index.qmd#historias
+        text: Histórias
       - href: index.qmd#reencontros
         text: Reencontros
       - href: index.qmd#woodwards
@@ -87,7 +94,7 @@ format:
             var root = document.documentElement;
             var NAV = {
               missao: ["Missão", "Mission"], areas: ["Áreas", "Areas"], missionarios: ["Missionários", "Missionaries"],
-              templo: ["Templo", "Temple"], jornal: ["Jornais", "Newsletters"], reencontros: ["Reencontros", "Reunions"],
+              templo: ["Templo", "Temple"], jornal: ["Jornais", "Newsletters"], fotos: ["Fotos", "Photos"], historias: ["Histórias", "Stories"], reencontros: ["Reencontros", "Reunions"],
               woodwards: ["Os Woodward", "Woodwards"], contato: ["Contato", "Contact"]
             };
             var tools = document.querySelector(".quarto-navbar-tools") || document.querySelector(".navbar-container");
