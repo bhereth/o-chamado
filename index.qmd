@@ -1036,7 +1036,10 @@ viewof mapaJornada = {
   const m = L.map(el, { scrollWheelZoom: false, zoomSnap: 0.25 }).setView([-29.5, -51.6], 7);
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    maxZoom: 14
+    maxZoom: 14,
+    // The camera moves while the journey plays: keep more tiles around the view and don't swap tiles mid-zoom.
+    keepBuffer: 6,
+    updateWhenZooming: false
   }).addTo(m);
   L.geoJSON(rsContorno, { style: { color: "#1b5e46", weight: 1.5, fill: false, dashArray: "4 4" }, interactive: false }).addTo(m);
   el.leaflet = m;
@@ -1321,9 +1324,17 @@ viewof mapaJornada = {
     const v = viagens[0];
     const a = v.est[i], b = v.est[Math.min(i + 1, n - 1)];
     const lim = L.latLngBounds([a.pos, b.pos]);
-    const opc = { ...el.margens(), maxZoom: 10 };
-    if (animar) m.flyToBounds(lim, { ...opc, duration: Math.max(0.6, PAUSA * 0.6 + MOVE * 0.9) });
-    else m.fitBounds(lim, { ...opc, animate: false });
+    // Whole zoom levels only (sharp, reusable tiles), and move as little as possible: stay put if both places
+    // already fit, slide at the same zoom if they fit there, and only zoom when the level has to change.
+    const alvo = m._getBoundsCenterZoom(lim, { ...el.margens(), maxZoom: 10 });
+    const z = Math.max(6, Math.min(10, Math.floor(alvo.zoom)));
+    const zAtual = Math.round(m.getZoom());
+    if (!animar) { m.setView(alvo.center, z, { animate: false }); return; }
+    const dur = Math.max(0.6, PAUSA * 0.6 + MOVE * 0.9);
+    const vista = m.getBounds().pad(-0.18);
+    if (z === zAtual && vista.contains(lim)) return;
+    if (z === zAtual || (z === zAtual + 1 && vista.contains(lim))) m.panTo(alvo.center, { animate: true, duration: dur, easeLinearity: 0.2 });
+    else m.flyTo(alvo.center, z, { duration: dur });
   };
   const camera = t => {
     if (!seguir) return;
