@@ -1026,7 +1026,6 @@ function cartaoPessoa({ p, label, ap }) {
   return htl.html`<div class="jornada-pessoa-topo">
     <h3>${v.nome}</h3>
     <p class="meta">${v.x ? `${nacionalidade(v.x.nacionalidade ?? "")} · ${T("Chegada", "Arrived")} ${fmtYM(v.x.chegada)} · ${T("Saída", "Left")} ${fmtYM(v.x.saida)}` : T("Sem registro de chegada/saída", "No arrival/departure record")}</p>
-    <button class="pill" onclick=${() => abrirPessoa(v.x ? { id: v.x.id } : { id: null, n: v.chave.slice(1) })}><i class="bi bi-person-lines-fill"></i> ${T("Ver áreas e companheiros", "See areas and companions")}</button>
   </div>`;
 }
 ```
@@ -1353,6 +1352,11 @@ viewof mapaJornada = {
     ${legenda}${notaParcial}${itinerario ?? ""}
     <p class="dlg-nota">${T("Os quadros de transferências vão de outubro de 1997 a junho de 2000 e faltam alguns meses; entre um quadro e outro, o missionário fica parado no mapa. Algumas áreas têm posição aproximada.",
       "The transfer boards run from October 1997 to June 2000 and a few months are missing; between boards, the missionary stays put on the map. Some areas have an approximate location.")}</p>
+    ${viagens.length === 1 ? htl.html`<div class="jornada-fim">
+      <button class="pill" onclick=${() => abrirPessoa(v0.x ? { id: v0.x.id } : { id: null, n: v0.chave.slice(1) })}><i class="bi bi-person-lines-fill"></i> ${T(
+        `Ver todas as áreas e companheiros ${/^Síster/.test(v0.nome) ? "da" : "do"} ${v0.nome}`,
+        `See all ${v0.nome}'s areas and companions`)}</button>
+    </div>` : ""}
   </div>`;
 }
 ```
