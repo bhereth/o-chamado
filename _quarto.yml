@@ -84,6 +84,9 @@ format:
             function navH() {
               var h = document.getElementById("quarto-header");
               if (h) document.documentElement.style.setProperty("--nav-h", h.offsetHeight + "px");
+              // Height of the pinned section-title bar, so a second pinned bar can sit right under it.
+              var f = document.querySelector("#areas > .secao-topo");
+              if (f) document.documentElement.style.setProperty("--faixa-h", f.offsetHeight + "px");
             }
             navH();
             addEventListener("resize", navH);

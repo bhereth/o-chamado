@@ -149,10 +149,15 @@ galeriaSecao("missao")
 <span class="section-eyebrow"><span class="lang-pt">As Áreas</span><span class="lang-en">The Areas</span></span>
 ```
 
+:::
+
+::: {.quadro-bloco}
+
+::: {.faixa-mes}
 ```{ojs}
 {
   const go = k => definir(viewof quadroKey, k);
-  return htl.html`<div class="nav-mes">
+  return htl.html`<span class="faixa-rotulo">${T("Transferência de", "Transfer of")}</span><div class="nav-mes">
     <button class="nav-mes-btn" aria-label=${T("Mês anterior", "Previous month")} disabled=${snapIdx === 0} onclick=${() => go(snaps[snapIdx - 1].key)}><i class="bi bi-chevron-left"></i></button>
     <span class="snap-label">${fmtMesAno(snapAtual)}</span>
     <button class="nav-mes-btn" aria-label=${T("Próximo mês", "Next month")} disabled=${snapIdx === snaps.length - 1} onclick=${() => go(snaps[snapIdx + 1].key)}><i class="bi bi-chevron-right"></i></button>
@@ -712,6 +717,11 @@ viewof mapa = {
   <p><span class="chip sem-registro">Síster Sena</span> <span class="lang-pt">Borda tracejada: ainda não conseguimos ligar este nome a ninguém da lista de missionários. Pode estar faltando na lista, ou há dois missionários com o mesmo nome no mesmo período. Se você sabe quem é, escreva para <a href="mailto:info@ochamado.org">info@ochamado.org</a>.</span><span class="lang-en">Dashed border: we couldn't match this name to anyone on the missionary list yet. They may be missing from the list, or two missionaries shared the name at the same time. If you know who it is, email <a href="mailto:info@ochamado.org">info@ochamado.org</a>.</span></p>
 </div>
 ```
+
+:::
+:::
+
+::: {.wrap}
 
 ::: {.search-block}
 ### [Procure uma área]{.lang-pt}[Find an area]{.lang-en}
