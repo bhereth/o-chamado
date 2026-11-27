@@ -44,7 +44,7 @@ title: ""
     </button>
   </div>
 </div>
-<p class="credito-fotos"><i class="bi bi-camera"></i> <span class="lang-pt">Fotos extraídas do vídeo preparado pelo Élder George. <a href="#reencontros">Clique aqui para ver o vídeo mencionado neste site.</a></span><span class="lang-en">Photos taken from video prepared by Elder George. <a href="#reencontros">Click here to see video referenced on this site.</a></span></p>
+<p class="credito-fotos"><i class="bi bi-camera"></i> <span class="lang-pt">Fotos extraídas do <a href="#reencontros">vídeo</a> preparado pelo Élder George.</span><span class="lang-en">Photos taken from <a href="#reencontros">video</a> prepared by Elder George.</span></p>
 ```
 :::
 
