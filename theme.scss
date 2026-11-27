@@ -40,18 +40,25 @@ $rs-amarelo: #e8b923;
 .photo-tag-button:hover { background: rgba($primary, 0.1); }
 .photo-tag-button:focus-visible, .photo-tag-close:focus-visible { outline: 2px solid $primary; outline-offset: 2px; }
 .zone-card header .photo-tag-button, .zone-card summary .photo-tag-button { color: inherit; }
-.photo-tag-dialog { width: min(900px, calc(100vw - 2rem)); max-height: 90dvh; padding: 0; border: 0; border-radius: $border-radius-lg; background: $paper; color: $body-color; overflow-y: auto; overscroll-behavior: contain; }
+.photo-tag-dialog { width: min(900px, calc(100vw - 2rem)); height: min(820px, 90dvh); max-height: 90dvh; padding: 0; border: 0; border-radius: $border-radius-lg; background: $paper; color: $body-color; overflow: hidden; overscroll-behavior: contain; }
+.photo-tag-dialog[open] { display: grid; grid-template-rows: auto minmax(0, 1fr); }
 .photo-tag-dialog::backdrop { background: rgba(0, 0, 0, 0.65); }
 .photo-tag-heading { position: sticky; top: 0; display: flex; align-items: center; gap: 1rem; padding: 1rem; background: $paper; border-bottom: 1px solid #ddd; z-index: 1; }
 .photo-tag-heading h2 { flex: 1; margin: 0; font-size: 1.25rem; }
 .photo-tag-close { width: 44px; height: 44px; border: 0; background: transparent; color: $primary; cursor: pointer; flex-shrink: 0; }
-.photo-tag-gallery { padding: 1rem; }
-.photo-tag-gallery figure { margin: 0 0 2rem; }
+.photo-tag-gallery { padding: 1rem; min-height: 0; }
+.photo-tag-gallery figure { height: 100%; min-height: 0; margin: 0; display: grid; grid-template-rows: minmax(0, 1fr) 44px clamp(4rem, 16dvh, 9rem); gap: 0.75rem; }
 .photo-tag-gallery figure:last-child { margin-bottom: 0; }
 .photo-tag-gallery img { display: block; width: 100%; max-height: 65vh; object-fit: contain; }
-.photo-tag-gallery figcaption { margin-top: 0.75rem; line-height: 1.5; }
+.photo-tag-gallery figcaption { margin: 0; min-height: 0; overflow-y: auto; overflow-wrap: anywhere; scrollbar-gutter: stable; line-height: 1.5; }
 .photo-tag-gallery .credito:not(:empty) { display: block; margin-top: 0.35rem; font-size: 0.875rem; color: $ink-muted; }
 .photo-tag-date { display: block; color: $ink-muted; }
+.photo-tag-gallery .photo-viewer-image { height: 100%; min-height: 0; max-height: 100%; object-fit: contain; }
+.photo-viewer-controls { display: flex; align-items: center; justify-content: center; gap: 1rem; margin: 0; }
+.photo-viewer-arrow { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 1px solid rgba($primary, 0.35); border-radius: 50%; background: $paper; color: $primary; cursor: pointer; }
+.photo-viewer-arrow:hover:not(:disabled) { background: $primary; color: #fff; }
+.photo-viewer-arrow:focus-visible { outline: 3px solid $primary; outline-offset: 3px; }
+.photo-viewer-arrow:disabled { opacity: 0.4; cursor: default; }
 
 .anniversary-banner { background: $primary; color: $cream; padding: 1.6rem 1.25rem; margin-bottom: 2rem; }
 .anniversary-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; gap: 2rem; }
@@ -1726,12 +1733,14 @@ $cores-regiao: (
 .fotos-show { max-width: 800px; margin: 0 auto; }
 .fotos-grade { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; }
 .fotos-miniatura { position: relative; aspect-ratio: 4 / 3; padding: 0; border: 0; border-radius: $border-radius; overflow: hidden; background: #15291f; cursor: zoom-in; }
+.fotos-miniatura:hover, .fotos-miniatura:active { background: #15291f; border: 0; box-shadow: none; filter: none; opacity: 1; }
 .fotos-miniatura img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: contain; }
+.fotos-miniatura:hover img { filter: none; opacity: 1; }
 .fotos-miniatura:focus-visible, .fotos-pagina:focus-visible { outline: 3px solid $primary; outline-offset: 3px; }
-.fotos-pagina { min-height: 44px; padding: 0.5rem 1rem; border: 1px solid rgba($primary, 0.35); border-radius: $border-radius; background: $paper; color: $primary; cursor: pointer; }
+.fotos-pagina { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 44px; width: 44px; height: 44px; padding: 0; border: 1px solid rgba($primary, 0.35); border-radius: 50%; background: $paper; color: $primary; cursor: pointer; }
 .fotos-pagina:hover:not(:disabled) { background: $primary; color: #fff; }
 .fotos-pagina:disabled { opacity: 0.45; cursor: default; }
-@media (max-width: 575.98px) { .fotos-grade { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; } .fotos-pagina { padding: 0.5rem 0.75rem; } }
+@media (max-width: 575.98px) { .fotos-grade { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; } }
 .fotos-palco { position: relative; aspect-ratio: 16 / 9; background: #15291f; border-radius: $border-radius-lg; overflow: hidden; box-shadow: 0 22px 44px -26px rgba(0, 0, 0, 0.55); }
 .fotos-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block; transition: opacity 0.18s ease; }
 .fotos-img.trocando { opacity: 0; }

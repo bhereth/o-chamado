@@ -1770,11 +1770,34 @@ dialogoFotosTag = {
   invalidation.then(() => { d.close(); d.remove(); });
   return d;
 }
-abrirGaleriaFotos = (fotos, nome) => {
+abrirGaleriaFotos = (fotos, nome, inicio = 0) => {
   if (!fotos.length) return;
   const d = dialogoFotosTag;
+  let atual = 0;
+  const imagem = htl.html`<img class="photo-viewer-image" alt="">`;
+  const legenda = htl.html`<figcaption></figcaption>`;
+  const contador = htl.html`<span class="fotos-contador" role="status" aria-live="polite"></span>`;
+  const mostrar = indice => {
+    atual = (indice + fotos.length) % fotos.length;
+    const f = fotos[atual];
+    imagem.src = f.src;
+    imagem.alt = T(f.pt, f.en) || T(`Foto ${atual + 1}`, `Photo ${atual + 1}`);
+    legenda.replaceChildren(T(f.pt, f.en),
+      f.mes ? htl.html`<span class="photo-tag-date">${fmtYM(f.mes)}</span>` : "",
+      htl.html`<span class="credito">${f.link ? htl.html`<a href=${f.link} target="_blank" rel="noopener">${T(f.credito[0], f.credito[1])}</a>` : T(f.credito[0], f.credito[1])}</span>`);
+    legenda.scrollTop = 0;
+    contador.textContent = `${atual + 1} ${T("de", "of")} ${fotos.length}`;
+  };
+  const anterior = htl.html`<button type="button" class="photo-viewer-arrow" aria-label=${T("Foto anterior", "Previous photo")} disabled=${fotos.length < 2} onclick=${() => mostrar(atual - 1)}><i class="bi bi-chevron-left" aria-hidden="true"></i></button>`;
+  const proxima = htl.html`<button type="button" class="photo-viewer-arrow" aria-label=${T("Próxima foto", "Next photo")} disabled=${fotos.length < 2} onclick=${() => mostrar(atual + 1)}><i class="bi bi-chevron-right" aria-hidden="true"></i></button>`;
   d.replaceChildren(htl.html`<div class="photo-tag-heading"><h2 id="photo-tag-title">${T("Fotos", "Photos")}: ${nome}</h2><button type="button" class="photo-tag-close" aria-label=${T("Fechar fotos", "Close photos")} onclick=${() => d.close()}><i class="bi bi-x-lg" aria-hidden="true"></i></button></div>`,
-    htl.html`<div class="photo-tag-gallery">${fotos.map(f => htl.html`<figure><img src=${f.src} alt=${T(f.pt, f.en)} loading="lazy"><figcaption>${T(f.pt, f.en)}${f.mes ? htl.html`<span class="photo-tag-date">${fmtYM(f.mes)}</span>` : ""}<span class="credito">${f.link ? htl.html`<a href=${f.link} target="_blank" rel="noopener">${T(f.credito[0], f.credito[1])}</a>` : T(f.credito[0], f.credito[1])}</span></figcaption></figure>`)}</div>`);
+    htl.html`<div class="photo-tag-gallery"><figure>${imagem}<div class="photo-viewer-controls">${anterior}${contador}${proxima}</div>${legenda}</figure></div>`);
+  d.onkeydown = e => {
+    if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+    if (e.key === "ArrowLeft") { e.preventDefault(); mostrar(atual - 1); }
+    if (e.key === "ArrowRight") { e.preventDefault(); mostrar(atual + 1); }
+  };
+  mostrar(inicio);
   if (!d.open) d.showModal();
   d.scrollTop = 0;
 }
@@ -1817,15 +1840,15 @@ ordemFotos = {
   const tamanho = 6;
   const grade = htl.html`<div class="fotos-grade"></div>`;
   const contador = htl.html`<span class="fotos-contador" role="status" aria-live="polite"></span>`;
-  const anterior = htl.html`<button type="button" class="fotos-pagina">${T("Anteriores", "Previous")}</button>`;
-  const proxima = htl.html`<button type="button" class="fotos-pagina">${T("Próximas", "Next")}</button>`;
+  const anterior = htl.html`<button type="button" class="fotos-pagina" aria-label=${T("Fotos anteriores", "Previous photos")} title=${T("Fotos anteriores", "Previous photos")}><i class="bi bi-chevron-left" aria-hidden="true"></i></button>`;
+  const proxima = htl.html`<button type="button" class="fotos-pagina" aria-label=${T("Próximas fotos", "Next photos")} title=${T("Próximas fotos", "Next photos")}><i class="bi bi-chevron-right" aria-hidden="true"></i></button>`;
   const mostrar = inicio => {
     const ultima = Math.max(0, Math.floor((n - 1) / tamanho) * tamanho);
     ordemFotos.atual = Math.max(0, Math.min(ultima, inicio));
     const lote = fotos.slice(ordemFotos.atual, ordemFotos.atual + tamanho);
     grade.replaceChildren(...lote.map((f, i) => {
       const titulo = T(f.pt, f.en) || T(`Foto ${ordemFotos.atual + i + 1}`, `Photo ${ordemFotos.atual + i + 1}`);
-      return htl.html`<button type="button" class="fotos-miniatura" aria-label=${T("Ampliar: ", "Enlarge: ") + titulo} onclick=${() => abrirGaleriaFotos([f], titulo)}>
+      return htl.html`<button type="button" class="fotos-miniatura" aria-label=${T("Ampliar: ", "Enlarge: ") + titulo} onclick=${() => abrirGaleriaFotos(fotos, T("Missão", "Mission"), ordemFotos.atual + i)}>
         <img src=${f.src} alt=${titulo} loading="lazy" decoding="async">
       </button>`;
     }));
@@ -1904,9 +1927,9 @@ galeriaSecao("historias")
 ## [Abril de 2016]{.lang-pt}[April 2016]{.lang-en}
 
 ::: {.section-intro}
-[Em 100 minutos, este vídeo do reencontro reúne apresentações dos missionários presentes, uma mensagem de Élder Grow sobre a história da Igreja no Brasil e discursos da Síster Sally J. Woodward e do Presidente Woodward. O vídeo também mostra os missionários no Brasil, o hino da missão e as Noites Gaúchas.]{.lang-pt}[This 100-minute reunion video brings together introductions of the missionaries in attendance, a talk by Elder Grow on Church history in Brazil, and addresses by Sister Woodward and President Woodward. The video also features missionaries in Brazil, the mission hymn, and Noites Gaúchas.]{.lang-en}
+[Este vídeo de 100 minutos do reencontro nos leva de volta aos lugares e às pessoas da missão, com um breve registro da abertura de terra do Templo de Porto Alegre, presidida pelo Presidente James E. Faust, e um passeio por várias áreas da missão. As apresentações dos missionários presentes no reencontro dão lugar a imagens dos tempos de missão no Brasil.]{.lang-pt}[This 100-minute reunion video revisits the places and people of the mission, from a brief glimpse of the Porto Alegre Temple groundbreaking, where President James E. Faust presided, to a tour of several mission areas. Introductions of the missionaries gathered for the reunion lead into footage of their mission days in Brazil.]{.lang-en}
 
-[O vídeo inclui um passeio de 8 minutos por várias áreas da missão e um trecho de 30 segundos da cerimônia de abertura de terra do Templo de Porto Alegre, presidida pelo Presidente James E. Faust.]{.lang-pt}[The video includes an 8-minute tour of several mission areas and 30 seconds of footage from the Porto Alegre Temple groundbreaking, where President James E. Faust presided.]{.lang-en}
+[Matthew J. Grow relembra a história da Igreja no Brasil, seguido pelas mensagens da Síster Sally J. Woodward e do Presidente Arlan W. Woodward. O hino da missão e as Noites Gaúchas completam esse reencontro de rostos, vozes e lembranças.]{.lang-pt}[Matthew J. Grow reflects on Church history in Brazil, followed by messages from Sister Sally J. Woodward and President Arlan W. Woodward. The mission hymn and Noites Gaúchas round out this reunion of familiar faces, voices, and memories.]{.lang-en}
 :::
 
 ```{=html}
