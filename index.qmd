@@ -136,7 +136,14 @@ title: ""
 
 </div>
 
-<p class="atalho-busca"><a href="#reencontros"><i class="bi bi-play-circle"></i> <span class="lang-pt">Faça um passeio de 8 minutos pela missão no vídeo do Élder George</span><span class="lang-en">Take an 8-minute video tour of the mission with Elder George’s video</span></a></p>
+<div class="reunion-tour">
+  <i class="bi bi-camera-video" aria-hidden="true"></i>
+  <div>
+    <h3><span class="lang-pt">Um passeio de 8 minutos pela missão</span><span class="lang-en">An 8-minute tour of the mission</span></h3>
+    <p><span class="lang-pt">Veja várias áreas da Missão Porto Alegre Norte nas imagens que o Élder George gravou quando voltou para visitar a missão.</span><span class="lang-en">See several areas of the Porto Alegre North Mission in footage Elder George filmed on a return visit.</span></p>
+    <a href="https://www.youtube.com/watch?v=31IHb7dBMEo&amp;t=118s" target="_blank" rel="noopener"><i class="bi bi-play-circle" aria-hidden="true"></i> <span class="lang-pt">Assistir ao passeio · começa em 1:58</span><span class="lang-en">Watch the tour · starts at 1:58</span></a>
+  </div>
+</div>
 
 <script>
 // Inline the map/globe SVGs (an <img> would not use the page fonts).
@@ -1665,6 +1672,17 @@ galeriaSecao("missionarios")
 ```{ojs}
 galeriaSecao("templo")
 ```
+
+```{=html}
+<div class="reunion-tour" id="video-abertura-terra">
+  <i class="bi bi-camera-video" aria-hidden="true"></i>
+  <div>
+    <h3><span class="lang-pt">Abertura de terra do Templo de Porto Alegre</span><span class="lang-en">Porto Alegre Temple groundbreaking</span></h3>
+    <p><span class="lang-pt">Veja um trecho de 30 segundos da cerimônia com o Presidente James E. Faust no vídeo do reencontro preparado pelo Élder George.</span><span class="lang-en">Watch a 30-second clip of the ceremony featuring President James E. Faust in Elder George’s reunion video.</span></p>
+    <a href="https://www.youtube.com/watch?v=31IHb7dBMEo&amp;t=87s" target="_blank" rel="noopener"><i class="bi bi-play-circle" aria-hidden="true"></i> <span class="lang-pt">Assistir à cerimônia a partir de 1:27</span><span class="lang-en">Watch the groundbreaking starting at 1:27</span></a>
+  </div>
+</div>
+```
 :::
 ::::
 
@@ -1907,6 +1925,8 @@ galeriaSecao("historias")
 
 ::: {.section-intro}
 [Em 100 minutos, este vídeo do reencontro reúne apresentações dos missionários presentes, uma mensagem de Élder Grow sobre a história da Igreja no Brasil e discursos da Síster Sally J. Woodward e do Presidente Woodward. O vídeo também mostra os missionários no Brasil, o hino da missão e as Noites Gaúchas.]{.lang-pt}[This 100-minute reunion video brings together introductions of the missionaries in attendance, a talk by Elder Grow on Church history in Brazil, and addresses by Sister Woodward and President Woodward. The video also features missionaries in Brazil, the mission hymn, and Noites Gaúchas.]{.lang-en}
+
+[O vídeo inclui um passeio de 8 minutos por várias áreas da missão e um trecho de 30 segundos da cerimônia de abertura de terra do Templo de Porto Alegre, presidida pelo Presidente James E. Faust.]{.lang-pt}[The video includes an 8-minute tour of several mission areas and 30 seconds of footage from the Porto Alegre Temple groundbreaking, where President James E. Faust presided.]{.lang-en}
 :::
 
 ```{=html}
@@ -1918,14 +1938,6 @@ galeriaSecao("historias")
   </span>
 </a>
 <p class="credito-video"><i class="bi bi-camera-video"></i> <span class="lang-pt">Vídeo: cortesia do Élder George</span><span class="lang-en">Video courtesy of Elder George</span></p>
-<div class="reunion-tour">
-  <i class="bi bi-camera-video" aria-hidden="true"></i>
-  <div>
-    <h3><span class="lang-pt">Um passeio de 8 minutos pela missão</span><span class="lang-en">An 8-minute tour of the mission</span></h3>
-    <p><span class="lang-pt">Veja várias áreas da Missão Porto Alegre Norte nas imagens que o Élder George gravou quando voltou para visitar a missão.</span><span class="lang-en">See several areas of the Porto Alegre North Mission in footage Elder George filmed on a return visit.</span></p>
-    <a href="https://www.youtube.com/watch?v=31IHb7dBMEo&amp;t=118s" target="_blank" rel="noopener"><i class="bi bi-play-circle" aria-hidden="true"></i> <span class="lang-pt">Assistir ao passeio · começa em 1:58</span><span class="lang-en">Watch the tour · starts at 1:58</span></a>
-  </div>
-</div>
 ```
 
 ```{ojs}
