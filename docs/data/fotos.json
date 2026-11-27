@@ -201,8 +201,8 @@
   },
   {
    "src": "images/templo-pronto.jpg",
-   "pt": "O templo pronto.",
-   "en": "The finished temple.",
+   "pt": "O templo pronto em 2001.",
+   "en": "The finished temple in 2001.",
    "credito": [
     "Foto: cortesia do Élder Hereth",
     "Photo courtesy of Elder Hereth"
@@ -219,8 +219,8 @@
   },
   {
    "src": "images/templo-noite.jpg",
-   "pt": "O templo iluminado à noite.",
-   "en": "The temple lit up at night.",
+   "pt": "O templo iluminado à noite em 2001.",
+   "en": "The temple lit up at night in 2001.",
    "credito": [
     "Foto: cortesia do Élder Hereth",
     "Photo courtesy of Elder Hereth"
@@ -286,6 +286,60 @@
     "Contact"
    ],
    "secao": "contato",
+   "naSecao": false,
+   "mes": null
+  },
+  {
+   "src": "images/chegada-oct-1997.jpg",
+   "pt": "Chegada de outubro de 1997 na casa da missão, com o Presidente e a Síster Woodward.",
+   "en": "October 1997 arrival at the mission home with President and Sister Woodward.",
+   "credito": [
+    "Foto: cortesia do Élder Hereth",
+    "Photo courtesy of Elder Hereth"
+   ],
+   "link": null,
+   "onde": [
+    "#missionarios",
+    "Chegadas e saídas, outubro de 1997",
+    "Arrivals and departures, October 1997"
+   ],
+   "secao": "missionarios",
+   "naSecao": false,
+   "mes": "1997-10"
+  },
+  {
+   "src": "images/santa-rosa-hereth-dez-1997.jpg",
+   "pt": "Festa de Natal em Santa Rosa, em dezembro de 1997",
+   "en": "Christmas Eve party in Santa Rosa em dezembro de 1997",
+   "credito": [
+    "Foto: cortesia do Élder Hereth",
+    "Photo courtesy of Elder Hereth"
+   ],
+   "link": null,
+   "onde": [
+    "#fotos",
+    "Fotos",
+    "Photos"
+   ],
+   "secao": "fotos",
+   "naSecao": false,
+   "mes": null
+  },
+  {
+   "src": "images/gramado-cafe-colonial-hereth.jpg",
+   "pt": "Café Colonial em Gramado com a zona Caxias do Sul.",
+   "en": "Cafe Colonial in Gramado with Caxias do Sul Zone.",
+   "credito": [
+    "Foto: cortesia do Élder Hereth",
+    "Photo courtesy of Elder Hereth"
+   ],
+   "link": null,
+   "onde": [
+    "#fotos",
+    "Fotos",
+    "Photos"
+   ],
+   "secao": "fotos",
    "naSecao": false,
    "mes": null
   }

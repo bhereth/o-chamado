@@ -36,6 +36,21 @@ $rs-amarelo: #e8b923;
 
 /*-- scss:rules --*/
 
+.anniversary-banner { background: $primary; color: $cream; padding: 1.6rem 1.25rem; margin-bottom: 2rem; }
+.anniversary-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; gap: 2rem; }
+.anniversary-mark { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; color: #f1d08a; }
+.anniversary-mark strong { font-family: $headings-font-family; font-size: 3.8rem; line-height: 1; }
+.anniversary-mark span { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.18em; }
+.anniversary-copy { border-left: 1px solid rgba(#f1d08a, 0.45); padding-left: 2rem; }
+.anniversary-copy p { margin: 0; line-height: 1.6; }
+.anniversary-copy .anniversary-date { margin-bottom: 0.35rem; color: #f1d08a; font-weight: 600; }
+@media (max-width: 575.98px) {
+  .anniversary-inner { gap: 1rem; }
+  .anniversary-copy { padding-left: 1rem; }
+  .anniversary-mark strong { font-size: 3rem; }
+  .anniversary-copy p { font-size: 0.9rem; }
+}
+
 $faixa-rs: linear-gradient(90deg, $rs-verde 0 33.34%, $rs-vermelho 33.34% 66.67%, $rs-amarelo 66.67%);
 $faixa-rs-diag: linear-gradient(to bottom right, $rs-verde 0 37%, $rs-vermelho 37% 63%, $rs-amarelo 63%);
 
@@ -366,7 +381,30 @@ section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reenc
 @media (max-width: 575.98px) { .mapa-cidades { height: 360px; } }
 .mapa-cidades-botoes { justify-content: center; margin-bottom: 0.75rem; }
 
-.stat-tiles.numeros { max-width: 760px; text-align: center; }
+.stat-tiles.numeros { max-width: 960px; text-align: center; }
+@media (min-width: 992px) { .stat-tiles.numeros { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.stat-detail { margin-top: 0.65rem; font-size: 0.875rem; line-height: 1.4; }
+.stat-detail-line { display: block; }
+.stat-flip {
+  position: relative;
+  padding-bottom: 2rem;
+  border: 0;
+  width: 100%;
+  min-width: 0;
+  font: inherit;
+  color: inherit;
+  text-align: center;
+  cursor: pointer;
+  perspective: 800px;
+}
+.stat-flip-hint { position: absolute; bottom: 0.35rem; right: 0.55rem; font-size: 1rem; line-height: 1; color: #d0d0d0; }
+.stat-flip:focus-visible { outline: 3px solid $primary; outline-offset: 3px; }
+.stat-flip-inner { display: grid; transform-style: preserve-3d; transition: transform 0.4s ease; }
+.stat-flip.is-flipped .stat-flip-inner { transform: rotateY(180deg); }
+.stat-face { grid-area: 1 / 1; display: flex; flex-direction: column; justify-content: center; backface-visibility: hidden; }
+.stat-back { transform: rotateY(180deg); }
+.stat-back .stat-detail { margin: 0; }
+@media (prefers-reduced-motion: reduce) { .stat-flip-inner { transition: none; } }
 .numeros-nota { text-align: center; font-size: 0.85rem; color: $ink-muted; max-width: 640px; margin: -0.5rem auto 2rem; }
 @media (max-width: 575.98px) { .stat-tiles.numeros { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
@@ -1325,6 +1363,23 @@ html[data-lang="en"] .lang-pt { display: none !important; }
   color: $ink-muted;
 }
 .organizador strong { color: $headings-color; }
+
+.contact {
+  max-width: 960px;
+  margin: 1.75rem auto 0;
+  text-align: left;
+}
+.contact h3 { margin: 0 0 0.85rem; font-size: 1.35rem; }
+.contact .organizador { margin: 0; font-size: 1rem; line-height: 1.75; }
+.contact-purpose { max-width: 720px; margin: 0 auto 2.5rem; }
+.contact-purpose .organizador { color: $headings-color; font-size: 1.1rem; }
+.contact-credits { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem; }
+.contact-credits > section { padding-top: 1.5rem; border-top: 1px solid rgba($primary, 0.12); }
+.contact-reach { max-width: 960px; margin: 3rem auto 0; padding-top: 2.5rem; border-top: 1px solid rgba($primary, 0.18); text-align: center; }
+@media (max-width: 767.98px) {
+  .contact { margin-top: 2.25rem; }
+  .contact-credits { grid-template-columns: 1fr; gap: 1.75rem; }
+}
 
 /* ---------- Mês fixo na barra de "As Áreas" ---------- */
 

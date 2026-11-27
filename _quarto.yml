@@ -42,7 +42,7 @@ website:
       - href: index.qmd#woodwards
         text: Os Woodward
       - href: index.qmd#contato
-        text: Contato
+        text: Sobre
   page-footer:
     background: dark
     center: |
@@ -98,7 +98,7 @@ format:
             var NAV = {
               missao: ["Missão", "Mission"], areas: ["Áreas", "Areas"], missionarios: ["Missionários", "Missionaries"],
               templo: ["Templo", "Temple"], jornal: ["Jornais", "Newsletters"], fotos: ["Fotos", "Photos"], historias: ["Histórias", "Stories"], reencontros: ["Reencontros", "Reunions"],
-              woodwards: ["Os Woodward", "Woodwards"], contato: ["Contato", "Contact"]
+              woodwards: ["Os Woodward", "Woodwards"], contato: ["Sobre", "About"]
             };
             var tools = document.querySelector(".quarto-navbar-tools") || document.querySelector(".navbar-container");
             var box = document.createElement("div");

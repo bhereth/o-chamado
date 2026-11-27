@@ -44,7 +44,19 @@ title: ""
     </button>
   </div>
 </div>
-<p class="credito-fotos"><i class="bi bi-camera"></i> <span class="lang-pt">Fotos: cortesia do Élder George</span><span class="lang-en">Photos courtesy of Elder George</span></p>
+<p class="credito-fotos"><i class="bi bi-camera"></i> <span class="lang-pt">Fotos extraídas do vídeo preparado pelo Élder George. <a href="#reencontros">Clique aqui para ver o vídeo mencionado neste site.</a></span><span class="lang-en">Photos taken from video prepared by Elder George. <a href="#reencontros">Click here to see video referenced on this site.</a></span></p>
+```
+:::
+
+::: {.anniversary-banner .column-screen}
+```{=html}
+<div class="anniversary-inner">
+  <div class="anniversary-mark"><strong>30</strong><span class="lang-pt">ANOS</span><span class="lang-en">YEARS</span></div>
+  <div class="anniversary-copy">
+    <p class="anniversary-date"><span class="lang-pt">Julho de 1997 · Julho de 2027</span><span class="lang-en">July 1997 · July 2027</span></p>
+    <p><span class="lang-pt">Em julho de 2027, celebramos 30 anos desde que os Woodward começaram a presidir a Missão Brasil Porto Alegre Norte.</span><span class="lang-en">In July 2027, we mark 30 years since the Woodwards began presiding over the Brazil Porto Alegre North Mission.</span></p>
+  </div>
+</div>
 ```
 :::
 
@@ -803,7 +815,12 @@ galeriaSecao("areas")
   // Companions: only missionaries whose whole mission falls within the boards, so partial missions don't pull the average down.
   const completos = quadro.missionarios.filter(p => p.chegada && p.saida && aparicoes.has(p.id)
     && ym(p.chegada) >= ym(snaps[0].key) && ym(p.saida) <= ym(snaps.at(-1).key));
-  const mediaComp = media(completos.map(p => new Set(aparicoes.get(p.id).filter(a => !a.especial).flatMap(a => a.companheiros.map(chavePessoa))).size));
+  const contagensComp = completos.map(p => new Set(aparicoes.get(p.id).filter(a => !a.especial).flatMap(a => a.companheiros.map(chavePessoa))).size).sort((a, b) => a - b);
+  const mediaComp = media(contagensComp);
+  const meioComp = Math.floor(contagensComp.length / 2);
+  const medianaComp = contagensComp.length % 2
+    ? contagensComp[meioComp]
+    : (contagensComp[meioComp - 1] + contagensComp[meioComp]) / 2;
   // Time in one area: runs of consecutive boards in the same area; runs touching the first or last board are cut off, so skipped.
   const estadias = [];
   for (const [k, l] of aparicoes) {
@@ -817,36 +834,75 @@ galeriaSecao("areas")
     }
     if (cur) estadias.push(cur);
   }
-  const mediaArea = media(estadias.filter(e => e.pri > 0 && e.ult < snaps.length - 1).map(e => ym(snaps[e.ult].key) - ym(snaps[e.pri].key) + 1));
-  const porMes = new Map();
-  for (const m of missionaries) if (m.ChegadaAno) {
-    const k = `${m.ChegadaAno}-${String(m["ChegadaMês"]).padStart(2, "0")}`;
-    porMes.set(k, (porMes.get(k) ?? 0) + 1);
-  }
-  const [mesTop, nTop] = [...porMes].sort((a, b) => b[1] - a[1])[0];
-  const [aTop, mTop] = mesTop.split("-").map(Number);
-  // Cities the missionaries sent their mission papers from (counts only, no names).
+  const mesesEstadias = estadias.filter(e => e.pri > 0 && e.ult < snaps.length - 1).map(e => ym(snaps[e.ult].key) - ym(snaps[e.pri].key) + 1);
+  const mediaArea = media(mesesEstadias);
+  const pctSeisMeses = Math.round(100 * mesesEstadias.filter(n => n >= 6).length / mesesEstadias.length);
   const cid = cidadesNatal.cidades;
+  const areasContadas = [...historicoArea.values()].map(h => ({ nome: h.nome,
+    n: new Set([...h.duplas.values()].flatMap(d => d.dupla.map(chavePessoa))).size }));
+  const maxArea = Math.max(0, ...areasContadas.map(a => a.n));
+  const areasTop = areasContadas.filter(a => a.n === maxArea).map(a => a.nome).sort((a, b) => a.localeCompare(b, "pt"));
+  // All 36 full months, including months with no recorded arrivals or departures.
+  const movimento = Array.from({ length: 36 }, (_, i) => {
+    const ano = 1997 + Math.floor((i + 6) / 12), mes = (i + 6) % 12 + 1;
+    const chegadas = conta(m => m.ChegadaAno === ano && m["ChegadaMês"] === mes);
+    const saidas = conta(m => m["SaídaAno"] === ano && m["SaídaMês"] === mes);
+    return { ano, mes, chegadas, saidas, total: chegadas + saidas };
+  });
+  const maxMovimento = Math.max(...movimento.map(m => m.total));
+  const minMovimento = Math.min(...movimento.map(m => m.total));
+  const detalheMovimento = total => movimento.filter(m => m.total === total).map(m => htl.html`<div>${fmtMesAno(m)}<br>${m.chegadas} ${T(m.chegadas === 1 ? "chegada" : "chegadas", m.chegadas === 1 ? "arrival" : "arrivals")} + ${m.saidas} ${T(m.saidas === 1 ? "saída" : "saídas", m.saidas === 1 ? "departure" : "departures")}</div>`);
   const estados = p => new Set(cid.filter(c => c.pais === p).map(c => c.estado));
   const topBR = cid.filter(c => c.pais === "BR").sort((a, b) => b.n - a.n)[0];
   const topUS = cid.filter(c => c.pais === "US").sort((a, b) => b.n - a.n)[0];
-  const somaUS = cid.filter(c => c.pais === "US").reduce((s, c) => s + c.n, 0);
-  const pctUT = Math.round(100 * cid.filter(c => c.estado === "UT").reduce((s, c) => s + c.n, 0) / somaUS);
-  const tile = (num, lbl) => htl.html`<div class="stat-tile"><div class="num">${num}</div><div class="lbl">${lbl}</div></div>`;
+  const sobrenomeTop = nacionalidade => {
+    const grupos = new Map();
+    for (const m of missionaries.filter(m => m.Nacionalidade === nacionalidade)) {
+      const nome = m.Plaqueta.trim().replace(/^(?:[A-Z]\.?\s+)+/, "").replace(/^(?:(?:da|de|do|das|dos)\s+)+/i, "");
+      const k = norm(nome);
+      if (!grupos.has(k)) grupos.set(k, { nome, n: 0 });
+      grupos.get(k).n++;
+    }
+    const max = Math.max(...[...grupos.values()].map(g => g.n));
+    const nomes = [...grupos.values()].filter(g => g.n === max).map(g => g.nome).sort().join(" / ");
+    return htl.html`<span>${T("Sobrenome mais comum", "Most common surname")}<br><strong>${nomes}</strong><br>${T(`${max} por sobrenome`, `${max} per surname`)}</span>`;
+  };
+  const detalheEstados = pais => {
+    const nomes = { SP: "São Paulo", BA: "Bahia", RJ: "Rio de Janeiro", UT: "Utah", ID: "Idaho", CA: T("Califórnia", "California") };
+    const totais = new Map();
+    for (const c of cid.filter(c => c.pais === pais)) totais.set(c.estado, (totais.get(c.estado) ?? 0) + c.n);
+    return [...totais].sort((a, b) => b[1] - a[1]).slice(0, 3).map(([uf, n]) => htl.html`<span class="stat-detail-line">${nomes[uf] ?? uf} · ${n}</span>`);
+  };
+  const tile = (num, lbl, detalhe = null) => {
+    if (detalhe === null) return htl.html`<div class="stat-tile"><div class="num">${num}</div><div class="lbl">${lbl}</div></div>`;
+    const frente = htl.html`<span class="stat-face stat-front"><span class="num">${num}</span><span class="lbl">${lbl}</span></span>`;
+    const verso = htl.html`<span class="stat-face stat-back" aria-hidden="true"><span class="stat-detail">${detalhe}</span></span>`;
+    const botao = htl.html`<button type="button" class="stat-tile stat-flip" aria-pressed="false" title=${T("Toque para virar", "Click to flip")}><span class="stat-flip-inner">${frente}${verso}</span><i class="bi bi-arrow-repeat stat-flip-hint" aria-hidden="true"></i></button>`;
+    botao.addEventListener("click", () => {
+      const virado = botao.classList.toggle("is-flipped");
+      botao.setAttribute("aria-pressed", String(virado));
+      frente.setAttribute("aria-hidden", String(virado));
+      verso.setAttribute("aria-hidden", String(!virado));
+    });
+    return botao;
+  };
   return htl.html`<div class="stat-tiles numeros">
-      ${tile(conta(m => m["Título"] === "Élder"), T("élderes", "elders"))}
-      ${tile(conta(m => m["Título"] === "Síster"), T("sísteres", "sisters"))}
-      ${tile(conta(m => m.Nacionalidade === "brasileiro"), T("brasileiros", "Brazilians"))}
-      ${tile(conta(m => m.Nacionalidade === "norte americano"), T("norte-americanos", "North Americans"))}
-      ${tile(fmtNum(mediaArea), T("meses, em média, numa mesma área", "months: average stay in one area"))}
-      ${tile(Math.round(mediaComp), T("companheiros, em média, por missão", "companions: average per mission"))}
-      ${tile(cid.length, T("cidades de origem", "hometowns"))}
-      ${tile(estados("BR").size, T("estados brasileiros", "Brazilian states"))}
-      ${tile(estados("US").size, T("estados americanos", "U.S. states"))}
+      ${tile(conta(m => m["Título"] === "Élder"), T("élderes", "elders"), htl.html`<span>${conta(m => m["Título"] === "Élder" && m.Nacionalidade === "norte americano")} ${T("norte-americanos", "North Americans")}<br>${conta(m => m["Título"] === "Élder" && m.Nacionalidade === "brasileiro")} ${T("brasileiros", "Brazilians")}</span>`)}
+      ${tile(conta(m => m["Título"] === "Síster"), T("sísteres", "sisters"), htl.html`<span>${conta(m => m["Título"] === "Síster" && m.Nacionalidade === "norte americano")} ${T("norte-americanas", "North Americans")}<br>${conta(m => m["Título"] === "Síster" && m.Nacionalidade === "brasileiro")} ${T("brasileiras", "Brazilians")}</span>`)}
+      ${tile(conta(m => m.Nacionalidade === "brasileiro"), T("brasileiros", "Brazilians"), sobrenomeTop("brasileiro"))}
+      ${tile(conta(m => m.Nacionalidade === "norte americano"), T("norte-americanos", "North Americans"), sobrenomeTop("norte americano"))}
+      ${tile(fmtNum(mediaArea), T("meses, em média, numa mesma área", "months: average stay in one area"), htl.html`<span><strong>${pctSeisMeses}%</strong><br>${T("das estadias registradas duraram seis meses ou mais", "of recorded stays lasted six months or more")}</span>`)}
+      ${tile(Math.round(mediaComp), T("companheiros, em média, por missão", "companions: average per mission"), htl.html`<span>${T("Metade dos missionários teve pelo menos", "Half of missionaries had at least")} <strong>${fmtNum(medianaComp)}</strong> ${T("companheiros registrados", "recorded companions")}</span>`)}
+      ${tile(cid.length, T("cidades de origem", "hometowns"), htl.html`<span>${T("Maiores grupos", "Largest groups")}<br>${topBR.cidade} · ${topBR.n}<br>${topUS.cidade} · ${topUS.n}</span>`)}
+      ${tile(estados("BR").size, T("estados brasileiros", "Brazilian states"), detalheEstados("BR"))}
+      ${tile(estados("US").size, T("estados americanos", "U.S. states"), detalheEstados("US"))}
+      ${tile(maxArea, T("missionários na área mais frequentada", "missionaries in the most-served area"), areasTop.join(" / "))}
+      ${tile(maxMovimento, T("mais chegadas e saídas no mês", "most arrivals and departures in a month"), detalheMovimento(maxMovimento))}
+      ${tile(minMovimento, T("menos chegadas e saídas no mês", "fewest arrivals and departures in a month"), detalheMovimento(minMovimento))}
     </div>
     <p class="numeros-nota">${T(
-      `O mês com mais chegadas foi ${MES_NOME[mTop - 1].toLowerCase()} de ${aTop}, com ${nTop} missionários. As cidades que mais mandaram missionários foram ${topBR.cidade} (${topBR.n}) e ${topUS.cidade} (${topUS.n}); ${pctUT}% dos norte-americanos vieram de Utah. As médias vêm dos quadros de transferências; a de companheiros conta os ${completos.length} missionários cuja missão inteira aparece nos quadros.`,
-      `The busiest month for arrivals was ${MES_NOME[mTop - 1]} ${aTop}, with ${nTop} missionaries. The cities that sent the most missionaries were ${topBR.cidade} (${topBR.n}) and ${topUS.cidade} (${topUS.n}); ${pctUT}% of the North Americans came from Utah. The averages come from the transfer boards; the companion average counts the ${completos.length} missionaries whose whole mission appears on the boards.`)}</p>`;
+      "Toque nos cartões para ver os detalhes. A área mais frequentada conta pessoas distintas nos quadros disponíveis; há meses sem quadro e nomes ainda não identificados.",
+      "Click the cards for details. The most-served area counts distinct people in the available boards; some months are missing and some names remain unidentified.")}</p>`;
 }
 ```
 
@@ -1757,6 +1813,10 @@ galeriaSecao("historias")
 
 ## [Abril de 2016]{.lang-pt}[April 2016]{.lang-en}
 
+::: {.section-intro}
+[Em 100 minutos, este vídeo do reencontro reúne apresentações dos missionários presentes, uma mensagem de Élder Grow sobre a história da Igreja no Brasil e discursos da Síster Sally J. Woodward e do Presidente Woodward. Imagens da época da missão levam você a um passeio pela Missão Porto Alegre Norte e mostram os missionários no Brasil, o hino da missão e as Noites Gaúchas.]{.lang-pt}[This 100-minute reunion video brings together introductions of the missionaries in attendance, a talk by Elder Grow on Church history in Brazil, and addresses by Sister Woodward and President Woodward. Footage from the mission years takes you on a tour of the Porto Alegre North Mission and features missionaries in Brazil, the mission hymn, and Noites Gaúchas.]{.lang-en}
+:::
+
 ```{=html}
 <a class="ratio ratio-16x9 video-frame video-card" target="_blank" rel="noopener" href="https://youtu.be/31IHb7dBMEo" aria-label="Assistir ao reencontro de abril de 2016 no YouTube">
   <img src="https://img.youtube.com/vi/31IHb7dBMEo/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/31IHb7dBMEo/hqdefault.jpg'" alt="">
@@ -1800,10 +1860,32 @@ galeriaSecao("woodwards")
 
 ::: {.band .column-screen .section-muted #contato}
 ```{=html}
-<div class="secao-topo"><span class="section-eyebrow"><span class="lang-pt">Contato</span><span class="lang-en">Contact</span></span></div>
+<div class="secao-topo"><span class="section-eyebrow"><span class="lang-pt">Sobre e contato</span><span class="lang-en">About</span></span></div>
 ```
 
-## [Comentários e sugestões]{.lang-pt}[Comments and suggestions]{.lang-en}
+## [Sobre este site]{.lang-pt}[About this site]{.lang-en}
+
+```{=html}
+<div class="contact">
+<section class="contact-purpose">
+<h3><span class="lang-pt">Nossa história</span><span class="lang-en">Our shared history</span></h3>
+<p class="organizador"><span class="lang-pt">As primeiras versões deste site ajudavam os ex-missionários a se reencontrar, antes que as redes sociais assumissem esse papel. Hoje, com os registros históricos compartilhados pelos Woodward, o site preserva a história que vivemos juntos na missão: onde servimos, quando estivemos lá e com quem servimos.</span><span class="lang-en">Early versions of this website helped returned missionaries reconnect before social media took on that role. Today, using historical records shared by the Woodwards, the site preserves our shared mission history: where we served, when we were there, and whom we served with.</span></p>
+</section>
+<div class="contact-credits">
+<section>
+<h3><span class="lang-pt">Quem cuida do site</span><span class="lang-en">Behind the site</span></h3>
+<p class="organizador"><span class="lang-pt">Em preparação para o 30º aniversário da chegada dos Woodward, em julho de 2027, o <strong>Élder Hereth</strong>, que serviu com eles, renovou este site com a ajuda de IA. Seu sobrinho, que serviu na Missão Portugal Porto, ajudou digitando os registros do quadro de transferências a partir dos jornais da missão.</span><span class="lang-en">In preparation for the 30th anniversary of the Woodwards’ arrival in July 2027, <strong>Elder Hereth</strong>, who served with them, updated this site with the help of AI. His nephew, who served in the Portugal Porto Mission, helped by typing in the transfer board records from the mission newsletters.</span></p>
+</section>
+<section>
+<h3><span class="lang-pt">Com gratidão</span><span class="lang-en">With gratitude</span></h3>
+<p class="organizador"><span class="lang-pt">Agradecemos ao <strong>Presidente Arlan Woodward</strong> e à <strong>Síster Sally Woodward</strong>, em memória, que guardaram e compartilharam os registros da missão e, anos atrás, deixaram recursos para preservá-los e manter as versões anteriores, a atual e as futuras deste site.</span><span class="lang-en">With thanks to <strong>President Arlan Woodward</strong> and, in loving memory, <strong>Sister Sally Woodward</strong>, who kept and shared the mission's records and, years ago, set aside funds to preserve them and keep previous, current, and future versions of this site going.</span></p>
+</section>
+</div>
+</div>
+```
+
+::: {.contact-reach}
+## [Entre em contato]{.lang-pt}[Get in touch]{.lang-en}
 
 ::: {.section-intro}
 [Fotos, histórias, correções no quadro de transferências e ideias para o site são bem-vindas. Com permissão, fotos e histórias podem ser incluídas no site.]{.lang-pt}[Photos, stories, corrections to the transfer board and ideas for the site are welcome. With permission, photos and stories may be added to the site.]{.lang-en}
@@ -1811,9 +1893,9 @@ galeriaSecao("woodwards")
 
 ```{=html}
 <a class="email-btn" href="mailto:info@ochamado.org?subject=O%20Chamado%20-%20coment%C3%A1rio"><i class="bi bi-envelope"></i> info@ochamado.org</a>
-<p class="organizador"><span class="lang-pt">Site organizado pelo <strong>Élder Hereth</strong>, que serviu com os Woodward, com a ajuda do sobrinho, que serviu na Missão Portugal Porto e digitou os registros do quadro de transferências a partir dos jornais da missão.</span><span class="lang-en">Site organized by <strong>Elder Hereth</strong>, who served with the Woodwards, with help from his nephew, who served in the Portugal Porto Mission and typed in the transfer board records from the mission newsletters.</span></p>
-<p class="organizador"><span class="lang-pt">Agradecemos ao <strong>Presidente Arlan Woodward</strong> e à <strong>Síster Sally Woodward</strong>, em memória, que guardaram e compartilharam os registros da missão e, anos atrás, deixaram recursos para preservá-los e manter as versões anteriores, a atual e as futuras deste site.</span><span class="lang-en">With thanks to <strong>President Arlan Woodward</strong> and, in loving memory, <strong>Sister Sally Woodward</strong>, who kept and shared the mission's records and, years ago, set aside funds to preserve them and keep previous, current, and future versions of this site going.</span></p>
 ```
+:::
+
 
 ```{ojs}
 galeriaSecao("contato")
