@@ -4,6 +4,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { createRegistry, parseTags, indexPhotos } from "./photo-tags.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const p = (f) => path.join(root, f);
@@ -61,6 +62,8 @@ const artigo = (nome) => /^(síster|sister|irmã|presidente? woodward e)/i.test(
 const emIngles = (nome) => nome.replace(/^Élder\b/, "Elder").replace(/^Síster\b/, "Sister").replace(/^Presidente\b/, "President");
 
 const fotos = [];
+const tagRegistry = createRegistry(JSON.parse(fs.readFileSync(p("data/quadro.json"), "utf8")));
+const tagErrors = [];
 for (const r of lerCsv(fs.readFileSync(p("data/fotos.csv"), "utf8"))) {
   const onde = `data/fotos.csv, linha ${r.__linha}`;
   if (!r.arquivo) { avisos.push(`${onde}: falta o nome do arquivo.`); continue; }
@@ -86,14 +89,19 @@ for (const r of lerCsv(fs.readFileSync(p("data/fotos.csv"), "utf8"))) {
     ? ["#missionarios", `Chegadas e saídas, ${MES_PT[mm - 1]} de ${y}`, `Arrivals and departures, ${MES_EN[mm - 1]} ${y}`]
     : SECOES[secao];
   const naSecao = !/^(n|não|nao|no)$/i.test(r.na_secao || "sim");
+  const parsedTags = parseTags(r.tags, tagRegistry);
+  tagErrors.push(...parsedTags.errors.map(e => `${onde}: ${e}`));
   fotos.push({
     src: "images/" + arq,
     pt: r.legenda_pt || r.legenda_en || "",
     en: r.legenda_en || r.legenda_pt || "",
-    credito, link: r.link || null, onde: ondeSite, secao, naSecao, mes,
+    credito, link: r.link || null, onde: ondeSite, secao, naSecao, mes, tags: parsedTags.tags,
   });
 }
-fs.writeFileSync(p("data/fotos.json"), JSON.stringify({ geradoDe: "data/fotos.csv (não edite este arquivo; edite a planilha)", fotos }, null, 1) + "\n");
+const csvField = value => `"${String(value).replace(/"/g, '""')}"`;
+fs.writeFileSync(p("data/photo-tag-reference.csv"), "tag,label,context\n" + tagRegistry.map(e => [e.type + ":" + e.id, e.label, e.contexts.join(" / ")].map(csvField).join(",")).join("\n") + "\n");
+if (tagErrors.length) throw new Error("Photo tags must be corrected before rendering:\n" + tagErrors.join("\n"));
+fs.writeFileSync(p("data/fotos.json"), JSON.stringify({ geradoDe: "data/fotos.csv (não edite este arquivo; edite a planilha)", fotos, porTag: indexPhotos(fotos) }, null, 1) + "\n");
 
 // ---------- Stories ----------
 

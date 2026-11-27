@@ -17,7 +17,8 @@
    ],
    "secao": "inicio",
    "naSecao": false,
-   "mes": null
+   "mes": null,
+   "tags": []
   },
   {
    "src": "images/marau.png",
@@ -35,7 +36,13 @@
    ],
    "secao": "inicio",
    "naSecao": false,
-   "mes": null
+   "mes": null,
+   "tags": [
+    {
+     "type": "area",
+     "id": "marau"
+    }
+   ]
   },
   {
    "src": "images/santarosa.png",
@@ -53,7 +60,13 @@
    ],
    "secao": "inicio",
    "naSecao": false,
-   "mes": null
+   "mes": null,
+   "tags": [
+    {
+     "type": "area",
+     "id": "santa rosa"
+    }
+   ]
   },
   {
    "src": "images/tramandai.png",
@@ -71,7 +84,8 @@
    ],
    "secao": "inicio",
    "naSecao": false,
-   "mes": null
+   "mes": null,
+   "tags": []
   },
   {
    "src": "images/cruzalta.png",
@@ -89,7 +103,8 @@
    ],
    "secao": "inicio",
    "naSecao": false,
-   "mes": null
+   "mes": null,
+   "tags": []
   },
   {
    "src": "images/santoangelo.png",
@@ -107,7 +122,8 @@
    ],
    "secao": "inicio",
    "naSecao": false,
-   "mes": null
+   "mes": null,
+   "tags": []
   },
   {
    "src": "images/capaodacanoa.png",
@@ -125,7 +141,8 @@
    ],
    "secao": "inicio",
    "naSecao": false,
-   "mes": null
+   "mes": null,
+   "tags": []
   },
   {
    "src": "images/vacaria.png",
@@ -143,7 +160,13 @@
    ],
    "secao": "inicio",
    "naSecao": false,
-   "mes": null
+   "mes": null,
+   "tags": [
+    {
+     "type": "area",
+     "id": "vacaria"
+    }
+   ]
   },
   {
    "src": "images/templo.jpg",
@@ -161,7 +184,8 @@
    ],
    "secao": "templo",
    "naSecao": false,
-   "mes": null
+   "mes": null,
+   "tags": []
   },
   {
    "src": "images/templo-obra-cidade.jpg",
@@ -179,7 +203,13 @@
    ],
    "secao": "templo",
    "naSecao": false,
-   "mes": null
+   "mes": null,
+   "tags": [
+    {
+     "type": "missionary",
+     "id": "e-hereth-1997-10"
+    }
+   ]
   },
   {
    "src": "images/templo-obra-placa.jpg",
@@ -197,7 +227,13 @@
    ],
    "secao": "templo",
    "naSecao": false,
-   "mes": null
+   "mes": null,
+   "tags": [
+    {
+     "type": "missionary",
+     "id": "e-hereth-1997-10"
+    }
+   ]
   },
   {
    "src": "images/templo-pronto.jpg",
@@ -215,7 +251,13 @@
    ],
    "secao": "templo",
    "naSecao": false,
-   "mes": null
+   "mes": null,
+   "tags": [
+    {
+     "type": "missionary",
+     "id": "e-hereth-1997-10"
+    }
+   ]
   },
   {
    "src": "images/templo-noite.jpg",
@@ -233,7 +275,13 @@
    ],
    "secao": "templo",
    "naSecao": false,
-   "mes": null
+   "mes": null,
+   "tags": [
+    {
+     "type": "missionary",
+     "id": "e-hereth-1997-10"
+    }
+   ]
   },
   {
    "src": "images/woodwards.jpg",
@@ -251,7 +299,8 @@
    ],
    "secao": "woodwards",
    "naSecao": false,
-   "mes": null
+   "mes": null,
+   "tags": []
   },
   {
    "src": "images/despedida-1999.jpg",
@@ -269,7 +318,17 @@
    ],
    "secao": "missionarios",
    "naSecao": false,
-   "mes": "1999-08"
+   "mes": "1999-08",
+   "tags": [
+    {
+     "type": "missionary",
+     "id": "e-hereth-1997-10"
+    },
+    {
+     "type": "departure",
+     "id": "1999-08"
+    }
+   ]
   },
   {
    "src": "images/serra-canela.jpg",
@@ -287,7 +346,8 @@
    ],
    "secao": "contato",
    "naSecao": false,
-   "mes": null
+   "mes": null,
+   "tags": []
   },
   {
    "src": "images/chegada-oct-1997.jpg",
@@ -305,7 +365,17 @@
    ],
    "secao": "missionarios",
    "naSecao": false,
-   "mes": "1997-10"
+   "mes": "1997-10",
+   "tags": [
+    {
+     "type": "missionary",
+     "id": "e-hereth-1997-10"
+    },
+    {
+     "type": "arrival",
+     "id": "1997-10"
+    }
+   ]
   },
   {
    "src": "images/santa-rosa-hereth-dez-1997.jpg",
@@ -323,7 +393,17 @@
    ],
    "secao": "fotos",
    "naSecao": false,
-   "mes": null
+   "mes": null,
+   "tags": [
+    {
+     "type": "area",
+     "id": "cruzeiro"
+    },
+    {
+     "type": "missionary",
+     "id": "e-hereth-1997-10"
+    }
+   ]
   },
   {
    "src": "images/gramado-cafe-colonial-hereth.jpg",
@@ -341,7 +421,67 @@
    ],
    "secao": "fotos",
    "naSecao": false,
-   "mes": null
+   "mes": null,
+   "tags": [
+    {
+     "type": "area",
+     "id": "gramado"
+    },
+    {
+     "type": "zone",
+     "id": "caxias do sul"
+    },
+    {
+     "type": "missionary",
+     "id": "e-hereth-1997-10"
+    }
+   ]
   }
- ]
+ ],
+ "porTag": {
+  "area": {
+   "marau": [
+    "images/marau.png"
+   ],
+   "santa rosa": [
+    "images/santarosa.png"
+   ],
+   "vacaria": [
+    "images/vacaria.png"
+   ],
+   "cruzeiro": [
+    "images/santa-rosa-hereth-dez-1997.jpg"
+   ],
+   "gramado": [
+    "images/gramado-cafe-colonial-hereth.jpg"
+   ]
+  },
+  "missionary": {
+   "e-hereth-1997-10": [
+    "images/templo-obra-cidade.jpg",
+    "images/templo-obra-placa.jpg",
+    "images/templo-pronto.jpg",
+    "images/templo-noite.jpg",
+    "images/despedida-1999.jpg",
+    "images/chegada-oct-1997.jpg",
+    "images/santa-rosa-hereth-dez-1997.jpg",
+    "images/gramado-cafe-colonial-hereth.jpg"
+   ]
+  },
+  "departure": {
+   "1999-08": [
+    "images/despedida-1999.jpg"
+   ]
+  },
+  "arrival": {
+   "1997-10": [
+    "images/chegada-oct-1997.jpg"
+   ]
+  },
+  "zone": {
+   "caxias do sul": [
+    "images/gramado-cafe-colonial-hereth.jpg"
+   ]
+  }
+ }
 }

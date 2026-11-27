@@ -136,7 +136,7 @@ title: ""
 
 </div>
 
-<p class="atalho-busca"><a href="#busca" onclick="var b=document.getElementById('busca'); if (b) { event.preventDefault(); b.scrollIntoView({behavior:'smooth', block:'center'}); b.focus({preventScroll:true}); }"><i class="bi bi-search"></i> <span class="lang-pt">Siga a jornada de um missionário</span><span class="lang-en">Follow a missionary's journey</span> ↓</a></p>
+<p class="atalho-busca"><a href="#reencontros"><i class="bi bi-play-circle"></i> <span class="lang-pt">Faça um passeio de 8 minutos pela missão no vídeo do Élder George</span><span class="lang-en">Take an 8-minute video tour of the mission with Elder George’s video</span></a></p>
 
 <script>
 // Inline the map/globe SVGs (an <img> would not use the page fonts).
@@ -402,7 +402,10 @@ dialogos = {
       : htl.html`<div class="meta">${T("Sem registro de chegada/saída", "No arrival/departure record")} · ${nQuadros}</div>`;
     mostrarDialogo(htl.html`${topoDialogo(x ? `${x.titulo} ${x.plaqueta}` : nomeCompleto(p.n), meta)}
       <div class="dlg-corpo">
-        ${ap.length ? htl.html`<button class="pill botao-jornada" onclick=${() => verJornada(chavePessoa(p))}><i class="bi bi-signpost-2"></i> ${T("Ver a jornada no mapa", "See the journey on the map")}</button>` : ""}
+        <div class="dlg-acoes">
+          ${p.id ? botaoFotosTag("missionary", p.id, x ? `${x.titulo} ${x.plaqueta}` : nomeCompleto(p.n), true) : ""}
+          ${ap.length ? htl.html`<button type="button" class="pill dlg-acao" onclick=${() => verJornada(chavePessoa(p))}><i class="bi bi-signpost-2" aria-hidden="true"></i><span>${T("Ver a jornada no mapa", "See the journey on the map")}</span></button>` : ""}
+        </div>
         ${ap.length ? tabelaPessoa(ap) : htl.html`<p class="busca-hint">${T("Não aparece nos quadros de transferências.", "Not on any transfer board.")}</p>`}
         ${x ? "" : htl.html`<p class="dlg-nota">${T("Ainda não conseguimos ligar este nome a ninguém da lista de missionários. Se você sabe quem é, escreva para info@ochamado.org.",
           "We couldn't match this name to anyone on the missionary list yet. If you know who it is, email info@ochamado.org.")}</p>`}
@@ -450,6 +453,7 @@ dialogos = {
     const meta = htl.html`<div class="meta">${T(h.zonas.length > 1 ? "Zonas" : "Zona", h.zonas.length > 1 ? "Zones" : "Zone")}: ${zonas} · ${nPessoas} ${T("missionários", "missionaries")}</div>`;
     mostrarDialogo(htl.html`${topoDialogo(h.nome, meta)}
       <div class="dlg-corpo">
+        ${botaoFotosTag("area", chaveArea(a.nome, z.nome), h.nome, true)}
         <table class="historico-table historico-area">
           <thead><tr><th>${T("Quando", "When")}</th><th colspan=${nCol}>${T("Dupla", "Companionship")}</th></tr></thead>
           <tbody>${linhasCols.map(({ r, cols }) => linhaHistoricoArea(periodo(r), cols, snapIdx >= r.ini && snapIdx <= r.fim))}</tbody>
@@ -474,7 +478,7 @@ function dittoConteudo(txt) {
 function linhaArea(a, z, cont) {
   const chips = a.dupla.map(p => htl.html`<button class=${p.id ? "chip" : "chip sem-registro"} onclick=${() => abrirPessoa(p)}>${nomeCompleto(p.n)}</button>`);
   return htl.html`<div class=${cont ? "area-row cont" : "area-row"}>
-    ${a.nome ? htl.html`<div class="area-name">${z.especial ? a.nome : htl.html`<button class="area-link link-caixa" title=${T("Ver todas as duplas desta área", "See every companionship in this area")} onclick=${() => abrirArea(a, z)}>${a.nome}<i class="bi bi-clock-history"></i></button>`}${a.total > 1 ? htl.html`<span class="dupla-tag">#${a.n}</span>` : ""}</div>` : ""}
+    ${a.nome ? htl.html`<div class="area-name">${z.especial ? a.nome : htl.html`<button class="area-link link-caixa" title=${T("Ver todas as duplas desta área", "See every companionship in this area")} onclick=${() => abrirArea(a, z)}>${a.nome}<i class="bi bi-clock-history"></i></button>`}${!z.especial ? botaoFotosTag("area", chaveArea(a.nome, z.nome), a.nome) : ""}${a.total > 1 ? htl.html`<span class="dupla-tag">#${a.n}</span>` : ""}</div>` : ""}
     <div class="nomes">${chips}</div>
   </div>`;
 }
@@ -712,14 +716,14 @@ viewof mapa = {
     const contagem = `${comps} ${comps === 1 ? T("dupla", "companionship") : T("duplas", "companionships")}`;
     if (celular) {
       const d = htl.html`<details class=${z.especial ? "zone-card especial colapsavel" : "zone-card colapsavel"} data-zona=${z.nome} open=${zonasAbertas.has(z.nome)}>
-        <summary><h3>${z.nome}</h3><span class="count">${contagem}</span><i class="bi bi-chevron-down seta-zona"></i></summary>
+        <summary><h3>${z.nome}</h3>${botaoFotosTag("zone", norm(z.nome), z.nome)}<span class="count">${contagem}</span><i class="bi bi-chevron-down seta-zona"></i></summary>
         ${z.areas.map((a, i) => linhaArea(a, z, i > 0 && a.n > 1 && z.areas[i - 1].nome === a.nome))}
       </details>`;
       d.addEventListener("toggle", () => { d.open ? zonasAbertas.add(z.nome) : zonasAbertas.delete(z.nome); });
       return d;
     }
     return htl.html`<article class=${z.especial ? "zone-card especial" : "zone-card"} data-zona=${z.nome}>
-      <header><h3>${z.nome}</h3><span class="count">${contagem}</span></header>
+      <header><h3>${z.nome}</h3>${botaoFotosTag("zone", norm(z.nome), z.nome)}<span class="count">${contagem}</span></header>
       ${z.areas.map((a, i) => linhaArea(a, z, i > 0 && a.n > 1 && z.areas[i - 1].nome === a.nome))}
     </article>`;
   };
@@ -1023,7 +1027,7 @@ mesesDe = a => a === 1997 ? [7, 8, 9, 10, 11, 12] : a === 2000 ? [1, 2, 3, 4, 5,
       ${panel(sa, "panel-saidas", "bi-house-heart-fill", T("Saídas", "Departures"), T("Nenhuma saída neste mês.", "No departures this month."))}
     </div>
     ${fotos.map(f => htl.html`<div class="despedida-foto">
-      <img src=${f.src} alt=${f.alt} loading="lazy">
+      <img src=${f.src} alt=${T(f.pt, f.en)} loading="lazy">
       <p class="despedida-legenda">${T(f.pt, f.en)}<span class="credito">${T(f.credito[0], f.credito[1])}</span></p>
     </div>`)}
   </div>`;
@@ -1072,6 +1076,7 @@ trajetoJornada = (chave, x) => {
     const c = a.especial || !a.areaNome ? null : areaCoord(a.areaNome, a.zona);
     const pos = c ? [c.lat, c.lon] : a.especial ? ESCRITORIO : (ZONA_POS[a.zona] ?? ev.at(-1)?.pos ?? ESCRITORIO);
     ev.push({ key: `${a.key}|1`, pos, tipo: "area", area: a.especial ? a.zona : a.area, zona: a.zona, aprox: c?.fonte === "aproximado",
+      fotoArea: !a.especial && a.areaNome ? chaveArea(a.areaNome, a.zona) : null,
       companheiros: a.companheiros.map(p => nomeCompleto(p.n)) });
   }
   const sumiu = snaps.find(s => s.key > ult && (!x?.saida || s.key < x.saida));
@@ -1231,6 +1236,37 @@ viewof mapaJornada = {
   const n = passos.length;
   const chavePos = p => `${p[0]},${p[1]}`;
 
+  // Group photos use the recorded arrival or departure month, even when playback shifts the stop.
+  const fotosEscritorio = new Map();
+  for (const v of viagens) for (const e of v.ev) {
+    if (e.tipo !== "chegada" && e.tipo !== "saida") continue;
+    const chegada = e.tipo === "chegada";
+    const tipo = chegada ? "arrival" : "departure";
+    const mes = chegada ? v.x?.chegada : v.x?.saida;
+    if (!mes) continue;
+    const id = `${tipo}:${mes}`;
+    const existente = fotosEscritorio.get(id);
+    if (existente) {
+      if (e.key < existente.key) existente.key = e.key;
+      continue;
+    }
+    const fotos = fotosDaTag(tipo, mes);
+    if (fotos.length) fotosEscritorio.set(id, { key: e.key, fotos });
+  }
+  const gruposFotos = [...fotosEscritorio.values()].sort((a, b) => a.key.localeCompare(b.key));
+  const tituloFotos = T("Chegadas e saídas", "Arrivals and departures");
+  const rotuloFotos = T("Ver fotos de chegadas e saídas", "View arrival and departure photos");
+  let fotosVisiveis = [];
+  const botaoEscritorio = htl.html`<button type="button" class="photo-tag-button" title=${rotuloFotos} aria-label=${rotuloFotos} onclick=${() => abrirGaleriaFotos(fotosVisiveis, tituloFotos)}><i class="bi bi-camera-fill" aria-hidden="true"></i></button>`;
+  L.DomEvent.disableClickPropagation(botaoEscritorio);
+  const botoesEscritorio = htl.html`<div class="jornada-pino-fotos jornada-fotos-escritorio">${botaoEscritorio}</div>`;
+  const marcadorFotos = fotosEscritorio.size ? L.marker(ESCRITORIO, {
+    icon: L.divIcon({ className: "jornada-pino-marcador", html: botoesEscritorio, iconSize: null }),
+    keyboard: false,
+    zIndexOffset: 1100
+  }) : null;
+  let passoFotos = null;
+
   viagens.forEach((v, q) => { v.cor = CORES[q % CORES.length]; });
   for (const v of viagens) {
     // Where the person is at each step: j = index of their latest stop; vis = on the map.
@@ -1256,11 +1292,24 @@ viewof mapaJornada = {
         const rotulo = document.createElement("span");
         rotulo.className = "jornada-pino";
         rotulo.style.setProperty("--c", v.cor);
-        vistos.set(c, { q, paradas: [], rotulo, nomes: [], pino: L.marker(e.pos, {
+        const numero = document.createElement("span");
+        const fotos = htl.html`<span class="jornada-pino-fotos"></span>`;
+        rotulo.append(numero, fotos);
+        vistos.set(c, { q, paradas: [], rotulo, numero, fotos, fotosAreas: new Map(), nomes: [], pino: L.marker(e.pos, {
           icon: L.divIcon({ className: "jornada-pino-marcador", html: rotulo, iconSize: null }), zIndexOffset: -1000, keyboard: false }) });
       }
       const p = vistos.get(c);
       p.paradas.push({ n: nArea, q });
+      // Different areas can share a coordinate; reveal each photo button only on its own first visit.
+      if (e.fotoArea && !p.fotosAreas.has(e.fotoArea)) {
+        const botao = botaoFotosTag("area", e.fotoArea, e.area);
+        if (botao) {
+          botao.hidden = true;
+          L.DomEvent.disableClickPropagation(botao);
+          p.fotos.append(botao);
+          p.fotosAreas.set(e.fotoArea, { q, botao });
+        }
+      }
       if (!p.nomes.includes(e.area)) p.nomes.push(e.area);
       p.pino.bindTooltip(`<strong>${p.nomes.join(" / ")}</strong> <span class="mapa-dica-zona">${e.zona}</span>${e.aprox ? `<br><em>${T("posição aproximada", "approximate location")}</em>` : ""}`, { direction: "top", offset: [0, -10], className: "dica-area" });
     });
@@ -1396,6 +1445,14 @@ viewof mapaJornada = {
 
   function desenhar(f) {
     const i = Math.min(Math.floor(f), n - 1), u = f - i, b = Math.min(i + 1, n - 1);
+    if (marcadorFotos && i !== passoFotos) {
+      passoFotos = i;
+      const fotos = gruposFotos.filter(g => g.key <= passos[i]).flatMap(g => g.fotos);
+      fotosVisiveis = [...new Map(fotos.map(f => [f.src, f])).values()];
+      const mostrar = fotosVisiveis.length > 0;
+      if (mostrar && !camada.hasLayer(marcadorFotos)) camada.addLayer(marcadorFotos);
+      if (!mostrar && camada.hasLayer(marcadorFotos)) camada.removeLayer(marcadorFotos);
+    }
     const repouso = u === 0;
     // Update the name tag text first, so the left/right choice below measures its new width.
     const atual = repouso || u < 0.5 ? i : b;
@@ -1423,7 +1480,8 @@ viewof mapaJornada = {
         v.pinos.forEach(p => {
           const feitas = p.paradas.filter(r => r.q <= A.j);
           if ((feitas.length > 0) !== camada.hasLayer(p.pino)) feitas.length ? camada.addLayer(p.pino) : camada.removeLayer(p.pino);
-          p.rotulo.textContent = feitas.map(r => r.n).join(", ");
+          p.numero.textContent = feitas.map(r => r.n).join(", ");
+          p.fotosAreas.forEach(({ q, botao }) => { botao.hidden = q > A.j; });
         });
         v.ultJ = A.j;
       }
@@ -1541,6 +1599,14 @@ viewof mapaJornada = {
 }
 ```
 
+
+```{=html}
+<p class="jornada-foto-convite">
+  <i class="bi bi-camera-fill" aria-hidden="true"></i>
+  <span class="lang-pt">Quer incluir uma foto no seu mapa da jornada missionária? Envie a foto para <a href="mailto:info@ochamado.org">info@ochamado.org</a> e informe seu nome como aparecia na plaqueta (com Élder ou Síster), a área e o mês e ano aproximados em que a foto foi tirada.</span>
+  <span class="lang-en">Want a photo added to your missionary journey map? Email it to <a href="mailto:info@ochamado.org">info@ochamado.org</a> and include your name as it appeared on your missionary name tag (with Elder or Sister), the area, and the approximate month and year the photo was taken.</span>
+</p>
+```
 
 ```{ojs}
 galeriaSecao("missionarios")
@@ -1676,6 +1742,33 @@ galeriaSecao("jornais")
 // All of the site's photos (data/fotos.json), shuffled once per visit. The object also remembers the
 // current photo, so switching languages keeps the place.
 catalogoFotos = FileAttachment("data/fotos.json").json()
+fotosPorSrc = new Map(catalogoFotos.fotos.map(f => [f.src, f]))
+fotosDaTag = (tipo, id) => (catalogoFotos.porTag?.[tipo]?.[id] ?? []).map(src => fotosPorSrc.get(src)).filter(Boolean)
+dialogoFotosTag = {
+  const d = htl.html`<dialog class="photo-tag-dialog" aria-labelledby="photo-tag-title"></dialog>`;
+  document.body.appendChild(d);
+  d.addEventListener("click", e => { if (e.target === d) { const r = d.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) d.close(); } });
+  invalidation.then(() => { d.close(); d.remove(); });
+  return d;
+}
+abrirFotosTag = (tipo, id, nome) => abrirGaleriaFotos(fotosDaTag(tipo, id), nome)
+abrirGaleriaFotos = (fotos, nome) => {
+  if (!fotos.length) return;
+  const d = dialogoFotosTag;
+  d.replaceChildren(htl.html`<div class="photo-tag-heading"><h2 id="photo-tag-title">${T("Fotos", "Photos")}: ${nome}</h2><button type="button" class="photo-tag-close" aria-label=${T("Fechar fotos", "Close photos")} onclick=${() => d.close()}><i class="bi bi-x-lg" aria-hidden="true"></i></button></div>`,
+    htl.html`<div class="photo-tag-gallery">${fotos.map(f => htl.html`<figure><img src=${f.src} alt=${T(f.pt, f.en)} loading="lazy"><figcaption>${T(f.pt, f.en)}${f.mes ? htl.html`<span class="photo-tag-date">${fmtYM(f.mes)}</span>` : ""}<span class="credito">${f.link ? htl.html`<a href=${f.link} target="_blank" rel="noopener">${T(f.credito[0], f.credito[1])}</a>` : T(f.credito[0], f.credito[1])}</span></figcaption></figure>`)}</div>`);
+  if (!d.open) d.showModal();
+  d.scrollTop = 0;
+}
+botaoFotosTag = (tipo, id, nome, texto = false) => {
+  const n = fotosDaTag(tipo, id).length;
+  if (!n) return "";
+  const label = T(`Ver ${n} foto(s): ${nome}`, `View ${n} photo(s): ${nome}`);
+  const detalheMissionario = texto && tipo === "missionary";
+  const classe = detalheMissionario ? "pill dlg-acao" : texto ? "photo-tag-button photo-tag-label" : "photo-tag-button";
+  const icone = detalheMissionario ? "bi bi-camera" : "bi bi-camera-fill";
+  return htl.html`<button type="button" class=${classe} title=${label} aria-label=${label} onclick=${e => { e.preventDefault(); e.stopPropagation(); abrirFotosTag(tipo, id, nome); }}><i class=${icone} aria-hidden="true"></i>${texto ? htl.html`<span>${T("Fotos", "Photos")} (${n})</span>` : ""}</button>`;
+}
 // Photos from data/fotos.csv marked for a section (na_secao = sim), shown at the end of that section.
 galeriaSecao = secao => {
   const l = catalogoFotos.fotos.filter(f => f.secao === secao && f.naSecao && !f.mes);
@@ -1814,7 +1907,7 @@ galeriaSecao("historias")
 ## [Abril de 2016]{.lang-pt}[April 2016]{.lang-en}
 
 ::: {.section-intro}
-[Em 100 minutos, este vídeo do reencontro reúne apresentações dos missionários presentes, uma mensagem de Élder Grow sobre a história da Igreja no Brasil e discursos da Síster Sally J. Woodward e do Presidente Woodward. Imagens da época da missão levam você a um passeio pela Missão Porto Alegre Norte e mostram os missionários no Brasil, o hino da missão e as Noites Gaúchas.]{.lang-pt}[This 100-minute reunion video brings together introductions of the missionaries in attendance, a talk by Elder Grow on Church history in Brazil, and addresses by Sister Woodward and President Woodward. Footage from the mission years takes you on a tour of the Porto Alegre North Mission and features missionaries in Brazil, the mission hymn, and Noites Gaúchas.]{.lang-en}
+[Em 100 minutos, este vídeo do reencontro reúne apresentações dos missionários presentes, uma mensagem de Élder Grow sobre a história da Igreja no Brasil e discursos da Síster Sally J. Woodward e do Presidente Woodward. O vídeo também mostra os missionários no Brasil, o hino da missão e as Noites Gaúchas.]{.lang-pt}[This 100-minute reunion video brings together introductions of the missionaries in attendance, a talk by Elder Grow on Church history in Brazil, and addresses by Sister Woodward and President Woodward. The video also features missionaries in Brazil, the mission hymn, and Noites Gaúchas.]{.lang-en}
 :::
 
 ```{=html}
@@ -1826,6 +1919,14 @@ galeriaSecao("historias")
   </span>
 </a>
 <p class="credito-video"><i class="bi bi-camera-video"></i> <span class="lang-pt">Vídeo: cortesia do Élder George</span><span class="lang-en">Video courtesy of Elder George</span></p>
+<div class="reunion-tour">
+  <i class="bi bi-camera-video" aria-hidden="true"></i>
+  <div>
+    <h3><span class="lang-pt">Um passeio de 8 minutos pela missão</span><span class="lang-en">An 8-minute tour of the mission</span></h3>
+    <p><span class="lang-pt">Veja várias áreas da Missão Porto Alegre Norte nas imagens que o Élder George gravou quando voltou para visitar a missão.</span><span class="lang-en">See several areas of the Porto Alegre North Mission in footage Elder George filmed on a return visit.</span></p>
+    <a href="https://www.youtube.com/watch?v=31IHb7dBMEo&amp;t=118s" target="_blank" rel="noopener"><i class="bi bi-play-circle" aria-hidden="true"></i> <span class="lang-pt">Assistir ao passeio · começa em 1:58</span><span class="lang-en">Watch the tour · starts at 1:58</span></a>
+  </div>
+</div>
 ```
 
 ```{ojs}

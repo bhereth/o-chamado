@@ -1,20 +1,20 @@
-﻿arquivo,secao,mes,legenda_pt,legenda_en,cortesia,link,licenca,na_secao
-escritorio.png,inicio,,"O escritório da missão, em Porto Alegre.",The mission office in Porto Alegre.,Élder George,,,não
-marau.png,inicio,,Marau.,Marau.,Élder George,,,não
-santarosa.png,inicio,,Santa Rosa.,Santa Rosa.,Élder George,,,não
-tramandai.png,inicio,,Tramandaí.,Tramandaí.,Élder George,,,não
-cruzalta.png,inicio,,Cruz Alta.,Cruz Alta.,Élder George,,,não
-santoangelo.png,inicio,,Santo Ângelo.,Santo Ângelo.,Élder George,,,não
-capaodacanoa.png,inicio,,Capão da Canoa.,Capão da Canoa.,Élder George,,,não
-vacaria.png,inicio,,Vacaria.,Vacaria.,Élder George,,,não
-templo.jpg,templo,,O Templo de Porto Alegre Brasil (2008).,The Porto Alegre Brazil Temple (2008).,"Ricardo630, Wikimedia Commons",https://commons.wikimedia.org/wiki/File:Templo_de_Porto_Alegre_(16_November_2008).jpg,CC BY 3.0,não
-templo-obra-cidade.jpg,templo,,"A obra do templo no alto do morro, com a cidade ao fundo.","The temple construction site on the hill, with the city beyond.",Élder Hereth,,,não
-templo-obra-placa.jpg,templo,,O Élder Hereth diante do tapume e das placas da obra do templo.,Elder Hereth in front of the temple construction fence and signs.,Élder Hereth,,,não
-templo-pronto.jpg,templo,,O templo pronto em 2001.,The finished temple in 2001.,Élder Hereth,,,não
-templo-noite.jpg,templo,,O templo iluminado à noite em 2001.,The temple lit up at night in 2001.,Élder Hereth,,,não
-woodwards.jpg,woodwards,,Sally e Arlan Woodward.,Sally and Arlan Woodward.,"Church News, 2007",https://www.thechurchnews.com/2007/11/17/23232387/missionary-training-center-presidents-4/,,não
-despedida-1999.jpg,missionarios,1999-08,"Despedida de agosto de 1999 na casa da missão, com o Presidente e a Síster Woodward.",August 1999 farewell at the mission home with President and Sister Woodward.,Élder Hereth,,,não
-serra-canela.jpg,contato,,"Mata de araucárias na Serra Gaúcha, em Canela.","Araucaria forest in the Serra Gaúcha, in Canela.","Cesar Vieira, Wikimedia Commons",https://commons.wikimedia.org/wiki/File:Paisagem_Natura_de_Canela.jpg,CC BY-SA 4.0,não
-chegada-oct-1997.jpg,missionarios,1997-10,"Chegada de outubro de 1997 na casa da missão, com o Presidente e a Síster Woodward.",October 1997 arrival at the mission home with President and Sister Woodward.,Élder Hereth,,,não
-santa-rosa-hereth-dez-1997.jpg,,,"Festa de Natal em Santa Rosa, em dezembro de 1997",Christmas Eve party in Santa Rosa em dezembro de 1997,Élder Hereth,,,não
-gramado-cafe-colonial-hereth.jpg,,,"Café Colonial em Gramado com a zona Caxias do Sul.",Cafe Colonial in Gramado with Caxias do Sul Zone.,Élder Hereth,,,não
+﻿arquivo,secao,mes,legenda_pt,legenda_en,cortesia,link,licenca,na_secao,tags
+escritorio.png,inicio,,"O escritório da missão, em Porto Alegre.",The mission office in Porto Alegre.,Élder George,,,não,
+marau.png,inicio,,Marau.,Marau.,Élder George,,,não,area:marau
+santarosa.png,inicio,,Santa Rosa.,Santa Rosa.,Élder George,,,não,area:santa rosa
+tramandai.png,inicio,,Tramandaí.,Tramandaí.,Élder George,,,não,
+cruzalta.png,inicio,,Cruz Alta.,Cruz Alta.,Élder George,,,não,
+santoangelo.png,inicio,,Santo Ângelo.,Santo Ângelo.,Élder George,,,não,
+capaodacanoa.png,inicio,,Capão da Canoa.,Capão da Canoa.,Élder George,,,não,
+vacaria.png,inicio,,Vacaria.,Vacaria.,Élder George,,,não,area:vacaria
+templo.jpg,templo,,O Templo de Porto Alegre Brasil (2008).,The Porto Alegre Brazil Temple (2008).,"Ricardo630, Wikimedia Commons",https://commons.wikimedia.org/wiki/File:Templo_de_Porto_Alegre_(16_November_2008).jpg,CC BY 3.0,não,
+templo-obra-cidade.jpg,templo,,"A obra do templo no alto do morro, com a cidade ao fundo.","The temple construction site on the hill, with the city beyond.",Élder Hereth,,,não,missionary:e-hereth-1997-10
+templo-obra-placa.jpg,templo,,O Élder Hereth diante do tapume e das placas da obra do templo.,Elder Hereth in front of the temple construction fence and signs.,Élder Hereth,,,não,missionary:e-hereth-1997-10
+templo-pronto.jpg,templo,,O templo pronto em 2001.,The finished temple in 2001.,Élder Hereth,,,não,missionary:e-hereth-1997-10
+templo-noite.jpg,templo,,O templo iluminado à noite em 2001.,The temple lit up at night in 2001.,Élder Hereth,,,não,missionary:e-hereth-1997-10
+woodwards.jpg,woodwards,,Sally e Arlan Woodward.,Sally and Arlan Woodward.,"Church News, 2007",https://www.thechurchnews.com/2007/11/17/23232387/missionary-training-center-presidents-4/,,não,
+despedida-1999.jpg,missionarios,1999-08,"Despedida de agosto de 1999 na casa da missão, com o Presidente e a Síster Woodward.",August 1999 farewell at the mission home with President and Sister Woodward.,Élder Hereth,,,não,missionary:e-hereth-1997-10;departure:1999-08
+serra-canela.jpg,contato,,"Mata de araucárias na Serra Gaúcha, em Canela.","Araucaria forest in the Serra Gaúcha, in Canela.","Cesar Vieira, Wikimedia Commons",https://commons.wikimedia.org/wiki/File:Paisagem_Natura_de_Canela.jpg,CC BY-SA 4.0,não,
+chegada-oct-1997.jpg,missionarios,1997-10,"Chegada de outubro de 1997 na casa da missão, com o Presidente e a Síster Woodward.",October 1997 arrival at the mission home with President and Sister Woodward.,Élder Hereth,,,não,missionary:e-hereth-1997-10;arrival:1997-10
+santa-rosa-hereth-dez-1997.jpg,,,"Festa de Natal em Santa Rosa, em dezembro de 1997",Christmas Eve party in Santa Rosa em dezembro de 1997,Élder Hereth,,,não,area:cruzeiro;missionary:e-hereth-1997-10
+gramado-cafe-colonial-hereth.jpg,,,"Café Colonial em Gramado com a zona Caxias do Sul.",Cafe Colonial in Gramado with Caxias do Sul Zone.,Élder Hereth,,,não,area:gramado;zone:caxias do sul;missionary:e-hereth-1997-10
