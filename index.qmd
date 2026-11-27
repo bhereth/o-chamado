@@ -1750,7 +1750,7 @@ galeriaSecao("jornais")
 ## [Fotos da missão]{.lang-pt}[Mission photos]{.lang-en}
 
 ::: {.section-intro}
-[Todas as fotos do site num só lugar, numa ordem diferente a cada visita. Tem fotos da missão? Escreva para [info@ochamado.org](mailto:info@ochamado.org).]{.lang-pt}[Every photo on the site in one place, in a different order on each visit. Have photos from the mission? Email [info@ochamado.org](mailto:info@ochamado.org).]{.lang-en}
+[Tem fotos da missão? Escreva para [info@ochamado.org](mailto:info@ochamado.org).]{.lang-pt}[Have photos from the mission? Email [info@ochamado.org](mailto:info@ochamado.org).]{.lang-en}
 :::
 
 ::: {.nota-fotos}
@@ -1799,65 +1799,44 @@ galeriaSecao = secao => {
 }
 ordemFotos = {
   const l = [...catalogoFotos.fotos];
-  for (let i = l.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [l[i], l[j]] = [l[j], l[i]]; }
+  // Seed the gallery order once per page load using the current time.
+  let seed = Date.now() >>> 0;
+  const random = () => {
+    seed = (Math.imul(1664525, seed) + 1013904223) >>> 0;
+    return seed / 4294967296;
+  };
+  for (let i = l.length - 1; i > 0; i--) { const j = Math.floor(random() * (i + 1)); [l[i], l[j]] = [l[j], l[i]]; }
   return { fotos: l, atual: 0 };
 }
 ```
 
 ```{ojs}
-// Slideshow: one photo at a time, advancing every few seconds while the section is on screen.
+// Browse six photos at a time; preserve the page when switching languages.
 {
   const { fotos } = ordemFotos, n = fotos.length;
-  const INTERVALO = 6000;
-  const img = htl.html`<img class="fotos-img" alt="">`;
-  const legenda = htl.html`<p class="fotos-legenda"></p>`;
-  const credito = htl.html`<p class="fotos-credito"></p>`;
-  const contador = htl.html`<span class="fotos-contador"></span>`;
-  const botaoPlay = htl.html`<button class="fotos-play"></button>`;
-  // Plays on its own even with "reduce motion" on (going through the photos is the point); the button pauses it.
-  let tocando = true, visivel = false, timer = null;
-  const pre = new Image();
-  const mostrar = i => {
-    ordemFotos.atual = (i + n) % n;
-    const f = fotos[ordemFotos.atual];
-    img.classList.add("trocando");
-    setTimeout(() => {
-      img.src = f.src; img.alt = T(f.pt, f.en);
-      img.onload = () => img.classList.remove("trocando");
-      if (img.complete) img.classList.remove("trocando");
-    }, 180);
-    legenda.textContent = T(f.pt, f.en);
-    const ondeLink = htl.html`<a href=${f.onde[0]} onclick=${() => {
-      if (f.secao === "missionarios" && f.mes) { const [a, m] = f.mes.split("-").map(Number); definir(viewof mesSel, m); definir(viewof anoSel, a); }
-    }}>${T("Ver no site: ", "See it on the site: ")}${T(f.onde[1], f.onde[2])}</a>`;
-    credito.replaceChildren(
-      f.link ? htl.html`<a href=${f.link} target="_blank" rel="noopener">${T(f.credito[0], f.credito[1])}</a>` : T(f.credito[0], f.credito[1]),
-      " · ", ondeLink);
-    contador.textContent = `${ordemFotos.atual + 1} ${T("de", "of")} ${n}`;
-    pre.src = fotos[(ordemFotos.atual + 1) % n].src;
+  const tamanho = 6;
+  const grade = htl.html`<div class="fotos-grade"></div>`;
+  const contador = htl.html`<span class="fotos-contador" role="status" aria-live="polite"></span>`;
+  const anterior = htl.html`<button type="button" class="fotos-pagina">${T("Anteriores", "Previous")}</button>`;
+  const proxima = htl.html`<button type="button" class="fotos-pagina">${T("Próximas", "Next")}</button>`;
+  const mostrar = inicio => {
+    const ultima = Math.max(0, Math.floor((n - 1) / tamanho) * tamanho);
+    ordemFotos.atual = Math.max(0, Math.min(ultima, inicio));
+    const lote = fotos.slice(ordemFotos.atual, ordemFotos.atual + tamanho);
+    grade.replaceChildren(...lote.map((f, i) => {
+      const titulo = T(f.pt, f.en) || T(`Foto ${ordemFotos.atual + i + 1}`, `Photo ${ordemFotos.atual + i + 1}`);
+      return htl.html`<button type="button" class="fotos-miniatura" aria-label=${T("Ampliar: ", "Enlarge: ") + titulo} onclick=${() => abrirGaleriaFotos([f], titulo)}>
+        <img src=${f.src} alt=${titulo} loading="lazy" decoding="async">
+      </button>`;
+    }));
+    contador.textContent = n ? `${ordemFotos.atual + 1}–${Math.min(ordemFotos.atual + tamanho, n)} ${T("de", "of")} ${n}` : T("Nenhuma foto", "No photos");
+    anterior.disabled = ordemFotos.atual === 0;
+    proxima.disabled = ordemFotos.atual + tamanho >= n;
   };
-  const agendar = () => { clearTimeout(timer); if (tocando && visivel) timer = setTimeout(() => { mostrar(ordemFotos.atual + 1); agendar(); }, INTERVALO); };
-  const marcarPlay = () => {
-    botaoPlay.innerHTML = tocando ? '<i class="bi bi-pause-fill"></i>' : '<i class="bi bi-play-fill"></i>';
-    botaoPlay.setAttribute("aria-label", tocando ? T("Pausar", "Pause") : T("Tocar", "Play"));
-  };
-  botaoPlay.onclick = () => { tocando = !tocando; marcarPlay(); agendar(); };
-  const ir = d => () => { mostrar(ordemFotos.atual + d); agendar(); };
-  const obs = new IntersectionObserver(es => { visivel = es[0].isIntersecting; agendar(); }, { threshold: 0.3 });
-  const caixa = htl.html`<div class="fotos-show">
-    <div class="fotos-palco">
-      ${img}
-      <button class="fotos-seta fotos-ant" aria-label=${T("Foto anterior", "Previous photo")} onclick=${ir(-1)}><i class="bi bi-chevron-left"></i></button>
-      <button class="fotos-seta fotos-prox" aria-label=${T("Próxima foto", "Next photo")} onclick=${ir(1)}><i class="bi bi-chevron-right"></i></button>
-    </div>
-    <div class="fotos-info">${legenda}${credito}</div>
-    <div class="fotos-controles">${botaoPlay}${contador}</div>
-  </div>`;
-  obs.observe(caixa);
-  invalidation.then(() => { clearTimeout(timer); obs.disconnect(); });
-  marcarPlay();
+  anterior.onclick = () => mostrar(ordemFotos.atual - tamanho);
+  proxima.onclick = () => mostrar(ordemFotos.atual + tamanho);
   mostrar(ordemFotos.atual);
-  return caixa;
+  return htl.html`<div class="fotos-show">${grade}<div class="fotos-controles">${anterior}${contador}${proxima}</div></div>`;
 }
 ```
 
@@ -1998,12 +1977,6 @@ galeriaSecao("woodwards")
 ```
 
 ::: {.contact-reach}
-## [Entre em contato]{.lang-pt}[Get in touch]{.lang-en}
-
-::: {.section-intro}
-[Fotos, histórias, correções no quadro de transferências e ideias para o site são bem-vindas. Com permissão, fotos e histórias podem ser incluídas no site.]{.lang-pt}[Photos, stories, corrections to the transfer board and ideas for the site are welcome. With permission, photos and stories may be added to the site.]{.lang-en}
-:::
-
 ```{=html}
 <a class="email-btn" href="mailto:info@ochamado.org?subject=O%20Chamado%20-%20coment%C3%A1rio"><i class="bi bi-envelope"></i> info@ochamado.org</a>
 ```

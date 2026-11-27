@@ -1722,10 +1722,18 @@ $cores-regiao: (
 .despedida-foto .despedida-legenda { margin: 0.6rem 0 0; font-size: 0.9rem; color: $body-color; line-height: 1.4; }
 .despedida-foto .credito { display: block; margin-top: 0.2rem; font-size: 0.72rem; color: $ink-muted; }
 
-/* Photos section: one photo at a time, shuffled */
-.fotos-show { max-width: 900px; margin: 0 auto; }
-.fotos-palco { position: relative; aspect-ratio: 16 / 10; background: #15291f; border-radius: $border-radius-lg; overflow: hidden; box-shadow: 0 22px 44px -26px rgba(0, 0, 0, 0.55); }
-.fotos-img { width: 100%; height: 100%; object-fit: contain; display: block; transition: opacity 0.18s ease; }
+/* Photos section: six photos per page, shuffled */
+.fotos-show { max-width: 800px; margin: 0 auto; }
+.fotos-grade { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; }
+.fotos-miniatura { position: relative; aspect-ratio: 4 / 3; padding: 0; border: 0; border-radius: $border-radius; overflow: hidden; background: #15291f; cursor: zoom-in; }
+.fotos-miniatura img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: contain; }
+.fotos-miniatura:focus-visible, .fotos-pagina:focus-visible { outline: 3px solid $primary; outline-offset: 3px; }
+.fotos-pagina { min-height: 44px; padding: 0.5rem 1rem; border: 1px solid rgba($primary, 0.35); border-radius: $border-radius; background: $paper; color: $primary; cursor: pointer; }
+.fotos-pagina:hover:not(:disabled) { background: $primary; color: #fff; }
+.fotos-pagina:disabled { opacity: 0.45; cursor: default; }
+@media (max-width: 575.98px) { .fotos-grade { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; } .fotos-pagina { padding: 0.5rem 0.75rem; } }
+.fotos-palco { position: relative; aspect-ratio: 16 / 9; background: #15291f; border-radius: $border-radius-lg; overflow: hidden; box-shadow: 0 22px 44px -26px rgba(0, 0, 0, 0.55); }
+.fotos-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block; transition: opacity 0.18s ease; }
 .fotos-img.trocando { opacity: 0; }
 .fotos-seta {
   position: absolute; top: 50%; transform: translateY(-50%);
@@ -1745,7 +1753,7 @@ $cores-regiao: (
 .fotos-play { width: 2.2rem; height: 2.2rem; border-radius: 50%; border: 1px solid rgba($primary, 0.35); background: $paper; color: $primary; font-size: 1.1rem; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
 .fotos-play:hover { background: $primary; color: #fff; }
 .fotos-contador { font-size: 0.85rem; color: $ink-muted; font-variant-numeric: tabular-nums; }
-@media (max-width: 575.98px) { .fotos-palco { aspect-ratio: 4 / 3; } .fotos-seta { width: 2.2rem; height: 2.2rem; } }
+@media (max-width: 575.98px) { .fotos-seta { width: 2.2rem; height: 2.2rem; } }
 
 /* Small gallery at the end of a section (photos from data/fotos.csv) */
 .galeria-secao { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin: 2rem auto 0; max-width: 960px; }
