@@ -85,7 +85,7 @@ for (const r of lerCsv(fs.readFileSync(p("data/fotos.csv"), "utf8"))) {
     : quem && r.link ? [`Foto: ${quem}`, `Photo: ${emIngles(quem)}`]
     : quem ? [`Foto: cortesia ${artigo(quem)} ${quem}`, `Photo courtesy of ${emIngles(quem)}`] : ["", ""];
   const [y, mm] = mes ? mes.split("-").map(Number) : [];
-  const ondeSite = mes
+  const ondeSite = mes && secao === "missionarios"
     ? ["#missionarios", `Chegadas e saídas, ${MES_PT[mm - 1]} de ${y}`, `Arrivals and departures, ${MES_EN[mm - 1]} ${y}`]
     : SECOES[secao];
   const naSecao = !/^(n|não|nao|no)$/i.test(r.na_secao || "sim");

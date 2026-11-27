@@ -415,13 +415,13 @@
    ],
    "link": null,
    "onde": [
-    "#fotos",
-    "Fotos",
-    "Photos"
+    "#areas",
+    "Áreas",
+    "Areas"
    ],
-   "secao": "fotos",
+   "secao": "areas",
    "naSecao": false,
-   "mes": null,
+   "mes": "1999-05",
    "tags": [
     {
      "type": "area",

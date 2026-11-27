@@ -39,7 +39,6 @@ $rs-amarelo: #e8b923;
 .photo-tag-button { display: inline-flex; align-items: center; justify-content: center; min-width: 2rem; min-height: 2rem; padding: 0.25rem; border: 0; border-radius: 0.35rem; background: transparent; color: $primary; cursor: pointer; vertical-align: middle; flex-shrink: 0; }
 .photo-tag-button:hover { background: rgba($primary, 0.1); }
 .photo-tag-button:focus-visible, .photo-tag-close:focus-visible { outline: 2px solid $primary; outline-offset: 2px; }
-.photo-tag-label { gap: 0.4rem; padding: 0.4rem 0.75rem; margin: 0 0.5rem 1rem 0; background: rgba($primary, 0.08); }
 .zone-card header .photo-tag-button, .zone-card summary .photo-tag-button { color: inherit; }
 .photo-tag-dialog { width: min(900px, calc(100vw - 2rem)); max-height: 90dvh; padding: 0; border: 0; border-radius: $border-radius-lg; background: $paper; color: $body-color; overflow-y: auto; overscroll-behavior: contain; }
 .photo-tag-dialog::backdrop { background: rgba(0, 0, 0, 0.65); }

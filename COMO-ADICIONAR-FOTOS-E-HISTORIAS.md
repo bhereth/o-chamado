@@ -11,7 +11,7 @@ Nada disso exige mexer em código. Depois de qualquer mudança, gere o site de n
 |---|---|---|
 | `arquivo` | nome do arquivo, a partir de `images/` | `fotos/canoas-1998.jpg` |
 | `secao` | onde a foto aparece (lista abaixo) | `areas` |
-| `mes` | opcional: mês da foto, se for de um mês específico; ela aparece em "Chegadas e saídas" nesse mês | `1999-08` |
+| `mes` | opcional: mês da foto. Use `secao=missionarios` para exibir a foto em "Chegadas e saídas" nesse mês. | `1999-08` |
 | `legenda_pt` | legenda em português | `Batismo em Canoas.` |
 | `legenda_en` | legenda em inglês | `A baptism in Canoas.` |
 | `cortesia` | quem tirou ou mandou a foto | `Élder Hereth` |
@@ -34,7 +34,7 @@ Copie os identificadores de **`data/photo-tag-reference.csv`**, gerado automatic
 - Combine tags com ponto e vírgula: `area:gramado;zone:caxias do sul`. A mesma foto pode estar em várias galerias sem duplicação.
 - Para fotos de grupo na jornada, preencha `mes` e inclua `arrival:1997-10` ou `departure:1999-08` em `tags`, usando o mesmo mês. A câmera aparece no escritório quando a jornada chega à etapa correspondente.
 
-As tags são independentes: uma tag de área não marca automaticamente todas as zonas onde ela esteve. A data em `mes` continua separada; as galerias mostram todas as fotos vinculadas, mesmo quando outro mês está selecionado no quadro. `na_secao=não` não esconde fotos das galerias por tag.
+As tags são independentes: uma tag de área não marca automaticamente todas as zonas onde ela esteve. No quadro de transferências, as câmeras mostram fotos sem data e fotos do mês selecionado. As galerias abertas na jornada ou nos detalhes mostram todas as fotos vinculadas. `na_secao=não` não esconde fotos das galerias por tag.
 
 Use a identidade exata para missionários com o mesmo nome e para áreas ambíguas. Por exemplo, `area:rio branco|poa` e `area:rio branco|serra` são áreas diferentes. Tags conhecidas inválidas ou ambíguas interrompem a geração com uma mensagem e sugestões, em vez de ligar a foto ao lugar errado. Iniciais, autoria e cortesia nunca são usadas para deduzir quem aparece numa foto.
 

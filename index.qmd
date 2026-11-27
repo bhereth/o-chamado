@@ -453,7 +453,7 @@ dialogos = {
     const meta = htl.html`<div class="meta">${T(h.zonas.length > 1 ? "Zonas" : "Zona", h.zonas.length > 1 ? "Zones" : "Zone")}: ${zonas} · ${nPessoas} ${T("missionários", "missionaries")}</div>`;
     mostrarDialogo(htl.html`${topoDialogo(h.nome, meta)}
       <div class="dlg-corpo">
-        ${botaoFotosTag("area", chaveArea(a.nome, z.nome), h.nome, true)}
+        <div class="dlg-acoes">${botaoFotosTag("area", chaveArea(a.nome, z.nome), h.nome, true)}</div>
         <table class="historico-table historico-area">
           <thead><tr><th>${T("Quando", "When")}</th><th colspan=${nCol}>${T("Dupla", "Companionship")}</th></tr></thead>
           <tbody>${linhasCols.map(({ r, cols }) => linhaHistoricoArea(periodo(r), cols, snapIdx >= r.ini && snapIdx <= r.fim))}</tbody>
@@ -478,7 +478,7 @@ function dittoConteudo(txt) {
 function linhaArea(a, z, cont) {
   const chips = a.dupla.map(p => htl.html`<button class=${p.id ? "chip" : "chip sem-registro"} onclick=${() => abrirPessoa(p)}>${nomeCompleto(p.n)}</button>`);
   return htl.html`<div class=${cont ? "area-row cont" : "area-row"}>
-    ${a.nome ? htl.html`<div class="area-name">${z.especial ? a.nome : htl.html`<button class="area-link link-caixa" title=${T("Ver todas as duplas desta área", "See every companionship in this area")} onclick=${() => abrirArea(a, z)}>${a.nome}<i class="bi bi-clock-history"></i></button>`}${!z.especial ? botaoFotosTag("area", chaveArea(a.nome, z.nome), a.nome) : ""}${a.total > 1 ? htl.html`<span class="dupla-tag">#${a.n}</span>` : ""}</div>` : ""}
+    ${a.nome ? htl.html`<div class="area-name">${z.especial ? a.nome : htl.html`<button class="area-link link-caixa" title=${T("Ver todas as duplas desta área", "See every companionship in this area")} onclick=${() => abrirArea(a, z)}>${a.nome}<i class="bi bi-clock-history"></i></button>`}${!z.especial ? botaoFotosTag("area", chaveArea(a.nome, z.nome), a.nome, false, snapAtual.key) : ""}${a.total > 1 ? htl.html`<span class="dupla-tag">#${a.n}</span>` : ""}</div>` : ""}
     <div class="nomes">${chips}</div>
   </div>`;
 }
@@ -716,14 +716,14 @@ viewof mapa = {
     const contagem = `${comps} ${comps === 1 ? T("dupla", "companionship") : T("duplas", "companionships")}`;
     if (celular) {
       const d = htl.html`<details class=${z.especial ? "zone-card especial colapsavel" : "zone-card colapsavel"} data-zona=${z.nome} open=${zonasAbertas.has(z.nome)}>
-        <summary><h3>${z.nome}</h3>${botaoFotosTag("zone", norm(z.nome), z.nome)}<span class="count">${contagem}</span><i class="bi bi-chevron-down seta-zona"></i></summary>
+        <summary><h3>${z.nome}</h3>${botaoFotosTag("zone", norm(z.nome), z.nome, false, snapAtual.key)}<span class="count">${contagem}</span><i class="bi bi-chevron-down seta-zona"></i></summary>
         ${z.areas.map((a, i) => linhaArea(a, z, i > 0 && a.n > 1 && z.areas[i - 1].nome === a.nome))}
       </details>`;
       d.addEventListener("toggle", () => { d.open ? zonasAbertas.add(z.nome) : zonasAbertas.delete(z.nome); });
       return d;
     }
     return htl.html`<article class=${z.especial ? "zone-card especial" : "zone-card"} data-zona=${z.nome}>
-      <header><h3>${z.nome}</h3>${botaoFotosTag("zone", norm(z.nome), z.nome)}<span class="count">${contagem}</span></header>
+      <header><h3>${z.nome}</h3>${botaoFotosTag("zone", norm(z.nome), z.nome, false, snapAtual.key)}<span class="count">${contagem}</span></header>
       ${z.areas.map((a, i) => linhaArea(a, z, i > 0 && a.n > 1 && z.areas[i - 1].nome === a.nome))}
     </article>`;
   };
@@ -980,7 +980,7 @@ mesesDe = a => a === 1997 ? [7, 8, 9, 10, 11, 12] : a === 2000 ? [1, 2, 3, 4, 5,
 {
   const pill = (label, active, onclick) => htl.html`<button class=${active ? "pill active" : "pill"} onclick=${onclick}>${label}</button>`;
   // Months with a photo in data/fotos.csv get a small camera icon.
-  const comFoto = new Set(catalogoFotos.fotos.filter(f => f.mes).map(f => f.mes));
+  const comFoto = new Set(catalogoFotos.fotos.filter(f => f.secao === "missionarios" && f.mes).map(f => f.mes));
   // Previous / next month across years (July 1997 – July 2000).
   const todos = [1997, 1998, 1999, 2000].flatMap(a => mesesDe(a).map(m => [a, m]));
   const i = todos.findIndex(([a, m]) => a === anoSel && m === mesSel);
@@ -1020,7 +1020,7 @@ mesesDe = a => a === 1997 ? [7, 8, 9, 10, 11, 12] : a === 2000 ? [1, 2, 3, 4, 5,
       : htl.html`<p class="missionary-empty">${vazio}</p>`}
   </div>`;
   // Photos from the catalog (data/fotos.json) that belong to this month.
-  const fotos = catalogoFotos.fotos.filter(f => f.mes === `${anoSel}-${String(mesSel).padStart(2, "0")}`);
+  const fotos = catalogoFotos.fotos.filter(f => f.secao === "missionarios" && f.mes === `${anoSel}-${String(mesSel).padStart(2, "0")}`);
   return htl.html`<div>
     <div class="missionary-board">
       ${panel(ch, "panel-chegadas", "bi-airplane-fill", T("Chegadas", "Arrivals"), T("Nenhuma chegada neste mês.", "No arrivals this month."))}
@@ -1751,7 +1751,6 @@ dialogoFotosTag = {
   invalidation.then(() => { d.close(); d.remove(); });
   return d;
 }
-abrirFotosTag = (tipo, id, nome) => abrirGaleriaFotos(fotosDaTag(tipo, id), nome)
 abrirGaleriaFotos = (fotos, nome) => {
   if (!fotos.length) return;
   const d = dialogoFotosTag;
@@ -1760,14 +1759,14 @@ abrirGaleriaFotos = (fotos, nome) => {
   if (!d.open) d.showModal();
   d.scrollTop = 0;
 }
-botaoFotosTag = (tipo, id, nome, texto = false) => {
-  const n = fotosDaTag(tipo, id).length;
+botaoFotosTag = (tipo, id, nome, texto = false, mes = null) => {
+  const fotos = fotosDaTag(tipo, id).filter(f => !mes || !f.mes || f.mes === mes);
+  const n = fotos.length;
   if (!n) return "";
   const label = T(`Ver ${n} foto(s): ${nome}`, `View ${n} photo(s): ${nome}`);
-  const detalheMissionario = texto && tipo === "missionary";
-  const classe = detalheMissionario ? "pill dlg-acao" : texto ? "photo-tag-button photo-tag-label" : "photo-tag-button";
-  const icone = detalheMissionario ? "bi bi-camera" : "bi bi-camera-fill";
-  return htl.html`<button type="button" class=${classe} title=${label} aria-label=${label} onclick=${e => { e.preventDefault(); e.stopPropagation(); abrirFotosTag(tipo, id, nome); }}><i class=${icone} aria-hidden="true"></i>${texto ? htl.html`<span>${T("Fotos", "Photos")} (${n})</span>` : ""}</button>`;
+  const classe = texto ? "pill dlg-acao" : "photo-tag-button";
+  const icone = texto ? "bi bi-camera" : "bi bi-camera-fill";
+  return htl.html`<button type="button" class=${classe} title=${label} aria-label=${label} onclick=${e => { e.preventDefault(); e.stopPropagation(); abrirGaleriaFotos(fotos, nome); }}><i class=${icone} aria-hidden="true"></i>${texto ? htl.html`<span>${T("Fotos", "Photos")} (${n})</span>` : ""}</button>`;
 }
 // Photos from data/fotos.csv marked for a section (na_secao = sim), shown at the end of that section.
 galeriaSecao = secao => {
@@ -1810,7 +1809,7 @@ ordemFotos = {
     }, 180);
     legenda.textContent = T(f.pt, f.en);
     const ondeLink = htl.html`<a href=${f.onde[0]} onclick=${() => {
-      if (f.mes) { const [a, m] = f.mes.split("-").map(Number); definir(viewof mesSel, m); definir(viewof anoSel, a); }
+      if (f.secao === "missionarios" && f.mes) { const [a, m] = f.mes.split("-").map(Number); definir(viewof mesSel, m); definir(viewof anoSel, a); }
     }}>${T("Ver no site: ", "See it on the site: ")}${T(f.onde[1], f.onde[2])}</a>`;
     credito.replaceChildren(
       f.link ? htl.html`<a href=${f.link} target="_blank" rel="noopener">${T(f.credito[0], f.credito[1])}</a>` : T(f.credito[0], f.credito[1]),
