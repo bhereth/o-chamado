@@ -1869,7 +1869,7 @@ galeriaSecao("woodwards")
 <div class="contact">
 <section class="contact-purpose">
 <h3><span class="lang-pt">Nossa história</span><span class="lang-en">Our shared history</span></h3>
-<p class="organizador"><span class="lang-pt">As primeiras versões deste site ajudavam os ex-missionários a se reencontrar, antes que as redes sociais assumissem esse papel. Hoje, com os registros históricos compartilhados pelos Woodward, o site preserva a história que vivemos juntos na missão: onde servimos, quando estivemos lá e com quem servimos.</span><span class="lang-en">Early versions of this website helped returned missionaries reconnect before social media took on that role. Today, using historical records shared by the Woodwards, the site preserves our shared mission history: where we served, when we were there, and whom we served with.</span></p>
+<p class="organizador"><span class="lang-pt">As primeiras versões deste site ajudavam os ex-missionários a se reencontrar, antes que as redes sociais assumissem esse papel. Hoje, com os registros históricos compartilhados pelos Woodward, o site preserva a história que vivemos juntos na missão: onde servimos, quando estivemos lá e com quem servimos.</span><span class="lang-en">Early versions of this website helped returned missionaries reconnect before social media took on that role. Today, using historical records shared by the Woodwards, the site preserves our shared mission history: where we served, when we were there, and with whom we served.</span></p>
 </section>
 <div class="contact-credits">
 <section>
