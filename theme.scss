@@ -61,6 +61,8 @@ $rs-amarelo: #e8b923;
 .anniversary-copy { border-left: 1px solid rgba(#f1d08a, 0.45); padding-left: 2rem; }
 .anniversary-copy p { margin: 0; line-height: 1.6; }
 .anniversary-copy .anniversary-date { margin-bottom: 0.35rem; color: #f1d08a; font-weight: 600; }
+.anniversary-link { display: inline-block; margin-top: 0.65rem; color: #f1d08a; font-weight: 600; text-decoration: underline; text-underline-offset: 0.2em; }
+.anniversary-link:hover, .anniversary-link:focus-visible { color: #fff; }
 @media (max-width: 575.98px) {
   .anniversary-inner { gap: 1rem; }
   .anniversary-copy { padding-left: 1rem; }

@@ -54,7 +54,8 @@ title: ""
   <div class="anniversary-mark"><strong>30</strong><span class="lang-pt">ANOS</span><span class="lang-en">YEARS</span></div>
   <div class="anniversary-copy">
     <p class="anniversary-date"><span class="lang-pt">Julho de 1997 · Julho de 2027</span><span class="lang-en">July 1997 · July 2027</span></p>
-    <p><span class="lang-pt">Em julho de 2027, celebramos 30 anos desde que os Woodward começaram a presidir a Missão Brasil Porto Alegre Norte.</span><span class="lang-en">In July 2027, we mark 30 years since the Woodwards began presiding over the Brazil Porto Alegre North Mission.</span></p>
+    <p><span class="lang-pt">Trinta anos depois da chegada dos Woodward, ainda nos lembramos dos lugares onde servimos, das pessoas que conhecemos e dos companheiros que serviram ao nosso lado. O Chamado é um lugar para reviver essas lembranças, compartilhá-las e guardá-las para os próximos anos.</span><span class="lang-en">Thirty years after the Woodwards arrived, we still remember the places we served, the people we met, and the companions who served beside us. O Chamado is a place to revisit those memories, share them, and keep them for the years ahead.</span></p>
+    <a class="anniversary-link" href="#jornada"><span class="lang-pt">Encontre sua jornada missionária</span><span class="lang-en">Find your missionary journey</span></a>
   </div>
 </div>
 ```
