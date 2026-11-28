@@ -26,7 +26,7 @@ website:
       - href: index.qmd#missao
         text: Missão
       - href: index.qmd#areas
-        text: Áreas
+        text: O Quadro
       - href: index.qmd#missionarios
         text: Missionários
       - href: index.qmd#templo
@@ -96,7 +96,7 @@ format:
           (function () {
             var root = document.documentElement;
             var NAV = {
-              missao: ["Missão", "Mission"], areas: ["Áreas", "Areas"], missionarios: ["Missionários", "Missionaries"],
+              missao: ["Missão", "Mission"], areas: ["O Quadro", "The Board"], missionarios: ["Missionários", "Missionaries"],
               templo: ["Templo", "Temple"], jornal: ["Jornais", "Newsletters"], fotos: ["Fotos", "Photos"], historias: ["Histórias", "Stories"], reencontros: ["Reencontros", "Reunions"],
               woodwards: ["Os Woodward", "Woodwards"], contato: ["Sobre", "About"]
             };

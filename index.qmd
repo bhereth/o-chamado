@@ -4,13 +4,13 @@ title: ""
 
 ::: {.hero .column-screen}
 ::: {.eyebrow}
-[Missão Brasil Porto Alegre Norte · 1997–2000]{.lang-pt}[Brazil Porto Alegre North Mission · 1997–2000]{.lang-en}
+[Missão Brasil Porto Alegre Norte]{.lang-pt}[Brazil Porto Alegre North Mission]{.lang-en}
 :::
 
 # O Chamado
 
 ::: {.lead}
-[Presidente Arlan e Síster Sally Woodward]{.lang-pt}[President Arlan and Sister Sally Woodward]{.lang-en}
+[Presidente Arlan e Síster Sally Woodward · 1997–2000]{.lang-pt}[President Arlan and Sister Sally Woodward · 1997–2000]{.lang-en}
 :::
 
 ```{=html}
@@ -166,18 +166,12 @@ galeriaSecao("missao")
 :::: {.band .column-screen .section-muted #areas}
 ::: {.secao-topo}
 ```{=html}
-<span class="section-eyebrow"><span class="lang-pt">As Áreas</span><span class="lang-en">The Areas</span></span>
+<span class="section-eyebrow"><span class="lang-pt">O Quadro</span><span class="lang-en">The Board</span></span>
 ```
-
-:::
-
-::: {.quadro-bloco}
-
-::: {.faixa-mes}
 ```{ojs}
 {
   const go = k => definir(viewof quadroKey, k);
-  return htl.html`<span class="faixa-rotulo">${T("Transferência de", "Transfer of")}</span><div class="nav-mes">
+  return htl.html`<div class="nav-mes">
     <button class="nav-mes-btn" aria-label=${T("Mês anterior", "Previous month")} disabled=${snapIdx === 0} onclick=${() => go(snaps[snapIdx - 1].key)}><i class="bi bi-chevron-left"></i></button>
     <span class="snap-label">${fmtMesAno(snapAtual)}</span>
     <button class="nav-mes-btn" aria-label=${T("Próximo mês", "Next month")} disabled=${snapIdx === snaps.length - 1} onclick=${() => go(snaps[snapIdx + 1].key)}><i class="bi bi-chevron-right"></i></button>
@@ -188,11 +182,20 @@ galeriaSecao("missao")
 
 ::: {.wrap}
 
-## [O quadro de transferências]{.lang-pt}[The transfer board]{.lang-en}
+## [O Quadro do Presidente]{.lang-pt}[The President’s Board]{.lang-en}
 
-::: {.section-intro}
-[Foi nessas cidades e bairros que os missionários trabalharam. A cada transferência, as duplas mudavam e as zonas se reorganizavam. Escolha um mês para ver o quadro e toque no nome de uma área ou de um missionário para ver mais detalhes. Viu algum erro? Escreva para [info@ochamado.org](mailto:info@ochamado.org).]{.lang-pt}[These are the cities and neighborhoods where the missionaries served. At every transfer, companionships changed and zones were reorganized. Pick a month to see the board, and tap an area or missionary name to see more details. Spot a mistake? Email [info@ochamado.org](mailto:info@ochamado.org).]{.lang-en}
+::: {.section-intro .quadro-intro}
+[No escritório da missão, O Quadro do Presidente reunia todas as zonas, áreas e missionários num só lugar. Cada ficha representava uma pessoa e seu lugar na missão: em que área servia, com qual companheiro e em qual zona. A cada mês, o quadro mudava para acompanhar as transferências, as novas duplas e a chegada e a despedida de missionários. Era um retrato da missão naquele momento.]{.lang-pt}[In the mission office, the President’s Board brought together all the zones, areas, and missionaries in one place. Each card represented a person and their place in the mission: where they served, who their companion was, and which zone they belonged to. Every month, the board changed to reflect transfers, new companionships, and missionaries arriving or returning home. It was a snapshot of the mission at that moment.]{.lang-en}
+
+[Aqui, você pode acompanhar essas mudanças mês a mês. Escolha um mês e toque no nome de uma área ou de um missionário para ver mais detalhes. Viu algum erro? Escreva para [info@ochamado.org](mailto:info@ochamado.org).]{.lang-pt}[Here, you can follow those changes month by month. Pick a month and tap an area or missionary name to see more details. Spot a mistake? Email [info@ochamado.org](mailto:info@ochamado.org).]{.lang-en}
 :::
+
+```{=html}
+<figure class="quadro-foto">
+  <img src="images/quadro-do-presidente-editado.jpg" alt="O Quadro do Presidente no escritório da missão, com as fichas dos missionários" width="1400" height="800" loading="lazy">
+  <figcaption><span class="lang-pt">O Quadro do Presidente no escritório da missão.</span><span class="lang-en">The President’s Board in the mission office.</span></figcaption>
+</figure>
+```
 
 ```{ojs}
 quadro = FileAttachment("data/quadro.json").json()
@@ -234,7 +237,7 @@ aparicoes = {
 function estado(v) { const el = htl.html`<span hidden></span>`; el.value = v; return el; }
 function definir(el, v) { el.value = v; el.dispatchEvent(new Event("input", { bubbles: true })); }
 viewof quadroKey = estado("1997-10")
-// Every month of the Woodwards' mission (July 1997 – June 2000); months without a transfer board are shown greyed out.
+// Every month of the Woodwards' mission (July 1997 – June 2000); months without a President’s Board are shown greyed out.
 MESES_MISSAO = { const l = []; for (let n = 1997 * 12 + 6; n <= 2000 * 12 + 5; n++) l.push(`${Math.floor(n / 12)}-${String(n % 12 + 1).padStart(2, "0")}`); return l; }
 temQuadro = new Set(snaps.map(s => s.key))
 DIVISAO = "1998-07"
@@ -259,7 +262,7 @@ snapAtual = snaps[snapIdx]
     ${htl.svg`<svg class="growth-bars" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label=${T("Zonas por mês", "Zones per month")}>
       ${MESES_MISSAO.map((k, i) => {
         const s = porChave.get(k);
-        if (!s) return htl.svg`<rect class="sem-dados" x=${i * bw + gap / 2} y=${H - 4} width=${bw - gap} height="4" rx="2"><title>${fmtYM(k)}: ${T("sem quadro de transferências", "no transfer board")}</title></rect>`;
+        if (!s) return htl.svg`<rect class="sem-dados" x=${i * bw + gap / 2} y=${H - 4} width=${bw - gap} height="4" rx="2"><title>${fmtYM(k)}: ${T("sem Quadro do Presidente", "no President’s Board")}</title></rect>`;
         const h = Math.max(4, (s.stats.zonas / max) * H);
         return htl.svg`<rect class=${s.key === quadroKey ? "active" : ""} x=${i * bw + gap / 2} y=${H - h} width=${bw - gap} height=${h} rx="2"
           onclick=${() => definir(viewof quadroKey, s.key)}><title>${fmtYM(s.key)}: ${s.stats.zonas} ${T("zonas", "zones")}</title></rect>`;
@@ -280,7 +283,7 @@ snapAtual = snaps[snapIdx]
   const doAno = MESES_MISSAO.filter(k => +k.slice(0, 4) === snapAtual.ano);
   const go = k => definir(viewof quadroKey, k);
   const pill = (label, active, onclick) => htl.html`<button class=${active ? "pill active" : "pill"} onclick=${onclick}>${label}</button>`;
-  const semQuadro = k => htl.html`<button class="pill sem-dados" disabled title=${T("Sem quadro de transferências para este mês", "No transfer board for this month")}>${MES[+k.slice(5) - 1]}</button>`;
+  const semQuadro = k => htl.html`<button class="pill sem-dados" disabled title=${T("Sem Quadro do Presidente para este mês", "No President’s Board for this month")}>${MES[+k.slice(5) - 1]}</button>`;
   const algumVazio = doAno.some(k => !temQuadro.has(k));
   return htl.html`<div class="filter-panel">
     <div class="pill-group">${anos.map(a => {
@@ -288,7 +291,7 @@ snapAtual = snaps[snapIdx]
       return primeiro ? pill(a, a === snapAtual.ano, () => go(primeiro.key)) : htl.html`<button class="pill sem-dados" disabled>${a}</button>`;
     })}</div>
     <div class="pill-group">${doAno.map(k => temQuadro.has(k) ? pill(MES[+k.slice(5) - 1], k === quadroKey, () => go(k)) : semQuadro(k))}</div>
-    ${algumVazio ? htl.html`<p class="nota-sem-dados">${T("Meses em cinza: não temos o quadro de transferências desse mês.", "Greyed-out months: we don't have that month's transfer board.")}</p>` : ""}
+    ${algumVazio ? htl.html`<p class="nota-sem-dados">${T("Meses em cinza: não temos o Quadro do Presidente desse mês.", "Greyed-out months: we don't have that month's President’s Board.")}</p>` : ""}
   </div>
   ${quadroKey === DIVISAO
     ? htl.html`<p class="aviso-divisao"><i class="bi bi-signpost-split"></i><span>${idioma === "en"
@@ -384,7 +387,7 @@ dialogos = {
       <thead><tr><th>${T("Quadro", "Board")}</th><th>${T("Zona", "Zone")}</th><th>${T("Área", "Area")}</th><th>${T("Companheiros", "Companions")}</th></tr></thead>
       <tbody>${linhas.map((l, i) => {
         if (!l.a) return htl.html`<tr class="sem-dados"><td class="periodo">${l.ini === l.fim ? fmtYM(l.ini) : `${fmtYM(l.ini)} – ${fmtYM(l.fim)}`}</td>
-          <td colspan="3">${l.tipo === "semQuadro" ? T("Sem quadro de transferências", "No transfer board") : T("Não aparece no quadro", "Not on the board")}</td></tr>`;
+          <td colspan="3">${l.tipo === "semQuadro" ? T("Sem Quadro do Presidente", "No President’s Board") : T("Não aparece no quadro", "Not on the board")}</td></tr>`;
         const a = l.a, ant = linhas[i - 1]?.a;
         const repZona = ant && ant.zona === a.zona;
         const repArea = ant && ant.area === a.area;
@@ -414,7 +417,7 @@ dialogos = {
           ${p.id ? botaoFotosTag("missionary", p.id, x ? `${x.titulo} ${x.plaqueta}` : nomeCompleto(p.n), true) : ""}
           ${ap.length ? htl.html`<button type="button" class="pill dlg-acao" onclick=${() => verJornada(chavePessoa(p))}><i class="bi bi-signpost-2" aria-hidden="true"></i><span>${T("Ver a jornada no mapa", "See the journey on the map")}</span></button>` : ""}
         </div>
-        ${ap.length ? tabelaPessoa(ap) : htl.html`<p class="busca-hint">${T("Não aparece nos quadros de transferências.", "Not on any transfer board.")}</p>`}
+        ${ap.length ? tabelaPessoa(ap) : htl.html`<p class="busca-hint">${T("Não aparece nos Quadros do Presidente.", "Not on any President’s Board.")}</p>`}
         ${x ? "" : htl.html`<p class="dlg-nota">${T("Ainda não conseguimos ligar este nome a ninguém da lista de missionários. Se você sabe quem é, escreva para info@ochamado.org.",
           "We couldn't match this name to anyone on the missionary list yet. If you know who it is, email info@ochamado.org.")}</p>`}
         <p class="dlg-nota">${T("A chegada é o mês em que o missionário chegou ao campo missionário. ↓ = igual à linha de cima. A linha destacada é o mês escolhido no quadro.",
@@ -493,20 +496,15 @@ function linhaArea(a, z, cont) {
 ```
 
 ```{ojs}
-// Zone toggles for the areas map: one button per zone of the month, plus all / none.
+// Select one zone at a time, or show all zones.
 {
   const zonas = snapAtual.zonas.filter(z => !z.especial).map(z => z.nome);
   const ocultas = new Set(zonasOcultas);
-  const alternar = nome => {
-    const s = new Set(zonasOcultas);
-    s.has(nome) ? s.delete(nome) : s.add(nome);
-    definir(viewof zonasOcultas, [...s]);
-  };
+  const selecionar = nome => definir(viewof zonasOcultas, TODAS_ZONAS.filter(z => z !== nome));
   return htl.html`<div class="filtro-zonas">
     <span class="filtro-rotulo">${T("Zonas", "Zones")}</span>
-    <button class="filtro-tudo" onclick=${() => definir(viewof zonasOcultas, [])}>${T("Todas", "All")}</button>
-    <button class="filtro-tudo" onclick=${() => definir(viewof zonasOcultas, TODAS_ZONAS)}>${T("Nenhuma", "None")}</button>
-    ${zonas.map(n => htl.html`<button class=${ocultas.has(n) ? "filtro-zona off" : "filtro-zona"} aria-pressed=${!ocultas.has(n)} onclick=${() => alternar(n)}>
+    <button class="filtro-tudo" aria-pressed=${zonasOcultas.length === 0} onclick=${() => definir(viewof zonasOcultas, [])}>${T("Todas", "All")}</button>
+    ${zonas.map(n => htl.html`<button class=${ocultas.has(n) ? "filtro-zona off" : "filtro-zona"} aria-pressed=${!ocultas.has(n)} onclick=${() => selecionar(n)}>
       <span class="cor" style=${`background:${corZona(n)}`}></span>${n}</button>`)}
   </div>`;
 }
@@ -764,11 +762,6 @@ viewof mapa = {
 </div>
 ```
 
-:::
-:::
-
-::: {.wrap}
-
 ::: {.search-block}
 ### [Procure uma área]{.lang-pt}[Find an area]{.lang-en}
 
@@ -811,7 +804,7 @@ galeriaSecao("areas")
 ```
 ::: {.wrap}
 
-## [Em números]{.lang-pt}[By the numbers]{.lang-en}
+## [Os missionários em números]{.lang-pt}[The missionaries by the numbers]{.lang-en}
 
 ::: {.section-intro}
 [Ao todo, 515 missionários, élderes e sísteres, serviram com os Woodward. Brasileiros e norte-americanos vieram quase meio a meio.]{.lang-pt}[In all, 515 missionaries, elders and sisters, served with the Woodwards. Brazilians and North Americans came in nearly equal numbers.]{.lang-en}
@@ -1045,7 +1038,7 @@ mesesDe = a => a === 1997 ? [7, 8, 9, 10, 11, 12] : a === 2000 ? [1, 2, 3, 4, 5,
 ## [Siga a jornada de um missionário]{.lang-pt}[Follow a missionary's journey]{.lang-en} {#jornada .titulo-espaco}
 
 ::: {.section-intro}
-[Digite um sobrenome e toque no nome para ver a jornada do missionário no mapa: o nome sai do escritório da missão em Porto Alegre, passa pelas áreas dos quadros de transferências e volta a Porto Alegre no fim da missão. Abaixo do mapa ficam o itinerário e todos os quadros e companheiros.]{.lang-pt}[Type a last name and tap the name to see that missionary's journey on the map: the name leaves the mission office in Porto Alegre, moves through the areas on the transfer boards and returns to Porto Alegre at the end of the mission. Below the map are the itinerary and every board and companion.]{.lang-en}
+[Digite um sobrenome e toque no nome para ver a jornada do missionário no mapa: o nome sai do escritório da missão em Porto Alegre, passa pelas áreas dos Quadros do Presidente e volta a Porto Alegre no fim da missão. Abaixo do mapa ficam o itinerário e todos os quadros e companheiros.]{.lang-pt}[Type a last name and tap the name to see that missionary's journey on the map: the name leaves the mission office in Porto Alegre, moves through the areas on the President’s Boards and returns to Porto Alegre at the end of the mission. Below the map are the itinerary and every board and companion.]{.lang-en}
 :::
 
 ```{ojs}
@@ -1227,14 +1220,14 @@ viewof mapaJornada = {
   }
   if (!viagens.length) {
     enquadrar(Object.values(ZONA_POS));
-    return htl.html`<p class="busca-hint">${T("Ninguém desta turma aparece nos quadros de transferências, que começam em outubro de 1997.",
-      "No one in this group is on the transfer boards, which start in October 1997.")}</p>`;
+    return htl.html`<p class="busca-hint">${T("Ninguém desta turma aparece nos Quadros do Presidente, que começam em outubro de 1997.",
+      "No one in this group is on the President’s Boards, which start in October 1997.")}</p>`;
   }
   enquadrar([ESCRITORIO, ...viagens.flatMap(v => v.ev.map(e => e.pos))]);
 
   // Steps: every month in which someone in the group moves.
   const passosEv = [...new Set(viagens.flatMap(v => v.ev.map(e => e.key)))].sort();
-  // Months with no transfer board (and the gap between arrival and the first board) are steps too,
+  // Months with no President’s Board (and the gap between arrival and the first board) are steps too,
   // the name keeps its last known área, companion and count (slightly faded), noted as "no board this month".
   const mesesEv = new Set(passosEv.map(k => k.slice(0, 7)));
   const passos = [...passosEv];
@@ -1380,7 +1373,7 @@ viewof mapaJornada = {
   const slider = htl.html`<input type="range" class="jornada-slider" min="0" max=${n - 1} step="1" value="0" aria-label=${T("Mês", "Month")}>`;
   const v0 = viagens[0];
   const notaParcial = viagens.length === 1 && v0.ev.parcial ? htl.html`<p class="jornada-parcial">${v0.x?.chegada
-    ? T(`Chegou em ${fmtYM(v0.x.chegada)}; os quadros de transferências só começam em ${fmtYM(snaps[0].key)}, então as primeiras áreas não aparecem.`, `Arrived ${fmtYM(v0.x.chegada)}; the transfer boards only start in ${fmtYM(snaps[0].key)}, so the first areas are missing.`)
+    ? T(`Chegou em ${fmtYM(v0.x.chegada)}; os Quadros do Presidente só começam em ${fmtYM(snaps[0].key)}, então as primeiras áreas não aparecem.`, `Arrived ${fmtYM(v0.x.chegada)}; the President’s Boards only start in ${fmtYM(snaps[0].key)}, so the first areas are missing.`)
     : T(`Sem data de chegada; a jornada começa no primeiro quadro em que aparece.`, `No arrival date; the journey starts on the first board they appear on.`)}</p>` : "";
   // One missionary: a single line under the map with where they are now, updated as the journey plays.
   const descreverParada = e => e.tipo === "chegada" ? T("Chegada: escritório da missão, Porto Alegre", "Arrival: mission office, Porto Alegre")
@@ -1596,8 +1589,8 @@ viewof mapaJornada = {
     ${viagens.length > 1 ? htl.html`<p class="jornada-dica">${T(`Cada missionário tem uma cor. Toque num nome abaixo para seguir só essa jornada; toque no nome no mapa para abrir a janela do missionário. “Desde ${fmtYM(snaps[0].key)}”: chegou antes dos primeiros quadros, então a jornada começa na primeira área conhecida. “Até …”: continuou na missão depois que os Woodward partiram, em julho de 2000; os quadros acabam em junho de 2000, então fica parado na última área conhecida.`,
       `Each missionary has a color. Tap a name below to follow just that journey; tap a name on the map to open the missionary's window. “From ${fmtYM(snaps[0].key)}”: arrived before the first boards, so the journey starts at the first known area. “Until …”: stayed in the mission after the Woodwards left in July 2000; the boards end in June 2000, so they stay at their last known area.`)}</p>` : ""}
     ${legenda}${notaParcial}${itinerario ?? ""}
-    <p class="dlg-nota">${T("Os quadros de transferências vão de outubro de 1997 a junho de 2000 e faltam alguns meses; entre um quadro e outro, o missionário fica parado no mapa. Algumas áreas têm posição aproximada.",
-      "The transfer boards run from October 1997 to June 2000 and a few months are missing; between boards, the missionary stays put on the map. Some areas have an approximate location.")}</p>
+    <p class="dlg-nota">${T("Os Quadros do Presidente vão de outubro de 1997 a junho de 2000 e faltam alguns meses; entre um quadro e outro, o missionário fica parado no mapa. Algumas áreas têm posição aproximada.",
+      "The President’s Boards run from October 1997 to June 2000 and a few months are missing; between boards, the missionary stays put on the map. Some areas have an approximate location.")}</p>
     ${viagens.length === 1 ? htl.html`<div class="jornada-fim">
       <button class="pill" onclick=${() => abrirPessoa(v0.x ? { id: v0.x.id } : { id: null, n: v0.chave.slice(1) })}><i class="bi bi-person-lines-fill"></i> ${T(
         `Ver todas as áreas e companheiros ${/^Síster/.test(v0.nome) ? "da" : "do"} ${v0.nome}`,
@@ -1989,7 +1982,7 @@ galeriaSecao("woodwards")
 <div class="contact-credits">
 <section>
 <h3><span class="lang-pt">Quem cuida do site</span><span class="lang-en">Behind the site</span></h3>
-<p class="organizador"><span class="lang-pt">Em preparação para o 30º aniversário da chegada dos Woodward, em julho de 2027, o <strong>Élder Hereth</strong>, que serviu com eles, renovou este site com a ajuda de IA. Seu sobrinho, que serviu na Missão Portugal Porto, ajudou digitando os registros do quadro de transferências a partir dos jornais da missão.</span><span class="lang-en">In preparation for the 30th anniversary of the Woodwards’ arrival in July 2027, <strong>Elder Hereth</strong>, who served with them, updated this site with the help of AI. His nephew, who served in the Portugal Porto Mission, helped by typing in the transfer board records from the mission newsletters.</span></p>
+<p class="organizador"><span class="lang-pt">Em preparação para o 30º aniversário da chegada dos Woodward, em julho de 2027, o <strong>Élder Hereth</strong>, que serviu com eles, renovou este site com a ajuda de IA. Seu sobrinho, que serviu na Missão Portugal Porto, ajudou digitando os registros do Quadro do Presidente a partir dos jornais da missão.</span><span class="lang-en">In preparation for the 30th anniversary of the Woodwards’ arrival in July 2027, <strong>Elder Hereth</strong>, who served with them, updated this site with the help of AI. His nephew, who served in the Portugal Porto Mission, helped by typing in the President’s Board records from the mission newsletters.</span></p>
 </section>
 <section>
 <h3><span class="lang-pt">Com gratidão</span><span class="lang-en">With gratitude</span></h3>

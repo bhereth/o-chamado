@@ -115,7 +115,7 @@ section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reenc
 
 .navbar-title { font-family: $headings-font-family; letter-spacing: 0.02em; }
 
-.navbar .nav-link { font-size: 0.92rem; letter-spacing: 0.02em; }
+.navbar .nav-link { font-size: 0.92rem; letter-spacing: 0.02em; white-space: nowrap; }
 
 .nav-footer { font-size: 0.9rem; }
 .nav-footer em { color: rgba($footer-fg, 0.7); }
@@ -479,7 +479,21 @@ section[id], .band, [id="missao"], [id="areas"], [id="missionarios"], [id="reenc
 .snap-nav .snap-label::first-letter { text-transform: uppercase; }
 .snap-nav .pill { font-size: 1.1rem; padding: 0.2rem 0.8rem; }
 
-/* ---------- Transfer board ---------- */
+/* ---------- President's Board ---------- */
+// The historical photo causes Quarto to add nested page-column grids. The
+// board uses its own responsive layout, so keep these wrappers in normal flow.
+#areas { display: block; grid-column: screen-start / screen-end; }
+#areas > .quadro-bloco { display: block; width: 100%; min-width: 0; }
+#areas > .wrap, #areas > .quadro-bloco > .wrap { display: block; box-sizing: border-box; width: 100%; max-width: 1140px; min-width: 0; margin-inline: auto; }
+#areas > .wrap { padding-top: 2.5rem; }
+.section-intro.quadro-intro { width: min(640px, 100%); max-width: 640px; margin: 0 auto 1.5rem; text-align: left; }
+.section-intro.quadro-intro p + p { margin-top: 1rem; }
+// Quarto adds page-columns/column-screen to this raw figure. Keep it contained
+// and below the sticky headings instead of inheriting column-screen's z-index.
+#areas .quadro-foto { display: block; position: relative; z-index: 0; isolation: isolate; box-sizing: border-box; width: min(640px, 100%); max-width: 100%; margin: 1.5rem auto 2rem; text-align: center; }
+#areas .quadro-foto img { display: block; position: relative; z-index: auto; grid-column: auto; opacity: 1; box-sizing: border-box; width: 100%; max-width: 100%; height: auto; margin: 0; border-radius: $border-radius-lg; }
+.quadro-foto figcaption { margin-top: 0.5rem; font-size: 0.8rem; line-height: 1.5; color: $ink-muted; }
+.quadro-foto figcaption a { color: inherit; }
 
 .board-grid {
   display: flex;
@@ -1792,29 +1806,17 @@ $cores-regiao: (
 .pill-foto { font-size: 0.75em; margin-left: 0.15rem; color: $secondary; }
 .pill.active .pill-foto { color: #fff; }
 
-/* Areas: a second pinned bar (month changer) under the section title, only while the transfer board is on screen */
-#areas > .secao-topo { margin-bottom: 0; }
-.quadro-bloco { position: relative; }
-.faixa-mes {
-  position: sticky;
-  top: calc(var(--nav-h, 67px) + var(--faixa-h, 43px));
-  z-index: 29;
-  display: flex; align-items: center; justify-content: center; gap: 0.75rem;
-  margin: 0 -1rem; padding: 0.35rem 1rem;
-  background: rgba(mix($primary, $body-bg, 5%), 0.95);
-  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba($primary, 0.1);
-}
-.faixa-mes .cell, .faixa-mes .cell-output, .faixa-mes .cell-output-display { margin: 0; display: contents; }
-.faixa-rotulo { margin-right: 0.6rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: $ink-muted; white-space: nowrap; }
-.faixa-mes .nav-mes .snap-label { font-size: 1rem; min-width: 8.5em; }
-.faixa-mes .nav-mes-btn, .faixa-mes .nav-mes-btn.btn { width: 26px; height: 26px; font-size: 0.8rem; }
-.quadro-bloco > .wrap { padding-top: 2.5rem; }
+/* Board title and month navigation share one pinned bar. */
+#areas > .secao-topo { margin-bottom: 0; background: mix($primary, $body-bg, 5%); gap: 0.5rem 1rem; }
+#areas > .secao-topo .cell, #areas > .secao-topo .cell-output, #areas > .secao-topo .cell-output-display { margin: 0; display: contents; }
+#areas > .secao-topo .section-eyebrow { white-space: nowrap; }
+#areas > .secao-topo .nav-mes { margin: 0; }
+#areas > .secao-topo .snap-label { font-size: 1rem; min-width: 8.5em; white-space: nowrap; }
+#areas > .secao-topo .nav-mes-btn { width: 28px; height: 28px; font-size: 0.8rem; }
 @media (max-width: 575.98px) {
-  .faixa-mes { gap: 0.4rem; padding: 0.3rem 0.5rem; }
-  .faixa-rotulo { font-size: 0.68rem; letter-spacing: 0.06em; }
-  .faixa-mes .nav-mes { gap: 0.3rem; }
-  .faixa-mes .nav-mes .snap-label { font-size: 0.88rem; min-width: 0; white-space: nowrap; }
+  #areas > .secao-topo { gap: 0.4rem 0.65rem; padding-inline: 0.5rem; }
+  #areas > .secao-topo .nav-mes { gap: 0.3rem; }
+  #areas > .secao-topo .snap-label { font-size: 0.88rem; min-width: 0; }
 }
 
 /* Phones: zone cards fold up (details/summary) */
